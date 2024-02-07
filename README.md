@@ -14,13 +14,12 @@ This project, part of the COMP 555 Information Privacy course, aims to explore t
 
 This repository is structured to facilitate collaborative research, documentation, and analysis of privacy implications related to smart health devices. Here's how you can contribute and utilize the resources available in this repository.
 
-## Project Milestones and Deadlines
+## Repository Structure
 
-- **Milestone 1 - Case Study**: 20% | Deadline: Friday, 16 February EoD
-- **Milestone 2 - Project Case Presentation**: 5% | Dates: Monday, 12 / Wednesday, 14 February during class
-- **Milestone 3 - Requirements and Design**: 25% | Deadline: Friday, 1 March EoD
-- **Milestone 4 - Project Product Presentation**: 10% | Dates: 24 March - 11 April during class
-- **Milestone 5 - Privacy-Centered System**: 40% | Deadline: Thursday, 11 April EoD
+- **`/m1`**: Contains all files related to Milestone 1, including research documentation, analysis, and the initial report draft.
+- **`/docs`**: Documentation, including project proposals, meeting notes, and feedback from TA sessions.
+- **`/data`**: Original data sets, including survey responses, API data pulls, and anonymized user data for analysis.
+- **`/scripts`**: Code used for data analysis, including Python notebooks and scripts for processing and visualizing data.
 
 ## How to Contribute
 
@@ -36,12 +35,13 @@ This repository is structured to facilitate collaborative research, documentatio
 
 4. **Data Privacy**: Ensure all data used or generated adheres to ethical guidelines and privacy laws. Anonymize sensitive data before sharing or analysis.
 
-## Project Milestones
+## Project Milestones and Deadlines
 
-- **Milestone 1**: Privacy Impact of Transition from Non-Connected to Connected Smart Health Devices.
-- **Milestone 2**: Analysis of User Awareness and Consent Mechanisms.
-- **Milestone 3**: Security Vulnerabilities and Data Breach Incidents Analysis.
-- **Final Report**: Compilation of research findings, analyses, and recommendations for enhancing privacy protections in smart health devices.
+- **Milestone 1 - Case Study**: 20% | Deadline: Friday, 16 February EoD
+- **Milestone 2 - Project Case Presentation**: 5% | Dates: Monday, 12 / Wednesday, 14 February during class
+- **Milestone 3 - Requirements and Design**: 25% | Deadline: Friday, 1 March EoD
+- **Milestone 4 - Project Product Presentation**: 10% | Dates: 24 March - 11 April during class
+- **Milestone 5 - Privacy-Centered System**: 40% | Deadline: Thursday, 11 April EoD
 
 ## Tools and Resources
 
