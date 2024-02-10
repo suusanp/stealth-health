@@ -27,6 +27,12 @@
 
 ### Slide 5: Privacy Threats Uncovered
 
+- A quick comparison of Fitbit's privacy practices and PIPEDA guidelines.
+- Fitbit's data collection practices (particularly lack of transparency and user consent) possibly not be compliance with Canadian privacy laws.
+- Under the PIPEDA guidelines, Fitbit's data collection practices may be deemed excessive and non-consensual.
+- Notably, PIPEDA requires organizations to obtain meaningful consent from users before collecting, using, or disclosing their personal information. Fitbit's practices (particularly around location data, continuous data upload without users' knowledge, third-party sharing...etc,,,) may not align with these requirements.
+- Does not inform (well enough) the user of the purpose of data collection, the potential risks, and the third parties involved in data sharing. 
+
 ### Slide 6: Policy vs. Practice
 
 
@@ -36,7 +42,7 @@
 
 - why are you not focusing on Apple watch.
 - why would the Google aquisition be a problem
-- how to we do a private by desing product here
+- how to we do a private by design product here
 - compare the situation under gdpr's Guidelines
 -
 
