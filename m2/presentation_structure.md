@@ -11,19 +11,32 @@
 - Fitbit started as a modest venture in 2007, aiming to make fitness tracking accessible to everyone. Its initial product was a revelation, offering users a simple way to track their steps and activity levels."
 - Over the years, Fitbit has significantly expanded its functionality. From basic step counting, it now offers comprehensive health insights, including heart rate monitoring, sleep analysis, and even stress tracking, transforming the landscape of personal health monitoring."
 - This evolution reflects not just technological advancement but a shift in how we view and manage our health. Fitbit has played a pivotal role in making health tracking a part of our daily routine, empowering users with data previously available only through medical professionals."
-
+ 
 
 ## Slide 3: Why Focus on Fitbit?
+- The company has sold more than 120 million devices and has 29 million users in over 100 countries.
 - Fitbit's popularity isn't just about the numbers; it's about the scale and scope of data collection. Every step, every heartbeat, and every minute of sleep from millions of users worldwide contributes to an immense pool of health data."
 - The acquisition of Fitbit by Google in 2021 marked a significant moment for the company and its users. This move brought Fitbit into the fold of one of the largest data-processing companies in the world, raising important questions about data privacy and security."
 - Focusing on Fitbit allows us to explore these critical issues from a unique vantage point. It's not just a leader in health technology; it's a case study in the intersection of health, technology, and privacy. As we delve deeper into Fitbit's practices and policies, we uncover broader implications for the privacy of health data in the digital age."
 
-### Slide 4:Fitbits S ystematic Data Collection
+### Slide 4:Fitbits Systematic Data Collection
 -Our investigation into Fitbit’s data practices uncovered a startling reality: the device collects an extensive range of personal information, encompassing everything from your daily movements and sleep habits to precise location data."
--The depth and breadth of the data captured by Fitbit are alarming. It’s not just about counting steps or monitoring sleep; it’s a comprehensive digital footprint of our lifestyles, habits, and, by extension, our privacy."
+-The depth and breadth of the data captured by Fitbit are alarming. It’s not just about counting steps or monitoring sleep; it’s a comprehensive digital footprint of our lifestyles, habits, and, by extension, our privacy." 
+
+
 
 ### Slide 5: Privacy Threats Uncovered
 
 ### Slide 6: Policy vs. Practice
 
+
+- A Users perspective, The aquisition of a fitbit 
+
+## possible questions to prepare for:
+
+- why are you not focusing on Apple watch.
+- why would the Google aquisition be a problem
+- how to we do a private by desing product here
+- compare the situation under gdpr's Guidelines
+-
 

@@ -18,6 +18,10 @@ A compilation of links to resources that we have found useful or interesting for
 
 ## Fitbit
 
+- [Fitbit history 1](https://techstory.in/the-fitbit-story-how-it-scripted-wearable-techs-biggest-success-story/)
+
+- [Fitbit history 2](https://www.wareable.com/fitbit/story-of-fitbit-7936)
+
 ### Privacy Policy and ToS
 - [Fitbit Privacy Policy](https://www.fitbit.com/global/en-ca/legal/privacy-policy)
 
