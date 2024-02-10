@@ -10,8 +10,6 @@ A compilation of links to resources that we have found useful or interesting for
     - [Web API](#web-api)
     - [Notable Incidents and Concerns](#notable-incidents-and-concerns)
 
-- [Apple Watch](#apple-watch)
-    - [White Papers](#white-papers)
 
 ## General
 - [Smartwatch Security Threats](https://www.bitdefender.com/blog/hotforsecurity/smartwatches-are-extremely-vulnerable-to-security-threats-study-shows/): A study showing that smartwatches are extremely vulnerable to security threats.
@@ -47,16 +45,7 @@ A compilation of links to resources that we have found useful or interesting for
 - [Over 61 million fitness tracker users' data exposed](https://www.fiercehealthcare.com/digital-health/fitbit-apple-user-data-exposed-breach-impacting-61m-fitness-tracker-records)
 - [Users' Sexual Activity Exposed](https://www.forbes.com/sites/kashmirhill/2011/07/05/fitbit-moves-quickly-after-users-sex-stats-exposed/?sh=6ff14c514327)
 
-## Apple Watch
-
-### White Papers
-
-- [Using Apple Watch to Estimate Cardio Fitness with VO2 Max](https://www.apple.com/healthcare/docs/site/Using_Apple_Watch_to_Estimate_Cardio_Fitness_with_VO2_max.pdf)
-
-- [Arrythmia Detection](https://www.apple.com/uk/healthcare/docs/site/Apple_Watch_Arrhythmia_Detection.pdf)
-
-- [Blood Oxygen App](https://www.apple.com/healthcare/docs/site/Blood_Oxygen_app_on_Apple_Watch_October_2022.pdf)
-
+- [Insurance Discount for Fitbit Users](https://www.insurancebusinessmag.com/ca/news/auto-motor/first-insurer-to-offer-fitbit-discounts-emerges-46817.aspx)
 
 
 
