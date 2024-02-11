@@ -38,6 +38,26 @@
 
 - A Users perspective, The aquisition of a fitbit 
 
+### Slide 7: Future Developments and Rising Privacy Concerns
+
+- Fitbit's journey into the future is marked by two significant developments: its acquisition by Google in 2021 and its deals with health insurance companies.
+-  These changes signal a shift in how our health data may serve not just our fitness goals but broader economic interests. 
+- With Google's acquisition, a new requirement emerges: owning a Fitbit now necessitates a Google account, embedding our health data within Google's vast data ecosystem. This consolidation of data raises valid concerns about privacy, as it places intimate health details a step closer to the expansive reach of digital advertising and profiling.
+
+- Furthermore, Fitbit's partnerships with health insurance firms introduce a nuanced layer of privacy considerations. 
+- Our steps, our heart rates, and our sleep patterns could potentially influence our health insurance premiums. 
+- This intertwining of health monitoring and insurance policies not only blurs the lines between health support and financial implications but also prompts a critical question: Who truly benefits from our health data?
+
+As we stand at this crossroads, the excitement of technological advancement is undeniably tinged with caution. The promise of personalized health coverage and the allure of tech-enhanced fitness tracking come with a price tag on our privacy. 
+
+### Slide 8: Conclusion and 
+- Embarking on a journey with a Fitbit on your wrist is often a step toward reclaiming control over your health. Yet, paradoxically, this quest for autonomy over our bodily data might lead us down a path of relinquishing control. The stark reality is that, in our pursuit of health insights, we might be unknowingly trading away the privacy of our most personal data.
+
+- This revelation is not a call to discard our devices but a prompt to engage with them more wisely. To safeguard our privacy while still enjoying the benefits of smartwatches, consider these steps:
+
+- Be discerning about which third-party companies you allow access to your health data. A quick glance through their privacy policies can reveal how they intend to use, secure, or possibly sell your information.
+- Take advantage of device and network settings to limit ad tracking. For iPhone users, this means navigating to Privacy settings to restrict ad tracking, and for Google users, turning off ad personalization in your account settings.
+- In an era where technology offers unparalleled control over our health, let's ensure this control extends to our privacy. By adopting these practices, we maintain stewardship over our data, ensuring our journey towards health remains firmly in our hands.
 ## possible questions to prepare for:
 
 - why are you not focusing on Apple watch.
