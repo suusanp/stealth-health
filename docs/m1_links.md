@@ -31,6 +31,7 @@ A compilation of links to resources that we have found useful or interesting for
 
 - [Cookies List](https://www.fitbit.com/global/en-ca/legal/cookie-list): A list of cookies used by Fitbit website
 
+- [Google Cloud PIPEDA](https://services.google.com/fh/files/misc/canada_pipeda_googlecloud_whitepaper_oct_2023.pdf?hl=en): PIPEDA white paper for Google Cloud
 
 
 
