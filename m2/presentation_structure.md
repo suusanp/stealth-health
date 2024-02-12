@@ -18,26 +18,27 @@
 - Fitbit's popularity isn't just about the numbers; it's about the scale and scope of data collection. Every step, every heartbeat, and every minute of sleep from millions of users worldwide contributes to an immense pool of health data."
 - The acquisition of Fitbit by Google in 2021 marked a significant moment for the company and its users. This move brought Fitbit into the fold of one of the largest data-processing companies in the world, raising important questions about data privacy and security."
 - Focusing on Fitbit allows us to explore these critical issues from a unique vantage point. It's not just a leader in health technology; it's a case study in the intersection of health, technology, and privacy. As we delve deeper into Fitbit's practices and policies, we uncover broader implications for the privacy of health data in the digital age."
+- We will focus specifically on the PII leakages induced by the transition to Fitbit from their old wearables to their current Google-owned model: the requirement for a Google account and its implications, and data integrations.
 
 ### Slide 4:Fitbits Systematic Data Collection
--Our investigation into Fitbit’s data practices uncovered a startling reality: the device collects an extensive range of personal information, encompassing everything from your daily movements and sleep habits to precise location data."
--The depth and breadth of the data captured by Fitbit are alarming. It’s not just about counting steps or monitoring sleep; it’s a comprehensive digital footprint of our lifestyles, habits, and, by extension, our privacy." 
--Data is collected as soon as you set up your device:
-    -A Google account is required if you purchase a new device today (Name, Birthday, Gender, Email)
-    -A Google account means Web/App activity, Map Timeline, Youtube history saved by default
-    -Personalized ads and personalized search results on by default
-    -To set up Fitbit: Height, Weight, Sex required
-    -GPS signals, device sensors, WiFi access points, cell tower ids, IP address
-    -Optional: Activity, Exercise, Sleep, Heart Rate, Profile photo, Biography, Country, Username
-    -Sensor data
-    -Phone calls and information
-    -Contact information/Friends
--Issues:
-    -Shared with third-parties (different privacy policies)
-    -Google/Fitbit can use data to train/improve their services, AI models
-    -Aggregate data for targeted ads
-    -So much sensitive data collected, what if there is a data leak?, what if there is a password leak? (already happened)
-    -Attackers: fraud, extortion
+- Our investigation into Fitbit’s data practices uncovered a startling reality: the device collects an extensive range of personal information, encompassing everything from your daily movements and sleep habits to precise location data."
+- The depth and breadth of the data captured by Fitbit are alarming. It’s not just about counting steps or monitoring sleep; it’s a comprehensive digital footprint of our lifestyles, habits, and, by extension, our privacy." 
+- Data is collected as soon as you set up your device:
+    - A Google account is required if you purchase a new device today (Name, Birthday, Gender, Email)
+    - A Google account means Web/App activity, Map Timeline, Youtube history saved by default
+    - Personalized ads and personalized search results on by default
+    - To set up Fitbit: Height, Weight, Sex required
+    - GPS signals, device sensors, WiFi access points, cell tower ids, IP address
+    - Optional: Activity, Exercise, Sleep, Heart Rate, Profile photo, Biography, Country, Username
+    - Sensor data
+    - Phone calls and information
+    - Contact information/Friends
+- Issues:
+    - Shared with third-parties (different privacy policies)
+    - Google/Fitbit can use data to train/improve their services, AI models
+    - Aggregate data for targeted ads
+    - So much sensitive data collected, what if there is a data leak?, what if there is a password leak? (already happened)
+    - Attackers: fraud, extortion
 
 
 ### Slide 5: Privacy Threats Uncovered
