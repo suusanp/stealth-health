@@ -9,6 +9,7 @@ A compilation of links to resources that we have found useful or interesting for
     - [Privacy Policy and ToS](#privacy-policy-and-tos)
     - [Web API](#web-api)
     - [Notable Incidents and Concerns](#notable-incidents-and-concerns)
+    - [Misc.](#misc)
 
 
 ## General
@@ -27,11 +28,15 @@ A compilation of links to resources that we have found useful or interesting for
 
 - [Fitbit Additional Terms of Service](https://support.google.com/product-documentation/answer/13511576)
 
-- [Cookie Policy](https://www.fitbit.com/global/en-ca/legal/cookie-policy)
+- [Cookie Use Statement](https://www.fitbit.com/global/en-ca/legal/cookie-policy)
 
-- [Cookies List](https://www.fitbit.com/global/en-ca/legal/cookie-list): A list of cookies used by Fitbit website
+- [List of Cookies](https://www.fitbit.com/global/en-ca/legal/cookie-list): A list of cookies used by Fitbit website
 
-- [Google Cloud PIPEDA](https://services.google.com/fh/files/misc/canada_pipeda_googlecloud_whitepaper_oct_2023.pdf?hl=en): PIPEDA white paper for Google Cloud
+- [Privacy Policy for Children's Account](https://www.fitbit.com/global/en-ca/legal/kids-privacy-policy)
+
+- [Google Privacy and Terms](https://policies.google.com/privacy)
+
+- [Google ToS](https://policies.google.com/terms)
 
 
 
@@ -47,6 +52,10 @@ A compilation of links to resources that we have found useful or interesting for
 - [Users' Sexual Activity Exposed](https://www.forbes.com/sites/kashmirhill/2011/07/05/fitbit-moves-quickly-after-users-sex-stats-exposed/?sh=6ff14c514327)
 
 - [Insurance Discount for Fitbit Users](https://www.insurancebusinessmag.com/ca/news/auto-motor/first-insurer-to-offer-fitbit-discounts-emerges-46817.aspx)
+
+## Misc
+
+- [Google Cloud PIPEDA](https://services.google.com/fh/files/misc/canada_pipeda_googlecloud_whitepaper_oct_2023.pdf?hl=en): PIPEDA white paper for Google Cloud
 
 
 
