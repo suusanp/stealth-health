@@ -41,7 +41,7 @@
     - Attackers: fraud, extortion
 
 
-### Slide 5: Privacy Threats Uncovered
+### Slide 5: Privacy Implications and Legal Compliance
 
 - A quick comparison of Fitbit's privacy practices and PIPEDA guidelines.
 - Fitbit's data collection practices (particularly lack of transparency and user consent) possibly not be compliance with Canadian privacy laws.
@@ -49,6 +49,23 @@
 - Notably, PIPEDA requires organizations to obtain meaningful consent from users before collecting, using, or disclosing their personal information. Fitbit's practices (particularly around location data, continuous data upload without users' knowledge, third-party sharing...etc,,,) may not align with these requirements.
 - Does not inform (well enough) the user of the purpose of data collection, the potential risks, and the third parties involved in data sharing. 
 
+Principles of PIPEDA that Fitbit may not be following:
+- Consent: Fitbit may not be obtaining meaningful consent from users before collecting, using, or disclosing their personal information. The company's practices around location data, continuous data upload without users' knowledge, and third-party sharing while not informing the user of the purpose of data collection or the potential risks.
+- Limiting Collection: Fitbit may be collecting more personal information than necessary for its stated purposes.
+    - Fitbit requires a Google account to set up a new device, which means that Fitbit users are subject to Google's data collection practices. Google's data collection practices are extensive and include web and app activity, map timeline, and YouTube history, among others, which are not necessary for the operation of a Fitbit device.
+- Limiting Use, Disclosure, and Retention: Fitbit may be using and disclosing personal information for purposes other than those for which it was collected.
+    - Again, Fitbit users are subject to Google's data collection practices, which include personalized ads and personalized search results, among others, which are not necessary for the operation of a Fitbit device.
+- Openness: Fitbit privacy policies are difficult to understand, yet they feel compelled to give their consent in order to obtain the goods and services they want. 
+    - Here is a list of Fitbit's privacy policies and terms of service that users are subject to:
+        - [Fitbit Privacy Policy](https://www.fitbit.com/global/en-ca/legal/privacy-policy)
+        - [Fitbit Terms of Service](https://www.fitbit.com/global/en-ca/legal/terms-of-service)
+        - [Fitbit Additional Terms of Service](https://support.google.com/product-documentation/answer/13511576)
+        - [Cookie Use Statement](https://www.fitbit.com/global/en-ca/legal/cookie-policy)
+        - [List of Cookies](https://www.fitbit.com/global/en-ca/legal/cookie-list): A list of cookies used by Fitbit website
+        - [Privacy Policy for Children's Account](https://www.fitbit.com/global/en-ca/legal/kids-privacy-policy)
+        - [Google Privacy and Terms](https://policies.google.com/privacy)
+        - [Google ToS](https://policies.google.com/terms)
+    - There are so many different privacy policies and terms of service that it is difficult to understand what is being agreed to. How can non tech-savvy users understand what they are agreeing to?
 ### Slide 6: Policy vs. Practice
 
 
