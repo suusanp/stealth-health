@@ -44,17 +44,15 @@
 ### Slide 5: Privacy Implications and Legal Compliance
 
 - A quick comparison of Fitbit's privacy practices and PIPEDA guidelines.
-- Fitbit's data collection practices (particularly lack of transparency and user consent) possibly not be compliance with Canadian privacy laws.
-- Under the PIPEDA guidelines, Fitbit's data collection practices may be deemed excessive and non-consensual.
-- Notably, PIPEDA requires organizations to obtain meaningful consent from users before collecting, using, or disclosing their personal information. Fitbit's practices (particularly around location data, continuous data upload without users' knowledge, third-party sharing...etc,,,) may not align with these requirements.
-- Does not inform (well enough) the user of the purpose of data collection, the potential risks, and the third parties involved in data sharing. 
+- Don't have much time so I will only focus on the ones that Fitbit may not be following.
 
-Principles of PIPEDA that Fitbit may not be following:
-- Consent: Fitbit may not be obtaining meaningful consent from users before collecting, using, or disclosing their personal information. The company's practices around location data, continuous data upload without users' knowledge, and third-party sharing while not informing the user of the purpose of data collection or the potential risks.
+A list of Principles of PIPEDA that Fitbit may not be following:
+- Consent: Fitbit may not be obtaining meaningful consent from users before collecting, using, or disclosing their personal information. 
+    - Fitbit is continuously uploading data from users' devices without providing clear information on what data is being uploaded or why, and how frequently, violating the "meaningful" part of the consent principle.
 - Limiting Collection: Fitbit may be collecting more personal information than necessary for its stated purposes.
     - Fitbit requires a Google account to set up a new device, which means that Fitbit users are subject to Google's data collection practices. Google's data collection practices are extensive and include web and app activity, map timeline, and YouTube history, among others, which are not necessary for the operation of a Fitbit device.
 - Limiting Use, Disclosure, and Retention: Fitbit may be using and disclosing personal information for purposes other than those for which it was collected.
-    - Again, Fitbit users are subject to Google's data collection practices, which include personalized ads and personalized search results, among others, which are not necessary for the operation of a Fitbit device.
+    - Again, Fitbit users are subject to Google's data collection practices, which include personalized ads and personalized search results, violating the "for purposes that a reasonable person would consider appropriate in the circumstances" point of the principle.
 - Openness: Fitbit privacy policies are difficult to understand, yet they feel compelled to give their consent in order to obtain the goods and services they want. 
     - Here is a list of Fitbit's privacy policies and terms of service that users are subject to:
         - [Fitbit Privacy Policy](https://www.fitbit.com/global/en-ca/legal/privacy-policy)
