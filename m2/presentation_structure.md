@@ -48,7 +48,11 @@
 
 A list of Principles of PIPEDA that Fitbit may not be following:
 - Consent: Fitbit may not be obtaining meaningful consent from users before collecting, using, or disclosing their personal information. 
-    - Fitbit is continuously uploading data from users' devices without providing clear information on what data is being uploaded or why, and how frequently, violating the "meaningful" part of the consent principle.
+    - To use Fitbit device, new users are immediately prompted to register with a Google account, which means that they are subject to Google's data collection practices. Fitbit is continuously collecting and uploading personal information to Google, users may not be aware of the extent of this data collection.
+    - This is violating the "meaningful" part of the consent principle. As stated by PIPEDA, consent is "only considered valid if it is reasonable to expect that your customers will understand the nature, purpose and consequences of the collection, use or disclosure of their personal information."
+    - Even more concerning that Fitbit's privacy policy makes use of vague laguage and antistatements.
+- Limiting Collection: Fitbit may be collecting more personal information than necessary for its stated purposes.
+    - Google's data collection practices are extensive and include web and app activity, map timeline, and YouTube history, among others, which are not necessary for the operation of a Fitbit device.
 - Limiting Collection: Fitbit may be collecting more personal information than necessary for its stated purposes.
     - Fitbit requires a Google account to set up a new device, which means that Fitbit users are subject to Google's data collection practices. Google's data collection practices are extensive and include web and app activity, map timeline, and YouTube history, among others, which are not necessary for the operation of a Fitbit device.
 - Limiting Use, Disclosure, and Retention: Fitbit may be using and disclosing personal information for purposes other than those for which it was collected.
