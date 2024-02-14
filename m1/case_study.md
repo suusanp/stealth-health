@@ -52,6 +52,12 @@
 
 ### 2.4 PIPEDA Compliance
 
+A thorough examination of Fitbit's privacy policies exposes that the company is not in compliance with the Personal Information Protection and Electronic Documents Act (PIPEDA). Further analysis suggests that Fitbit is able to exploit the ambiguous language and inadequate definitions in PIPEDA.
+
+While PIPEDA is designed to ensure the privacy rights of individuals, Fitbit appears to capitalize on the absence of strict definitions in PIPEDA to collect and profit from personal information while maintaining the semblance of legal compliance.
+
+An analysis of PIPEDA Principles in relation to Fitbit's privacy policies is as follows:
+
 #### 1. Accountability
 #### 2. Identifying Purposes
 #### 3. Consent
@@ -69,15 +75,20 @@ Fitbit can not claim to have obtained "meaningful consent" from its users as req
 
 #### 4. Limiting Collection
 
-Fitbit may be collecting more personal information than necessary for its stated purposes. The requirement for a Google account to set up a device means that new Fitbit users are subject to Google's data collection practices. These practices are extensive and include web and app activity, map timeline, and YouTube history, among others, which are not necessary for the operation of a Fitbit device. 
+"Limit the amount and type of information you collect to what is needed for the identified purposes" - PIPEDA Fair Information Principle 4 – Limiting Collection[^3]
+
+Fitbit collects an excessive amount of personal information from its users. The requirement for a Google account to set up a device means that new Fitbit users are subject to Google's data collection practices. These practices are extensive and include web and app activity, map timeline, and YouTube history, among others, which are not necessary for the operation of a Fitbit device. They are further able to collect personal information for "identified purposes" such as (but not limited to) advertising, marketing, and analytics. In theory, Fitbit should not be able to collect user data for purposes that are not essential to the functionality of its devices under the Fair Information Principle.
 
 However, consider the wording of PIPEDA's Fair Information Principle 4:
 
 "Collect only the personal information your organization needs to fulfill a legitimate identified purpose." - PIPEDA Fair Information Principle 4 – Limiting Collection[^3]
 
-Fitbit's privacy policy states that it only collects personal information that is necessary for the operation of its devices and essential 'Services'. However, these 'Services' inlude advertising and marketing, and the sharing of personal information with third parties such as advertisers and business partners. Because of vagueness in PIPEDA and a lack of definition of what constitutes "legitimate", Fitbit is able to collect more personal information than functionally necessary, and share it with third parties under the guise of fulfilling a legitimate identified purpose.
+Fitbit's privacy policy states that it only collects personal information that is necessary for the operation of its devices and essential 'Services'. However, these 'Services' inlude advertising and marketing, and the sharing of personal information with third parties such as advertisers and business partners. Because of vagueness in PIPEDA and a lack of definition of what constitutes "legitimate", Fitbit is able to collect more personal information than functionally necessary, and share it with third parties under the guise of fulfilling a "legitimate identified purpose". 
 
 #### 5. Limiting Use, Disclosure, and Retention
+
+
+
 #### 6. Accuracy
 #### 7. Safeguards
 #### 8. Openness
