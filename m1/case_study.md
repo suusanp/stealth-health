@@ -52,13 +52,25 @@
 
 ### 2.4 PIPEDA Compliance
 
-A thorough examination of Fitbit's privacy policies exposes that the company is not in compliance with the Personal Information Protection and Electronic Documents Act (PIPEDA). Further analysis suggests that Fitbit is able to exploit the ambiguous language and inadequate definitions in PIPEDA.
+A thorough examination of Fitbit's privacy policies reveals that the company is not in compliance with the Personal Information Protection and Electronic Documents Act (PIPEDA). Further analysis suggests that Fitbit is able to exploit the ambiguous language and inadequate definitions in PIPEDA.
 
-While PIPEDA is designed to ensure the privacy rights of individuals, Fitbit appears to capitalize on the absence of strict definitions in PIPEDA to collect and profit from personal information while maintaining the semblance of legal compliance.
+While PIPEDA is designed to ensure the privacy rights of individuals, Fitbit appears to capitalize on the absence of strict definitions in PIPEDA to collect and profit from their users' personal information while maintaining the semblance of legal compliance.
 
 An analysis of PIPEDA Principles in relation to Fitbit's privacy policies is as follows:
 
 #### 1. Accountability
+
+The Accountability Principle, first and foremost, requires that companies "comply with all 10 fair information principles." [pipeda](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_accountability/) Fitbit does not comply with all 10 fair information principles, as will be demonstrated in the following sections.
+
+According to Principle 1, companies should also "identify your organization’s designated privacy official, and communicate that person’s name or title internally and externally (e.g. on your website or in publications)."[pipeda](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_accountability/) Fitbit's privacy policy does not identify a designated privacy official to whom users can direct their privacy concerns. Further investigation reveals that Google, Fitbit's parent company, does not have a designated privacy official either. There is also no way of knowing if Fitbit "provides adequate privacy training to [their] employees" as required by Principle 1. 
+
+Now, consider the following requirement:
+
+"Protect all personal information held by your organization, including any personal information you transfer to a third party for processing" - PIPEDA Fair Information Principle 1 – Accountability [pipeda](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_accountability/)
+
+Ironically, Fitbit's User Data and Developer Policy [cool](https://dev.fitbit.com/legal/fitbit-user-data-and-developer-policy/) is (mostly) in compliance with PIPEDA's principles, while their own privacy policy is not. Notably, "Transferring or selling user data to third parties like advertising platforms, data brokers, or any information resellers even if aggregated or anonymized" is prohibited by Fitbit's User Data and Developer Policy. This is not the case with their own privacy policy, which states: "We work with partners who provide us with analytics and advertising services".
+
+
 #### 2. Identifying Purposes
 #### 3. Consent
 
