@@ -10,6 +10,7 @@
    - Technical Literature Review
    - Literature Search
    - Privacy Notices Review
+   - Instrumentation and Monitoring
 3. [Results](#results)
    - Data Collection Practices
    - Identified Privacy Threats and Their Causes
@@ -30,23 +31,15 @@
 ## 1. Introduction
 
 ### 1.2 Project Overview
-In our case study, we decided to focus on the privacy impact and implications of modern smart health devices. Specifically, we focused on Fitbit, as it is one of the leading companies among the smart health devices sector, and it is present since 2007. The immense amount of data Fitbit collects, as well as the recent acquisition of the company by Google are both interesting aspects to look into in terms of what they mean for user privacy. 
 
-### 1.2 Objectives
-- To research and understand the history of the Fitbit devices, and the most impactful transition when Fitbit devices started to become a privacy issue.
-- Understand the current privacy policy of Fitbit and its implications for the users, as well as its compliance with PIPEDA.
-- Understand the implications of the Google's acquisition of Fitbit.
-- Discuss how a user can use their Fitbit device better in terms of data privacy.
+### 1.3 Objectives
 
-### 1.3 Scope of the Study
-- We used technical literature review, literature search, and privacy notices review methods in our research. 
-- We compared the current privacy policy of Fitbit to PIPEDA and spotted the compliance issues.
-- We studied the current and future privacy implications of Fitbit devices.
+### 1.4 Scope of the Study
 
 ## 2. Research Methods
 
 ### 2.1 Technical Literature Review
-In our research, we focus on gathering and examining the latest official documents from Fitbit and Google to examine technical details about how they handle user data. This step is crucial because it helps us build a clear picture of Fitbit's privacy rules, especially after Google's aquisition. We looked closely at these documents to figure out exactly what kind of user information they collect, how they use this data, and who else might get access to it. Our main goal is to dig into these policies to see if Fitbit follows privacy regulations and how open/transparent they are about their data practices with users. 
+In our research, we focus on gathering and examining the latest official documents from Fitbit and Google, their privacy policies, terms of service, and any technical details about how they handle user data. This step is crutial because it helps us build a clear picture of Fitbit's privacy rules, especially after Google's aquisition. We looked closely at these documents to figure out exactly what kind of user information they collect, how they use this data, and who else might get access to it. Our main goal is to dig into these policies to see if Fitbit follows privacy regulations and how open/transparent they are about their data practices with users. 
 
 ### 2.2 Literature Search
 To broaden our outlook, we looked into more than just the official documentation. We also explored recent studies, tech reports, and news that talked about how Fitbit handles privacy. Our main goal is to find out what kind of privacy problems, security leaks, or worries people have about Fitbit. This step was about getting the full picture of Fitbit's privacy from different angles – what experts say, what's in the news, and what users think. This way, we could really understand how Fitbit's privacy rules work in the real world and what the implications are for people using their product.
@@ -55,12 +48,36 @@ To broaden our outlook, we looked into more than just the official documentation
 
 Our research methodology involves an in-depth review of Fitbit's privacy practices under Google. This involves a thorough analysis of their extensive documentation, which includes privacy policies and terms of service for both Fitbit and Google. Specifically, we analyze the policies and terms of service to understand the extent of data collection, the purposes for such collection, and the sharing of such information with third parties. The documentation also provides insights into managing personal information, with details on how users can access, limit, and control their data. Given the complexity of the documentation, we also consider the implications of the language used in the privacy policies and terms of service, and how it may affect users' understanding of their privacy rights. PIPEDA compliance is also a key focus of our research, as we aim to understand how Fitbit's privacy practices align with Canadian privacy laws.
 
+### 2.4 Instrumentation and Monitoring
+
 ## 3. Results
 
 ### 3.1 Data Collection Practices
 
+Our investigation into Fitbit’s data practices uncovered a startling reality: the device collects an extensive range of personal information, encompassing everything from your daily movements and sleep habits to precise location data. The depth and breadth of the data captured by Fitbit are alarming. It’s not just about counting steps or monitoring sleep; it’s a comprehensive digital footprint of our lifestyles and habits. 
+
+Data is collected even before users start using their devices. New Fitbit users must either sign-in with a pre-existing Google account or create a new one. This means that users are immediately surrendering their name, birthday, gender, and email. New Google accounts also record Web/App activity, Google Maps timeline, and YouTube history by default. Personalized advertisement and personalized search results are also turned on by default. 
+
+For users that already have a Google account, all the information that is previously associated with their account can now be aggregated with data that Fitbit will collect. 
+
+This includes:
+-	phone numbers
+-	payment information
+-	emails
+-	photos and videos
+-	docs and spreadsheets
+-	purchases
+-	contacts
+-	activity on third-party sites/apps
+-	phone calls and associated information
+
+Google/Fitbit also collect location information about its users such as GPS and sensor data, IP addresses, Wi-Fi access points, cell towers and information about Bluetooth devices. 
+
+More information about Google’s data collection practices is available on their [Privacy and Terms](https://policies.google.com/privacy?hl=en-US#infocollect) webpage.
+
+
+
 ### 3.2 Identified Privacy Threats and Their Causes
-As we can see from the timeline of the Fitbit devices [^4] since the company's inception at 2007, every new device coming into the market meant more data collection from the users. 
 
 ### 3.3 Comparative Analysis of Privacy Policies and Actual Data Handling Practices
 
@@ -85,8 +102,6 @@ Now, consider the following requirement:
 Ironically, Fitbit's User Data and Developer Policy [cool](https://dev.fitbit.com/legal/fitbit-user-data-and-developer-policy/) is (mostly) in compliance with PIPEDA's principles, while their own privacy policy is not. Notably, "Transferring or selling user data to third parties like advertising platforms, data brokers, or any information resellers even if aggregated or anonymized" is prohibited by Fitbit's User Data and Developer Policy. This is not the case with their own privacy policy, which states: "We work with partners who provide us with analytics and advertising services".
 
 #### 2. Identifying Purposes
-
-
 
 #### 3. Consent
 
@@ -143,11 +158,13 @@ This makes it difficult for non-technical users to navigate. Even if a user were
 
 #### 10. Challenging Compliance
 
+#### _Sources_
+
+// I'm leaving these unfinished for now, will put the rest in later
 [^1]: [Fitbit Privacy Policy](https://www.fitbit.com/global/en-ca/legal/privacy-policy#analytics-and-advertising)
 
 [^2]: [PIPEDA Fair Information Principle 3 – Consent](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_consent/)
 [^3]: [PIPEDA Fair Information Principle 4 – Limiting Collection](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_collection/)
-[^4]: [History of Fitbit and Fitbit Products](https://www.verizon.com/articles/Accessories/history-of-fitbit/)
 
 ## 4. Conclusions
 
