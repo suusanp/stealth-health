@@ -10,7 +10,6 @@
    - Technical Literature Review
    - Literature Search
    - Privacy Notices Review
-   - Instrumentation and Monitoring
 3. [Results](#results)
    - Data Collection Practices
    - Identified Privacy Threats and Their Causes
@@ -31,10 +30,18 @@
 ## 1. Introduction
 
 ### 1.2 Project Overview
+In our case study, we decided to focus on the privacy impact and implications of modern smart health devices. Specifically, we focused on Fitbit, as it is one of the leading companies among the smart health devices sector, and it is present since 2007. The immense amount of data Fitbit collects, as well as the recent acquisition of the company by Google are both interesting aspects to look into in terms of what they mean for user privacy. 
 
-### 1.3 Objectives
+### 1.2 Objectives
+- To research and understand the history of the Fitbit devices, and the most impactful transition when Fitbit devices started to become a privacy issue.
+- Understand the current privacy policy of Fitbit and its implications for the users, as well as its compliance with PIPEDA.
+- Understand the implications of the Google's acquisition of Fitbit.
+- Discuss how a user can use their Fitbit device better in terms of data privacy.
 
-### 1.4 Scope of the Study
+### 1.3 Scope of the Study
+- We used technical literature review, literature search, and privacy notices review methods in our research. 
+- We compared the current privacy policy of Fitbit to PIPEDA and spotted the compliance issues.
+- We studied the current and future privacy implications of Fitbit devices.
 
 ## 2. Research Methods
 
@@ -48,36 +55,16 @@ To broaden our outlook, we looked into more than just the official documentation
 
 Our research methodology involves an in-depth review of Fitbit's privacy practices under Google. This involves a thorough analysis of their extensive documentation, which includes privacy policies and terms of service for both Fitbit and Google. Specifically, we analyze the policies and terms of service to understand the extent of data collection, the purposes for such collection, and the sharing of such information with third parties. The documentation also provides insights into managing personal information, with details on how users can access, limit, and control their data. Given the complexity of the documentation, we also consider the implications of the language used in the privacy policies and terms of service, and how it may affect users' understanding of their privacy rights. PIPEDA compliance is also a key focus of our research, as we aim to understand how Fitbit's privacy practices align with Canadian privacy laws.
 
-### 2.4 Instrumentation and Monitoring
-
 ## 3. Results
 
 ### 3.1 Data Collection Practices
 
-Our investigation into Fitbit’s data practices uncovered a startling reality: the device collects an extensive range of personal information, encompassing everything from your daily movements and sleep habits to precise location data. The depth and breadth of the data captured by Fitbit are alarming. It’s not just about counting steps or monitoring sleep; it’s a comprehensive digital footprint of our lifestyles and habits. 
-
-Data is collected even before users start using their devices. New Fitbit users must either sign-in with a pre-existing Google account or create a new one. This means that users are immediately surrendering their name, birthday, gender, and email. New Google accounts also record Web/App activity, Google Maps timeline, and YouTube history by default. Personalized advertisement and personalized search results are also turned on by default. 
-
-For users that already have a Google account, all the information that is previously associated with their account can now be aggregated with data that Fitbit will collect. 
-
-This includes:
--	phone numbers
--	payment information
--	emails
--	photos and videos
--	docs and spreadsheets
--	purchases
--	contacts
--	activity on third-party sites/apps
--	phone calls and associated information
-
-Google/Fitbit also collect location information about its users such as GPS and sensor data, IP addresses, Wi-Fi access points, cell towers and information about Bluetooth devices. 
-
-More information about Google’s data collection practices is available on their [Privacy and Terms](https://policies.google.com/privacy?hl=en-US#infocollect) webpage.
-
-
-
 ### 3.2 Identified Privacy Threats and Their Causes
+As we can see from the timeline of the Fitbit devices [^4] since the company's inception at 2007, every new device coming into the market meant more data collection from the users. The first Fitbit Device started off as a simple offline pedometer that the user could clip onto their t-shirt and with an accompanying website that allowed them to keep track of their step counts. However, the newest model tracks is equipped with countless sensors. It can track the user's heart rate, heart rhythm, breathing rate, skin temperature, blood oxygen levels, stress levels, sleep time and sleep stages. In addition, it has built-in support for Google Maps, Google Wallet and YouTube Music. It can send and receive call,text and app notifications and allow you to contactlessly pay. Even though some of these features do add conveniency to the user's life, it should not be forgotten that the device collects an immense amount of very sensitive health data, and even this in itself, is a privacy threat. 
+
+Fitbit has a dedicated device for kids: Fitbit Ace. What is different about this dedicated device is that, its features and sensors are very limited, compared to the normal adult devices. Fitbit Ace only tracks the user's activity (steps, stairs, distance etc.) and sleep amount. It can also still pair with a phone and receive and send notifications. A special feature of this kids' device is that it allows the parents to control their kid's account through a feature called Family Account. The parent is able to see all their kid's activity that is collected through their Fitbit through this account, and they can control their privacy settings. Once the child turns 13, they are eligible to take over their account and not allow the parental account. Even though the fact that the kids version of the Fitbit device doesn't collect many of the sensitive information the adult version controls, it is important to note that it still collects some, like age, weight, height and activity levels. Also, it still has most of the privacy concerns and PIPEDA compliance issues of the adult version, which we will discuss in section 3.4
+
+Another important thing to note that, all new users need a Google account to use their Fitbit devices. And users who already had a Fitbit device and account before the acquisition by Google can choose to use their Fitbit account until 2025, and after that they will also be required to have a Google account. 
 
 ### 3.3 Comparative Analysis of Privacy Policies and Actual Data Handling Practices
 
@@ -165,6 +152,7 @@ This makes it difficult for non-technical users to navigate. Even if a user were
 
 [^2]: [PIPEDA Fair Information Principle 3 – Consent](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_consent/)
 [^3]: [PIPEDA Fair Information Principle 4 – Limiting Collection](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_collection/)
+[^4]: [History of Fitbit and Fitbit Products](https://www.verizon.com/articles/Accessories/history-of-fitbit/)
 
 ## 4. Conclusions
 
