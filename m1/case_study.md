@@ -147,6 +147,7 @@ This makes it difficult for non-technical users to navigate. Even if a user were
 
 [^2]: [PIPEDA Fair Information Principle 3 – Consent](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_consent/)
 [^3]: [PIPEDA Fair Information Principle 4 – Limiting Collection](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_collection/)
+[^4]: [History of Fitbit and Fitbit Products](https://www.verizon.com/articles/Accessories/history-of-fitbit/)
 
 ## 4. Conclusions
 
@@ -169,4 +170,3 @@ Technological Advancements and Data Collection: The continuous advancement in we
 - Survey Instruments and Results
 
 ## 5. References
-https://www.verizon.com/articles/Accessories/history-of-fitbit/
