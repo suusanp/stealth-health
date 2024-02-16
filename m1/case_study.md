@@ -31,10 +31,18 @@
 ## 1. Introduction
 
 ### 1.2 Project Overview
+In our case study, we decided to focus on the privacy impact and implications of modern smart health devices. Specifically, we focused on Fitbit, as it is one of the leading companies among the smart health devices sector, and it is present since 2007. The immense amount of data Fitbit collects, as well as the recent acquisition of the company by Google are both interesting aspects to look into in terms of what they mean for user privacy. 
 
-### 1.3 Objectives
+### 1.2 Objectives
+- To research and understand the history of the Fitbit devices, and the most impactful transition when Fitbit devices started to become a privacy issue.
+- Understand the current privacy policy of Fitbit and its implications for the users, as well as its compliance with PIPEDA.
+- Understand the implications of the Google's acquisition of Fitbit.
+- Discuss how a user can use their Fitbit device better in terms of data privacy.
 
-### 1.4 Scope of the Study
+### 1.3 Scope of the Study
+- We used technical literature review, literature search, and privacy notices review methods in our research. 
+- We compared the current privacy policy of Fitbit to PIPEDA and spotted the compliance issues.
+- We studied the current and future privacy implications of Fitbit devices.
 
 ## 2. Research Methods
 
