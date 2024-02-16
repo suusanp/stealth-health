@@ -86,6 +86,8 @@ Ironically, Fitbit's User Data and Developer Policy [cool](https://dev.fitbit.co
 
 #### 2. Identifying Purposes
 
+
+
 #### 3. Consent
 
 Fitbit's privacy policy states that it collects personal information for the purposes of providing its 'Services': "We work with partners who provide us with analytics and advertising services. This includes helping us understand how users interact with the Services"[^1]. This is a broad statement that does not clearly define the purposes for which personal information is collected.
@@ -141,9 +143,6 @@ This makes it difficult for non-technical users to navigate. Even if a user were
 
 #### 10. Challenging Compliance
 
-#### _Sources_
-
-// I'm leaving these unfinished for now, will put the rest in later
 [^1]: [Fitbit Privacy Policy](https://www.fitbit.com/global/en-ca/legal/privacy-policy#analytics-and-advertising)
 
 [^2]: [PIPEDA Fair Information Principle 3 – Consent](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_consent/)
