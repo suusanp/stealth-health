@@ -169,3 +169,4 @@ Technological Advancements and Data Collection: The continuous advancement in we
 - Survey Instruments and Results
 
 ## 5. References
+https://www.verizon.com/articles/Accessories/history-of-fitbit/
