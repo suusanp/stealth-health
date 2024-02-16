@@ -143,6 +143,12 @@ This makes it difficult for non-technical users to navigate. Even if a user were
 
 ### 3.2 Implications for Privacy and Policy
 
+The acquisition of Fitbit by Google, valued at $2.1 billion, not only marks a significant move into the health technology arena but also ignites substantial privacy and competitive concerns. Despite Google's assurance that Fitbit's health data won't be used for advertising purposes, the broader implications for such data within Google's extensive ecosystem remain unclear. The requirement for a Google account for Fitbit's operation weaves users' health information more closely into Google's data network, sparking debates over transparency and control over personal data. This development has attracted attention from both regulatory bodies and privacy advocates, highlighting worries about user privacy and the potential stifling of market competition. The melding of detailed health information with Google's analytical prowess necessitates a thorough reevaluation of privacy standards in the burgeoning digital health landscape.
+
+Fitbit's partnerships with health insurance companies raise significant privacy concerns, potentially affecting health insurance premiums based on personal data like steps, heart rate, and sleep patterns. This intersection of health monitoring with insurance policies blurs the boundaries between enhancing health support and financial motivations, leading to critical questions about the true beneficiaries of health data. It highlights a concerning trend towards commodifying personal health information for financial gain, rather than focusing on user health and privacy, thus risking discrimination and privacy invasion.
+
+Technological Advancements and Data Collection: The continuous advancement in wearable technology promises enhanced health monitoring capabilities. However, these developments also pose privacy concerns regarding the extent of data collection. Future versions of devices by fitbit could monitor increasingly sensitive and personal health metrics, collecting data that could reveal even more intimate details about a user's lifestyle, health conditions, and habits. The perspective of such comprehensive data collection increases the need for stricter privacy protection and ethical considerations in the use of bodily health monitoring technologies.
+
 ### 3.3 Recommendations for Future Research
 
 ## 4. Appendix
