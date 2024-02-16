@@ -10,7 +10,6 @@
    - Technical Literature Review
    - Literature Search
    - Privacy Notices Review
-   - Instrumentation and Monitoring
 3. [Results](#results)
    - Data Collection Practices
    - Identified Privacy Threats and Their Causes
@@ -55,8 +54,6 @@ To broaden our outlook, we looked into more than just the official documentation
 ### 2.3 Privacy Notices Review
 
 Our research methodology involves an in-depth review of Fitbit's privacy practices under Google. This involves a thorough analysis of their extensive documentation, which includes privacy policies and terms of service for both Fitbit and Google. Specifically, we analyze the policies and terms of service to understand the extent of data collection, the purposes for such collection, and the sharing of such information with third parties. The documentation also provides insights into managing personal information, with details on how users can access, limit, and control their data. Given the complexity of the documentation, we also consider the implications of the language used in the privacy policies and terms of service, and how it may affect users' understanding of their privacy rights. PIPEDA compliance is also a key focus of our research, as we aim to understand how Fitbit's privacy practices align with Canadian privacy laws.
-
-### 2.4 Instrumentation and Monitoring
 
 ## 3. Results
 
