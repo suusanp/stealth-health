@@ -80,7 +80,15 @@ Google/Fitbit also collect location information about its users such as GPS and 
 
 More information about Google’s data collection practices is available on their [Privacy and Terms](https://policies.google.com/privacy?hl=en-US#infocollect) webpage. 
 
+After users sign into their Google accounts, they must set up the Fitbit app. Here, users are required to provide their height, weight, and sex. If they choose to, users can also provide a profile picture, biography, logs for food, sleep, water, etc. as stated in [Fitbit’s Privacy Policy](https://www.fitbit.com/global/en-ca/legal/privacy-policy#info-we-collect). 
 
+There is also data that is collected just from using their service. This includes device information (steps, distance, calories burned, heart rate, active minutes, location, and more), geolocation, and usage information. Usage information is information about how a user interacts with the Fitbit service (interactions with the app, pairing a device, logging into the Fitbit website). Fitbit says they track IP addresses, browser type, language, operating system, referring web page, pages visited, location, and cookie information.
+
+After experimenting with logging into the Fitbit website on a computer and navigating to our personal dashboard, we found two trackers **doubleclick.net** and **c.betrad.com**. Further investigation into c.betrad.com’s [tag.js](https://c.betrad.com/pub/tag.js) script shows that the script is responsible for dropping a tracking pixel on the website (references to *formatPixelUrl* and *dropPixel*).
+
+Fitbit can also receive information about its users from third parties and can also partner with third parties such as employers or insurance companies.
+
+More information about Fitbit's data collection can be found [here](https://www.fitbit.com/global/en-ca/legal/privacy-policy#info-we-collect).
 
 ### 3.2 Identified Privacy Threats and Their Causes
 As we can see from the timeline of the Fitbit devices [^4] since the company's inception at 2007, every new device coming into the market meant more data collection from the users. The first Fitbit Device started off as a simple offline pedometer that the user could clip onto their t-shirt and with an accompanying website that allowed them to keep track of their step counts. However, the newest model tracks is equipped with countless sensors. It can track the user's heart rate, heart rhythm, breathing rate, skin temperature, blood oxygen levels, stress levels, sleep time and sleep stages. In addition, it has built-in support for Google Maps, Google Wallet and YouTube Music. It can send and receive call,text and app notifications and allow you to contactlessly pay. Even though some of these features do add conveniency to the user's life, it should not be forgotten that the device collects an immense amount of very sensitive health data, and even this in itself, is a privacy threat. 
