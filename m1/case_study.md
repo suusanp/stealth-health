@@ -60,6 +60,7 @@ Our research methodology involves an in-depth review of Fitbit's privacy practic
 ### 3.1 Data Collection Practices
 
 ### 3.2 Identified Privacy Threats and Their Causes
+As we can see from the timeline of the Fitbit devices [^4] since the company's inception at 2007, every new device coming into the market meant more data collection from the users. 
 
 ### 3.3 Comparative Analysis of Privacy Policies and Actual Data Handling Practices
 
