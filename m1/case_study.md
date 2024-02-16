@@ -1,4 +1,4 @@
-# Smart Health Devices Privacy Impact Report
+# Smart Health Devices Privacy Impact Report: A Case Study on Fitbit
 
 ## Table of Contents
 
@@ -26,33 +26,39 @@
    - Survey Instruments and Results
 6. [References](#references)
 
-# Smart Health Devices Privacy Impact Report
+# Smart Health Devices Privacy Impact Report: A Case Study on Fitbit
 
-## Introduction
+## 1. Introduction
 
-## 1. Research Methods
+### 1.2 Project Overview
 
-### 1.1 Technical Literature Review
+### 1.3 Objectives
+
+### 1.4 Scope of the Study
+
+## 2. Research Methods
+
+### 2.1 Technical Literature Review
 In our research, we focus on gathering and examining the latest official documents from Fitbit and Google, their privacy policies, terms of service, and any technical details about how they handle user data. This step is crutial because it helps us build a clear picture of Fitbit's privacy rules, especially after Google's aquisition. We looked closely at these documents to figure out exactly what kind of user information they collect, how they use this data, and who else might get access to it. Our main goal is to dig into these policies to see if Fitbit follows privacy regulations and how open/transparent they are about their data practices with users. 
 
-### 1.2 Literature Search
+### 2.2 Literature Search
 To broaden our outlook, we looked into more than just the official documentation. We also explored recent studies, tech reports, and news that talked about how Fitbit handles privacy. Our main goal is to find out what kind of privacy problems, security leaks, or worries people have about Fitbit. This step was about getting the full picture of Fitbit's privacy from different angles – what experts say, what's in the news, and what users think. This way, we could really understand how Fitbit's privacy rules work in the real world and what the implications are for people using their product.
 
-### 1.3 Privacy Notices Review
+### 2.3 Privacy Notices Review
 
 Our research methodology involves an in-depth review of Fitbit's privacy practices under Google. This involves a thorough analysis of their extensive documentation, which includes privacy policies and terms of service for both Fitbit and Google. Specifically, we analyze the policies and terms of service to understand the extent of data collection, the purposes for such collection, and the sharing of such information with third parties. The documentation also provides insights into managing personal information, with details on how users can access, limit, and control their data. Given the complexity of the documentation, we also consider the implications of the language used in the privacy policies and terms of service, and how it may affect users' understanding of their privacy rights. PIPEDA compliance is also a key focus of our research, as we aim to understand how Fitbit's privacy practices align with Canadian privacy laws.
 
-### 1.4 Instrumentation and Monitoring
+### 2.4 Instrumentation and Monitoring
 
-## 2. Results
+## 3. Results
 
-### 2.1 Data Collection Practices
+### 3.1 Data Collection Practices
 
-### 2.2 Identified Privacy Threats and Their Causes
+### 3.2 Identified Privacy Threats and Their Causes
 
-### 2.3 Comparative Analysis of Privacy Policies and Actual Data Handling Practices
+### 3.3 Comparative Analysis of Privacy Policies and Actual Data Handling Practices
 
-### 2.4 PIPEDA Compliance
+### 3.4 PIPEDA Compliance
 
 A thorough examination of Fitbit's privacy policies reveals that the company is not in compliance with the Personal Information Protection and Electronic Documents Act (PIPEDA). Further analysis suggests that Fitbit is able to exploit the ambiguous language and inadequate definitions in PIPEDA.
 
@@ -137,11 +143,11 @@ This makes it difficult for non-technical users to navigate. Even if a user were
 [^2]: [PIPEDA Fair Information Principle 3 – Consent](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_consent/)
 [^3]: [PIPEDA Fair Information Principle 4 – Limiting Collection](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_collection/)
 
-## 3. Conclusions
+## 4. Conclusions
 
-### 3.1 Summary of Key Findings
+### 4.1 Summary of Key Findings
 
-### 3.2 Implications for Privacy and Policy
+### 4.2 Implications for Privacy and Policy
 
 The acquisition of Fitbit by Google, valued at $2.1 billion, not only marks a significant move into the health technology arena but also ignites substantial privacy and competitive concerns. Despite Google's assurance that Fitbit's health data won't be used for advertising purposes, the broader implications for such data within Google's extensive ecosystem remain unclear. The requirement for a Google account for Fitbit's operation weaves users' health information more closely into Google's data network, sparking debates over transparency and control over personal data. This development has attracted attention from both regulatory bodies and privacy advocates, highlighting worries about user privacy and the potential stifling of market competition. The melding of detailed health information with Google's analytical prowess necessitates a thorough reevaluation of privacy standards in the burgeoning digital health landscape.
 
@@ -149,9 +155,9 @@ Fitbit's partnerships with health insurance companies raise significant privacy 
 
 Technological Advancements and Data Collection: The continuous advancement in wearable technology promises enhanced health monitoring capabilities. However, these developments also pose privacy concerns regarding the extent of data collection. Future versions of devices by fitbit could monitor increasingly sensitive and personal health metrics, collecting data that could reveal even more intimate details about a user's lifestyle, health conditions, and habits. The perspective of such comprehensive data collection increases the need for stricter privacy protection and ethical considerations in the use of bodily health monitoring technologies.
 
-### 3.3 Recommendations for Future Research
+### 4.3 Recommendations for Future Research
 
-## 4. Appendix
+## 5. Appendix
 
 - Detailed Data Sets
 - Technical Documentation
