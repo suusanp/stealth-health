@@ -3,34 +3,32 @@
 ## Table of Contents
 
 1. [Introduction](#introduction)
-    - Project Overview
-    - Objectives
-    - Scope of the Study
+   - Project Overview
+   - Objectives
+   - Scope of the Study
 2. [Research Methods](#research-methods)
-    - Technical Literature Review
-    - Literature Search
-    - Privacy Notices Review
-    - Instrumentation and Monitoring
+   - Technical Literature Review
+   - Literature Search
+   - Privacy Notices Review
+   - Instrumentation and Monitoring
 3. [Results](#results)
-    - Data Collection Practices
-    - Identified Privacy Threats and Their Causes
-    - Comparative Analysis of Privacy Policies and Actual Data Handling Practices
-    - PIPEDA Compliance
+   - Data Collection Practices
+   - Identified Privacy Threats and Their Causes
+   - Comparative Analysis of Privacy Policies and Actual Data Handling Practices
+   - PIPEDA Compliance
 4. [Conclusions](#conclusions)
-    - Summary of Key Findings
-    - Implications for Privacy and Policy
-    - Recommendations for Future Research
+   - Summary of Key Findings
+   - Implications for Privacy and Policy
+   - Recommendations for Future Research
 5. [Appendix](#appendix)
-    - Detailed Data Sets
-    - Technical Documentation
-    - Survey Instruments and Results
+   - Detailed Data Sets
+   - Technical Documentation
+   - Survey Instruments and Results
 6. [References](#references)
 
 # Smart Health Devices Privacy Impact Report
 
 ## Introduction
-
-
 
 ## 1. Research Methods
 
@@ -64,7 +62,7 @@ An analysis of PIPEDA Principles in relation to Fitbit's privacy policies is as 
 
 The Accountability Principle, first and foremost, requires that companies "comply with all 10 fair information principles." [pipeda](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_accountability/) Fitbit does not comply with all 10 fair information principles, as will be demonstrated in the following sections.
 
-According to Principle 1, companies should also "identify your organization’s designated privacy official, and communicate that person’s name or title internally and externally (e.g. on your website or in publications)."[pipeda](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_accountability/) Fitbit's privacy policy does not identify a designated privacy official to whom users can direct their privacy concerns. Further investigation reveals that Google, Fitbit's parent company, does not have a designated privacy official either. There is also no way of knowing if Fitbit "provides adequate privacy training to [their] employees" as required by Principle 1. 
+According to Principle 1, companies should also "identify your organization’s designated privacy official, and communicate that person’s name or title internally and externally (e.g. on your website or in publications)."[pipeda](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_accountability/) Fitbit's privacy policy does not identify a designated privacy official to whom users can direct their privacy concerns. Further investigation reveals that Google, Fitbit's parent company, does not have a designated privacy official either. There is also no way of knowing if Fitbit "provides adequate privacy training to [their] employees" as required by Principle 1.
 
 Now, consider the following requirement:
 
@@ -72,8 +70,8 @@ Now, consider the following requirement:
 
 Ironically, Fitbit's User Data and Developer Policy [cool](https://dev.fitbit.com/legal/fitbit-user-data-and-developer-policy/) is (mostly) in compliance with PIPEDA's principles, while their own privacy policy is not. Notably, "Transferring or selling user data to third parties like advertising platforms, data brokers, or any information resellers even if aggregated or anonymized" is prohibited by Fitbit's User Data and Developer Policy. This is not the case with their own privacy policy, which states: "We work with partners who provide us with analytics and advertising services".
 
-
 #### 2. Identifying Purposes
+
 #### 3. Consent
 
 Fitbit's privacy policy states that it collects personal information for the purposes of providing its 'Services': "We work with partners who provide us with analytics and advertising services. This includes helping us understand how users interact with the Services"[^1]. This is a broad statement that does not clearly define the purposes for which personal information is collected.
@@ -86,7 +84,6 @@ Furthermore, usage of vague language and contradiction in Fitbit's privacy polic
 
 Fitbit can not claim to have obtained "meaningful consent" from its users as required by PIPEDA, because it has not clearly defined the purposes for which personal information is collected, and has not provided clear and understandable information about the sharing of personal information with third parties.
 
-
 #### 4. Limiting Collection
 
 "Limit the amount and type of information you collect to what is needed for the identified purposes" - PIPEDA Fair Information Principle 4 – Limiting Collection[^3]
@@ -97,17 +94,25 @@ However, consider the wording of PIPEDA's Fair Information Principle 4:
 
 "Collect only the personal information your organization needs to fulfill a legitimate identified purpose." - PIPEDA Fair Information Principle 4 – Limiting Collection[^3]
 
-Fitbit's privacy policy states that it only collects personal information that is necessary for the operation of its devices and essential 'Services'. However, these 'Services' inlude advertising and marketing, and the sharing of personal information with third parties such as advertisers and business partners. Because of vagueness in PIPEDA and a lack of definition of what constitutes "legitimate", Fitbit is able to collect more personal information than functionally necessary, and share it with third parties under the guise of fulfilling a "legitimate identified purpose". 
+Fitbit's privacy policy states that it only collects personal information that is necessary for the operation of its devices and essential 'Services'. However, these 'Services' inlude advertising and marketing, and the sharing of personal information with third parties such as advertisers and business partners. Because of vagueness in PIPEDA and a lack of definition of what constitutes "legitimate", Fitbit is able to collect more personal information than functionally necessary, and share it with third parties under the guise of fulfilling a "legitimate identified purpose".
 
 #### 5. Limiting Use, Disclosure, and Retention
 
+"Obtain fresh consent if you intend to use or disclose personal information for a new purpose ... Collect, use or disclose personal information only for purposes that a reasonable person would consider appropriate in the circumstances." [PIPEDA Fair Information Principle 5 – Limiting Use, Disclosure, and Retention](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_use/)
 
+Fitbit, through Google, does not obtain fresh, meaningful consent from users when it collects new personal information or implements new uses of personal information. Google's method of informing users of changes to its privacy policy is to send emails to users, which does not meet the more stringent requirements of PIPEDA for obtaining meaningful consent as described in principle 3.
+
+Further, PIPEDA requires that user information must only be used for purposes that a reasonable person would consider appropriate in the circumstances, which, while a subjective standard, allows some flexibility for companies to use user information in ways that are not strictly necessary for the operation of their services. However, despite this flexibility, Fitbit's collection and use of personal data for advertising and marketing purposes, as well as their inconsistent privacy policies, overstep the bounds PIPEA sets for what is appropriate and are therefore not in compliance with principle 5.
+
+In terms data retention, Fitbit complies well enough according to their [data retention policy](https://support.google.com/product-documentation/answer/13532616?hl=en#zippy=%2Cwhat-retention-periods-apply-to-my-data). Data used for watch and app features are retained indefinitely, and other data is retained only as long as is legally necessary, although they also add a clause that it may be retained for "legitamate business purposes". This statement is vague, but does not provide enough information to determine that this is a PIPEDA violation. 
 
 #### 6. Accuracy
+
 #### 7. Safeguards
+
 #### 8. Openness
 
-Fitbit's privacy policy is not open and transparent. It is vague and contradictory, and does not clearly define the purposes for which personal information is collected, used, and disclosed to third parties. 
+Fitbit's privacy policy is not open and transparent. It is vague and contradictory, and does not clearly define the purposes for which personal information is collected, used, and disclosed to third parties.
 
 To use the language of PIPEDA, Fitbit's privacy policy is not "easily understandable" and "easily available" to its users as required by PIPEDA's Fair Information Principle 8 – Openness. [PIPEDA Fair Information Principle 8 – Openness](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_openness/)
 
@@ -118,19 +123,17 @@ In fact, Fitbit's Privacy Policies and Terms of Service are sprawled across 8 di
 
 This makes it difficult for non-technical users to navigate. Even if a user were to find and read all of Fitbit's privacy policies, they would find that it is (as mentioned in previous section) vague and contradictory, and does not define the extent for which personal data is collected, used, and disclosed to third parties. This obfuscation is likely intentional; Fitbit does not want its users to understand the full extent of its data collection and sharing practices, as Google relies on the collection of personal information for its advertising and marketing services. Knowledge of the full extent of Fitbit's data collection and sharing practices would likely deter many users from using Fitbit devices and services.
 
-
 #### 9. Individual Access
+
 #### 10. Challenging Compliance
 
 #### _Sources_
+
 // I'm leaving these unfinished for now, will put the rest in later
 [^1]: [Fitbit Privacy Policy](https://www.fitbit.com/global/en-ca/legal/privacy-policy#analytics-and-advertising)
 
 [^2]: [PIPEDA Fair Information Principle 3 – Consent](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_consent/)
-
 [^3]: [PIPEDA Fair Information Principle 4 – Limiting Collection](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_collection/)
-
-
 
 ## 3. Conclusions
 
