@@ -202,7 +202,7 @@ As a user, buying a Fitbit is often a step toward reclaiming control over your h
 
 Our Case study on Fitbit devices reduces to the following important points:
 
-- **Privacy Implications of Data Collection**: Fitbit devices, renowned for their accuracy in health and fitness tracking, collect an extensive range of personal information. Nowadays, This not only includes basic metrics like steps and sleep patterns , but also more personnal data such as location, heart rate, and even indicators of  mental health states.
+- **Privacy Implications of Data Collection**: Fitbit watches, renowned for their accuracy in health and fitness tracking, collect an extensive range of personal information. Nowadays, This not only includes basic metrics like steps and sleep patterns , but also more personnal data such as location, heart rate, and even indicators of  mental health states.
 
 - **Impact of Google’s Acquisition**: The acquisition of Fitbit by Google marks a significant shift in the privacy landscape of wearable devices. This merger has raised concerns regarding the potential for increased data sharing and profiling, given Google's predominance in data analytics and advertising. The transition has also been marked by changes in Fitbit’s operational decisions, such as the requirement for Fitbit users to migrate to Google accounts, which could centralize user data to broader data processing practices.
 
