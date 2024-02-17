@@ -13,7 +13,6 @@
 3. [Results](#3-results)
    - Data Collection Practices
    - Identified Privacy Threats and Their Causes
-   - Comparative Analysis of Privacy Policies and Actual Data Handling Practices
    - PIPEDA Compliance
 4. [Conclusions](#4-conclusions)
    - Summary of Key Findings
@@ -98,9 +97,8 @@ Fitbit has a dedicated device for kids: Fitbit Ace. What is different about this
 
 Another important thing to note that, all new users need a Google account to use their Fitbit devices. And users who already had a Fitbit device and account before the acquisition by Google can choose to use their Fitbit account until 2025, and after that they will also be required to have a Google account.
 
-### 3.3 Comparative Analysis of Privacy Policies and Actual Data Handling Practices
 
-### 3.4 PIPEDA Compliance
+### 3.3 PIPEDA Compliance
 
 A thorough examination of Fitbit's privacy policies reveals that the company is not in compliance with the Personal Information Protection and Electronic Documents Act (PIPEDA). Further analysis suggests that Fitbit is able to exploit the ambiguous language and inadequate definitions in PIPEDA.
 
@@ -118,7 +116,7 @@ However, Fitbit does have a [Data Protection Officer](https://www.fitbit.com/glo
 
 It is interesting to note that Google does not provide a unified way to contact their DPO. I have found one page for [Google Workplace](https://knowledge.workspace.google.com/kb/contact-google-data-protection-officer-000007916), but not for any other Google services.
 
-Ironically and interestingly, Fitbit strictly follows the requirement to protect PII transferred to third parties for processing[^12]. Fitbit's User Data and Developer Policy [cool](https://dev.fitbit.com/legal/fitbit-user-data-and-developer-policy/) is (mostly) in compliance with PIPEDA's principles, while their own privacy policy is not. Notably, "Transferring or selling user data to third parties like advertising platforms, data brokers, or any information resellers even if aggregated or anonymized" is prohibited by Fitbit's User Data and Developer Policy. This is not the case with their own privacy policy, which states: "We work with partners who provide us with analytics and advertising services".
+Ironically and interestingly, Fitbit strictly follows the requirement to protect PII transferred to third parties for processing. Fitbit's User Data and Developer Policy[^12] is (mostly) in compliance with PIPEDA's principles, while their own privacy policy is not. Notably, "Transferring or selling user data to third parties like advertising platforms, data brokers, or any information resellers even if aggregated or anonymized" is prohibited by Fitbit's User Data and Developer Policy. This is not the case with their own privacy policy, which states: "We work with partners who provide us with analytics and advertising services".
 
 #### 2. Identifying Purposes
 
@@ -140,7 +138,7 @@ Google notifies users of changes to their privacy policy through email in which 
 
 #### 3. Consent
 
-Fitbit's privacy policy states that it collects personal information for the purposes of providing its 'Services': "We work with partners who provide us with analytics and advertising services. This includes helping us understand how users interact with the Services"[^10]. Observe the language used in this statement; it is broad and does not clearly define the purposes for which personal information is collected.
+Fitbit's privacy policy states that it collects personal information for the purposes of providing its 'Services': "We work with partners who provide us with analytics and advertising services. This includes helping us understand how users interact with the Services"[^11]. Observe the language used in this statement; it is broad and does not clearly define the purposes for which personal information is collected.
 
 Considering that PIPEDA's Fair Information Principle 3 requires that organizations "only collect, use or disclose personal information for purposes that a reasonable person would consider appropriate under the circumstances"[^3], Fitbit's data collection would not be accordance with this principle; most customers would not consider the collection of personal information for the purposes of advertising and marketing to be appropriate.
 
@@ -226,7 +224,7 @@ Our Case study on Fitbit devices reduces to the following important points:
 
 - **Impact of Google’s Acquisition**: The acquisition of the company by Google marks a significant shift in the privacy landscape of wearable devices. This merger has raised concerns regarding the potential for increased data sharing and profiling, given Google's predominance in data analytics and advertising. The transition has also been marked by changes in Fitbit’s operational decisions, such as the requirement for Fitbit users to migrate to Google accounts, which could centralize user data to broader data processing practices.
 
-- **Compliance with Privacy Regulations**: Our analysis indicates that Fitbit's current privacy practices pose challenges in compliance with privacy regulations such as PIPEDA. Issues such as consent, data minimization, and transparency have emerged as areas where current practices may not fully align with regulatory expectations.
+- **Compliance with Privacy Regulations**: ongoing
 
 - **User Concerns and Trust**: Feedback from the Fitbit user community reflects growing concerns over privacy, data security, and the potential misuse of personal health information. The community's reaction to changes in the Fitbit app and service offerings, particularly around community features and data management options, highlights the delicate balance between innovation and user trust. [Example of community reaction](https://community.fitbit.com/t5/Fitbit-com-Dashboard/In-2025-a-Google-Account-will-be-required/td-p/5479047)
 
@@ -266,8 +264,8 @@ By focusing on these areas, we can address the challenges of privacy in the case
 [^8]: [PIPEDA Fair Information Principle 8 – Openness](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_openness/)
 [^9]: [PIPEDA Fair Information Principle 9 – Individual Access](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_access/)
 [^10]: [PIPEDA Fair Information Principle 10 – Challenging Compliance](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_compliance/)
-[^10]: [Fitbit Privacy Policy](https://www.fitbit.com/global/en-ca/legal/privacy-policy#analytics-and-advertising)
+[^11]: [Fitbit Privacy Policy](https://www.fitbit.com/global/en-ca/legal/privacy-policy#analytics-and-advertising)
 [^12]: [Fitbit Developer Policy](https://dev.fitbit.com/legal/fitbit-user-data-and-developer-policy/)
 [^14]: [History of Fitbit and Fitbit Products](https://www.verizon.com/articles/Accessories/history-of-fitbit/)
-[^16]: [Fitbit Privacy Policy - Rights to Access Info](https://www.fitbit.com/global/en-ca/legal/privacy-policy#your-rights-to-access)
 [^15]: [Google User Info Export](https://www.fitbit.com/global/en-ca/legal/privacy-policy#your-rights-to-access)
+[^16]: [Fitbit Privacy Policy - Rights to Access Info](https://www.fitbit.com/global/en-ca/legal/privacy-policy#your-rights-to-access)
