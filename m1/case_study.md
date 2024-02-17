@@ -19,11 +19,7 @@
    - Summary of Key Findings
    - Implications for Privacy and Policy
    - Recommendations for Future Research
-5. [Appendix](#5-appendix)
-   - Detailed Data Sets
-   - Technical Documentation
-   - Survey Instruments and Results
-6. [References](#6-references)
+5. [References](#5-references)
 
 # Smart Health Devices Privacy Impact Report: A Case Study on Fitbit
 
@@ -264,13 +260,7 @@ We emphasize the need and inspiration for deeper investigation in three potentia
 
 By focusing on these areas, we can address the challenges of privacy in the case of digital health watches.
 
-## 5. Appendix
-
-- Detailed Data Sets
-- Technical Documentation
-- Survey Instruments and Results
-
-## 6. References
+## 5. References
 
 [^1]: [PIPEDA Fair Information Principle 1 – Accountability](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_accountability/)
 [^2]: [PIPEDA Fair Information Principle 2 – Identifying Purposes](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_accountability/)
