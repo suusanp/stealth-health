@@ -200,7 +200,7 @@ This makes it difficult for non-technical users to navigate. Even if a user were
 
 As a user, buying a Fitbit is often a step toward reclaiming control over your health and by extention, your life. Yet, paradoxically, this quest for autonomy over our bodily data might lead us down a path of giving up control. The reality is that, in our pursuit of health insights, we might be unknowingly trading away the privacy of our most personal data.
 
-Our Case study on Fitbit devices has highlighted the following important points:
+Our Case study on Fitbit devices reduces to the following important points:
 
 - **Privacy Implications of Data Collection**: Fitbit devices, renowned for their accuracy in health and fitness tracking, collect an extensive range of personal information. Nowadays, This not only includes basic metrics like steps and sleep patterns , but also more personnal data such as location, heart rate, and even indicators of  mental health states.
 
