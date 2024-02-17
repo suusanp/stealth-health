@@ -203,26 +203,24 @@ This makes it difficult for non-technical users to navigate. Even if a user were
 
 #### 9. Individual Access
 
-"Individuals have a right to access the personal information that an organization holds about them. They also have the right to challenge the accuracy and completeness of the information, and have that information amended as appropriate." - PIPEDA Fair Information Principle 9 – Individual Access
+Fitbit provides users with the ability to access the personal information that they collect[^16], as required by PIPEDA.[^9] 
 
-https://policies.google.com/privacy#infodelete
-https://www.fitbit.com/global/en-ca/legal/privacy-policy#your-rights-to-access
+Google also provides users with in-depth access to PII that they collect[^15]. Users can access their data through the [Google Takeout](https://takeout.google.com/settings/takeout) service, which allows users to download their data from Google's services free of cost.
 
+Google does not give additional information about how PII "is or has been used and to whom it has been disclosed"[^9], however this is not enough to determine that Google is in violation of Principle 9, as they do provide this information to some extent in their Privacy Policy. Again, we see the same issue of vague language and lack of definition in PIPEDA that allows companies to skirt regulations by simply providing an explanation of their data collection practices, regardless of how vague or contradictory that explanation may be.
 
-When asked, advise people about the personal information about them your organization holds.
-Explain where the information was obtained.
-Explain how that information is or has been used and to whom it has been disclosed.
-Give people access to their information at minimal or no cost.
 
 #### 10. Challenging Compliance
 
-"An individual must be able to challenge your organization’s compliance with the fair information principles. They should address their challenge to the person in your organization who is accountable for compliance with PIPEDA." - PIPEDA Fair Information Principle 10 – Challenging Compliance
+Ideally, this principle provides individuals with the ability to challenge an organization's compliance with PIPEDA to protect their privacy rights.[^10]
+
+However, it falls victim to the same issues as the other principles: vague language, and notably, a lack of enforcement.
 
 As mentioned in the Accountability section, Fitbit does not name a designated privacy official to whom users can direct their privacy concerns, but they do provide contact information to their DPO. Whether or not users can challenge PIPEDA compliance through the DPO is unclear.
 
 After thorough review of Google's Privacy Policy and Terms of Service, as well as navigating through Google Help Center using keywords "Privacy", "PIPEDA", "Challenging Compliance", "OPC", and many others, I was unable to find any information on how to challenge Google's compliance with PIPEDA. A Google search yielded no such information either. In fact, there is no instruction on how to contact Google about privacy, or challenge Google's compliance with _any_ privacy regulation.
 
-Google fails to "tell complainants about their avenues of recourse" as required by Principle 10. The Principle also requires companies to "include [the] organization’s own complaint procedures, along with those related to industry associations, regulatory bodies and the OPC" which Google is in clear violation of.
+Google, and by extension PIPEDA, fails to "tell complainants about their avenues of recourse"[^10] in case of unlawful data collection or sharing practices. The glaring lack of enforcement and avenues of recourse for individuals to challenge Google's compliance with PIPEDA is a significant oversight in the regulation, and an unfortunate consequence of PIPEDA's enforcement mechanisms.
 
 ## 4. Conclusions
 
@@ -287,3 +285,5 @@ By focusing on these areas, we can address the challenges of privacy in the case
 [^10]: [Fitbit Privacy Policy](https://www.fitbit.com/global/en-ca/legal/privacy-policy#analytics-and-advertising)
 [^12]: [Fitbit Developer Policy](https://dev.fitbit.com/legal/fitbit-user-data-and-developer-policy/)
 [^14]: [History of Fitbit and Fitbit Products](https://www.verizon.com/articles/Accessories/history-of-fitbit/)
+[^16]: [Fitbit Privacy Policy - Rights to Access Info](https://www.fitbit.com/global/en-ca/legal/privacy-policy#your-rights-to-access)
+[^15]: [Google User Info Export](https://www.fitbit.com/global/en-ca/legal/privacy-policy#your-rights-to-access)
