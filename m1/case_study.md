@@ -37,7 +37,7 @@ In our case study, we decided to focus on the privacy impact and implications of
 ### 1.3 Scope of the Study
 
 - We used technical literature review, literature search, and privacy notices review methods in our research.
-- We compared the current privacy policy of Fitbit to PIPEDA and spotted the compliance issues.
+- We conducted a comparison between Fitbit's and Google's current privacy policies and assessed them against PIPEDA principles to identify areas of non-compliance.
 - We studied the current and future privacy implications of Fitbit devices.
 
 ## 2. Research Methods
