@@ -91,7 +91,9 @@ More information about Fitbit's data collection can be found [here](https://www.
 ### 3.2 Identified Privacy Threats and Their Causes
 As we can see from the timeline of the Fitbit devices [^14] since the company's inception in 2007, every new device coming into the market meant more data collection from the users. The [first Fitbit Device](https://spectrum.ieee.org/the-consumer-electronics-hall-of-fame-fitbit) started off as a simple offline pedometer that the user could clip onto their t-shirt and with an accompanying website that allowed them to keep track of their step counts. The privacy threats of the original Fitbit were in some ways lower than today, but there are still some issues we can think of. A first privacy threat would be losing/misplacing a Fitbit or having a Fitbit device stolen. Someone could access a user's step data, and this could reveal information about their activity level, health, or fitness goal. Having to manually plug into a computer to transfer user data allowed users to have control over when and if they wanted to share their data with Fitbit, which was a good thing. However, once the data was uploaded to Fitbit's website, there was the privacy threat of how Fitbit was using and protecting users' data.  
 
-The first-generation Fitbit's capabilities are a stark contrast with newer models equipped with countless sensors and increased data collection seen in section [3.1](#31-data-collection-practices). It can track the user's heart rate, heart rhythm, breathing rate, skin temperature, blood oxygen levels, stress levels, sleep time and sleep stages. In addition, it has built-in support for Google Maps, Google Wallet and YouTube Music. It can send and receive call, text and app notifications and allow you to contactlessly pay. Even though some of these features do add conveniency to the user's life, it should not be forgotten that the device collects an immense amount of very sensitive health data, and even this in itself, is a privacy threat. 
+As we can see from the timeline of the Fitbit devices [^4] since the company's inception in 2007, every new device coming into the market meant more data collection from the users. The [first Fitbit Device](https://spectrum.ieee.org/the-consumer-electronics-hall-of-fame-fitbit) started off as a simple offline pedometer that the user could clip onto their t-shirt and with an accompanying website that allowed them to keep track of their step counts. The privacy threats of the original Fitbit were in some ways lower than today, but there are still some issues we can think of. A first privacy threat would be losing/misplacing a Fitbit or having a Fitbit device stolen. Someone could access a user's step data, and this could reveal information about their activity level, health, or fitness goal. Having to manually plug into a computer to transfer user data allowed users to have control over when and if they wanted to share their data with Fitbit, which was a good thing. However, once the data was uploaded to Fitbit's website, there was the privacy threat of how Fitbit was using and protecting users' data.
+
+The first-generation Fitbit's capabilities are a stark contrast with newer models equipped with countless sensors and increased data collection seen in section [3.1](#31-data-collection-practices). It can track the user's heart rate, heart rhythm, breathing rate, skin temperature, blood oxygen levels, stress levels, sleep time and sleep stages. In addition, it has built-in support for Google Maps, Google Wallet and YouTube Music. It can send and receive call, text and app notifications and allow you to contactlessly pay. Even though some of these features do add conveniency to the user's life, it should not be forgotten that the device collects an immense amount of very sensitive health data, and even this in itself, is a privacy threat.
 
 Fitbit has a dedicated device for kids: Fitbit Ace. What is different about this dedicated device is that its features and sensors are very limited, compared to the normal adult devices. Fitbit Ace only tracks the user's activity (steps, stairs, distance etc.) and sleep amount. It can also still pair with a phone and receive and send notifications. A special feature of this kids' device is that it allows the parents to control their kid's account through a feature called Family Account. The parent can see all their kid's activity that is collected through their Fitbit through this account, and they can control their privacy settings. Once the child turns 13, they are eligible to take over their account and not allow the parental account. Even though the fact that the kids' version of the Fitbit device doesn't collect many of the sensitive information the adult version controls, it is important to note that it still collects some, like age, weight, height and activity levels. Also, it still has most of the privacy concerns and PIPEDA compliance issues of the adult version, which we will discuss in section 3.4.
 
@@ -123,7 +125,8 @@ Ironically and interestingly, Fitbit strictly follows the requirement to protect
 
 The Identifying Purposes Principle requires companies to "identify and document [their] purposes for collecting personal information". Notice that this does not mean that companies must disclose their purposes to the public. However, consider the following statement in the regulation:
 
-"Tell your customers why your organization needs their personal information before or at the time of collection." - PIPEDA Fair Information Principle 2 – Identifying Purposes [pipeda](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_purposes/)
+"Tell your customers why your organization needs their personal information before or at the time of collection." 
+- PIPEDA Fair Information Principle 2 – Identifying Purposes[^2]
 
 Notice the lack of specificity to this requirement. Principle 2 only requires that companies give their customers a reason for collecting personal information, not that the reason needs to be specific or detailed. Additionally, "before or at the time of collection" does not provide a clear timeline or frequency for disclosures for ongoing data collection. This is especially concerning for trackers like Fitbit, which continually collects personal data from users.
 
@@ -131,21 +134,19 @@ While Fitbit does inform users that data is collected through their privacy poli
 
 This is seen in practice when Fitbit states, in their privacy policy, that they collect a wide range of PII for the purposes of providing their 'Services' (defined by Fitbit as "devices, applications, software, websites, APIs, products, and services"). This statement is so vague that it is essentially meaningless and does not provide users with a clear understanding of the purposes for which their personal information is collected.
 
-Another requirement of Principle 2 is that companies "obtain their consent again should you identify a new purpose." [pipeda](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/p_principle/principles/p_purposes/)
+Another requirement of Principle 2 is that companies "obtain their consent again should you identify a new purpose."[^2]
 
 Google notifies users of changes to their privacy policy through email in which continued use of their services is considered consent. Under PIPEDA, this is not considered valid consent, so Fitbit is not in compliance with this aspect of Principle 2.
 
 #### 3. Consent
 
-Fitbit's privacy policy states that it collects personal information for the purposes of providing its 'Services': "We work with partners who provide us with analytics and advertising services. This includes helping us understand how users interact with the Services"[^10]. This is a broad statement that does not clearly define the purposes for which personal information is collected.
+Fitbit's privacy policy states that it collects personal information for the purposes of providing its 'Services': "We work with partners who provide us with analytics and advertising services. This includes helping us understand how users interact with the Services"[^10]. Observe the language used in this statement; it is broad and does not clearly define the purposes for which personal information is collected.
 
 Considering that PIPEDA's Fair Information Principle 3 requires that organizations "only collect, use or disclose personal information for purposes that a reasonable person would consider appropriate under the circumstances"[^3], Fitbit's data collection would not be accordance with this principle; most customers would not consider the collection of personal information for the purposes of advertising and marketing to be appropriate.
 
 Furthermore, usage of vague language and contradiction in Fitbit's privacy policy makes it difficult for users to make informed choices. For example, the policy states: "We never sell the personal information of our users. We do work with partners who provide us with advertising services". This is a contradiction that seemingly attempts to take advantage of the fact that many users may not understand the difference between selling personal information and sharing it with third parties for advertising purposes.
 
-"People must understand what they are consenting to. It is only considered valid if it is reasonable to expect that your customers will understand the nature, purpose and consequences of the collection, use or disclosure of their personal information." - PIPEDA Fair Information Principle 3 – Consent[^3]
-
-Fitbit cannot claim to have obtained "meaningful consent" from its users as required by PIPEDA, because it has not clearly defined the purposes for which personal information is collected and has not provided clear and understandable information about the sharing of personal information with third parties.
+Additionally, Fitbit cannot claim to have obtained "meaningful consent"[^3] from its users as required by PIPEDA, because it has not clearly defined the purposes for which personal information is collected and has not provided clear and understandable information about the sharing of personal information with third parties.
 
 Finally, the consent principle states "The form of consent must take into account the sensitivity of the personal information." The health information that Fitbit collects is among the most sensitive forms of information that can be collected as described by the OPC themselves [Application by the Courts and the OPC in Different Contexts](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda-compliance-help/pipeda-interpretation-bulletins/interpretations_10_sensible/). Fitbit watches, at their core, are health and fitness trackers, meaning the information that they collect (and subsequently share with advertisers and business partners) is highly sensitive. The fact that Fitbit commits these consent violations while also collecting highly sensitive information is inappropriately invasive and not in compliance with PIPEDA.
 
@@ -173,15 +174,15 @@ In terms data retention, Fitbit complies well enough according to their [data re
 
 #### 6. Accuracy
 
-To "minimize the possibility of using incorrect information"[^6], Fitbit Health Center provides information on how to change their name, sex, weight, height, email address, profile and cover photo. [cool](https://support.google.com/fitbit/answer/14236616?hl=en#zippy=%2Cfitbit-app). Fitbit also allows users to edit, delete, or manually log health statistics such as exercise, food, water, and sleep. This is important because it allows users to correct any inaccuracies in the data that Fitbit collects. [here](https://support.google.com/fitbit/answer/14236402?sjid=17926729679153827284-NA)
+To "minimize the possibility of using incorrect information"[^6], [Fitbit Health Center](https://support.google.com/fitbit/answer/14236616?hl=en#zippy=%2Cfitbit-app) provides information on how to change their name, sex, weight, height, email address, profile and cover photo. Fitbit also allows users to edit, delete, or manually log health statistics such as exercise, food, water, and sleep. This is important because it allows users to correct any inaccuracies in the data that Fitbit collects. 
 
-However, there is no information on how to correct inaccuracies in data collected by Google, or how to correct inaccuracies in data shared with third parties. But this is not enough to determine that Fitbit is in violation of Principle 6, as they do provide a way to correct inaccuracies in the data that they collect, though the scope of this correction is limited.
+However, there is no information on how to correct inaccuracies in data collected by Google. Similarly, there is no such protocol for data shared with third parties. Ultimately, this is not enough to determine that Fitbit is in violation of Principle 6, as they do provide a way to correct inaccuracies in the data that they collect, though the scope of this correction is limited.
 
 #### 7. Safeguards
 
-Principle 7 requires organizations to "protect personal information in a way that is appropriate to how sensitive it is." 
+Principle 7 requires Fitbit to protect their users' sensitive health information in a way that is appropriate.[^7] This is a difficult principle to evaluate, especially when there is no definition of what constitutes "appropriate" in PIPEDA.
 
-Google, and by extension Fitbit, has significant business interests in protecting the data it collects and uses, as it drives their primary goal as an internet advertising company. Google employs thousands of cybersecurity professionals (even adding as much as 2600 employees in [one quarter in 2022](https://bankautomationnews.com/allposts/core-cloud/google-cloud-adds-2600-cybersecurity-employees/)), and has [whitepapers](https://services.google.com/fh/files/misc/google_security_wp.pdf) on their security practices. Drawing from this, it is reasonable to assume that Google has industry-leading security practices considering that an organization of their size has only had sub-10 [data breaches](https://firewalltimes.com/google-data-breach-timeline/). The fact that Google has these practices in place to protect the data it collects and stores, meaning that Fitbit is in compliance with the Safeguards principle of PIPEDA.
+However, Google, and by extension Fitbit, has significant business interests in protecting the data it collects and uses, as it drives their primary goal as an internet advertising company. Google employs thousands of cybersecurity professionals (even adding as much as 2600 employees in [one quarter in 2022](https://bankautomationnews.com/allposts/core-cloud/google-cloud-adds-2600-cybersecurity-employees/)), and has [whitepapers](https://services.google.com/fh/files/misc/google_security_wp.pdf) on their security practices. Drawing from this, it is reasonable to assume that Google has industry-leading security practices considering that an organization of their size has only had sub-10 [data breaches](https://firewalltimes.com/google-data-breach-timeline/). The fact that Google has these practices in place to protect the data it collects and stores, meaning that Fitbit is in compliance with the Safeguards principle of PIPEDA.
 
 #### 8. Openness
 
@@ -195,12 +196,11 @@ This makes it difficult for non-technical users to navigate. Even if a user were
 
 #### 9. Individual Access
 
-Fitbit provides users with the ability to access the personal information that they collect[^16], as required by PIPEDA.[^9] 
+Fitbit provides users with the ability to access the personal information that they collect[^16], as required by PIPEDA.[^9]
 
 Google also provides users with in-depth access to PII that they collect[^15]. Users can access their data through the [Google Takeout](https://takeout.google.com/settings/takeout) service, which allows users to download their data from Google's services free of cost.
 
 Google does not give additional information about how PII "is or has been used and to whom it has been disclosed"[^9], however this is not enough to determine that Google is in violation of Principle 9, as they do provide this information to some extent in their Privacy Policy. Again, we see the same issue of vague language and lack of definition in PIPEDA that allows companies to skirt regulations by simply providing an explanation of their data collection practices, regardless of how vague or contradictory that explanation may be.
-
 
 #### 10. Challenging Compliance
 
@@ -212,7 +212,7 @@ As mentioned in the Accountability section, Fitbit does not name a designated pr
 
 After thorough review of Google's Privacy Policy and Terms of Service, as well as navigating through Google Help Center using keywords "Privacy", "PIPEDA", "Challenging Compliance", "OPC", and many others, I was unable to find any information on how to challenge Google's compliance with PIPEDA. A Google search yielded no such information either. In fact, there is no instruction on how to contact Google about privacy, or challenge Google's compliance with _any_ privacy regulation.
 
-Google, and by extension PIPEDA, fails to "tell complainants about their avenues of recourse"[^10] in case of unlawful data collection or sharing practices. The glaring lack of enforcement and avenues of recourse for individuals to challenge Google's compliance with PIPEDA is a significant oversight in the regulation, and an unfortunate consequence of PIPEDA's enforcement mechanisms.
+Google, and arguably PIPEDA too, fails to "tell complainants about their avenues of recourse"[^10] in case of unlawful data collection or sharing practices. The glaring lack of enforcement and avenues of recourse for individuals to challenge Google's compliance with PIPEDA is a significant oversight in the regulation, and an unfortunate consequence of PIPEDA's enforcement mechanisms.
 
 ## 4. Conclusions
 
@@ -222,15 +222,13 @@ As a user, buying a Fitbit is often a step toward reclaiming control over your h
 
 Our Case study on Fitbit devices reduces to the following important points:
 
-- **Privacy Implications of Data Collection**: Fitbit watches, renowned for their accuracy in health and fitness tracking, collect an extensive range of personal information. Nowadays, this not only includes basic metrics like steps and sleep patterns, but also more personal data such as location, heart rate, and even indicators of  mental health states.
+- **Privacy Implications of Data Collection**: Fitbit watches, renowned for their accuracy in health and fitness tracking, collect an extensive range of personal information. Nowadays, this not only includes basic metrics like steps and sleep patterns, but also more personal data such as location, heart rate, and even indicators of mental health states.
 
 - **Impact of Google’s Acquisition**: The acquisition of the company by Google marks a significant shift in the privacy landscape of wearable devices. This merger has raised concerns regarding the potential for increased data sharing and profiling, given Google's predominance in data analytics and advertising. The transition has also been marked by changes in Fitbit’s operational decisions, such as the requirement for Fitbit users to migrate to Google accounts, which could centralize user data to broader data processing practices.
 
 - **Compliance with Privacy Regulations**: Our analysis indicates that Fitbit's current privacy practices pose challenges in compliance with privacy regulations such as PIPEDA. Issues such as consent, data minimization, and transparency have emerged as areas where current practices may not fully align with regulatory expectations.
 
 - **User Concerns and Trust**: Feedback from the Fitbit user community reflects growing concerns over privacy, data security, and the potential misuse of personal health information. The community's reaction to changes in the Fitbit app and service offerings, particularly around community features and data management options, highlights the delicate balance between innovation and user trust. [Example of community reaction](https://community.fitbit.com/t5/Fitbit-com-Dashboard/In-2025-a-Google-Account-will-be-required/td-p/5479047)
-
-
 
 ### 4.2 Implications of future developments for Privacy and Policy
 
