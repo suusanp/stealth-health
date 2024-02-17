@@ -7,7 +7,6 @@
    - Objectives
    - Scope of the Study
 2. [Research Methods](#2-research-methods)
-   - Technical Literature Review
    - Literature Search
    - Privacy Notices Review
 3. [Results](#3-results)
