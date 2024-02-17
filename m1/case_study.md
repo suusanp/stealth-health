@@ -198,7 +198,7 @@ This makes it difficult for non-technical users to navigate. Even if a user were
 ## 4. Conclusions
 ### 4.1 Summary
 
-As a user when you buying a Fitbit is often a step toward reclaiming control over your health and by extention, your life. Yet, paradoxically, this quest for autonomy over our bodily data might lead us down a path of giving up control. The reality is that, in our pursuit of health insights, we might be unknowingly trading away the privacy of our most personal data.
+As a user, buying a Fitbit is often a step toward reclaiming control over your health and by extention, your life. Yet, paradoxically, this quest for autonomy over our bodily data might lead us down a path of giving up control. The reality is that, in our pursuit of health insights, we might be unknowingly trading away the privacy of our most personal data.
 
 Our Case study on Fitbit devices has highlighted the following important points:
 
