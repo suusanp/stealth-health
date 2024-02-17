@@ -48,17 +48,13 @@ In our case study, we decided to focus on the privacy impact and implications of
 
 ## 2. Research Methods
 
-### 2.1 Technical Literature Review
-
-In our research, we focus on gathering and examining the latest official documents from Fitbit and Google to examine technical details about how they handle user data. This step is crucial because it helps us build a clear picture of Fitbit's privacy rules, especially after Google's aquisition. We looked closely at these documents to figure out exactly what kind of user information they collect, how they use this data, and who else might get access to it. Our main goal is to dig into these policies to see if Fitbit follows privacy regulations and how open/transparent they are about their data practices with users.
-
-### 2.2 Literature Search
+### 2.1 Literature Search
 
 To broaden our outlook, we looked into more than just the official documentation. We also explored recent studies, tech reports, and news that talked about how Fitbit handles privacy. Our main goal is to find out what kind of privacy problems, security leaks, or worries people have about Fitbit. This step was about getting the full picture of Fitbit's privacy from different angles – what experts say, what's in the news, and what users think. This way, we could really understand how Fitbit's privacy rules work in the real world and what the implications are for people using their product.
 
-### 2.3 Privacy Notices Review
+### 2.2 Privacy Notices Review
 
-Our research methodology involves an in-depth review of Fitbit's privacy practices under Google. This involves a thorough analysis of their extensive documentation, which includes privacy policies and terms of service for both Fitbit and Google. Specifically, we analyze the policies and terms of service to understand the extent of data collection, the purposes for such collection, and the sharing of such information with third parties. The documentation also provides insights into managing personal information, with details on how users can access, limit, and control their data. Given the complexity of the documentation, we also consider the implications of the language used in the privacy policies and terms of service, and how it may affect users' understanding of their privacy rights. PIPEDA compliance is also a key focus of our research, as we aim to understand how Fitbit's privacy practices align with Canadian privacy laws.
+In our research, we focus on gathering and examining the latest official documents from Fitbit and Google to examine technical details about how they handle user data. Our methodology involves an in-depth review of Fitbit's privacy practices under Google. This involves a thorough analysis of their extensive documentation, which includes privacy policies and terms of service for both Fitbit and Google. Specifically, we analyze the policies and terms of service to understand the extent of data collection, the purposes for such collection, and the sharing of such information with third parties, as well as their level of transparancy with users. The documentation also provides insights into managing personal information, with details on how users can access, limit, and control their data. Given the complexity of the documentation, we also consider the implications of the language used in the privacy policies and terms of service, and how it may affect users' understanding of their privacy rights. PIPEDA compliance is also a key focus of our research, as we aim to understand how Fitbit's privacy practices align with Canadian privacy laws.
 
 ## 3. Results
 
@@ -178,17 +174,14 @@ In terms data retention, Fitbit complies well enough according to their [data re
 
 #### 6. Accuracy
 
-"Minimize the possibility of using incorrect information when making a decision about an individual or when disclosing information to third parties." - PIPEDA Fair Information Principle 6 – Accuracy
+To "minimize the possibility of using incorrect information", Fitbit Health Center provides information on how to change their name, sex, weight, height, email address, profile and cover photo. [cool](https://support.google.com/fitbit/answer/14236616?hl=en#zippy=%2Cfitbit-app). Fitbit also allows users to edit, delete, or manually log health statistics such as exercise, food, water, and sleep. This is important because it allows users to correct any inaccuracies in the data that Fitbit collects. [here](https://support.google.com/fitbit/answer/14236402?sjid=17926729679153827284-NA)
 
-Fitbit Health Center provides information on how to change their name, sex, weight, height, email address, profile and cover photo. [cool](https://support.google.com/fitbit/answer/14236616?hl=en#zippy=%2Cfitbit-app).
-
-Fitbit also allows users to edit, delete, or manually log health statistics such as exercise, food, water, and sleep. This is important because it allows users to correct any inaccuracies in the data that Fitbit collects. [here](https://support.google.com/fitbit/answer/14236402?sjid=17926729679153827284-NA)
-
-However, there is no information on how to correct inaccuracies in data collected by Google, or how to correct inaccuracies in data shared with third parties. 
+However, there is no information on how to correct inaccuracies in data collected by Google, or how to correct inaccuracies in data shared with third parties. But this is not enough to determine that Fitbit is in violation of Principle 6, as they do provide a way to correct inaccuracies in the data that they collect, though the scope of this correction is limited.
 
 #### 7. Safeguards
 
 Princple 7 requires organizations to "protect personal information in a way that is appropriate to how sensitive it is." 
+
 
 "Protect all personal information (regardless of how it is stored) against loss, theft, or any unauthorized access, disclosure, copying, use or modification." - PIPEDA Fair Information Principle 7 – Safeguards
 
@@ -212,7 +205,6 @@ This makes it difficult for non-technical users to navigate. Even if a user were
 "Individuals have a right to access the personal information that an organization holds about them. They also have the right to challenge the accuracy and completeness of the information, and have that information amended as appropriate." - PIPEDA Fair Information Principle 9 – Individual Access
 
 
-
 When asked, advise people about the personal information about them your organization holds.
 Explain where the information was obtained.
 Explain how that information is or has been used and to whom it has been disclosed.
@@ -222,10 +214,11 @@ Give people access to their information at minimal or no cost
 
 "An individual must be able to challenge your organization’s compliance with the fair information principles. They should address their challenge to the person in your organization who is accountable for compliance with PIPEDA." - PIPEDA Fair Information Principle 10 – Challenging Compliance
 
-As mentioned in the Accountability section, Fitbit does not identify a designated privacy official to whom users can direct their privacy concerns. Little documention is provided by Fitbit in regards to privacy, so I looked instead to Google's extensive documentation. After thorough review of Google's Privacy Policy and Terms of Service, as well as navigating through Google Help Center using keywords "Privacy", "PIPEDA", "Challenging Compliance", "OPC", and many others, I was unable to find any information on how to challenge Google's compliance with PIPEDA. A Google search yielded no such information either. In fact, there is no instruction on how to contact Google about privacy, or challenge Google's compliance with *any* privacy regulation.
+As mentioned in the Accountability section, Fitbit does not name a designated privacy official to whom users can direct their privacy concerns, but they do provide contact information to their DPO. Whether or not users can challenge PIPEDA compliance through the DPO is unclear.
+
+After thorough review of Google's Privacy Policy and Terms of Service, as well as navigating through Google Help Center using keywords "Privacy", "PIPEDA", "Challenging Compliance", "OPC", and many others, I was unable to find any information on how to challenge Google's compliance with PIPEDA. A Google search yielded no such information either. In fact, there is no instruction on how to contact Google about privacy, or challenge Google's compliance with *any* privacy regulation.
 
 Google fails to "tell complainants about their avenues of recourse" as required by Principle 10. The Principle also requires companies to "include [the] organization’s own complaint procedures, along with those related to industry associations, regulatory bodies and the OPC" which Google is in clear violation of.
-
 
 ## 4. Conclusions
 ### 4.1 Summary
