@@ -2,28 +2,28 @@
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
+1. [Introduction](#1.-introduction)
    - Project Overview
    - Objectives
    - Scope of the Study
-2. [Research Methods](#research-methods)
+2. [Research Methods](#2.-research-methods)
    - Technical Literature Review
    - Literature Search
    - Privacy Notices Review
-3. [Results](#results)
+3. [Results](#3.-results)
    - Data Collection Practices
    - Identified Privacy Threats and Their Causes
    - Comparative Analysis of Privacy Policies and Actual Data Handling Practices
    - PIPEDA Compliance
-4. [Conclusions](#conclusions)
+4. [Conclusions](#4.-conclusions)
    - Summary of Key Findings
    - Implications for Privacy and Policy
    - Recommendations for Future Research
-5. [Appendix](#appendix)
+5. [Appendix](#5.-appendix)
    - Detailed Data Sets
    - Technical Documentation
    - Survey Instruments and Results
-6. [References](#references)
+6. [References](#6.-references)
 
 # Smart Health Devices Privacy Impact Report: A Case Study on Fitbit
 
