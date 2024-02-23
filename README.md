@@ -17,6 +17,8 @@ This repository is structured to facilitate collaborative research, documentatio
 ## Repository Structure
 
 - **`/m1`**: Contains all files related to Milestone 1, including research documentation, analysis, and the initial report draft.
+- **`/m2`**: Contains all files related to Milestone 2, including the project presentation structure.
+- **`/m3`**: Contains all files related to Milestone 3, including the architecture design and related resources.
 - **`/docs`**: Documentation, including project proposals, meeting notes, and feedback from TA sessions.
 - **`/data`**: Original data sets, including survey responses, API data pulls, and anonymized user data for analysis.
 - **`/scripts`**: Code used for data analysis, including Python notebooks and scripts for processing and visualizing data.
