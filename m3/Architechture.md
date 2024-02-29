@@ -48,9 +48,10 @@ Describes the app's architecture, focusing on components like the local database
 
 Local Database (Storage Component)
 
-- Technology Choice: Use SQLite or Realm for local storage. These databases are lightweight, can be embedded within the app, and don't require internet access, aligning with your privacy-first approach.
+- Technology Choice: Use SQLite or Realm for local storage. These databases are lightweight, can be embedded within the app, and don't require internet access, aligning with your privacy-first approach. https://www.zetetic.net/sqlcipher/
 - Encryption: Use database encryption, like SQLCipher, to protect stored data.So that even if the device is compromised, the fitness and health data remains secure.
 - Data Minimization principle: Store only the data necessary for the app's functionality. This minimizes the risk in case of unauthorized access.
+
 
 Analytics Engine (Data Analysis Component)
 
