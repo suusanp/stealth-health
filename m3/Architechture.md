@@ -46,6 +46,18 @@ Identifies key stakeholders including privacy-conscious users, fitness enthusias
 - challenge of making it fast enough while still keeping all the data on hand
 Describes the app's architecture, focusing on components like the local database and analytics engine, and includes UML diagrams to illustrate the system's structure.
 
+Local Database (Storage Component)
+
+- Technology Choice: Use SQLite or Realm for local storage. These databases are lightweight, can be embedded within the app, and don't require internet access, aligning with your privacy-first approach.
+- Encryption: Use database encryption, like SQLCipher, to protect stored data.So that even if the device is compromised, the fitness and health data remains secure.
+- Data Minimization principle: Store only the data necessary for the app's functionality. This minimizes the risk in case of unauthorized access.
+
+Analytics Engine (Data Analysis Component)
+
+User Interface (UI Component)
+
+Consent Management Module
+
 ## 7. Important Scenarios
 
 Details scenarios relevant to privacy, such as data consent withdrawal, illustrated through sequence diagrams or plain text descriptions.
