@@ -300,7 +300,7 @@ This section outlines  important scenarios relevant to privacy within the app.
 
 ### Scenario 1: First-time User App Onboarding
 
-![Alt text](image.png)
+![Alt text](image-1.png)
 
 #### Process
 
