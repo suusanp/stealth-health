@@ -251,7 +251,46 @@ This part is responsible for processing and analyzing user-inputted health and f
 ## 7. Important Scenarios
 This section outlines  important scenarios relevant to privacy within the app.
 
-### Scenario 1: User Consent Withdrawal
+
+### Scenario 1: First-time User App Onboarding
+
+#### Process
+
+1. **App Welcome Screen**
+    - **User Action**: The user opens the app for the first time.
+    - **System Display**: The app presents a welcome screen, briefly introducing the app's purpose and its focus on privacy and user control over personal data.
+
+2. **Privacy Overview and Consent**
+    - **System Display**: Before proceeding, the app presents an overview of its privacy practices, including how it collects, uses, and protects user data. This section emphasizes the app's commitment to not collecting data without explicit user consent.
+    - **User Interaction**: The user is asked to acknowledge the privacy overview and give consent to proceed with the app's basic data collection necessary for functionality.
+
+3. **Account Creation or Anonymity Option**
+    - **System Display**: The app offers the user the choice to create an account with minimal information (e.g., email) or continue using the app anonymously.
+    - **User Action**: The user chooses between creating an account or proceeding anonymously. This choice underscores the app's privacy-first approach by allowing use without personal identification.
+
+4. **Initial Setup and Preferences**
+    - **System Display**: The app guides the user through a simple setup process, including entering basic fitness goals (optional), and preferences for notifications and data input reminders.
+    - **User Action**: The user inputs their initial preferences and goals, providing the app with the necessary context to tailor the experience.
+
+5. **Tutorial on Manual Data Entry and Device Pairing**
+    - **System Display**: The app offers a brief tutorial on how to manually input fitness and health data, and how to pair with a wearable device (if applicable), emphasizing that all data remains on the device unless explicitly shared by the user.
+    - **User Interaction**: The user either follows the tutorial to input initial data or skips to explore the app on their own.
+
+6. **Data Consent Specifics**
+    - **System Display**: After the initial setup, the app details the specific types of data it can collect and analyze ( specifically what computations are done and their sources), each with its own consent toggle. This includes activity data, health metrics, and device usage data.This is not a list it is a quesence of popup so that the user is "forced" to read all of them.
+    - **User Action**: The user selectively gives consent for the types of data they are comfortable with the app collecting and analyzing.
+
+7. **Final Confirmation and Access to Main App Features**
+    - **System Response**: Based on the user's consent choices, the app configures itself to collect only the approved types of data.
+    - **Feedback to User**: The app confirms the user's setup choices and transitions to the main dashboard, where the user can start entering or viewing their health and fitness data.
+
+#### Feedback and Support Invitation
+
+- **System Display**: The onboarding process concludes with an invitation for feedback and a reminder that the user can adjust their privacy and data settings at any time.
+- **Empowerment**: This final step reinforces the app's commitment to privacy and user control, encouraging ongoing engagement and trust.
+
+
+### Scenario 2: User Consent Withdrawal
 
 #### Description
 A user decides to withdraw previously granted consent for data collection or analysis.
@@ -264,7 +303,7 @@ A user decides to withdraw previously granted consent for data collection or ana
 5. **Feedback to User**: The app confirms the withdrawal of consent and updates the UI to reflect the change in data collection or analysis permissions.
 
 
-### Scenario 2: Data Input Error Correction
+### Scenario 3: Data Input Error Correction
 
 #### Description
 A user enters incorrect fitness data and wishes to correct it.
@@ -275,6 +314,32 @@ A user enters incorrect fitness data and wishes to correct it.
 3. **User Corrects Data**: The user selects the incorrect entry and makes the necessary corrections.
 4. **System Response**: The app updates the entry in the local database and recalculates any affected insights or analytics.
 5. **Feedback to User**: The app displays the updated entry and confirms that the corrections have been saved.
+
+
+### Scenario 4: Private/One-Time Session
+#### Process
+
+1. **Select Private Session Mode**
+    - **User Interaction**: Upon app startup, the user selects an option for a "Private Session" from the main menu.
+    - **System Display**: The app provides a brief explanation that data entered in this mode will not be stored after the session.
+
+2. **Data Input**
+    - **System Display**: The app displays a simplified data input form, requesting only the essential information needed for the analysis.
+    - **User Action**: User inputs their health and fitness data for the session (e.g., steps taken, heart rate, activity type).
+
+3. **Run Analysis**
+    - **System Display**: A prompt confirms that analysis will begin and reminds the user that no data will be saved.
+    - **User Action**: User confirms to proceed with the analysis.
+    - **System Response**: The app processes the provided data in real-time, using its analytics engine to generate insights or recommendations.
+
+4. **Display Results**
+    - **System Display**: The app presents the analysis results, offering insights or recommendations based on the one-time data provided.
+    - **User Interaction**: User reviews the results. Options to perform another analysis or exit the private session are presented.
+
+5. **End of Session**
+    - **User Action**: User decides to end the session or input new data for another analysis.
+    - **System Response**: If ending the session, the app ensures that all entered data is cleared from temporary memory. A confirmation message is displayed, assuring the user that no data has been stored.
+    - **Feedback to User**: The app thanks the user for using the private session and returns to the main menu or closes, based on the user's choice.
 
 
 ## 8. Conclusion
