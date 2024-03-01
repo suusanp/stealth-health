@@ -4,9 +4,9 @@ Due to privacy concerns with the Fitbit API, we will develope an alternative app
 
 Our application's architecture focuses on user control over personal data. Our goal is to create an alternative fitness app that caters to privacy-conscious fitness enthusiasts, offering health tracking without compromising user privacy.
 
-We aim to create an application that is entirely local and does not require an internet connection. This means that the application will not collect any data from the user, and the user will have to input their fitness and health data manually. Users will pair the application with wearable devices (eg. pedometer) that does not require an internet connection, and enter their fitness and health data manually into the application. The app will provide the user with tools to analyze and visualize their data.
+Our aim is to make the application entirely local, storing our users' health data manually. The application will not collect any data from users without their knowledge, and users will have to input their fitness and health data manually. Users can pair the application with low-tech, wearable devices like a pedometer, which also do not require internet. The app will provide users with tools to analyze and visualize their data.
 
-The app provides tools for analysis, doesn't share data with third parties, and is ad-free—ensuring a private and secure fitness tracking experience.
+Overall, we aim to create an application that is transparent, user-friendly, and privacy-focused. This document outlines the architectural design decisions and models that will be implemented in the application.
 
 ## 1. System Purpose and Scope
 
