@@ -56,7 +56,36 @@ Compared to existing fitness apps that rely on cloud-based data processing, our 
 
 ## 5. Stakeholders
 
-Identifies key stakeholders including privacy-conscious users, fitness enthusiasts, and healthcare professionals interested in secure data sharing.
+We identify the key stakeholders to understand the perspectives and interests surrounding our alternative fitness application, to ensure that the application caters to the needs and concerns of various user groups. The main stakeholders include:
+
+1. **Privacy-Conscious Users:**
+   - Individuals who prioritize the confidentiality of their fitness and health data.
+   - Concerned about data security and appreciate a privacy-centric application.
+
+2. **Fitness Enthusiasts:**
+   - Users passionate about fitness, seeking a reliable tool to track and analyze their health metrics.
+   - Interested in a seamless and user-friendly experience for inputting and interpreting fitness data.
+
+3. **Healthcare Professionals:**
+   - Medical practitioners or researchers interested in leveraging secure data sharing for health analysis.
+   - Value the potential insights provided by fitness and health data for monitoring patient well-being.
+
+4. **App Developers and Maintainers:**
+   - The team responsible for the development, maintenance, and updates of the Alternative Fitness App.
+   - Focused on ensuring the application aligns with privacy regulations and user expectations.
+
+5. **Wearable Pedometer Manufacturers:**
+   - Companies producing wearable devices compatible with the application.
+   - Interested in integration and compatibility to enhance the user experience.
+
+6. **Privacy Advocates:**
+   - Individuals or organizations advocating for user privacy rights.
+   - Monitor and assess the app's adherence to privacy standards.
+
+7. **Regulatory Authorities:**
+   - Entities responsible for overseeing and enforcing privacy regulations.
+   - Ensure the application complies with legal requirements, such as PIPEDA in Canada.
+
 
 ## 6. Architectural Design Decisions and Models
 - challenge of making it fast enough while still keeping all the data on hand
