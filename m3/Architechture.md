@@ -10,7 +10,31 @@ Overall, we aim to create an application that is transparent, user-friendly, and
 
 ## 1. System Purpose and Scope
 
-The app is a fitness and health tracker that operates entirely offline, prioritizing user privacy. It allows users to manually input their fitness and health data, offering analysis tools without internet dependency.
+The app is a fitness and health tracker that operates entirely offline, prioritizing user privacy. It allows users to manually input their fitness and health data, offering analysis tools without internet dependency. The app's scope includes the following features:
+
+### 1. Consent Management
+- Users will be prompted for explicit consent before disclosing health data
+- Users will be asked consent to receive regular notifications for data import reminders and sleep cycle tracking.
+
+### 2. Data Input
+- App allows manual data input from various wearable devices (e.g., pedometers, heart rate monitors) and manual input of personal details such as age and weight.
+- Users can be prompted to input sleep data for tracking their sleep cycle.
+- Users can input exercise data such as walking/running distances.
+
+### 3. Location Tracking
+- With user consent, the system accesses location data to track walking/running distances and exercise activities.
+
+### 4. Algorithmic Calculations
+- Employing offline algorithms, the application can calculate calories burned using the collected data.
+
+### 5. Privacy Features
+- User-centric privacy is ensured through a visible button for easy access to the privacy policy.
+- A dedicated section within the app educates users on the privacy implications of their choices, enhancing transparency.
+
+#### Functional Boundaries
+- The system's focus centers on health and fitness tracking, deliberately excluding features like social networking and extensive community building.
+- It does not include advanced medical diagnostics including blood tests, ECG, temperature monitoring, blood oxygen levels, etc.
+
 
 ## 2. Similar Systems
 
