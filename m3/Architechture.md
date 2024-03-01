@@ -231,8 +231,23 @@ This part is responsible for processing and analyzing user-inputted health and f
 - Users should be able to customize the appearance of the dashboard and insights page, for them to prioritize the data that they find most important.
 
 
-Consent Management Module
+### Consent Management Module
 
+#### Operational Details
+
+- **Initial Consent on Onboarding**: When first using the app, users are presented with a clear and concise overview of the data it collects, the purpose of collection and  how it will be used. Consent is obtained before any data collection begins. we also should have a simple session mode, were data is not recorded and deleted as soon as the user closes the app.
+
+- **Granular Consent Options**: Users can provide or withdraw consent for specific types of data collection and analysis, allowing for personalized privacy preferences. This granularity extends to notifications, data sharing, and analytical features.
+
+- Users can review and adjust their consent settings at any time through the app's settings menu.
+
+#### User Interaction
+
+- **Clear and Understandable Prompts**: Consent requests are presented in plain language, avoiding technical jargon. Each request clearly explains why the consent is needed and how the data will be used.
+
+- **Active Engagement**: Use of interactive elements (such as sliders, toggle switches) for users to indicate their consent preferences.
+
+- **Integration with Other Modules**: Consent preferences are seamlessly integrated with the Data Input and Analytics Engine, making sure that only data approved by the user is collected and analyzed upon analysis we are asking the user for its consent again.
 ## 7. Important Scenarios
 
 Details scenarios relevant to privacy, such as data consent withdrawal, illustrated through sequence diagrams or plain text descriptions.
