@@ -249,8 +249,33 @@ This part is responsible for processing and analyzing user-inputted health and f
 
 - **Integration with Other Modules**: Consent preferences are seamlessly integrated with the Data Input and Analytics Engine, making sure that only data approved by the user is collected and analyzed upon analysis we are asking the user for its consent again.
 ## 7. Important Scenarios
+This section outlines  important scenarios relevant to privacy within the app.
 
-Details scenarios relevant to privacy, such as data consent withdrawal, illustrated through sequence diagrams or plain text descriptions.
+### Scenario 1: User Consent Withdrawal
+
+#### Description
+A user decides to withdraw previously granted consent for data collection or analysis.
+
+### Process
+1. **User Action**: The user navigates to the app's privacy settings section.
+2. **System Display**: The app displays toggle switches for various consents (e.g., data collection, analytics).
+3. **User Withdraws Consent**: The user toggles off consent for a specific data collection or analysis.
+4. **System Response**: The app immediately ceases the specified activity and securely deletes any stored data that was collected under that consent.
+5. **Feedback to User**: The app confirms the withdrawal of consent and updates the UI to reflect the change in data collection or analysis permissions.
+
+
+### Scenario 3: Data Input Error Correction
+
+#### Description
+A user enters incorrect fitness data and wishes to correct it.
+
+#### Process
+1. **User Action**: The user accesses the data input history through the dashboard.
+2. **System Display**: The app presents a list of recent data entries with an option to edit or delete.
+3. **User Corrects Data**: The user selects the incorrect entry and makes the necessary corrections.
+4. **System Response**: The app updates the entry in the local database and recalculates any affected insights or analytics.
+5. **Feedback to User**: The app displays the updated entry and confirms that the corrections have been saved.
+
 
 ## 8. Conclusion
 
