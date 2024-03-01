@@ -351,6 +351,7 @@ A user decides to withdraw previously granted consent for data collection or ana
 
 #### Description
 If a user enters incorrect fitness data and wishes to correct it.
+
 ![Alt text](image-3.png)
 #### Process
 1. **User Action**: The user accesses the data input history through the dashboard.
