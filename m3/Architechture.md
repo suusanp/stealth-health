@@ -326,7 +326,7 @@ A user decides to withdraw previously granted consent for data collection or ana
 ### Scenario 3: Data Input Error Correction
 
 #### Description
-A user enters incorrect fitness data and wishes to correct it.
+If a user enters incorrect fitness data and wishes to correct it.
 
 #### Process
 1. **User Action**: The user accesses the data input history through the dashboard.
