@@ -157,7 +157,7 @@ Local Database (Storage Component)
 - Data Minimization principle: We aim to store only the data necessary for the app's functionality. This minimizes the risk in case of unauthorized access.This principle is a core tenet of privacy by design and is especially important in our case as we deal with sensitive data.
 Here is a list of the data that we expect to store for a user:
 
-### User Profile Data
+ **User Profile Data**
 
 - **Username or ID**: A unique identifier for the user.
 - **Age**: Used for adjusting fitness goals and recommendations.
@@ -165,7 +165,7 @@ Here is a list of the data that we expect to store for a user:
 - **Height and Weight**: Essential for calculating health indicators like BMI.
 - **Fitness Goals**: User-defined targets, e.g., weight loss, muscle gain.
 
-### Health Metrics
+**Health Metrics**
 
 - **Daily Steps**: Number of steps taken by the user each day.
 - **Heart Rate**: Measured during activities and rest for cardiovascular monitoring.
@@ -175,22 +175,46 @@ Here is a list of the data that we expect to store for a user:
 - **Calories Burned**: Estimated from physical activities.
 - **Water Intake**: Daily consumption tracking.
 
-### Fitness Activity Data
+**Fitness Activity Data**
 
 - **Workout Logs**: Details of exercises, duration, intensity, and frequency.
 - **Running/Cycling Routes**: GPS data for outdoor activities, stored locally.
 - **Personal Records**: Best performances in various activities.
 
-### Device and App Usage Data
+**Device and App Usage Data**
 
 - **Device Type and OS Version**: For compatibility and performance optimization.
 - **App Settings and Preferences**: User-selected customization options.
 
-### Consent and Preferences
+**Consent and Preferences**
 
 - **Data Sharing Preferences**: User choices regarding data sharing.
 - **Notification Preferences**: User selections for receiving notifications.
-Analytics Engine (Data Analysis Component)
+
+
+
+# Analytics Engine (Data Analysis Component)
+
+This part is responsible for processing and analyzing user-inputted health and fitness data. We want it to deliver personalized insights and recommendations while ensuring utmost data privacy and security. This component processes local data to avoid any external data exposure, the challenge is to make it fast enough to ensure user friendly usage.
+
+## Key Algorithms and Computations
+
+1. **Trend Analysis**: Utilizes statistical methods to identify patterns over time in the user's data. For steps and heart rate data, we apply a moving average filter to smooth out short-term fluctuations and highlight longer-term trends.
+
+   Formula Example: \(MA_t = \frac{1}{N} \sum_{n=0}^{N-1} x_{t-n}\), where \(MA_t\) is the moving average at time \(t\), \(N\) is the number of periods in the average, and \(x_t\) is the input value at time \(t\).
+
+2. **Calorie Burn Estimation**: Employs the Metabolic Equivalent of Task (MET) values for various activities, combined with user data such as weight and duration of activity, to estimate calories burned.
+
+   Formula: \(Calories Burned = MET \times Weight (kg) \times Duration (hours)\).
+
+3. **Sleep Quality Assessment**: Analyzes sleep pattern data, including total sleep time and restlessness, to provide insights into sleep quality. Uses algorithms to classify sleep stages based on movement and heart rate variability data.
+
+## Implementation
+
+- **Local Machine Learning Models**: For personalized insights, TensorFlow Lite is used to run pre-trained models directly on the device. These models are designed to be lightweight and efficient, suitable for mobile devices with limited computing resources.
+
+- **User Control and Transparency**: Users have the option to select which data points are included in the analysis, respecting their privacy preferences. The app provides clear explanations of how data is used to generate insights.
+
 
 User Interface (UI Component)
 
