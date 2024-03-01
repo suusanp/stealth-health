@@ -23,20 +23,42 @@ Compared to existing fitness apps that rely on cloud-based data processing, our 
 
 ## 4. Privacy Requirements
 
+1. **Regulatory Compliance:**
+   - The application will adhere to the guidelines set forth by PIPEDA, as mandated by the Canadian government.
 
-- The application will follow PIPEA guidelines, as well as the principles of privacy by design.
+2. **Privacy by Design:**
+   - The application will integrate principles of privacy by design, prioritizing user privacy and data protection as fundamental aspects of the system architecture.
 
-- The application must not collect any data from the user without their explicit consent.
+3. **Explicit User Consent:**
+   - No data will be collected from users without their explicit consent.
+   - Users will be prompted for consent at each stage before any data collection occurs.
 
-- The application must clearly and transparently inform the user about what data is being collected and how it is being used.
+4. **Transparent Data Handling:**
+   - Clear and transparent communication to users about the nature of data being collected and how it will be utilized.
+   - Users will be notified about the implications of every choice they make in the app.
+   - The privacy policy will be easily accessible and understandable to non-technical users.
 
-- The user must have the ability to provide or withdraw consent for the collection and use of their data at any time.
+5. **Dynamic Consent Management:**
+   - Users will have the ability to provide or withdraw consent for data collection and usage at any point.
+   - The application will immediately delete user data upon their request.
 
-- The application must store the user's fitness and health data locally on their device, and this data must not be shared with any third parties.
+6. **Local Data Storage:**
+   - Fitness and health data will be stored locally on the user's device, ensuring users maintain full control over their personal information.
 
-- The user interface must be designed to be simple and intuitive, allowing the user to input their fitness and health data easily.
+7. **Limited Collection:**
+   - The application will only collect data that is strictly necessary for the intended purpose and functionalities. It will refrain from unnecessary data collection.
 
-- The application will not share any data with third parties, and will not display any advertisements.
+8. **Limited Use:**
+   - Collected data will only be used for the specific purposes for which consent was obtained.
+   - Data will not be repurposed for activities beyond the original user consent.
+
+9. **Non-Disclosure and Ad-Free Environment:**
+   - The application will not share any user data with third parties.
+   - No advertisements will be displayed within the application.
+
+10. **Isolation from External Platforms:**
+    - The application will not integrate with social media platforms.
+    - No integrations with third-party services will be present to ensure an isolated and secure user experience.
 
 ## 5. Stakeholders
 
