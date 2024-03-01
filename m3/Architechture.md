@@ -335,7 +335,7 @@ This section outlines  important scenarios relevant to privacy within the app.
 
 
 ### Scenario 2: User Consent Withdrawal
-
+![Alt text](image-2.png)
 #### Description
 A user decides to withdraw previously granted consent for data collection or analysis.
 
@@ -351,7 +351,7 @@ A user decides to withdraw previously granted consent for data collection or ana
 
 #### Description
 If a user enters incorrect fitness data and wishes to correct it.
-
+![Alt text](image-3.png)
 #### Process
 1. **User Action**: The user accesses the data input history through the dashboard.
 2. **System Display**: The app presents a list of recent data entries with an option to edit or delete.
@@ -361,6 +361,9 @@ If a user enters incorrect fitness data and wishes to correct it.
 
 
 ### Scenario 4: Private/One-Time Session
+
+
+![Alt text](image-4.png)
 #### Process
 
 1. **Select Private Session Mode**
