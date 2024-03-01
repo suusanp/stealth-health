@@ -324,13 +324,13 @@ A user enters incorrect fitness data and wishes to correct it.
     - **User Action**: User inputs their health and fitness data for the session (e.g., steps taken, heart rate, activity type).
 
 3. **Run Analysis**
-    - **System Display**: A prompt confirms that analysis will begin and reminds the user that no data will be saved.
-    - **User Action**: User confirms to proceed with the analysis.
-    - **System Response**: The app processes the provided data in real-time, using its analytics engine to generate insights or recommendations.
+    - **System Display**: A prompt says that the analysis will begin and reminds that no data will be saved.
+    - **User Action**: User confirmation to proceed with the analysis.
+    - **System Response**: The app processes the provided data live,and generates insights or recommendations.
 
 4. **Display Results**
     - **System Display**: The app presents the analysis results, offering insights or recommendations based on the one-time data provided.
-    - **User Interaction**: User reviews the results. Options to perform another analysis or exit the private session are presented.
+    - **User Interaction**: User reviews the results. Options to perform another analysis or exit the private session presented.
 
 5. **End of Session**
     - **User Action**: User decides to end the session or input new data for another analysis.
