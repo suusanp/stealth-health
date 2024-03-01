@@ -209,7 +209,27 @@ This part is responsible for processing and analyzing user-inputted health and f
 - **User Control and Transparency**: Users have the option to select which data points are included in the analysis, respecting their privacy preferences. The app provides clear explanations of how data is used to generate insights.
 
 
-User Interface (UI Component)
+### User Interface (UI Component)
+#### Main Pages and Components
+
+1. **Dashboard**: The main page where users can see an overview of their daily activity, including steps, calories burned, and sleep patterns. It features widgets that summarize the data in easy-to-understand charts and graphs.
+
+2. **Data Input Page**: Allows users to manually input various types of data, such as meals consumed (for calorie tracking), workouts, and sleep hours. The design includes simple forms and quick-select options to streamline the data entry process.
+
+3. **Insights Page**: Offers personalized insights and recommendations based on the analyzed data. This page uses clear visualizations to present trends, progress towards goals, and actionable advice to improve health and fitness.
+
+4. **Settings & Preferences**: Provides users with control over app settings, including data sharing and notification preferences. A dedicated section for privacy settings allows users to manage consent and understand how their data is used.
+
+5. **Privacy Education Section**: A unique feature that educates users about the privacy aspects of their data. It explains the importance of data security and how the app protects their information. it also presents a summary of all the data we have on the user, with options to delete it right on.
+
+#### Design Considerations
+
+- The UI should be designed with a focus on simplicity and ease of use. Large buttons, clear labels, and a logical navigation structure should ensure the app is accessible to a wide range of users.
+
+- Consent and privacy notifications are designed to be clear and unobtrusive. They provide users with full control over their data, with easy options to modify consent directly from the notification.
+
+- Users should be able to customize the appearance of the dashboard and insights page, for them to prioritize the data that they find most important.
+
 
 Consent Management Module
 
