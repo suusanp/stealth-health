@@ -71,7 +71,7 @@ Compared to existing fitness apps that rely on cloud-based data processing, our 
 
 6. **Local Data Storage:**
 
-   - To enhance security, fitness and health data will be stored locally on the user's device. Encryption techniques, such as **SQLCipher**, will be used.
+   - To enhance security, fitness and health data will be stored locally on the user's device. Encryption techniques, such as **SQLCipher**, will be used. More justification and details can be found in part 6.
 
 7. **Limited Collection:**
 
