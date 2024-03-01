@@ -216,7 +216,7 @@ This part is responsible for processing and analyzing health and fitness data. W
 
 #### Key Algorithms and Computations
 
-1. **Trend Analysis**: Utilizes statistical methods to identify patterns over time in the user's data. For steps and heart rate data, we apply a moving average filter to smooth out short-term fluctuations and highlight longer-term trends.
+1. **Trend Analysis**: Utilizes statistical methods to identify patterns over time in the user's data. For steps and heart rate data, we apply a moving average filter to smooth out short-term fluctuations and highlight longer-term trends [^10].
 
    Formula: MA_t = (1/N) * Σ(x_t-n) from n=0 to N-1
    Where:
@@ -224,25 +224,26 @@ This part is responsible for processing and analyzing health and fitness data. W
 - `N` is the number of periods in the average.
 - `x_t` is the input value at time `t`.
 
-2. **Calorie Burn Estimation**: Employs the Metabolic Equivalent of Task (MET) [^5]:  values for various activities, combined with user data such as weight and duration of activity, to estimate calories burned.
+2. **Calorie Burn Estimation**: Employs the Metabolic Equivalent of Task (MET) [^5] values for various activities, combined with user data such as weight and duration of activity, to estimate calories burned.
 
    Formula: Calories Burned = MET * Weight (kg) * Duration (hours).
 
 3. **Sleep Quality Assessment**: Analyzes sleep pattern data, including total sleep time and restlessness, to provide insights into sleep quality. Uses algorithms to classify sleep stages based on movement and heart rate variability data.
 
-4.   **Body Mass Index (BMI) Calculation**: BMI = Weight (kg) / (Height (m))^2
+4.   **Body Mass Index (BMI) Calculation**: BMI = Weight (kg) / (Height (m))^2 [^6] [^9] 
 
-5. **Basal Metabolic Rate (BMR)** estimates the amount of energy expended while at rest in a neutrally temperate environment.
+5. **Basal Metabolic Rate (BMR)** estimates the amount of energy expended while at rest in a neutrally temperate environment. [^7]
 
 - BMR (Men) = 88.362 + (13.397 * Weight in kg) + (4.799 * Height in cm) - (5.677 * Age in years)
 - BMR (Women) = 447.593 + (9.247 * Weight in kg) + (3.098 * Height in cm) - (4.330 * Age in years)
 
-6. **Heart Rate Zones for Exercise**
+6. **Heart Rate Zones for Exercise** [^11]
 
 - Maximum Heart Rate (MHR) = 220 - Age
 - Target Heart Rate Zone = (MHR - Resting Heart Rate) * Desired Intensity (%) + Resting Heart Rate
 
 This can optimize workouts by ensuring the user exercises within the right intensity range for their goals.
+
 7. **Daily Water Intake Recommendation**
 
 Daily Water Intake (liters) = Weight (kg) * 0.033 + (Exercise Duration (hours) * 0.5)
@@ -395,3 +396,9 @@ Our app's design philosophy centers on privacy by design, We wish to provide a s
 
 [^4]:  SQLCipher for Local Data Encryption: [SQLCipher Design](https://www.zetetic.net/sqlcipher/design/)
 [^5]:  MET: [Concept and formula](https://en.wikipedia.org/wiki/Metabolic_equivalent_of_task)
+[^6]: BMI: World Health Organization (WHO). "Body mass index - BMI." [Link to WHO BMI](https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight)
+[^7]: Roza, A.M., & Shizgal, H.M. (1984). "The Harris Benedict equation reevaluated: resting energy requirements and the body cell mass." The American Journal of Clinical Nutrition, 40(1), 168-182. [AJCN](https://academic.oup.com/ajcn/article-abstract/40/1/168/4690419)
+[^8]: American Heart Association. "Target Heart Rates Chart." [Link to AHA Heart Rates](https://www.heart.org/en/healthy-living/fitness/fitness-basics/target-heart-rates)
+[^9]: Centers for Disease Control and Prevention (CDC). "About Adult BMI." [Link to CDC BMI](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)
+[^10]: Mifflin, M.D., St Jeor, S.T., Hill, L.A., Scott, B.J., Daugherty, S.A., & Koh, Y.O. (1990). "A new predictive equation for resting energy expenditure in healthy individuals." The American Journal of Clinical Nutrition, 51(2), 241-247. [AJCN](https://academic.oup.com/ajcn/article-abstract/51/2/241/4695347)
+[^11]: Sally Edwards. "The Heart Rate Monitor Book." Offers an in-depth guide to understanding and using heart rate monitors for training.
