@@ -264,7 +264,7 @@ A user decides to withdraw previously granted consent for data collection or ana
 5. **Feedback to User**: The app confirms the withdrawal of consent and updates the UI to reflect the change in data collection or analysis permissions.
 
 
-### Scenario 3: Data Input Error Correction
+### Scenario 2: Data Input Error Correction
 
 #### Description
 A user enters incorrect fitness data and wishes to correct it.
