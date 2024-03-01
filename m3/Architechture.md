@@ -367,7 +367,7 @@ Our app's design philosophy centers on privacy by design, offering a secure and 
 
 ## Footnotes
 
-[^1]: https://www.fitbit.com/global/us/legal/privacy-policy 
+[^1]: Fitbit Privacy statement: [Privacy Statement](https://www.fitbit.com/global/us/legal/privacy-policy) 
 [^2]:  Fitbit Privacy Concerns: [Privacy Analysis of Fitbit](https://privacy.commonsense.org/privacy-report/Fitbit)
 
 [^3]:PIPEDA Overview: [Personal Information Protection and Electronic Documents Act](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/)
