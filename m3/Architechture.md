@@ -218,13 +218,34 @@ This part is responsible for processing and analyzing health and fitness data. W
 
 1. **Trend Analysis**: Utilizes statistical methods to identify patterns over time in the user's data. For steps and heart rate data, we apply a moving average filter to smooth out short-term fluctuations and highlight longer-term trends.
 
-   Formula Example: \(MA_t = \frac{1}{N} \sum_{n=0}^{N-1} x_{t-n}\), where \(MA_t\) is the moving average at time \(t\), \(N\) is the number of periods in the average, and \(x_t\) is the input value at time \(t\).
+   Formula: MA_t = (1/N) * Σ(x_t-n) from n=0 to N-1
+   Where:
+- `MA_t` is the moving average at time `t`.
+- `N` is the number of periods in the average.
+- `x_t` is the input value at time `t`.
 
-2. **Calorie Burn Estimation**: Employs the Metabolic Equivalent of Task (MET) values for various activities, combined with user data such as weight and duration of activity, to estimate calories burned.
+2. **Calorie Burn Estimation**: Employs the Metabolic Equivalent of Task (MET) [^5]:  values for various activities, combined with user data such as weight and duration of activity, to estimate calories burned.
 
-   Formula: \(Calories Burned = MET \times Weight (kg) \times Duration (hours)\).
+   Formula: Calories Burned = MET * Weight (kg) * Duration (hours).
 
 3. **Sleep Quality Assessment**: Analyzes sleep pattern data, including total sleep time and restlessness, to provide insights into sleep quality. Uses algorithms to classify sleep stages based on movement and heart rate variability data.
+
+4.   **Body Mass Index (BMI) Calculation**: BMI = Weight (kg) / (Height (m))^2
+
+5. **Basal Metabolic Rate (BMR)** estimates the amount of energy expended while at rest in a neutrally temperate environment.
+
+- BMR (Men) = 88.362 + (13.397 * Weight in kg) + (4.799 * Height in cm) - (5.677 * Age in years)
+- BMR (Women) = 447.593 + (9.247 * Weight in kg) + (3.098 * Height in cm) - (4.330 * Age in years)
+
+6. **Heart Rate Zones for Exercise**
+
+- Maximum Heart Rate (MHR) = 220 - Age
+- Target Heart Rate Zone = (MHR - Resting Heart Rate) * Desired Intensity (%) + Resting Heart Rate
+
+This can optimize workouts by ensuring the user exercises within the right intensity range for their goals.
+7. **Daily Water Intake Recommendation**
+
+Daily Water Intake (liters) = Weight (kg) * 0.033 + (Exercise Duration (hours) * 0.5)
 
 #### Implementation
 
@@ -363,7 +384,7 @@ If a user enters incorrect fitness data and wishes to correct it.
 
 
 ## 8. Conclusion
-Our app's design philosophy centers on privacy by design, offering a secure and user-friendly alternative for health and fitness tracking. By addressing the privacy concerns associated with Fitbit and other cloud-based fitness apps, we aim to provide privacy-conscious users with a solution that respects their data sovereignty and promotes a healthier lifestyle without compromising personal information.
+Our app's design philosophy centers on privacy by design, We wish to provide a secure and user-friendly alternative for health and fitness tracking. After studying the issues and  privacy concerns associated with Fitbit and other cloud-based fitness apps, we aim to provide privacy-conscious users with a solution that respects their data sovereignty and promotes a healthier lifestyle without compromising personal information.
 
 ## Footnotes
 
@@ -373,3 +394,4 @@ Our app's design philosophy centers on privacy by design, offering a secure and 
 [^3]:PIPEDA Overview: [Personal Information Protection and Electronic Documents Act](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/)
 
 [^4]:  SQLCipher for Local Data Encryption: [SQLCipher Design](https://www.zetetic.net/sqlcipher/design/)
+[^5]:  MET: [Concept and formula](https://en.wikipedia.org/wiki/Metabolic_equivalent_of_task)
