@@ -159,37 +159,30 @@ Here is a list of the data that we expect to store for a user:
 
  **User Profile Data**
 
-- **Username or ID**: A unique identifier for the user.
-- **Age**: Used for adjusting fitness goals and recommendations.
-- **Gender**: For calibrating health metrics and recommendations.
-- **Height and Weight**: Essential for calculating health indicators like BMI.
-- **Fitness Goals**: User-defined targets, e.g., weight loss, muscle gain.
+- **Username or ID**
+- **Age**
+- **Gender** 
+- **Height and Weight** 
+- **Fitness Goals**
 
 **Health Metrics**
 
-- **Daily Steps**: Number of steps taken by the user each day.
-- **Heart Rate**: Measured during activities and rest for cardiovascular monitoring.
-- **Blood Pressure**: Optionally entered for health tracking.
-- **Sleep Patterns**: Duration and quality, including sleep stages if available.
-- **Calories Consumed**: Logged dietary intake.
-- **Calories Burned**: Estimated from physical activities.
-- **Water Intake**: Daily consumption tracking.
+- **Daily Steps**
+- **Heart Rate**
+- **Blood Pressure**
+- **Sleep Patterns**
+- **Calories Consumed**
+- **Calories Burned**
+- **Water Intake**
 
 **Fitness Activity Data**
 
-- **Workout Logs**: Details of exercises, duration, intensity, and frequency.
-- **Running/Cycling Routes**: GPS data for outdoor activities, stored locally.
-- **Personal Records**: Best performances in various activities.
+- **Workout Logs**
+- **Personal Records**
 
-**Device and App Usage Data**
-
-- **Device Type and OS Version**: For compatibility and performance optimization.
-- **App Settings and Preferences**: User-selected customization options.
-
-**Consent and Preferences**
-
-- **Data Sharing Preferences**: User choices regarding data sharing.
-- **Notification Preferences**: User selections for receiving notifications.
+- **App Settings and Preferences**
+- **Data Sharing Preferences**
+- **Notification Preferences**
 
 
 
