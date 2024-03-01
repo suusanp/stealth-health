@@ -24,41 +24,35 @@ Compared to existing fitness apps that rely on cloud-based data processing, our 
 ## 4. Privacy Requirements
 
 1. **Regulatory Compliance:**
-   - The application will adhere to the guidelines set forth by PIPEDA, as mandated by the Canadian government.
+   - The application will strictly adhere to the guidelines outlined in the **Personal Information Protection and Electronic Documents Act (PIPEDA)**, as mandated by the Canadian government.
 
 2. **Privacy by Design:**
-   - The application will integrate principles of privacy by design, prioritizing user privacy and data protection as fundamental aspects of the system architecture.
+   - The application's architecture embodies privacy by design principles through features such as local storage and manual data input. This approach ensures that user privacy is prioritized from the outset.
 
 3. **Explicit User Consent:**
-   - No data will be collected from users without their explicit consent.
-   - Users will be prompted for consent at each stage before any data collection occurs.
+   - Users will be prompted for explicit consent at each stage of data collection. The application will actively notify users about the implications of their choices within the app.
 
 4. **Transparent Data Handling:**
-   - Clear and transparent communication to users about the nature of data being collected and how it will be utilized.
-   - Users will be notified about the implications of every choice they make in the app.
-   - The privacy policy will be easily accessible and understandable to non-technical users.
+    - The application will provide clear explanations when making decisions about data input or analysis tools to ensure understanding even to non-technical users. 
 
 5. **Dynamic Consent Management:**
-   - Users will have the ability to provide or withdraw consent for data collection and usage at any point.
-   - The application will immediately delete user data upon their request.
+   - Users will have a straightforward mechanism to withdraw consent at any point. This can be achieved through a dedicated interface, ensuring that users retain control over all data collection.
 
 6. **Local Data Storage:**
-   - Fitness and health data will be stored locally on the user's device, ensuring users maintain full control over their personal information.
+   - To enhance security, fitness and health data will be stored locally on the user's device. Encryption techniques, such as **SQLCipher**, will be used.
 
 7. **Limited Collection:**
-   - The application will only collect data that is strictly necessary for the intended purpose and functionalities. It will refrain from unnecessary data collection.
+   - The application commits to collecting only the data necessary for its intended purposes and functionalities. Only essential fitness and health metrics will be gathered, minimizing the risk associated with unnecessary data collection.
 
 8. **Limited Use:**
-   - Collected data will only be used for the specific purposes for which consent was obtained.
-   - Data will not be repurposed for activities beyond the original user consent.
+   - Collected data will be strictly used for the specific purposes for which consent was obtained. This includes functionalities such as providing analysis tools without repurposing data for activities beyond the original user consent.
 
 9. **Non-Disclosure and Ad-Free Environment:**
-   - The application will not share any user data with third parties.
-   - No advertisements will be displayed within the application.
+   - The application will not disclose any user data to third parties. Additionally, users will experience an ad-free environment within the application.
 
 10. **Isolation from External Platforms:**
-    - The application will not integrate with social media platforms.
-    - No integrations with third-party services will be present to ensure an isolated and secure user experience.
+    - The application will remain isolated from social media platforms and will not integrate with third-party services. This intentional separation provides an isolated and private user experience without external data-sharing entities.
+
 
 ## 5. Stakeholders
 
