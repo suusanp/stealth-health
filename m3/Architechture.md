@@ -148,7 +148,7 @@ We identify the key stakeholders to understand the perspectives and interests su
 - challenge of making it fast enough while still keeping all the data on hand
   Describes the app's architecture, focusing on components like the local database and analytics engine, and includes UML diagrams to illustrate the system's structure.
 
-Local Database (Storage Component)
+### Local Database (Storage Component)
 
 - Technology Choice: Use SQLite or Realm for local storage. These databases are lightweight, can be embedded within the app, and don't require internet access, aligning with your privacy-first approach.  Android Studio supports the integration of both databases, offering tools and libraries that simplify working with these databases. For example, Room Persistence Library provides an abstraction layer over SQLite to enhance database access while still benefiting from SQLite's performance and reliability.
 
@@ -193,11 +193,11 @@ Here is a list of the data that we expect to store for a user:
 
 
 
-# Analytics Engine (Data Analysis Component)
+### Analytics Engine (Data Analysis Component)
 
 This part is responsible for processing and analyzing user-inputted health and fitness data. We want it to deliver personalized insights and recommendations while ensuring utmost data privacy and security. This component processes local data to avoid any external data exposure, the challenge is to make it fast enough to ensure user friendly usage.
 
-## Key Algorithms and Computations
+#### Key Algorithms and Computations
 
 1. **Trend Analysis**: Utilizes statistical methods to identify patterns over time in the user's data. For steps and heart rate data, we apply a moving average filter to smooth out short-term fluctuations and highlight longer-term trends.
 
@@ -209,7 +209,7 @@ This part is responsible for processing and analyzing user-inputted health and f
 
 3. **Sleep Quality Assessment**: Analyzes sleep pattern data, including total sleep time and restlessness, to provide insights into sleep quality. Uses algorithms to classify sleep stages based on movement and heart rate variability data.
 
-## Implementation
+#### Implementation
 
 - **Local Machine Learning Models**: For personalized insights, TensorFlow Lite is used to run pre-trained models directly on the device. These models are designed to be lightweight and efficient, suitable for mobile devices with limited computing resources.
 
