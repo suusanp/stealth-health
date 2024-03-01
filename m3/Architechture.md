@@ -37,8 +37,36 @@ The app is a fitness and health tracker that operates entirely offline, prioriti
 
 
 ## 2. Similar Systems
+Here we explore the key differences between our project and more traditional, cloud-based fitness apps.
+In general we see the following behaviour:
+### Cloud-Based Fitness Apps
+- **Data Storage**: Typically rely on cloud storage, posing potential privacy risks through data breaches or unauthorized access.
+- **Data Processing**: Data analysis often occurs on servers, requiring data to be transmitted over the internet.
+- **Third-Party Sharing**: It's not uncommon for apps to share data with third parties, either for analytics or advertising purposes.
+- **Consent Management**: While some apps do request user consent, the granularity and control over what data is shared can be lacking.
 
-Compared to existing fitness apps that rely on cloud-based data processing, our app stands out by processing and storing all data locally, significantly enhancing user privacy.
+Comparing fitbit to our specific project here are the main differences:
+
+### Data Anonymization and Security
+- **Fitbit**: Collects extensive personal data, which even if it is anonymized can often be re-identified, leading to profiling.
+- **Our Project**: Ensures true anonymization by processing and storing all data locally, making re-identification more difficult.
+
+### Third-Party Tracking and Sharing
+- **Fitbit**: Data may be shared with third parties for advertising and analytics, potentially exposing users to privacy risks.
+- **Our Project**: Adopts a strict no third-party sharing policy, ensuring user data is never used for advertising or shared with analytics companies.
+
+### Consent and User Control
+- **Fitbit**: Offers users some level of control over their data, but navigating privacy settings and understanding consent can be complex.
+- **Our Project**: Provides clear, easy-to-navigate consent options, giving users full control over what data is collected and how it's used.
+
+### Local vs. Cloud Data Processing
+- **Fitbit**: Relies on cloud-based data processing, which involves transferring user data to servers, increasing the risk of breaches.
+- **Our Project**: Processes all data locally on the device, eliminating the need for data transfer and reducing the risk of external breaches.
+
+### Commitment to Privacy
+- **Fitbit**: While offering useful health tracking features, has faced scrutiny over its privacy practices.
+- **Our Project**: Designed with a privacy-by-design philosophy, prioritizing user privacy above all else and building trust through transparent practices.
+
 
 ## 3. Functional Requirements
 
@@ -342,4 +370,4 @@ A user enters incorrect fitness data and wishes to correct it.
 Summarizes the architectural approach and its emphasis on privacy, highlighting the app's commitment to user control over personal data.
 
 ## Footnotes
- https://www.zetetic.net/sqlcipher/
+https://www.zetetic.net/sqlcipher/design/
