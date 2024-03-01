@@ -31,3 +31,17 @@
     - Anonymized data collection
 - Next steps: draft a rough outline of Milestone 3 and consult with a TA or Professor Robillard
 - Next meeting: Feb 26
+
+## Feb 29, 2024
+
+- Discussed and created a draft of the Architecture 
+- Discussed the platform and user interface of the App, decided on creating an Android app
+- App functions summary:
+    - ask consent for user to send regular notifications to remind to import their data, as well as to track their sleep cycle
+    - options to import data from as many wearable devices as they want: pedometer, heart rate monitor etc.
+    - options to input their age, weight, gender etc.
+    - reminders and options to regularly input health data such as resting heart rate, blood pressure when they get them checked
+    - ask user consent to access their location to track the distance they walk/run, to track their exercise data
+    - calculates calories burned etc. by fully online algorithms
+    - a visible and easy to access button the user can click on to learn about the App's privacy policy, as well as a dedicated section explaining the privacy implications of every choice the user makes in the app.
+- Created an issue to divide the To-Do for next steps, next steps will be to add the discussed details to the Architecture document as well as create the high level design diagrams. 
