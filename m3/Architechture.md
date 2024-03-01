@@ -56,7 +56,58 @@ Compared to existing fitness apps that rely on cloud-based data processing, our 
 
 ## 5. Stakeholders
 
-Identifies key stakeholders including privacy-conscious users, fitness enthusiasts, and healthcare professionals interested in secure data sharing.
+We identify the key stakeholders to understand the perspectives and interests surrounding our alternative fitness application, to ensure that the application caters to the needs and concerns of various user groups. The main stakeholders include:
+
+### 1. Privacy-Conscious Users:
+   - **Characteristics:**
+      - Individuals with a heightened concern for the privacy of their personal health and fitness data.
+   - **Interests:**
+      - Prioritize privacy features such as data handling transparency and limited data use and collection.
+      - Avoid distribution and disclosure of their health data to third parties.
+      - Seek assurance that their data is handled with confidentiality.
+   - **Expectations:**
+      - Desire transparent communication regarding the application's privacy features.
+      - Value control over data sharing and consent management.
+
+### 2. Fitness Enthusiasts:
+   - **Characteristics:**
+      - Users passionate about maintaining a healthy lifestyle through fitness activities.
+   - **Interests:**
+      - Look for a reliable tool that accurately tracks and analyzes various health metrics.
+      - Prioritize a user-friendly experience for both data input and interpretation.
+   - **Expectations:**
+      - Expect intuitive and easy-to-use features for tracking and analyzing fitness data.
+      - Value personalized insights that contribute to an improved fitness regimen.
+
+### 3. App Developers:
+   - **Characteristics:**
+      - The development team responsible for the creation of the application (us).
+   - **Interests:**
+      - Focus on aligning the application with privacy regulations and standards.
+      - Seek to provide a pleasant user experience while maintaining privacy.
+   - **Expectations:**
+      - Prioritize user privacy and data security in the application's architecture.
+      - Value user control and transparency in data handling within the application.
+
+### 4. Privacy Advocates:
+   - **Characteristics:**
+      - Individuals or organizations with a focus on safeguarding user privacy rights.
+   - **Interests:**
+      - Monitor and evaluate applications to ensure they adhere to established privacy standards.
+      - Advocate for transparent privacy practices and user rights.
+   - **Expectations:**
+      - Expect detailed privacy policies and transparent communication from the application.
+      - Value cooperation and responsiveness from the development team regarding privacy concerns.
+
+### 5. Regulatory Authorities:
+   - **Characteristics:**
+      - Entities responsible for overseeing and enforcing privacy regulations.
+   - **Interests:**
+      - Ensure applications comply with legal requirements, such as PIPEDA in Canada.
+      - Focus on safeguarding user privacy in accordance with established laws.
+   - **Expectations:**
+      - Expect the application to align with national and regional privacy regulations.
+      
 
 ## 6. Architectural Design Decisions and Models
 - challenge of making it fast enough while still keeping all the data on hand
