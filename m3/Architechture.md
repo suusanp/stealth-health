@@ -363,12 +363,13 @@ If a user enters incorrect fitness data and wishes to correct it.
 
 
 ## 8. Conclusion
-
-Summarizes the architectural approach and its emphasis on privacy, highlighting the app's commitment to user control over personal data.
+Our app's design philosophy centers on privacy by design, offering a secure and user-friendly alternative for health and fitness tracking. By addressing the privacy concerns associated with Fitbit and other cloud-based fitness apps, we aim to provide privacy-conscious users with a solution that respects their data sovereignty and promotes a healthier lifestyle without compromising personal information.
 
 ## Footnotes
 
 [^1]: https://www.fitbit.com/global/us/legal/privacy-policy 
-[^2]: https://privacy.commonsense.org/privacy-report/Fitbit
-[^3]: https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/
-[^4]:  https://www.zetetic.net/sqlcipher/design/
+[^2]:  Fitbit Privacy Concerns: [Privacy Analysis of Fitbit](https://privacy.commonsense.org/privacy-report/Fitbit)
+
+[^3]:PIPEDA Overview: [Personal Information Protection and Electronic Documents Act](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/)
+
+[^4]:  SQLCipher for Local Data Encryption: [SQLCipher Design](https://www.zetetic.net/sqlcipher/design/)
