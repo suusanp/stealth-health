@@ -52,7 +52,7 @@ Comparing fitbit to our specific project here are the main differences:
 - **Our Project**: Ensures true anonymization by processing and storing all data locally, making re-identification more difficult.
 
 ### Third-Party Tracking and Sharing
-- **Fitbit**: Data may be shared with third parties for advertising and analytics, potentially exposing users to privacy risks.
+- **Fitbit**: Data may be shared with third parties for advertising and analytics, potentially exposing users to privacy risks [^1] .
 - **Our Project**: Adopts a strict no third-party sharing policy, ensuring user data is never used for advertising or shared with analytics companies.
 
 ### Consent and User Control
@@ -64,7 +64,7 @@ Comparing fitbit to our specific project here are the main differences:
 - **Our Project**: Processes all data locally on the device, eliminating the need for data transfer and reducing the risk of external breaches.
 
 ### Commitment to Privacy
-- **Fitbit**: While offering useful health tracking features, has faced scrutiny over its privacy practices.
+- **Fitbit**: While offering useful health tracking features, has faced scrutiny over its privacy practices [^2] .
 - **Our Project**: Designed with a privacy-by-design philosophy, prioritizing user privacy above all else and building trust through transparent practices.
 
 
@@ -79,7 +79,7 @@ Comparing fitbit to our specific project here are the main differences:
 
 1. **Regulatory Compliance:**
 
-   - The application will strictly adhere to the guidelines outlined in the **Personal Information Protection and Electronic Documents Act (PIPEDA)**, as mandated by the Canadian government.
+   - The application will strictly adhere to the guidelines outlined in the **Personal Information Protection and Electronic Documents Act (PIPEDA)** [^3], as mandated by the Canadian government.
 
 2. **Explicit User Consent:**
 
@@ -99,7 +99,7 @@ Comparing fitbit to our specific project here are the main differences:
 
 6. **Local Data Storage:**
 
-   - To enhance security, fitness and health data will be stored locally on the user's device. Encryption techniques, such as **SQLCipher**, will be used. More justification and details can be found in part 6.
+   - To enhance security, fitness and health data will be stored locally on the user's device. Encryption techniques, such as **SQLCipher** [^4]: , will be used. More justification and details can be found in part 6.
 
 7. **Limited Collection:**
 
@@ -114,7 +114,7 @@ Comparing fitbit to our specific project here are the main differences:
 
 ## 5. Stakeholders
 
-We identify the key stakeholders to understand the perspectives and interests surrounding our alternative fitness application, to ensure that the application caters to the needs and concerns of various user groups. The main stakeholders include:
+We identify the key stakeholders to understand the perspectives and interests surrounding our alternative fitness application, to ensure that the application answers to the needs and concerns of different types of users. The main types include:
 
 ### 1. Privacy-Conscious Users:
 
@@ -173,14 +173,11 @@ We identify the key stakeholders to understand the perspectives and interests su
 
 ## 6. Architectural Design Decisions and Models
 
-- challenge of making it fast enough while still keeping all the data on hand
-  Describes the app's architecture, focusing on components like the local database and analytics engine, and includes UML diagrams to illustrate the system's structure.
-
 ### Local Database (Storage Component)
 
-- Technology Choice: Use SQLite or Realm for local storage. These databases are lightweight, can be embedded within the app, and don't require internet access, aligning with your privacy-first approach.  Android Studio supports the integration of both databases, offering tools and libraries that simplify working with these databases. For example, Room Persistence Library provides an abstraction layer over SQLite to enhance database access while still benefiting from SQLite's performance and reliability.
+- Technology Choice: We plan on using SQLite or Realm for local storage. These databases are lightweight and can be embedded within the app. They don't require internet access, aligning with your privacy-first approach. For ex.  Android Studio supports the integration of both of them and offers tools and libraries that simplify working with these utilities.
 
-- Encryption: Use database encryption, like SQLCipher, to protect stored data. It is an open-source extension to SQLite that provides  256-bit AES encryption of database files.The goal is that even if the device is compromised, the fitness and health data remains secure. Any data written to the disk by SQLite or Realm can be fully encrypted, ensuring that user data remains secure even if the device is compromised. the cipher operates by encrypting the data before it's written to disk and decrypting it upon read, all transparently to the application. This means the application can interact with the database using standard SQL commands without needing to manage encryption and decryption explicitly. We can integrate it via Gradle dependencies and ensuring that the database instantiation uses SQLCipher’s encrypted database classes instead of the standard SQLite classes.
+- Encryption: Use database encryption, like SQLCipher, to protect stored data. It is an open-source extension to SQLite that provides  256-bit AES encryption of database files.The goal is that even if the device is compromised, the fitness and health data remains secure. Any data written to the disk can be fully encrypted, ensuring that it  remains secure even if the device is compromised. the cipher operates by encrypting the data before it's written to disk and decrypting it upon read, all transparently to the application. This means the application can interact with the database using standard SQL commands without needing to manage encryption and decryption explicitly, esaier for coding. We can integrate it via Gradle dependencies and so, ensure hat the database instantiation uses SQLCipher’s encrypted database classes instead of the standard SQLite classes.
 
 - Data Minimization principle: We aim to store only the data necessary for the app's functionality. This minimizes the risk in case of unauthorized access.This principle is a core tenet of privacy by design and is especially important in our case as we deal with sensitive data.
 Here is a list of the data that we expect to store for a user:
@@ -215,7 +212,7 @@ Here is a list of the data that we expect to store for a user:
 
 ### Analytics Engine (Data Analysis Component)
 
-This part is responsible for processing and analyzing user-inputted health and fitness data. We want it to deliver personalized insights and recommendations while ensuring utmost data privacy and security. This component processes local data to avoid any external data exposure, the challenge is to make it fast enough to ensure user friendly usage.
+This part is responsible for processing and analyzing health and fitness data. We want it to deliver personalized insights and recommendations while ensuring data privacy and security. This component processes **local** data to avoid any external data exposure, the challenge here is to make it fast enough to ensure user friendly usage.
 
 #### Key Algorithms and Computations
 
@@ -370,4 +367,8 @@ A user enters incorrect fitness data and wishes to correct it.
 Summarizes the architectural approach and its emphasis on privacy, highlighting the app's commitment to user control over personal data.
 
 ## Footnotes
-https://www.zetetic.net/sqlcipher/design/
+
+[^1]: https://www.fitbit.com/global/us/legal/privacy-policy 
+[^2]: https://privacy.commonsense.org/privacy-report/Fitbit
+[^3]: https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/
+[^4]:  https://www.zetetic.net/sqlcipher/design/
