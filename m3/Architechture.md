@@ -258,15 +258,11 @@ This section outlines  important scenarios relevant to privacy within the app.
 
 1. **App Welcome Screen**
     - **User Action**: The user opens the app for the first time.
-    - **System Display**: The app presents a welcome screen, briefly introducing the app's purpose and its focus on privacy and user control over personal data.
+    - **System Display**: The app presents a welcome screen, introducing the app's purpose and its focus on privacy and user control.
 
 2. **Privacy Overview and Consent**
-    - **System Display**: Before proceeding, the app presents an overview of its privacy practices, including how it collects, uses, and protects user data. This section emphasizes the app's commitment to not collecting data without explicit user consent.
+    - **System Display**: The app presents an overview of its privacy practices, including how it collects, uses, and protects user data. 
     - **User Interaction**: The user is asked to acknowledge the privacy overview and give consent to proceed with the app's basic data collection necessary for functionality.
-
-3. **Account Creation or Anonymity Option**
-    - **System Display**: The app offers the user the choice to create an account with minimal information (e.g., email) or continue using the app anonymously.
-    - **User Action**: The user chooses between creating an account or proceeding anonymously. This choice underscores the app's privacy-first approach by allowing use without personal identification.
 
 4. **Initial Setup and Preferences**
     - **System Display**: The app guides the user through a simple setup process, including entering basic fitness goals (optional), and preferences for notifications and data input reminders.
