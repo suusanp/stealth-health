@@ -179,7 +179,6 @@ Here is a list of the data that we expect to store for a user:
 
 - **Workout Logs**
 - **Personal Records**
-
 - **App Settings and Preferences**
 - **Data Sharing Preferences**
 - **Notification Preferences**
