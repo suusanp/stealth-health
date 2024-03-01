@@ -300,6 +300,8 @@ This section outlines  important scenarios relevant to privacy within the app.
 
 ### Scenario 1: First-time User App Onboarding
 
+![Alt text](image.png)
+
 #### Process
 
 1. **App Welcome Screen**
@@ -403,3 +405,4 @@ Our app's design philosophy centers on privacy by design, We wish to provide a s
 [^10]: Mifflin, M.D., St Jeor, S.T., Hill, L.A., Scott, B.J., Daugherty, S.A., & Koh, Y.O. (1990). "A new predictive equation for resting energy expenditure in healthy individuals." The American Journal of Clinical Nutrition, 51(2), 241-247. [AJCN](https://academic.oup.com/ajcn/article-abstract/51/2/241/4695347)
 [^11]: Sally Edwards. "The Heart Rate Monitor Book." Offers an in-depth guide to understanding and using heart rate monitors for training.[link](https://archive.org/details/heartratemonitor00edwa)
 [^12]: Water Intake Formula: Based on general hydration guidelines from health organizations, such as the National Academies of Sciences, Engineering, and Medicine's recommendation on [Daily Water Intake](https://www.nap.edu/read/10925/chapter/1)
+
