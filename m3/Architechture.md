@@ -150,10 +150,46 @@ We identify the key stakeholders to understand the perspectives and interests su
 
 Local Database (Storage Component)
 
-- Technology Choice: Use SQLite or Realm for local storage. These databases are lightweight, can be embedded within the app, and don't require internet access, aligning with your privacy-first approach. https://www.zetetic.net/sqlcipher/
-- Encryption: Use database encryption, like SQLCipher, to protect stored data.So that even if the device is compromised, the fitness and health data remains secure.
-- Data Minimization principle: Store only the data necessary for the app's functionality. This minimizes the risk in case of unauthorized access.
+- Technology Choice: Use SQLite or Realm for local storage. These databases are lightweight, can be embedded within the app, and don't require internet access, aligning with your privacy-first approach.  Android Studio supports the integration of both databases, offering tools and libraries that simplify working with these databases. For example, Room Persistence Library provides an abstraction layer over SQLite to enhance database access while still benefiting from SQLite's performance and reliability.
 
+- Encryption: Use database encryption, like SQLCipher, to protect stored data. It is an open-source extension to SQLite that provides  256-bit AES encryption of database files.The goal is that even if the device is compromised, the fitness and health data remains secure. Any data written to the disk by SQLite or Realm can be fully encrypted, ensuring that user data remains secure even if the device is compromised. the cipher operates by encrypting the data before it's written to disk and decrypting it upon read, all transparently to the application. This means the application can interact with the database using standard SQL commands without needing to manage encryption and decryption explicitly. We can integrate it via Gradle dependencies and ensuring that the database instantiation uses SQLCipher’s encrypted database classes instead of the standard SQLite classes.
+
+- Data Minimization principle: We aim to store only the data necessary for the app's functionality. This minimizes the risk in case of unauthorized access.This principle is a core tenet of privacy by design and is especially important in our case as we deal with sensitive data.
+Here is a list of the data that we expect to store for a user:
+
+### User Profile Data
+
+- **Username or ID**: A unique identifier for the user.
+- **Age**: Used for adjusting fitness goals and recommendations.
+- **Gender**: For calibrating health metrics and recommendations.
+- **Height and Weight**: Essential for calculating health indicators like BMI.
+- **Fitness Goals**: User-defined targets, e.g., weight loss, muscle gain.
+
+### Health Metrics
+
+- **Daily Steps**: Number of steps taken by the user each day.
+- **Heart Rate**: Measured during activities and rest for cardiovascular monitoring.
+- **Blood Pressure**: Optionally entered for health tracking.
+- **Sleep Patterns**: Duration and quality, including sleep stages if available.
+- **Calories Consumed**: Logged dietary intake.
+- **Calories Burned**: Estimated from physical activities.
+- **Water Intake**: Daily consumption tracking.
+
+### Fitness Activity Data
+
+- **Workout Logs**: Details of exercises, duration, intensity, and frequency.
+- **Running/Cycling Routes**: GPS data for outdoor activities, stored locally.
+- **Personal Records**: Best performances in various activities.
+
+### Device and App Usage Data
+
+- **Device Type and OS Version**: For compatibility and performance optimization.
+- **App Settings and Preferences**: User-selected customization options.
+
+### Consent and Preferences
+
+- **Data Sharing Preferences**: User choices regarding data sharing.
+- **Notification Preferences**: User selections for receiving notifications.
 Analytics Engine (Data Analysis Component)
 
 User Interface (UI Component)
@@ -169,3 +205,4 @@ Details scenarios relevant to privacy, such as data consent withdrawal, illustra
 Summarizes the architectural approach and its emphasis on privacy, highlighting the app's commitment to user control over personal data.
 
 ## Footnotes
+ https://www.zetetic.net/sqlcipher/
