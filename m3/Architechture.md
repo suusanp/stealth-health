@@ -205,7 +205,7 @@ We identify the key stakeholders to understand the perspectives and interests su
 - Data Minimization principle: We aim to store only the data necessary for the app's functionality. This minimizes the risk in case of unauthorized access.This principle is a core tenet of privacy by design and is especially important in our case as we deal with sensitive data.
   Here is a list of the data that we expect to store for a user:
 
-  **User Profile Data**
+**User Profile Data**
 
 - **Username or ID**
 - **Age**
