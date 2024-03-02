@@ -79,9 +79,9 @@ Our application aims to be more similar to FitoTrack than Gadgetbridge, but will
 ## 3. Functional Requirements
 
 - **User Interface**:The user interface will be designed to be simple and intuitive, allowing the user to input their fitness and health data easily.
-- **Data Storage**: The application will store the user's fitness and health data locally on their device. This data will not be shared with any third parties.
-- **Data Analysis**: The application will provide the user with tools to analyze their fitness and health data. This will allow the user to gain insights into their health and fitness, without having to share their data with any third parties.
-- **Consent Management**: The application will provide the user with clear and transparent information about what data is being collected and how it is being used. The user will have the ability to provide or withdraw consent for the collection and use of their data at any time.
+- **Data Storage**: The application will store the user's fitness and health data locally on their device. This data will not be shared with any third parties. The user will not need to create an account either, so the application will truly be device-specific and offline.
+- **Data Analysis**: The application will provide the user with tools to analyze their fitness and health data. This will allow the user to gain insights into their health and fitness, without having to share their data with any third parties. All the algorithms used for data analysis will be run offline. For example, to calculate the calories burned in a day, the formula will be stored offline, run offline, and store the data offline. 
+- **Consent Management**: The application will provide the user with clear and transparent information about what data is being collected and how it is being used. The user will have the ability to provide or withdraw consent for the collection and use of their data at any time. The application will still be accessible even if the user does not give consent for some features. For example, the application will ask for permission to access the user's location. Even if the user declines, the application will be usable, just without the functionalities that would have used the location data.
 
 ## 4. Privacy Requirements
 
