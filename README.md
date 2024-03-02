@@ -62,4 +62,4 @@ This project is created for educational purposes as part of the COMP 555 course 
 
 ## Project Status
 
-Active development. We are currently focusing on completing Milestone 1, with following milestones planned according to the course schedule.
+Active development. We are currently focusing on completing Milestone 3, with following milestones planned according to the course schedule.
