@@ -31,6 +31,7 @@ This document outlines the contributions of each team member.
 - **Responsibilities**:
   - Brain storming and researching on the application idea
   - Planning and organizing the team meetings
+  - Fitbit API research and analysis
 
 ### Gaby Le Bideau
 
