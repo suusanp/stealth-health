@@ -19,7 +19,7 @@ The app is a fitness and health tracker that operates entirely offline, prioriti
 - Users will be prompted for explicit consent before disclosing health data
 - Users will be asked for consent to receive regular notifications for data import reminders and sleep cycle tracking.
 - Users will be asked explicit consent to share their location information, different choices (precise location vs approximate location, background or foreground location tracking) will be available.
-- In all cases, if the user chooses to not disclose or give permission to anything, the app will still be avilable.
+- In all cases, if the user chooses to not disclose or give permission to anything, the app will still be available.
 
 ### 2. Data Input
 
