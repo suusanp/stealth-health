@@ -11,43 +11,32 @@ This document outlines the contributions of each team member.
 
 ---
 
-## Contributions M1
+## Contributions M3
 ### Aybuke Ekiz
 
-- **Role**: look into Company background
 - **Responsibilities**:
-  - Conducted the initial research to define the scope of the project.
-  - Analyzed the historical development of Fitbit devices and their impact on privacy.
+  - Brain storming and getting feedback on the application idea
+  - Researching into the similar systems, contributing to the Similar Systems section in the Architecture.md
+  - Contributing to the Functional Requirements section in the Architecture.md
  
-
 ### Susan Pan
 
-- **Role**: Legal Analyst and Policy Researcher
 - **Responsibilities**:
-  - Performed in-depth analysis of Google/Fitbit’s privacy documentation in relation to PIPEDA.
-  - Analyzed language used in Google/Fitbit privacy notices and terms of service to identify non-compliance with PIPEDA.
-  - Analyzed language used in PIPEDA to identify weaknesses and areas of improvement.
-  - Contributed to conclusion and research methods.
-  - Unified team citations and references.
+  - Brain storming and researching on the application idea
+  - Contributing to the Privacy Requirements and Stakeholders sections in the Architecture.md
+  - Spellcheck/grammar check of the Architecture.md
 
 ### Jeffrey Kauv Li
 
-- **Role**: Data Analyst
 - **Responsibilities**:
-  - Led the analysis of Fitbit’s data collection practices and identified privacy threats.
-  - Experimented with the Fitbit service to uncover tracking mechanisms.
-  - Contributed to the comparative analysis of privacy policies and actual data handling practices.
-  - Edited the final report for clarity, coherence, and readability.
-
+  - Brain storming and researching on the application idea
+  - Planning and organizing the team meetings
 
 ### Gaby Le Bideau
 
-- **Role**: Project Coordinator and Editor
 - **Responsibilities**:
-  - defined the methodologies used in the case study
-  - Synthesized the research findings into the report’s conclusions.
-  - looked into potential future developements of fitbit and concerns on privacy
-  - investigated future research ideas
-
+  - Brain storming and researching on the application idea
+  - Creating the initial draft of the Architecture.md
+  - Contributing to the Architectural Design Decisions and Models and Important Scenarios in the Architecture.md
   
 ---
