@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Modal, Button, FlatList, Alert } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 
 const DropdownModal = ({ visible, options, onSelect, closeModal }) => (
   <Modal visible={visible} animationType="slide" transparent={true}>
@@ -59,30 +62,38 @@ const UserProfileData = ({ onNext }) => {
   };
 
   return (
-    <View style={styles.container}>
+       <View style={styles.container}>
       <Text style={styles.introText}>
         Welcome to our app! At [this app], we aim to provide users with an overview of their health statistics without jeopardizing their privacy. Please choose whatever you are comfortable with, as all options are optional. Let's build your profile!
       </Text>
+      <MaterialIcons name="elderly" size={20} color="#333" style={styles.icon} />
       <TouchableOpacity style={styles.dropdown} onPress={() => openModal(ageRanges, (value) => {setAgeRange(value); saveData('ageRange', value);})}>
         <Text style={styles.dropdownText}>{ageRange || "Select Age Range"}</Text>
       </TouchableOpacity>
+      <MaterialCommunityIcons name="gender-male-female" size={20} color="#333" style={styles.icon} />
       <TouchableOpacity style={styles.dropdown} onPress={() => openModal(genders, (value) => {setGender(value); saveData('gender', value);})}>
         <Text style={styles.dropdownText}>{gender || "Select Gender"}</Text>
       </TouchableOpacity>
-      <TextInput
-        style={styles.input}
-        placeholder="Height (cm)"
-        keyboardType="numeric"
-        value={height}
-        onChangeText={(text) => {setHeight(text); saveData('height', text);}}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Weight (kg)"
-        keyboardType="numeric"
-        value={weight}
-        onChangeText={(text) => {setWeight(text); saveData('weight', text);}}
-      />
+      <View style={styles.inputContainer}>
+        <MaterialCommunityIcons name="human-male-height" size={20} color="#333" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Height (cm)"
+          keyboardType="numeric"
+          value={height}
+          onChangeText={(text) => {setHeight(text); saveData('height', text);}}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <MaterialCommunityIcons name="weight-kilogram" size={20} color="#333" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Weight (kg)"
+          keyboardType="numeric"
+          value={weight}
+          onChangeText={(text) => {setWeight(text); saveData('weight', text);}}
+        />
+      </View>
       <DropdownModal
         visible={modalVisible}
         options={modalOptions}
