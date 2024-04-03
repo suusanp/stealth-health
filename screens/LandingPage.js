@@ -1,17 +1,43 @@
-import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView,ScrollView } from 'react-native';
-import ActivityRing from './ActivityRing';
-import TopNavigationBar from './TopNavigationBar'; // Import TopNavigationBar
-import BottomNavigationBar from './BottomNavigationBar'; // Import BottomNavigationBar
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import ActivityRing from './ActivityRing'; // Adjust the import path as necessary
+import TopNavigationBar from './TopNavigationBar'; // Adjust the import path as necessary
+import BottomNavigationBar from './BottomNavigationBar'; // Adjust the import path as necessary
+import TopTopBar from './TopTopBar'; // Adjust the import path as necessary
+import TermsOfServicePopup from './TermsOfServicePopup'; // Adjust the import path as necessary
 
-const LandingPage = () => {
+const LandingPage = ({ navigation }) => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    async function checkAgreement() {
+      const agreementStatus = await AsyncStorage.getItem('agreementStatus');
+      if (!agreementStatus) {
+        setShowPopup(true);
+      }
+    }
+
+    checkAgreement();
+  }, []);
+
+  const handleAgree = async () => {
+    await AsyncStorage.setItem('agreementStatus', 'agreed');
+    setShowPopup(false);
+  };
+
+  const handleClose = () => {
+    setShowPopup(false);
+  };
+  
   return (
     <SafeAreaView style={styles.safeArea}>
-      <TopNavigationBar title="Today" />
+      <TopTopBar projectName="        Your Health Dashboard" navigation={navigation} />
+      <TopNavigationBar title="Today" navigation={navigation} />
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <View style={{ height: 20 }} />
         <View style={styles.ringRow}>
-          <ActivityRing size={200} progress={0.6} color="#00ACC1">
+          <ActivityRing size={200} progress={0.6} color="#4B9CD3">
             <Text style={styles.ringText}>0</Text>
             <Text style={styles.ringLabel}>Steps</Text>
           </ActivityRing>
@@ -21,14 +47,19 @@ const LandingPage = () => {
             <Text style={styles.ringText}>0</Text>
             <Text style={styles.ringLabel}>km</Text>
           </ActivityRing>
-          <View style={{ width: 10 }} /> 
+          <View style={{ width: 10 }} />
           <ActivityRing size={100} progress={0.9} color="#43A047">
             <Text style={styles.ringText}>857</Text>
             <Text style={styles.ringLabel}>kcal</Text>
           </ActivityRing>
         </View>
       </ScrollView>
-      <BottomNavigationBar />
+      <BottomNavigationBar navigation={navigation} />
+      <TermsOfServicePopup
+        visible={showPopup}
+        onAgree={handleAgree}
+        onClose={handleClose}
+      />
     </SafeAreaView>
   );
 };
@@ -40,8 +71,10 @@ const styles = StyleSheet.create({
   },
   scrollViewContainer: {
     flexGrow: 1,
+    justifyContent: 'flex-start',
     paddingTop: 10,
-    paddingBottom: 50, // Space for the bottom navigation bar
+    paddingHorizontal: 10,
+    paddingBottom: 10,
   },
   ringRow: {
     flexDirection: 'row',
@@ -59,24 +92,6 @@ const styles = StyleSheet.create({
     color: '#424242',
     marginTop: 4,
   },
-  // Style for BottomNavigationBar component is needed if not defined in its own file
-  bottomNav: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    paddingVertical: 3,
-    backgroundColor: '#fff',
-    borderTopWidth: 1,
-    borderColor: '#eaeaea',
-  },
-  navItem: {
-    padding: 10,
-  },
-  // Add more styling as needed
 });
 
 export default LandingPage;
