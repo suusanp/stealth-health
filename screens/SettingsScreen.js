@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native'; // Make sure to import
 // Import your page components here
 import UserProfileData from './UserProfileData';
 import HealthMetrics from './HealthMetrics';
-import DataManagement from './DataManagement';
+import DataManagement from '../backend/DataManagement';
 // Ensure these components are correctly imported from their files
 
 const SettingsScreen = () => {

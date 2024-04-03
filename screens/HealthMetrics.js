@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Switch, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { getDataCollectionFlags, saveDataCollectionFlags } from './FileSystemService'; // Make sure the path is correct
+import { getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService'; // Make sure the path is correct
 
 const HealthMetrics = () => {
   // Initialize with default values directly in the state
