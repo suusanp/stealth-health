@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { getPreferences, savePreferences, getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService';
 import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure this path is correct for your project structure
+import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
 
 const DataManagementScreen = ({ navigation }) => {
   const [dataRetention, setDataRetention] = useState('');
@@ -13,6 +14,7 @@ const DataManagementScreen = ({ navigation }) => {
     sleepPatterns: false,
     waterIntake: false,
   });
+  const [availableFunctionalities, setAvailableFunctionalities] = useState([]);
 
   // Data retention options
   const DataRetentionOptions = [
@@ -26,6 +28,9 @@ const DataManagementScreen = ({ navigation }) => {
       setNotificationsEnabled(preferences.notificationsEnabled || false);
       const flags = await getDataCollectionFlags();
       setMetrics(flags);
+      // Compute available functionalities based on initial metrics
+      const functionalities = computeAvailableFunctionalities(flags);
+      setAvailableFunctionalities(functionalities);
     };
     loadSettings();
   }, []);
@@ -34,8 +39,11 @@ const DataManagementScreen = ({ navigation }) => {
     const updatedMetrics = { ...metrics, [metric]: !metrics[metric] };
     setMetrics(updatedMetrics);
     await saveDataCollectionFlags(updatedMetrics);
+    // Compute available functionalities based on updated metrics
+    const functionalities = computeAvailableFunctionalities(updatedMetrics);
+    setAvailableFunctionalities(functionalities);
   };
-
+  
   const renderDataRetentionOptions = () => (
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.carousel}>
       {DataRetentionOptions.map((option, index) => (
@@ -83,12 +91,15 @@ const DataManagementScreen = ({ navigation }) => {
             />
           </View>
         ))}
+        <Text style={styles.header}>Available Functionalities:</Text>
+        {availableFunctionalities.map((func, index) => (
+          <Text key={index} style={styles.metricText}>{func}</Text>
+        ))}
       </ScrollView>
       <BottomNavigationBar navigation={navigation} />
     </View>
   );
 };
-
 
 
 const styles = StyleSheet.create({
