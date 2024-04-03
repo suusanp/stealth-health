@@ -67,7 +67,7 @@ const LandingPage = ({ navigation }) => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   scrollViewContainer: {
     flexGrow: 1,
@@ -77,19 +77,19 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   ringRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
     marginVertical: 20,
   },
   ringText: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#424242',
+    fontWeight: "bold",
+    color: "#424242",
   },
   ringLabel: {
     fontSize: 16,
-    color: '#424242',
+    color: "#424242",
     marginTop: 4,
   },
 });
