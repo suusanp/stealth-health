@@ -30,6 +30,7 @@ const TopNavigationBar = ({ title }) => {
 
   return (
     <View style={styles.navBar}>
+   
       <TouchableOpacity
         onPressIn={() => handleIconPressIn('back')}
         onPressOut={() => handleIconPressOut('back')}
@@ -37,22 +38,10 @@ const TopNavigationBar = ({ title }) => {
         <Icon name="chevron-left" size={30} color="#000" style={{ opacity: iconOpacity.back }} />
       </TouchableOpacity>
       
-      <Text style={styles.title}>              {title}</Text>
+      <Text style={styles.title}>  {title}</Text>
       
       <View style={styles.iconsRight}>
-        <TouchableOpacity
-          onPressIn={() => handleIconPressIn('edit')}
-          onPressOut={() => handleIconPressOut('edit')}
-          onPress={() => handleIconPress('edit')}>
-          <Icon name="pencil" size={30} color="#000" style={{ opacity: iconOpacity.edit }} />
-        </TouchableOpacity>
-        <Text> </Text>
-        <TouchableOpacity
-          onPressIn={() => handleIconPressIn('stats')}
-          onPressOut={() => handleIconPressOut('stats')}
-          onPress={() => handleIconPress('stats')}>
-          <Icon name="trending-up" size={30} color="#000" style={{ opacity: iconOpacity.stats }} />
-        </TouchableOpacity>
+
         <Text> </Text>
         <TouchableOpacity
           onPressIn={() => handleIconPressIn('forward')}
@@ -70,12 +59,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 18,
+    paddingVertical: 12,
+    paddingHorizontal: 13,
     borderBottomWidth: 1,
     borderColor: '#eaeaea',
   },
   title: {
-    fontSize: 20,
+    fontSize: 16,
    
     fontWeight: 'bold',
   },

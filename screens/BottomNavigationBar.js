@@ -1,14 +1,15 @@
+// BottomNavigationBar.js
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign'; // Ensure you have `react-native-vector-icons` installed and properly linked
+import Icon from 'react-native-vector-icons/AntDesign';
 
-const BottomNavigationBar = () => {
+const BottomNavigationBar = ({ navigation }) => {
   return (
     <View style={styles.bottomNav}>
-      <TouchableOpacity style={styles.navItem}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('LandingPage')}>
         <Icon name="home" size={30} color="#000" />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('PersonalPage')}>
         <Icon name="user" size={30} color="#000" />
       </TouchableOpacity>
     </View>
