@@ -37,7 +37,7 @@ const LandingPage = ({ navigation }) => {
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <View style={{ height: 20 }} />
         <View style={styles.ringRow}>
-          <ActivityRing size={200} progress={0.6} color="#4B9CD3">
+          <ActivityRing size={200} progress={0.1} color="#4B9CD3">
             <Text style={styles.ringText}>0</Text>
             <Text style={styles.ringLabel}>Steps</Text>
           </ActivityRing>
