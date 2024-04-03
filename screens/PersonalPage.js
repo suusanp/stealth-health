@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Alert } from 'react-native';
-import { getPreferences, savePreferences, getDataCollectionFlags, saveDataCollectionFlags } from './FileSystemService';
-import BottomNavigationBar from './BottomNavigationBar'; // Ensure this path is correct for your project structure
+import { getPreferences, savePreferences, getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService';
+import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure this path is correct for your project structure
 
 const DataManagementScreen = ({ navigation }) => {
   const [dataRetention, setDataRetention] = useState('');

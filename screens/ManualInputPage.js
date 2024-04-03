@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
-import { getDataCollectionFlags } from './FileSystemService';
-import { saveDailyData, getDailyData } from './DailyDataManagement'; 
+import { getDataCollectionFlags } from '../backend/FileSystemService';
+import { saveDailyData, getDailyData } from '../backend/DailyDataManagement'; 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 

@@ -10,8 +10,8 @@ import ProfileManage from './screens/ProfileManage';
 import SyncPage from './screens/SyncPage';
 import WatchInputPage from './screens/WatchInputPage';
 import ManualInputPage from './screens/ManualInputPage';
-import { generateAndStoreKey, getEncryptionKey } from './screens/SecureStoreService';
-import { encryptData } from './screens/EncryptionService';
+import { generateAndStoreKey, getEncryptionKey } from './backend/SecureStoreService';
+import { encryptData } from './backend/EncryptionService';
 
 const Stack = createNativeStackNavigator();
 

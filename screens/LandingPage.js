@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import ActivityRing from './ActivityRing'; // Adjust the import path as necessary
-import TopNavigationBar from './TopNavigationBar'; // Adjust the import path as necessary
-import BottomNavigationBar from './BottomNavigationBar'; // Adjust the import path as necessary
-import TopTopBar from './TopTopBar'; // Adjust the import path as necessary
+import ActivityRing from '../components/ActivityRing'; // Adjust the import path as necessary
+import TopNavigationBar from '../components/TopNavigationBar'; // Adjust the import path as necessary
+import BottomNavigationBar from '../components/BottomNavigationBar'; // Adjust the import path as necessary
+import TopTopBar from '../components/TopTopBar'; // Adjust the import path as necessary
 import TermsOfServicePopup from './TermsOfServicePopup'; // Adjust the import path as necessary
 
 const LandingPage = ({ navigation }) => {
