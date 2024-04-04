@@ -76,6 +76,3 @@ Estimates the recommended daily water intake based on the user's weight in kilog
 Output:
 - Estimated daily water intake in liters as a numeric value.
 
----
-
-These functions provide essential calculations for health and fitness-related metrics in a React Native app. Use the provided inputs to get accurate outputs for each calculation. Adjust the input parameters according to user data to obtain relevant results.
