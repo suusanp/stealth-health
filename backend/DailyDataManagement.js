@@ -1,41 +1,60 @@
 import * as FileSystem from 'expo-file-system';
 import CryptoJS from 'react-native-crypto-js';
 import { getEncryptionKey } from './SecureStoreService';
-import { decryptData } from './EncryptionService';
 
 const dailyDataDirectory = `${FileSystem.documentDirectory}dailyData/`;
 
-// Make sure the directory exists
+// Ensure the directory exists
 FileSystem.makeDirectoryAsync(dailyDataDirectory, { intermediates: true });
 
 export const saveDailyData = async (data, date) => {
-  const encryptionKey = await getEncryptionKey();
-  // Convert data to a string and encrypt
-  const ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), encryptionKey).toString();
-  // Define the file path using the provided date
-  const fileName = `${date}.json`; // Format date as 'YYYY-MM-DD'
-  const filePath = dailyDataDirectory + fileName;
-  // Save the encrypted data as a string
-  await FileSystem.writeAsStringAsync(filePath, ciphertext);
+    const encryptionKey = await getEncryptionKey();
+    // Encrypt the data
+    const ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), encryptionKey).toString();
+    // Define the file path
+    const fileName = `${date}.json`;
+    const filePath = dailyDataDirectory + fileName;
+
+    // Save the encrypted data
+    try {
+        await FileSystem.writeAsStringAsync(filePath, ciphertext);
+        console.log("Data saved successfully:", filePath);
+    } catch (error) {
+        console.error("Error saving daily data:", error);
+    }
 };
 
 export const getDailyData = async (date) => {
     const encryptionKey = await getEncryptionKey();
-    const fileName = `${date}.json`; // Format date as 'YYYY-MM-DD'
+    const fileName = `${date}.json`;
     const filePath = dailyDataDirectory + fileName;
 
     try {
         const fileInfo = await FileSystem.getInfoAsync(filePath);
         if (!fileInfo.exists) {
-            // Return null or an empty object to indicate no data for the requested date
+            console.log("File does not exist:", filePath);
+            return null;  // File does not exist, return null or appropriate response
+        }
+
+        const encryptedData = await FileSystem.readAsStringAsync(filePath);
+        console.log("Encrypted Data:", encryptedData); // Log encrypted data
+
+        // Decrypt the data
+        const bytes = CryptoJS.AES.decrypt(encryptedData, encryptionKey);
+        const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+        console.log("Decrypted Data:", decryptedData); // Log decrypted data
+
+        // Attempt to parse the decrypted data
+        try {
+            const parsedData = JSON.parse(decryptedData);
+            return parsedData;
+        } catch (parseError) {
+            console.error("Error parsing decrypted data:", parseError);
+            // Handle or log parse error
             return null;
         }
-        const encryptedData = await FileSystem.readAsStringAsync(filePath);
-        const decryptedData = decryptData(encryptionKey, encryptedData);
-        return JSON.parse(decryptedData);
     } catch (error) {
         console.error("Error retrieving daily data:", error);
-        return null; // or handle the error appropriately
+        return null; // Or handle the error appropriately
     }
 };
-
