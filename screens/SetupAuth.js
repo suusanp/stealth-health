@@ -16,3 +16,6 @@ const styles = StyleSheet.create({
 });
 
 export default SetupAuth;
+
+
+// ask password before deleting faceid
