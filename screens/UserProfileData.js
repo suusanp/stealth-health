@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Modal, Button, FlatList, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Modal, ScrollView } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 
 const DropdownModal = ({ visible, options, onSelect, closeModal }) => (
   <Modal visible={visible} animationType="slide" transparent={true}>
-    <View style={styles.modalView}>
-      <FlatList
-        data={options}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.modalItem} onPress={() => onSelect(item)}>
-            <Text style={styles.modalItemText}>{item}</Text>
-          </TouchableOpacity>
-        )}
-        keyExtractor={(item) => item}
-      />
-      <Button title="Close" onPress={closeModal} />
+    <View style={styles.modalOverlay}>
+      <View style={styles.modalView}>
+        <ScrollView>
+          {options.map((item, index) => (
+            <TouchableOpacity key={index} style={styles.modalItem} onPress={() => onSelect(item)}>
+              <Text style={styles.modalItemText}>{item}</Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+        <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
+          <Text style={styles.modalButtonText}>Close</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   </Modal>
 );
@@ -28,11 +30,10 @@ const UserProfileData = ({ onNext }) => {
   const [modalOptions, setModalOptions] = useState([]);
   const [modalOnSelect, setModalOnSelect] = useState(() => {});
 
-  const ageRanges = ["18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
-  const genders = ["Male", "Female", "Other"];
+  const ageRanges = [" ","18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
+  const genders = [" ","Male", "Female", "Other"];
 
   useEffect(() => {
-    // Load user profile data
     const loadUserProfile = async () => {
       const loadedAgeRange = await SecureStore.getItemAsync('ageRange');
       const loadedGender = await SecureStore.getItemAsync('gender');
@@ -61,28 +62,39 @@ const UserProfileData = ({ onNext }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.introText}>
-        Welcome to our app! At [this app], we aim to provide users with an overview of their health statistics without jeopardizing their privacy. Please choose whatever you are comfortable with, as all options are optional. Let's build your profile!
+      Welcome! Let's get your profile set up. Don't worry, you can choose what to share with us. Your privacy matters to us.
+   
       </Text>
-      <TouchableOpacity style={styles.dropdown} onPress={() => openModal(ageRanges, (value) => {setAgeRange(value); saveData('ageRange', value);})}>
-        <Text style={styles.dropdownText}>{ageRange || "Select Age Range"}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.dropdown} onPress={() => openModal(genders, (value) => {setGender(value); saveData('gender', value);})}>
-        <Text style={styles.dropdownText}>{gender || "Select Gender"}</Text>
-      </TouchableOpacity>
-      <TextInput
-        style={styles.input}
-        placeholder="Height (cm)"
-        keyboardType="numeric"
-        value={height}
-        onChangeText={(text) => {setHeight(text); saveData('height', text);}}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Weight (kg)"
-        keyboardType="numeric"
-        value={weight}
-        onChangeText={(text) => {setWeight(text); saveData('weight', text);}}
-      />
+      <View style={styles.fieldRow}>
+        <Text style={styles.fieldLabel}>Age Range:</Text>
+        <TouchableOpacity style={styles.dropdown} onPress={() => openModal(ageRanges, setAgeRange)}>
+          <Text style={styles.dropdownText}>{ageRange || "Select"}</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.fieldRow}>
+        <Text style={styles.fieldLabel}>Gender:</Text>
+        <TouchableOpacity style={styles.dropdown} onPress={() => openModal(genders, setGender)}>
+          <Text style={styles.dropdownText}>{gender || "Select"}</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.fieldRow}>
+        <Text style={styles.fieldLabel}>Height (cm):</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          value={height}
+          onChangeText={setHeight}
+        />
+      </View>
+      <View style={styles.fieldRow}>
+        <Text style={styles.fieldLabel}>Weight (kg):</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          value={weight}
+          onChangeText={setWeight}
+        />
+      </View>
       <DropdownModal
         visible={modalVisible}
         options={modalOptions}
@@ -97,22 +109,18 @@ const UserProfileData = ({ onNext }) => {
 };
 
 const styles = StyleSheet.create({
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
   modalView: {
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
     padding: 35,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
     elevation: 5,
-    justifyContent: 'center',
-    flex: 1
   },
   modalItem: {
     padding: 10,
@@ -123,55 +131,57 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
   },
+  modalButton: {
+    marginTop: 20,
+    backgroundColor: '#007bff',
+    padding: 10,
+    borderRadius: 20,
+    width: '80%',
+  },
+  modalButtonText: {
+    color: 'white',
+    fontSize: 18,
+    textAlign: 'center',
+  },
   container: {
-    flexGrow: 1,
-    justifyContent: 'center',
+    flex: 1,
     padding: 20,
+    backgroundColor: '#f9f9f9',
   },
   introText: {
     marginBottom: 20,
-    textAlign: 'center',
     fontSize: 16,
+    textAlign: 'center',
+    color: '#333',
+  },
+  fieldRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  fieldLabel: {
+    fontSize: 16,
+    marginRight: 10,
+    flex: 1,
   },
   dropdown: {
-    width: '90%',
+    flex: 2,
     height: 40,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
-    paddingHorizontal: 10,
     justifyContent: 'center',
-    marginTop: 10,
+    paddingHorizontal: 10,
   },
   dropdownText: {
     fontSize: 16,
   },
-  dropdownDropdown: {
-    width: '90%',
-    height: 150,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 3,
-  },
   input: {
-    width: '100%',
+    flex: 2,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
     padding: 10,
-    marginVertical: 10,
-  },
-  button: {
-    marginTop: 20,
-    backgroundColor: '#007bff',
-    padding: 10,
-    borderRadius: 5,
-    alignSelf: 'stretch', // Makes the button stretch to the width of the container
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    textAlign: 'center',
   },
 });
 

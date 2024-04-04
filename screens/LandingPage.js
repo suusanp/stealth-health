@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ActivityRing from '../components/ActivityRing'; // Adjust the import path as necessary
 import TopNavigationBar from '../components/TopNavigationBar'; // Adjust the import path as necessary
 import BottomNavigationBar from '../components/BottomNavigationBar'; // Adjust the import path as necessary
 import TopTopBar from '../components/TopTopBar'; // Adjust the import path as necessary
-import TermsOfServicePopup from './TermsOfServicePopup'; // Adjust the import path as necessary
+import { getDailyData } from '../backend/DailyDataManagement';
+import TermsOfServicePopup from './TermsOfServicePopup';  // Adjust the import path as necessary
+import { format, addDays, subDays } from 'date-fns';
+
 
 const LandingPage = ({ navigation }) => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [dailyData, setDailyData] = useState(null);
+  const [canGoBack, setCanGoBack] = useState(true);
+  const [canGoForward, setCanGoForward] = useState(false); // Assuming no future data for simplicity
+
+  const checkDataAvailability = async (date) => {
+    // Simplified check. You might need more logic to determine actual data availability.
+    const data = await getDailyData(format(date, 'yyyy-MM-dd'));
+    return data !== null;
+  };
+
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
@@ -16,10 +30,23 @@ const LandingPage = ({ navigation }) => {
       if (!agreementStatus) {
         setShowPopup(true);
       }
+
     }
 
     checkAgreement();
-  }, []);
+    const fetchDataAndCheckAvailability = async () => {
+      const dateStr = format(currentDate, 'yyyy-MM-dd');
+      const data = await getDailyData(dateStr);
+      setDailyData(data);
+
+      const prevDayAvailable = await checkDataAvailability(subDays(currentDate, 1));
+      const nextDayAvailable = await checkDataAvailability(addDays(currentDate, 1));
+      setCanGoBack(prevDayAvailable);
+      setCanGoForward(nextDayAvailable);
+    };
+    
+    fetchDataAndCheckAvailability();
+  }, [currentDate]);
 
   const handleAgree = async () => {
     await AsyncStorage.setItem('agreementStatus', 'agreed');
@@ -30,10 +57,24 @@ const LandingPage = ({ navigation }) => {
     setShowPopup(false);
   };
   
+  const goBackADay = () => {
+    setCurrentDate(subDays(currentDate, 1));
+  };
+
+  const goForwardADay = () => {
+    setCurrentDate(addDays(currentDate, 1));
+  };
+
   return (
     <SafeAreaView style={styles.safeArea}>
-      <TopTopBar projectName="        Your Health Dashboard" navigation={navigation} />
-      <TopNavigationBar title="Today" navigation={navigation} />
+      <TopTopBar projectName="Your Health Dashboard" navigation={navigation} />
+      <TopNavigationBar
+        title={currentDate.toISOString().split('T')[0]}
+        onPressBack={goBackADay}
+        onPressForward={goForwardADay}
+        canGoBack={canGoBack}
+        canGoForward={canGoForward}
+      />
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <View style={{ height: 20 }} />
         <View style={styles.ringRow}>

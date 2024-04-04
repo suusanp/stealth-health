@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { getPreferences, savePreferences, getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService';
-import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure this path is correct for your project structure
+import BottomNavigationBar from '../components/BottomNavigationBar';
+import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 
 const DataManagementScreen = ({ navigation }) => {
   const [dataRetention, setDataRetention] = useState('');
@@ -14,7 +15,6 @@ const DataManagementScreen = ({ navigation }) => {
     waterIntake: false,
   });
 
-  // Data retention options
   const DataRetentionOptions = [
     '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
   ];
@@ -36,16 +36,41 @@ const DataManagementScreen = ({ navigation }) => {
     await saveDataCollectionFlags(updatedMetrics);
   };
 
+  const handleDataRetentionChange = (newOption) => {
+    const indexNew = DataRetentionOptions.indexOf(newOption);
+    const indexCurrent = DataRetentionOptions.indexOf(dataRetention);
+    if (indexNew < indexCurrent) {
+      Alert.alert(
+        "Change Data Retention Period?",
+        "Reducing the data retention period will delete older data permanently. This action cannot be undone. Do you want to proceed?",
+        [
+          {
+            text: "Cancel",
+            style: "cancel"
+          },
+          {
+            text: "Confirm",
+            onPress: () => {
+              setDataRetention(newOption);
+              savePreferences({ dataRetention: newOption, notificationsEnabled });
+              checkAndDeleteOldFiles();
+            }
+          }
+        ]
+      );
+    } else {
+      setDataRetention(newOption);
+      savePreferences({ dataRetention: newOption, notificationsEnabled });
+    }
+  };
+
   const renderDataRetentionOptions = () => (
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.carousel}>
       {DataRetentionOptions.map((option, index) => (
         <TouchableOpacity
           key={index}
           style={[styles.carouselItem, dataRetention === option && styles.carouselItemSelected]}
-          onPress={() => {
-            setDataRetention(option);
-            savePreferences({ dataRetention: option, notificationsEnabled });
-          }}
+          onPress={() => handleDataRetentionChange(option)}
         >
           <Text style={styles.carouselItemText}>{option}</Text>
         </TouchableOpacity>

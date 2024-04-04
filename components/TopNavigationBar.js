@@ -1,55 +1,18 @@
 // TopNavigationBar.js
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const TopNavigationBar = ({ title }) => {
-  // State to manage the opacity of icons on press
-  const [iconOpacity, setIconOpacity] = useState({
-    back: 1,
-    forward: 1,
-    edit: 1,
-    stats: 1,
-  });
-
-  // Handle icon press events
-  const handleIconPress = (icon) => {
-    // Here you'd have the logic for handling press
-    console.log(`${icon} icon pressed`);
-  };
-
-  // Update the opacity of an icon when pressed
-  const handleIconPressIn = (icon) => {
-    setIconOpacity({ ...iconOpacity, [icon]: 0.5 });
-  };
-
-  // Reset the opacity of an icon when the press is released
-  const handleIconPressOut = (icon) => {
-    setIconOpacity({ ...iconOpacity, [icon]: 1 });
-  };
-
+const TopNavigationBar = ({ title, onPressBack, onPressForward, canGoBack, canGoForward }) => {
   return (
     <View style={styles.navBar}>
-   
-      <TouchableOpacity
-        onPressIn={() => handleIconPressIn('back')}
-        onPressOut={() => handleIconPressOut('back')}
-        onPress={() => handleIconPress('back')}>
-        <Icon name="chevron-left" size={30} color="#000" style={{ opacity: iconOpacity.back }} />
+      <TouchableOpacity disabled={!canGoBack} onPress={onPressBack}>
+        <Icon name="chevron-left" size={30} color={canGoBack ? "#000" : "#ccc"} />
       </TouchableOpacity>
-      
-      <Text style={styles.title}>  {title}</Text>
-      
-      <View style={styles.iconsRight}>
-
-        <Text> </Text>
-        <TouchableOpacity
-          onPressIn={() => handleIconPressIn('forward')}
-          onPressOut={() => handleIconPressOut('forward')}
-          onPress={() => handleIconPress('forward')}>
-          <Icon name="chevron-right" size={30} color="#000" style={{ opacity: iconOpacity.forward }} />
-        </TouchableOpacity>
-      </View>
+      <Text style={styles.title}>{title}</Text>
+      <TouchableOpacity disabled={!canGoForward} onPress={onPressForward}>
+        <Icon name="chevron-right" size={30} color={canGoForward ? "#000" : "#ccc"} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -66,14 +29,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-   
     fontWeight: 'bold',
   },
-  iconsRight: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  // Styles for icons, text, and other elements...
 });
 
 export default TopNavigationBar;
