@@ -30,8 +30,8 @@ const UserProfileData = ({ onNext }) => {
   const [modalOptions, setModalOptions] = useState([]);
   const [modalOnSelect, setModalOnSelect] = useState(() => {});
 
-  const ageRanges = [" ","18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
-  const genders = [" ","Male", "Female", "Other"];
+  const ageRanges = [" ", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
+  const genders = [" ", "Male", "Female", "Other"];
 
   useEffect(() => {
     const loadUserProfile = async () => {
@@ -40,10 +40,10 @@ const UserProfileData = ({ onNext }) => {
       const loadedHeight = await SecureStore.getItemAsync('height');
       const loadedWeight = await SecureStore.getItemAsync('weight');
 
-      if (loadedAgeRange) setAgeRange(loadedAgeRange);
-      if (loadedGender) setGender(loadedGender);
-      if (loadedHeight) setHeight(loadedHeight);
-      if (loadedWeight) setWeight(loadedWeight);
+      setAgeRange(loadedAgeRange || '');
+      setGender(loadedGender || '');
+      setHeight(loadedHeight || '');
+      setWeight(loadedWeight || '');
     };
 
     loadUserProfile();
@@ -62,8 +62,7 @@ const UserProfileData = ({ onNext }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.introText}>
-      Welcome! Let's get your profile set up. Don't worry, you can choose what to share with us. Your privacy matters to us.
-   
+        Welcome! Let's get your profile set up. Don't worry, you can choose what to share with us. Your privacy matters to us.
       </Text>
       <View style={styles.fieldRow}>
         <Text style={styles.fieldLabel}>Age Range:</Text>
@@ -109,6 +108,7 @@ const UserProfileData = ({ onNext }) => {
 };
 
 const styles = StyleSheet.create({
+ 
   modalOverlay: {
     flex: 1,
     justifyContent: 'center',
@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
   modalItemText: {
     textAlign: 'center',
     fontSize: 18,
+    color: '#555', // Soften the text color for readability
   },
   modalButton: {
     marginTop: 20,
@@ -146,23 +147,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    paddingTop: 80,
     backgroundColor: '#f9f9f9',
   },
   introText: {
-    marginBottom: 20,
+    marginBottom: 24, // Increased spacing
     fontSize: 16,
     textAlign: 'center',
-    color: '#333',
+    color: '#555', // Softer text color
   },
   fieldRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 16, // Increased spacing
   },
   fieldLabel: {
     fontSize: 16,
-    marginRight: 10,
+    marginRight: 8,
     flex: 1,
+    color: '#555', // Softer text color
   },
   dropdown: {
     flex: 2,
@@ -172,9 +175,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: 'center',
     paddingHorizontal: 10,
+    backgroundColor: '#fff', // Background color for the dropdown
   },
   dropdownText: {
     fontSize: 16,
+    color: '#333', // Darker text for the dropdown for better contrast
   },
   input: {
     flex: 2,
@@ -182,6 +187,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 5,
     padding: 10,
+    backgroundColor: '#fff', // Background color for the input
   },
 });
 
