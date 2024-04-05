@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { getPreferences, savePreferences, getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService';
 import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure this path is correct for your project structure
+import * as LocalAuthentication from "expo-local-authentication";
+
 
 const DataManagementScreen = ({ navigation }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [dataRetention, setDataRetention] = useState('');
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [metrics, setMetrics] = useState({
@@ -53,14 +56,28 @@ const DataManagementScreen = ({ navigation }) => {
     </ScrollView>
   );
 
+
+  async function onAuthenticate () {
+    const auth = await LocalAuthentication.authenticateAsync({
+    promptMessage: 'Authenticate',
+    fallbackLabel: 'Enter Password',
+    });
+    setIsAuthenticated(auth.success);
+    console.log(auth);
+
+    return auth.success;
+}
+
+
   return (
     <View style={styles.fullScreen}>
       <ScrollView contentContainerStyle={styles.container}>
-      <TouchableOpacity
-       style={styles.modifyProfileButton}
-       onPress={() => navigation.navigate('ProfileManage')}>
-       <Text style={styles.modifyProfileButtonText}>Modify Profile</Text>
-       </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.6}
+          style={styles.modifyProfileButton}
+          onPress={() => navigation.navigate('ProfileManage')}>
+          <Text style={styles.modifyProfileButtonText}>Modify Profile</Text>
+        </TouchableOpacity>
         <Text style={styles.header}>Privacy and Data Management</Text>
         <Text style={styles.text}>Data Retention Period:</Text>
         {renderDataRetentionOptions()}
@@ -83,6 +100,18 @@ const DataManagementScreen = ({ navigation }) => {
             />
           </View>
         ))}
+        <TouchableOpacity
+          activeOpacity={0.8}
+          
+          style={styles.modifyAuthButton}
+          onPress={async () => {
+            const isAuthenticated = await onAuthenticate();
+            if (isAuthenticated) {
+              navigation.navigate('AuthSettings');
+            } 
+          }}>
+          <Text style={styles.modifyAuthButtonText}>Authentication Settings</Text>
+        </TouchableOpacity>
       </ScrollView>
       <BottomNavigationBar navigation={navigation} />
     </View>
@@ -154,6 +183,20 @@ const styles = StyleSheet.create({
   },
   metricText: {
     fontSize: 16,
+  },
+  modifyAuthButton: {
+    backgroundColor: '#2b2b2b', // A soft grey that matches many designs
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 15,
+    borderWidth: 1,
+  },
+  modifyAuthButtonText: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#d4d4d4'
   },
 });
 
