@@ -78,9 +78,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
   },
   header: {
-    fontSize: 22,
+    fontSize: 35,
     fontWeight: 'bold',
-    marginBottom: 24,
+    marginBottom: 60,
+    marginTop: 160,
     color: '#483971',
   },
   switchContainer: {
