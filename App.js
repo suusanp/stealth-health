@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Authenticate from "./screens/Authenticate";
+import AuthSettings from "./screens/AuthSettings";
 import LandingPage from "./screens/LandingPage";
 import PersonalPage from "./screens/PersonalPage";
 import SettingsScreen from "./screens/SettingsScreen";
@@ -61,6 +62,11 @@ function App() {
         <Stack.Screen
           name="Authenticate"
           component={Authenticate}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AuthSettings"
+          component={AuthSettings}
           options={{ headerShown: false }}
         />
         <Stack.Screen
