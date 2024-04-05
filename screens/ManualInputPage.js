@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import {  getDailyData, saveDailyData } from '../backend/DailyDataManagement';
 import { getDataCollectionFlags } from '../backend/FileSystemService';
-import { saveDailyData, getDailyData } from '../backend/DailyDataManagement'; 
+import { computeAndStoreMetrics } from '../metricsCalculation/metricsUtils'; 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 
 const ManualInputPage = () => {
   const navigation = useNavigation();
-  const [flags, setFlags] = useState({});
+  const [flags, setFlags] = useState({
+    dailySteps: false,
+    heartRate: false,
+    bloodPressure: false,
+    sleepPatterns: false,
+    waterIntake: false,
+  });
   const [dailyData, setDailyData] = useState({
     dailySteps: '',
     heartRate: '',
@@ -17,29 +24,20 @@ const ManualInputPage = () => {
   });
   const [dataChanged, setDataChanged] = useState(false);
 
-useEffect(() => {
+  useEffect(() => {
     const loadFlagsAndData = async () => {
-        const dataFlags = await getDataCollectionFlags();
-        setFlags(dataFlags);
+      const dataFlags = await getDataCollectionFlags();
+      setFlags(dataFlags);
 
-        const today = new Date().toISOString().split('T')[0];
-        const todayData = await getDailyData(today);
-        if (todayData) {
-            setDailyData(todayData);
-        } else {
-            // Initialize dailyData with empty values if there's no data for today
-            setDailyData({
-                dailySteps: '',
-                heartRate: '',
-                bloodPressure: '',
-                sleepPatterns: '',
-                waterIntake: '',
-            });
-        }
+      const today = new Date().toISOString().split('T')[0];
+      const todayData = await getDailyData(today);
+      if (todayData) {
+        setDailyData(todayData);
+      }
     };
 
     loadFlagsAndData();
-}, []);
+  }, []);
 
   const handleInputChange = (name, value) => {
     setDataChanged(true);
@@ -53,12 +51,12 @@ useEffect(() => {
     if (dataChanged) {
       const today = new Date().toISOString().split('T')[0];
       await saveDailyData(dailyData, today);
-      Alert.alert("Data Saved", "Your daily data has been saved.");
+      await computeAndStoreMetrics(today); 
+      Alert.alert("Data Saved", "Your daily data and computed metrics have been saved.");
       navigation.navigate('SyncPage');
     }
   };
 
-  // Render input field only if the corresponding flag is true
   const renderInputField = (flag, placeholder, name) => (
     flags[flag] && (
       <TextInput
@@ -77,11 +75,11 @@ useEffect(() => {
         <Icon name="arrow-left" size={24} color="#000" />
       </TouchableOpacity>
       <Text style={styles.header}>Enter Today's Data</Text>
-      {renderInputField("collectDailySteps", "Daily Steps", "dailySteps")}
-      {renderInputField("collectHeartRate", "Average Heart Rate (bpm)", "heartRate")}
-      {renderInputField("collectBloodPressure", "Blood Pressure (mmHg)", "bloodPressure")}
-      {renderInputField("collectSleepPatterns", "Hours Slept Last Night", "hoursSlept")}
-      {renderInputField("collectWaterIntake", "Water Intake (ml)", "waterIntake")}
+      {renderInputField("dailySteps", "Daily Steps", "dailySteps")}
+      {renderInputField("heartRate", "Average Heart Rate (bpm)", "heartRate")}
+      {renderInputField("bloodPressure", "Blood Pressure (mmHg)", "bloodPressure")}
+      {renderInputField("sleepPatterns", "Hours Slept Last Night", "hoursSlept")}
+      {renderInputField("waterIntake", "Water Intake (ml)", "waterIntake")}
       <TouchableOpacity 
         style={[styles.saveButton, !dataChanged && styles.saveButtonDisabled]} 
         onPress={saveAndExit} 
@@ -91,6 +89,7 @@ useEffect(() => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   saveButtonDisabled: {
