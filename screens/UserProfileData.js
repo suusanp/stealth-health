@@ -30,8 +30,8 @@ const UserProfileData = ({ onNext }) => {
   const [modalOptions, setModalOptions] = useState([]);
   const [modalOnSelect, setModalOnSelect] = useState(() => { });
 
-  const ageRanges = ["18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
-  const genders = ["Male", "Female", "Other"];
+  const ageRanges = ["Select Age Range", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
+  const genders = ["Select Gender", "Male", "Female", "Other"];
 
   // "Why do we collect this" to be displayed on tap
   const [showExplanationModal, setShowExplanationModal] = useState(false);
@@ -71,6 +71,18 @@ const UserProfileData = ({ onNext }) => {
     setModalVisible(true);
   };
 
+  const clearAllInputs = async () => {
+    setAgeRange(null);
+    setGender(null);
+    setHeight(null);
+    setWeight(null);
+    
+    await SecureStore.deleteItemAsync('ageRange');
+    await SecureStore.deleteItemAsync('gender');
+    await SecureStore.deleteItemAsync('height');
+    await SecureStore.deleteItemAsync('weight');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.appName}>
@@ -101,6 +113,7 @@ const UserProfileData = ({ onNext }) => {
         <TextInput
           style={styles.input}
           placeholder="Height (cm)"
+          placeholderTextColor="black"
           keyboardType="numeric"
           value={height}
           onChangeText={(text) => { setHeight(text); saveData('height', text); }}
@@ -113,6 +126,7 @@ const UserProfileData = ({ onNext }) => {
         <TextInput
           style={styles.input}
           placeholder="Weight (kg)"
+          placeholderTextColor="black"
           keyboardType="numeric"
           value={weight}
           onChangeText={(text) => { setWeight(text); saveData('weight', text); }}
@@ -136,6 +150,9 @@ const UserProfileData = ({ onNext }) => {
         }}
         closeModal={() => setModalVisible(false)}
       />
+      <TouchableOpacity style={styles.clearButton} onPress={clearAllInputs}>
+        <Text style={styles.clearButtonText}>Clear All</Text>
+      </TouchableOpacity>
     </View>
 
   );
@@ -224,6 +241,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginVertical: 10,
+    fontSize: 16
   },
   button: {
     marginTop: 20,
@@ -252,6 +270,16 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 13,
     textAlign: 'center',
+  },
+  clearButton: {
+    marginTop: 20,
+    padding: 8,
+    alignSelf: 'center',
+  },
+  clearButtonText: {
+    fontSize: 16,
+    color: '#8571B8',
+    fontWeight: 'bold'
   },
 });
 
