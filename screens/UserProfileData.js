@@ -29,10 +29,21 @@ const UserProfileData = ({ onNext }) => {
   const [weight, setWeight] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [modalOptions, setModalOptions] = useState([]);
-  const [modalOnSelect, setModalOnSelect] = useState(() => {});
+  const [modalOnSelect, setModalOnSelect] = useState(() => { });
 
   const ageRanges = ["18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
   const genders = ["Male", "Female", "Other"];
+
+  // "Why do we collect this" to be displayed on tap
+  const [showExplanationModal, setShowExplanationModal] = useState(false);
+  const explanationText = `
+    Your height, weight, and sex are used to calculate your Body Mass Index (BMI) and Basal Metabolic Rate (BMR). Your age is used to calculate your target heart rate zones for exercise. 
+
+    We ask for your age range rather than your exact age to further protect your privacy. By doing so, we can still provide you with accurate health statistics while minimizing the risk of re-identification.
+  `;
+  const toggleExplanationModal = () => {
+    setShowExplanationModal(!showExplanationModal);
+  };
 
   useEffect(() => {
     // Load user profile data
@@ -62,38 +73,59 @@ const UserProfileData = ({ onNext }) => {
   };
 
   return (
-       <View style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.introText}>
         Welcome to our app! At [this app], we aim to provide users with an overview of their health statistics without jeopardizing their privacy. Please choose whatever you are comfortable with, as all options are optional. Let's build your profile!
       </Text>
-      <MaterialIcons name="elderly" size={20} color="#333" style={styles.icon} />
-      <TouchableOpacity style={styles.dropdown} onPress={() => openModal(ageRanges, (value) => {setAgeRange(value); saveData('ageRange', value);})}>
-        <Text style={styles.dropdownText}>{ageRange || "Select Age Range"}</Text>
-      </TouchableOpacity>
-      <MaterialCommunityIcons name="gender-male-female" size={20} color="#333" style={styles.icon} />
-      <TouchableOpacity style={styles.dropdown} onPress={() => openModal(genders, (value) => {setGender(value); saveData('gender', value);})}>
-        <Text style={styles.dropdownText}>{gender || "Select Gender"}</Text>
-      </TouchableOpacity>
       <View style={styles.inputContainer}>
-        <MaterialCommunityIcons name="human-male-height" size={20} color="#333" style={styles.icon} />
+        <View style={styles.iconContainer}>
+          <MaterialIcons name="elderly" size={20} color="#333" style={styles.icon} />
+        </View>
+        <TouchableOpacity style={styles.dropdown} onPress={() => openModal(ageRanges, (value) => { setAgeRange(value); saveData('ageRange', value); })}>
+          <Text style={styles.dropdownText}>{ageRange || "Select Age Range"}</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.inputContainer}>
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons name="gender-male-female" size={20} color="#333" style={styles.icon} />
+        </View>
+        <TouchableOpacity style={styles.dropdown} onPress={() => openModal(genders, (value) => { setGender(value); saveData('gender', value); })}>
+          <Text style={styles.dropdownText}>{gender || "Select Gender"}</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.inputContainer}>
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons name="human-male-height" size={20} color="#333" style={styles.icon} />
+        </View>
         <TextInput
           style={styles.input}
           placeholder="Height (cm)"
           keyboardType="numeric"
           value={height}
-          onChangeText={(text) => {setHeight(text); saveData('height', text);}}
+          onChangeText={(text) => { setHeight(text); saveData('height', text); }}
         />
       </View>
       <View style={styles.inputContainer}>
-        <MaterialCommunityIcons name="weight-kilogram" size={20} color="#333" style={styles.icon} />
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons name="weight-kilogram" size={20} color="#333" style={styles.icon} />
+        </View>
         <TextInput
           style={styles.input}
           placeholder="Weight (kg)"
           keyboardType="numeric"
           value={weight}
-          onChangeText={(text) => {setWeight(text); saveData('weight', text);}}
+          onChangeText={(text) => { setWeight(text); saveData('weight', text); }}
         />
       </View>
+      <TouchableOpacity onPress={toggleExplanationModal} style={styles.explanationButton}>
+        <Text style={styles.explanationButtonText}>Why do we need this?</Text>
+      </TouchableOpacity>
+      <Modal visible={showExplanationModal} animationType="slide" transparent={true}>
+        <View style={styles.modalView}>
+          <Text style={styles.modalItemText}>{explanationText}</Text>
+          <Button title="Close" onPress={toggleExplanationModal} />
+        </View>
+      </Modal>
       <DropdownModal
         visible={modalVisible}
         options={modalOptions}
@@ -104,6 +136,7 @@ const UserProfileData = ({ onNext }) => {
         closeModal={() => setModalVisible(false)}
       />
     </View>
+    
   );
 };
 
@@ -154,18 +187,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 10,
   },
+  dropdownContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+  },
   dropdownText: {
     fontSize: 16,
   },
-  dropdownDropdown: {
-    width: '90%',
-    height: 150,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 3,
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  iconContainer: {
+    marginRight: 10,
   },
   input: {
-    width: '100%',
+    flex: 1,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
@@ -183,6 +222,44 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     textAlign: 'center',
+  },
+  icon: {
+    color: '#6EB2C4',
+    fontSize: 30,
+  },
+  explanationButton: {
+    marginTop: 20,
+    backgroundColor: '#007bff',
+    padding: 8,
+    borderRadius: 10,
+    alignSelf: 'center',
+  },
+  explanationButtonText: {
+    color: '#fff',
+    fontSize: 13,
+    textAlign: 'center',
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    justifyContent: 'center',
+    flex: 1
+  },
+  modalItemText: {
+    textAlign: 'center',
+    fontSize: 18,
+    marginBottom: 20,
   },
 });
 
