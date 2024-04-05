@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Switch, Alert } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService'; // Make sure the path is correct
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService';
 
 const HealthMetrics = () => {
-  // Initialize with default values directly in the state
   const [metrics, setMetrics] = useState({
     dailySteps: false,
     heartRate: false,
@@ -17,13 +16,8 @@ const HealthMetrics = () => {
     const loadFlags = async () => {
       try {
         const flags = await getDataCollectionFlags();
-        if (Object.keys(flags).length > 0) { // Check if flags are not an empty object
-          setMetrics(flags);
-        } else {
-          console.log("Using default flags");
-        }
+        setMetrics(flags.length > 0 ? flags : metrics);
       } catch (error) {
-        console.error("Failed to load data collection flags:", error);
         Alert.alert("Error", "Failed to load settings. Please restart the app.");
       }
     };
@@ -32,26 +26,21 @@ const HealthMetrics = () => {
   }, []);
 
   const metricExplanations = {
-    dailySteps: "Tracking your steps can help you maintain an active lifestyle.",
-    heartRate: "Monitoring heart rate can indicate your cardiovascular health.",
-    bloodPressure: "Keeping an eye on blood pressure can prevent health complications.",
-    sleepPatterns: "Understanding sleep patterns helps improve your sleep quality.",
-    waterIntake: "Recording water intake ensures you stay hydrated throughout the day.",
+    dailySteps: "Tracks steps to encourage an active lifestyle.",
+    heartRate: "Monitors heart rate for cardiovascular health insights.",
+    bloodPressure: "Tracks blood pressure to prevent health complications.",
+    sleepPatterns: "Helps understand and improve sleep quality.",
+    waterIntake: "Ensures hydration throughout the day.",
   };
 
   const toggleSwitch = async (metric) => {
-    try {
-      const updatedMetrics = { ...metrics, [metric]: !metrics[metric] };
-      await saveDataCollectionFlags(updatedMetrics);
-      setMetrics(updatedMetrics);
-    } catch (error) {
-      console.error("Failed to save data collection flags:", error);
-      Alert.alert("Error", "Failed to update settings. Please try again.");
-    }
+    const updatedMetrics = { ...metrics, [metric]: !metrics[metric] };
+    await saveDataCollectionFlags(updatedMetrics);
+    setMetrics(updatedMetrics);
   };
 
   const showExplanation = (metric) => {
-    Alert.alert("Why?", metricExplanations[metric]);
+    Alert.alert(metric.split(/(?=[A-Z])/).join(" "), metricExplanations[metric]);
   };
 
   return (
@@ -60,20 +49,21 @@ const HealthMetrics = () => {
       {Object.keys(metrics).map((metric) => (
         <View key={metric} style={styles.switchContainer}>
           <Text style={styles.metricText}>{metric.split(/(?=[A-Z])/).join(" ")}</Text>
-          <Icon
-            name="question-circle"
-            size={20}
-            color="grey"
-            onPress={() => showExplanation(metric)}
-            style={styles.icon}
-          />
-          <Switch
-            trackColor={{ false: "#767577", true: "#81b0ff" }}
-            thumbColor={metrics[metric] ? "#f5dd4b" : "#f4f3f4"}
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={() => toggleSwitch(metric)}
-            value={metrics[metric]}
-          />
+          <View style={styles.iconAndSwitch}>
+            <MaterialCommunityIcons
+              name="information-outline"
+              size={24}
+              color="#6E87C4"
+              onPress={() => showExplanation(metric)}
+              style={styles.icon}
+            />
+            <Switch
+              trackColor={{ false: "#767577", true: "#6E87C4" }}
+              thumbColor={metrics[metric] ? "#f5dd4b" : "#f4f3f4"}
+              onValueChange={() => toggleSwitch(metric)}
+              value={metrics[metric]}
+            />
+          </View>
         </View>
       ))}
     </View>
@@ -83,29 +73,41 @@ const HealthMetrics = () => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    justifyContent: 'flex-start', // Align content to the top
+    justifyContent: 'flex-start',
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#f9f9f9',
   },
   header: {
     fontSize: 35,
     fontWeight: 'bold',
     marginBottom: 60,
-    marginTop: 160
+    marginTop: 160,
+    color: '#483971',
   },
   switchContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '100%',
-    marginVertical: 10,
+    marginBottom: 16,
+    paddingHorizontal: 10,
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    elevation: 2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
   },
   metricText: {
     fontSize: 16,
-    flexGrow: 1, // Allow text to take up as much space as possible
+    color: '#555',
+    flex: 1,
+  },
+  iconAndSwitch: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   icon: {
-    marginRight: 10, // Add some margin between the icon and the switch
+    marginRight: 10,
   },
 });
 

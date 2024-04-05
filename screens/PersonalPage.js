@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Alert } f
 import { getPreferences, savePreferences, getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService';
 import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure this path is correct for your project structure
 import * as LocalAuthentication from "expo-local-authentication";
+import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
 
 const DataManagementScreen = ({ navigation }) => {
@@ -16,12 +17,12 @@ const DataManagementScreen = ({ navigation }) => {
     sleepPatterns: false,
     waterIntake: false,
   });
-  const [availableFunctionalities, setAvailableFunctionalities] = useState([]);
 
-  // Data retention options
+
   const DataRetentionOptions = [
     '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
   ];
+  const [availableFunctionalities, setAvailableFunctionalities] = useState([]);
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -33,6 +34,7 @@ const DataManagementScreen = ({ navigation }) => {
       // Compute available functionalities based on initial metrics
       const functionalities = computeAvailableFunctionalities(flags);
       setAvailableFunctionalities(functionalities);
+     
     };
     loadSettings();
   }, []);
@@ -41,9 +43,37 @@ const DataManagementScreen = ({ navigation }) => {
     const updatedMetrics = { ...metrics, [metric]: !metrics[metric] };
     setMetrics(updatedMetrics);
     await saveDataCollectionFlags(updatedMetrics);
-    // Compute available functionalities based on updated metrics
     const functionalities = computeAvailableFunctionalities(updatedMetrics);
     setAvailableFunctionalities(functionalities);
+
+  };
+
+  const handleDataRetentionChange = (newOption) => {
+    const indexNew = DataRetentionOptions.indexOf(newOption);
+    const indexCurrent = DataRetentionOptions.indexOf(dataRetention);
+    if (indexNew < indexCurrent) {
+      Alert.alert(
+        "Change Data Retention Period?",
+        "Reducing the data retention period will delete older data permanently. This action cannot be undone. Do you want to proceed?",
+        [
+          {
+            text: "Cancel",
+            style: "cancel"
+          },
+          {
+            text: "Confirm",
+            onPress: () => {
+              setDataRetention(newOption);
+              savePreferences({ dataRetention: newOption, notificationsEnabled });
+              checkAndDeleteOldFiles();
+            }
+          }
+        ]
+      );
+    } else {
+      setDataRetention(newOption);
+      savePreferences({ dataRetention: newOption, notificationsEnabled });
+    }
   };
   
   const renderDataRetentionOptions = () => (
@@ -52,10 +82,7 @@ const DataManagementScreen = ({ navigation }) => {
         <TouchableOpacity
           key={index}
           style={[styles.carouselItem, dataRetention === option && styles.carouselItemSelected]}
-          onPress={() => {
-            setDataRetention(option);
-            savePreferences({ dataRetention: option, notificationsEnabled });
-          }}
+          onPress={() => handleDataRetentionChange(option)}
         >
           <Text style={styles.carouselItemText}>{option}</Text>
         </TouchableOpacity>

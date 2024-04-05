@@ -11,8 +11,8 @@ const ProfileManage = () => {
   const [weight, setWeight] = useState('');
   const [dataChanged, setDataChanged] = useState(false);
 
-  const ageRanges = ["18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
-  const genders = ["Male", "Female", "Other"];
+  const ageRanges = [" ","18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
+  const genders = [" ","Male", "Female", "Other"];
 
   useEffect(() => {
     const loadProfileData = async () => {
