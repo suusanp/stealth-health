@@ -6,19 +6,9 @@ import { useNavigation } from '@react-navigation/native';
 const myImage = require("../assets/fitness_icon.png");
 
 function Authenticate () {
-    const [authenticationEnabled, setAuthenticationEnabled] = useState(false);
-    const [isBiometricSupported, setIsBiometricSupported] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const navigation = useNavigation();
-
-
-    // check if device supports biometrics
-    useEffect( () => {
-        (async () => {
-        const compatible = await LocalAuthentication.hasHardwareAsync();
-        setIsBiometricSupported(compatible);
-        }) ();
-    });
+    
 
     useEffect(() => {
         if (isAuthenticated) {
