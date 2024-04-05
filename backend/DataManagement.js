@@ -94,9 +94,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   header: {
-    fontSize: 22,
+    fontSize: 35,
     fontWeight: 'bold',
     marginBottom: 20,
+    marginTop: 160
   },
   description: {
     fontSize: 16,
