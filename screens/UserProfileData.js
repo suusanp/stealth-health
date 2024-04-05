@@ -4,7 +4,6 @@ import * as SecureStore from 'expo-secure-store';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-
 const DropdownModal = ({ visible, options, onSelect, closeModal }) => (
   <Modal visible={visible} animationType="slide" transparent={true}>
     <View style={styles.modalView}>
@@ -74,6 +73,8 @@ const UserProfileData = ({ onNext }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.appName}>
+        Fit App</Text>
       <Text style={styles.introText}>
         Welcome to our app! At [this app], we aim to provide users with an overview of their health statistics without jeopardizing their privacy. Please choose whatever you are comfortable with, as all options are optional. Let's build your profile!
       </Text>
@@ -136,7 +137,7 @@ const UserProfileData = ({ onNext }) => {
         closeModal={() => setModalVisible(false)}
       />
     </View>
-    
+
   );
 };
 
@@ -172,10 +173,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
   },
+  appName: {
+    fontStyle: 'italic',
+    fontSize: 34,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 30,
+    color: '#6E87C4',
+    textShadowColor: 'rgba(100, 0, 200, 0.35)', // Blue color with opacity
+    textShadowOffset: { width: 0, height: 0 }, // No offset
+    textShadowRadius: 20, // Adjust the radius to control the intensity of the glow
+    padding: 20
+  },
   introText: {
     marginBottom: 20,
     textAlign: 'center',
     fontSize: 16,
+    color: '#483971'
   },
   dropdown: {
     width: '90%',
@@ -224,12 +238,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   icon: {
-    color: '#6EB2C4',
+    color: '#8571B8',
     fontSize: 30,
   },
   explanationButton: {
     marginTop: 20,
-    backgroundColor: '#007bff',
+    backgroundColor: '#6E87C4',
     padding: 8,
     borderRadius: 10,
     alignSelf: 'center',
@@ -238,28 +252,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 13,
     textAlign: 'center',
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    justifyContent: 'center',
-    flex: 1
-  },
-  modalItemText: {
-    textAlign: 'center',
-    fontSize: 18,
-    marginBottom: 20,
   },
 });
 
