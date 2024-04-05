@@ -1,5 +1,6 @@
 // Description: This file contains the function to return available functionalities based on enabled metrics.
 
+// NOTE: This function assumes that user has entered their HEIGHT, WEIGHT, AGE, and GENDER in the User Profile.
 const computeAvailableFunctionalities = (metrics) => {
   const availableFunctionalities = ['Body Mass Index (BMI)', 'Basal Metabolic Rate (BMR)', 'Heart Rate Zones for Exercise']; // Always available from User Profile
 
