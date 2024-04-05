@@ -48,34 +48,41 @@ const SetupAuth = () => {
 
     return(
         <View style={styles.container}>
-            <Text style={styles.text}>Setup Authentication</Text>
-            <Text style={styles.text}>Use FaceID?</Text>
+            <Text style={styles.header}>Setup Authentication</Text>
+            <Text style={styles.text}>Use Face ID for authentication?</Text>
             <Switch
                 trackColor={{ false: "#767577", true: "#81b0ff" }}
                 thumbColor={authenticationEnabled ? "#f5dd4b" : "#f4f3f4"}
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleSwitch}
                 value={authenticationEnabled}
+                style={styles.switch}
             />
-            <Text style={styles.text}>{authenticationEnabled ? 'Face ID has been enabled' : 'Face ID has been disabled'}</Text>
+            <Text style={styles.text}>{authenticationEnabled ? 'Face ID enabled' : 'Face ID disabled'}</Text>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
+        flexGrow: 1,
+        justifyContent: 'flex-start',
         alignItems: 'center',
+      },
+      header: {
+        fontSize: 35,
+        fontWeight: 'bold',
+        marginBottom: 80,
+        marginTop: 180
       },
       text: {
         fontSize: 20,
+        marginBottom: 20,
+      },
+      switch: {
         marginBottom: 20,
       },
 
 });
 
 export default SetupAuth;
-
-
-// ask password before deleting faceid
