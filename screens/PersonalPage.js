@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Alert } f
 import { getPreferences, savePreferences, getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService';
 import BottomNavigationBar from '../components/BottomNavigationBar';
 import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
+import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
 
 const DataManagementScreen = ({ navigation }) => {
   const [dataRetention, setDataRetention] = useState('');
@@ -18,6 +19,7 @@ const DataManagementScreen = ({ navigation }) => {
   const DataRetentionOptions = [
     '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
   ];
+  const [availableFunctionalities, setAvailableFunctionalities] = useState([]);
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -26,6 +28,10 @@ const DataManagementScreen = ({ navigation }) => {
       setNotificationsEnabled(preferences.notificationsEnabled || false);
       const flags = await getDataCollectionFlags();
       setMetrics(flags);
+      // Compute available functionalities based on initial metrics
+      const functionalities = computeAvailableFunctionalities(flags);
+      setAvailableFunctionalities(functionalities);
+     
     };
     loadSettings();
   }, []);
@@ -34,6 +40,9 @@ const DataManagementScreen = ({ navigation }) => {
     const updatedMetrics = { ...metrics, [metric]: !metrics[metric] };
     setMetrics(updatedMetrics);
     await saveDataCollectionFlags(updatedMetrics);
+    const functionalities = computeAvailableFunctionalities(updatedMetrics);
+    setAvailableFunctionalities(functionalities);
+
   };
 
   const handleDataRetentionChange = (newOption) => {
@@ -108,6 +117,11 @@ const DataManagementScreen = ({ navigation }) => {
             />
           </View>
         ))}
+         <Text style={styles.header}>Available Functionalities:</Text>
+        {availableFunctionalities.map((func, index) => (
+          <Text key={index} style={styles.metricText}>{func}</Text>
+        ))}
+
       </ScrollView>
       <BottomNavigationBar navigation={navigation} />
     </View>

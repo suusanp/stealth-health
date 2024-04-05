@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import {  getDailyData, saveDailyData } from '../backend/DailyDataManagement';
 import { getDataCollectionFlags } from '../backend/FileSystemService';
-import { saveDailyData, getDailyData } from '../backend/DailyDataManagement';
+import { computeAndStoreMetrics } from '../metricsCalculation/metricsUtils'; 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -26,12 +27,10 @@ const ManualInputPage = () => {
   useEffect(() => {
     const loadFlagsAndData = async () => {
       const dataFlags = await getDataCollectionFlags();
-      console.log('Flags:', dataFlags); // Debug log
       setFlags(dataFlags);
 
       const today = new Date().toISOString().split('T')[0];
       const todayData = await getDailyData(today);
-      console.log('TodayData:', todayData); // Debug log
       if (todayData) {
         setDailyData(todayData);
       }
@@ -52,7 +51,8 @@ const ManualInputPage = () => {
     if (dataChanged) {
       const today = new Date().toISOString().split('T')[0];
       await saveDailyData(dailyData, today);
-      Alert.alert("Data Saved", "Your daily data has been saved.");
+      await computeAndStoreMetrics(today); 
+      Alert.alert("Data Saved", "Your daily data and computed metrics have been saved.");
       navigation.navigate('SyncPage');
     }
   };
@@ -89,6 +89,7 @@ const ManualInputPage = () => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   saveButtonDisabled: {

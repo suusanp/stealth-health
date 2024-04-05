@@ -8,14 +8,17 @@ import TopTopBar from '../components/TopTopBar'; // Adjust the import path as ne
 import { getDailyData } from '../backend/DailyDataManagement';
 import TermsOfServicePopup from './TermsOfServicePopup';  // Adjust the import path as necessary
 import { format, addDays, subDays } from 'date-fns';
+import {computeAndStoreMetrics, getComputedMetrics } from  '../metricsCalculation/metricsUtils';
+import { useIsFocused } from '@react-navigation/native';
 
 
 const LandingPage = ({ navigation }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [dailyData, setDailyData] = useState(null);
   const [canGoBack, setCanGoBack] = useState(true);
-  const [canGoForward, setCanGoForward] = useState(false); // Assuming no future data for simplicity
-
+  const [computedMetrics, setComputedMetrics] = useState(null);
+  const [canGoForward, setCanGoForward] = useState(false); 
+  const isFocused = useIsFocused(); 
   const checkDataAvailability = async (date) => {
     // Simplified check. You might need more logic to determine actual data availability.
     const data = await getDailyData(format(date, 'yyyy-MM-dd'));
@@ -34,19 +37,21 @@ const LandingPage = ({ navigation }) => {
     }
 
     checkAgreement();
-    const fetchDataAndCheckAvailability = async () => {
+    const fetchData = async () => {
       const dateStr = format(currentDate, 'yyyy-MM-dd');
       const data = await getDailyData(dateStr);
       setDailyData(data);
+      await computeAndStoreMetrics(dateStr);
+      const metrics = await getComputedMetrics(dateStr); // Retrieve computed metrics
+      setComputedMetrics(metrics); // Set computed metrics to state
 
       const prevDayAvailable = await checkDataAvailability(subDays(currentDate, 1));
       const nextDayAvailable = await checkDataAvailability(addDays(currentDate, 1));
       setCanGoBack(prevDayAvailable);
       setCanGoForward(nextDayAvailable);
     };
-    
-    fetchDataAndCheckAvailability();
-  }, [currentDate]);
+    fetchData();
+  }, [currentDate,isFocused]);
 
   const handleAgree = async () => {
     await AsyncStorage.setItem('agreementStatus', 'agreed');
@@ -85,7 +90,7 @@ const LandingPage = ({ navigation }) => {
         </View>
         <View style={styles.ringRow}>
           <ActivityRing size={100} progress={0.3} color="#00897B">
-            <Text style={styles.ringText}>0</Text>
+            <Text style={styles.ringText}> 18 </Text>
             <Text style={styles.ringLabel}>km</Text>
           </ActivityRing>
           <View style={{ width: 10 }} />
@@ -94,6 +99,13 @@ const LandingPage = ({ navigation }) => {
             <Text style={styles.ringLabel}>kcal</Text>
           </ActivityRing>
         </View>
+        {computedMetrics && (
+          <View style={styles.metricsContainer}>
+            <Text style={styles.metricsText}>Distance Walked: {computedMetrics.distance} km</Text>
+            <Text style={styles.metricsText}>BMI: {computedMetrics.bmi.toFixed(2)}</Text>
+            <Text style={styles.metricsText}>BMR: {computedMetrics.bmr.toFixed(2)} kcal/day</Text>
+          </View>
+        )}
       </ScrollView>
       <BottomNavigationBar navigation={navigation} />
       <TermsOfServicePopup
@@ -132,6 +144,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#424242",
     marginTop: 4,
+  },
+  metricsContainer: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 5,
+  },
+  metricsText: {
+    fontSize: 16,
+    color: '#333',
+    marginBottom: 5,
   },
 });
 
