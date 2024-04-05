@@ -22,6 +22,7 @@
     "expo-status-bar": "^1.11.1",
     "react": "18.2.0",
     "react-native": "^0.73.6",
+    "react-native-animated-text": "^0.0.5",
     "react-native-calendars": "^1.1304.1",
     "react-native-crypto-js": "^1.0.0",
     "react-native-modal": "^13.0.1",
@@ -31,7 +32,8 @@
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-svg": "^14.1.0",
     "tweetnacl": "^1.0.3",
-    "tweetnacl-util": "^0.15.1"
+    "tweetnacl-util": "^0.15.1",
+    "expo-local-authentication": "~13.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

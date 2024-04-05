@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Modal, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Modal, Button, FlatList, Alert } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const DropdownModal = ({ visible, options, onSelect, closeModal }) => (
   <Modal visible={visible} animationType="slide" transparent={true}>
-    <View style={styles.modalOverlay}>
-      <View style={styles.modalView}>
-        <ScrollView>
-          {options.map((item, index) => (
-            <TouchableOpacity key={index} style={styles.modalItem} onPress={() => onSelect(item)}>
-              <Text style={styles.modalItemText}>{item}</Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-        <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
-          <Text style={styles.modalButtonText}>Close</Text>
-        </TouchableOpacity>
-      </View>
+    <View style={styles.modalView}>
+      <FlatList
+        data={options}
+        renderItem={({ item }) => (
+          <TouchableOpacity style={styles.modalItem} onPress={() => onSelect(item)}>
+            <Text style={styles.modalItemText}>{item}</Text>
+          </TouchableOpacity>
+        )}
+        keyExtractor={(item) => item}
+      />
+      <Button title="Close" onPress={closeModal} />
     </View>
   </Modal>
 );
@@ -28,22 +28,34 @@ const UserProfileData = ({ onNext }) => {
   const [weight, setWeight] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [modalOptions, setModalOptions] = useState([]);
-  const [modalOnSelect, setModalOnSelect] = useState(() => {});
+  const [modalOnSelect, setModalOnSelect] = useState(() => { });
 
-  const ageRanges = [" ", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
-  const genders = [" ", "Male", "Female", "Other"];
+  const ageRanges = ["18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
+  const genders = ["Male", "Female", "Other"];
+
+  // "Why do we collect this" to be displayed on tap
+  const [showExplanationModal, setShowExplanationModal] = useState(false);
+  const explanationText = `
+    Your height, weight, and sex are used to calculate your Body Mass Index (BMI) and Basal Metabolic Rate (BMR). Your age is used to calculate your target heart rate zones for exercise. 
+
+    We ask for your age range rather than your exact age to further protect your privacy. By doing so, we can still provide you with accurate health statistics while minimizing the risk of re-identification.
+  `;
+  const toggleExplanationModal = () => {
+    setShowExplanationModal(!showExplanationModal);
+  };
 
   useEffect(() => {
+    // Load user profile data
     const loadUserProfile = async () => {
       const loadedAgeRange = await SecureStore.getItemAsync('ageRange');
       const loadedGender = await SecureStore.getItemAsync('gender');
       const loadedHeight = await SecureStore.getItemAsync('height');
       const loadedWeight = await SecureStore.getItemAsync('weight');
 
-      setAgeRange(loadedAgeRange || '');
-      setGender(loadedGender || '');
-      setHeight(loadedHeight || '');
-      setWeight(loadedWeight || '');
+      if (loadedAgeRange) setAgeRange(loadedAgeRange);
+      if (loadedGender) setGender(loadedGender);
+      if (loadedHeight) setHeight(loadedHeight);
+      if (loadedWeight) setWeight(loadedWeight);
     };
 
     loadUserProfile();
@@ -61,39 +73,60 @@ const UserProfileData = ({ onNext }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.appName}>
+        Fit App</Text>
       <Text style={styles.introText}>
-        Welcome! Let's get your profile set up. Don't worry, you can choose what to share with us. Your privacy matters to us.
+        Welcome to our app! At [this app], we aim to provide users with an overview of their health statistics without jeopardizing their privacy. Please choose whatever you are comfortable with, as all options are optional. Let's build your profile!
       </Text>
-      <View style={styles.fieldRow}>
-        <Text style={styles.fieldLabel}>Age Range:</Text>
-        <TouchableOpacity style={styles.dropdown} onPress={() => openModal(ageRanges, setAgeRange)}>
-          <Text style={styles.dropdownText}>{ageRange || "Select"}</Text>
+      <View style={styles.inputContainer}>
+        <View style={styles.iconContainer}>
+          <MaterialIcons name="elderly" size={20} color="#333" style={styles.icon} />
+        </View>
+        <TouchableOpacity style={styles.dropdown} onPress={() => openModal(ageRanges, (value) => { setAgeRange(value); saveData('ageRange', value); })}>
+          <Text style={styles.dropdownText}>{ageRange || "Select Age Range"}</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.fieldRow}>
-        <Text style={styles.fieldLabel}>Gender:</Text>
-        <TouchableOpacity style={styles.dropdown} onPress={() => openModal(genders, setGender)}>
-          <Text style={styles.dropdownText}>{gender || "Select"}</Text>
+      <View style={styles.inputContainer}>
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons name="gender-male-female" size={20} color="#333" style={styles.icon} />
+        </View>
+        <TouchableOpacity style={styles.dropdown} onPress={() => openModal(genders, (value) => { setGender(value); saveData('gender', value); })}>
+          <Text style={styles.dropdownText}>{gender || "Select Gender"}</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.fieldRow}>
-        <Text style={styles.fieldLabel}>Height (cm):</Text>
+      <View style={styles.inputContainer}>
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons name="human-male-height" size={20} color="#333" style={styles.icon} />
+        </View>
         <TextInput
           style={styles.input}
+          placeholder="Height (cm)"
           keyboardType="numeric"
           value={height}
-          onChangeText={setHeight}
+          onChangeText={(text) => { setHeight(text); saveData('height', text); }}
         />
       </View>
-      <View style={styles.fieldRow}>
-        <Text style={styles.fieldLabel}>Weight (kg):</Text>
+      <View style={styles.inputContainer}>
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons name="weight-kilogram" size={20} color="#333" style={styles.icon} />
+        </View>
         <TextInput
           style={styles.input}
+          placeholder="Weight (kg)"
           keyboardType="numeric"
           value={weight}
-          onChangeText={setWeight}
+          onChangeText={(text) => { setWeight(text); saveData('weight', text); }}
         />
       </View>
+      <TouchableOpacity onPress={toggleExplanationModal} style={styles.explanationButton}>
+        <Text style={styles.explanationButtonText}>Why do we need this?</Text>
+      </TouchableOpacity>
+      <Modal visible={showExplanationModal} animationType="slide" transparent={true}>
+        <View style={styles.modalView}>
+          <Text style={styles.modalItemText}>{explanationText}</Text>
+          <Button title="Close" onPress={toggleExplanationModal} />
+        </View>
+      </Modal>
       <DropdownModal
         visible={modalVisible}
         options={modalOptions}
@@ -104,23 +137,27 @@ const UserProfileData = ({ onNext }) => {
         closeModal={() => setModalVisible(false)}
       />
     </View>
+
   );
 };
 
 const styles = StyleSheet.create({
- 
-  modalOverlay: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
   modalView: {
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
     padding: 35,
     alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
     elevation: 5,
+    justifyContent: 'center',
+    flex: 1
   },
   modalItem: {
     padding: 10,
@@ -130,64 +167,91 @@ const styles = StyleSheet.create({
   modalItemText: {
     textAlign: 'center',
     fontSize: 18,
-    color: '#555', // Soften the text color for readability
-  },
-  modalButton: {
-    marginTop: 20,
-    backgroundColor: '#007bff',
-    padding: 10,
-    borderRadius: 20,
-    width: '80%',
-  },
-  modalButtonText: {
-    color: 'white',
-    fontSize: 18,
-    textAlign: 'center',
   },
   container: {
-    flex: 1,
+    flexGrow: 1,
+    justifyContent: 'center',
     padding: 20,
-    paddingTop: 80,
-    backgroundColor: '#f9f9f9',
+  },
+  appName: {
+    fontStyle: 'italic',
+    fontSize: 34,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 30,
+    color: '#6E87C4',
+    textShadowColor: 'rgba(100, 0, 200, 0.35)', // Blue color with opacity
+    textShadowOffset: { width: 0, height: 0 }, // No offset
+    textShadowRadius: 20, // Adjust the radius to control the intensity of the glow
+    padding: 20
   },
   introText: {
-    marginBottom: 24, // Increased spacing
-    fontSize: 16,
+    marginBottom: 20,
     textAlign: 'center',
-    color: '#555', // Softer text color
-  },
-  fieldRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16, // Increased spacing
-  },
-  fieldLabel: {
     fontSize: 16,
-    marginRight: 8,
-    flex: 1,
-    color: '#555', // Softer text color
+    color: '#483971'
   },
   dropdown: {
-    flex: 2,
+    width: '90%',
     height: 40,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
-    justifyContent: 'center',
     paddingHorizontal: 10,
-    backgroundColor: '#fff', // Background color for the dropdown
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  dropdownContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
   },
   dropdownText: {
     fontSize: 16,
-    color: '#333', // Darker text for the dropdown for better contrast
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  iconContainer: {
+    marginRight: 10,
   },
   input: {
-    flex: 2,
+    flex: 1,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
     padding: 10,
-    backgroundColor: '#fff', // Background color for the input
+    marginVertical: 10,
+  },
+  button: {
+    marginTop: 20,
+    backgroundColor: '#007bff',
+    padding: 10,
+    borderRadius: 5,
+    alignSelf: 'stretch', // Makes the button stretch to the width of the container
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    textAlign: 'center',
+  },
+  icon: {
+    color: '#8571B8',
+    fontSize: 30,
+  },
+  explanationButton: {
+    marginTop: 20,
+    backgroundColor: '#6E87C4',
+    padding: 8,
+    borderRadius: 10,
+    alignSelf: 'center',
+  },
+  explanationButtonText: {
+    color: '#fff',
+    fontSize: 13,
+    textAlign: 'center',
   },
 });
 

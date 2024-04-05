@@ -7,6 +7,8 @@ import LandingPage from './screens/LandingPage';
 import PersonalPage from './screens/PersonalPage';
 import SettingsScreen from './screens/SettingsScreen';
 import ProfileManage from './screens/ProfileManage';
+import Authenticate from "./screens/Authenticate";
+import AuthSettings from "./screens/AuthSettings";
 import SyncPage from './screens/SyncPage';
 import WatchInputPage from './screens/WatchInputPage';
 import ManualInputPage from './screens/ManualInputPage';
@@ -18,6 +20,7 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   const [initialRoute, setInitialRoute] = useState('SettingsScreen'); // Default to SettingsScreen
+  const [isAppInitialized, setAppInitialized] = useState(false);
 
   const generatePastData = async () => {
     for (let i = 1; i <= 10; i++) {
@@ -34,12 +37,19 @@ function App() {
       await saveDailyData(mockData, dateString);
     }
   };
-
   useEffect(() => {
     const initializeApp = async () => {
-      const settingsCompleted = await AsyncStorage.getItem('settingsCompleted');
-      if (settingsCompleted === 'true') {
-        setInitialRoute('LandingPage'); // User has completed settings, go to LandingPage
+      //For Debugging (To test settings page)
+      //AsyncStorage.clear(); 
+      const settingsCompleted = await AsyncStorage.getItem("settingsCompleted");
+      const authenticationEnabled = await AsyncStorage.getItem("authenticationEnabled");
+      if (settingsCompleted === "true") {
+        if (authenticationEnabled === "true"){
+          setInitialRoute("Authenticate"); // User has turned on authentication, go to Authenticate
+        }
+        else {
+          setInitialRoute("LandingPage"); // User has completed settings, go to LandingPage
+        }
       }
 
       const key = await getEncryptionKey();
@@ -55,16 +65,58 @@ function App() {
     
   }, []);
 
+  if (!isAppInitialized) {
+    return null; // or a loading spinner
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName={initialRoute}>
-        <Stack.Screen name="SettingsScreen" component={SettingsScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="LandingPage" component={LandingPage} options={{ headerShown: false }} />
-        <Stack.Screen name="PersonalPage" component={PersonalPage} options={{ headerShown: false }} />
-        <Stack.Screen name="ProfileManage" component={ProfileManage} options={{ headerShown: false }} />
-        <Stack.Screen name="SyncPage" component={SyncPage} options={{ headerShown: false }} />
-        <Stack.Screen name="WatchInputPage" component={WatchInputPage} options={{ headerShown: false }} />
-        <Stack.Screen name="ManualInputPage" component={ManualInputPage} options={{ headerShown: false }} />
+        <Stack.Screen
+          name="Authenticate"
+          component={Authenticate}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AuthSettings"
+          component={AuthSettings}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SettingsScreen"
+          component={SettingsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="LandingPage"
+          component={LandingPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="PersonalPage"
+          component={PersonalPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ProfileManage"
+          component={ProfileManage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SyncPage"
+          component={SyncPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="WatchInputPage"
+          component={WatchInputPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ManualInputPage"
+          component={ManualInputPage}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

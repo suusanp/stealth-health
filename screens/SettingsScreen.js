@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native'; // Make sure to import
 // Import your page components here
 import UserProfileData from './UserProfileData';
 import HealthMetrics from './HealthMetrics';
+import SetupAuth from './SetupAuth';
 import DataManagement from '../backend/DataManagement';
 // Ensure these components are correctly imported from their files
 
@@ -13,7 +14,7 @@ const SettingsScreen = () => {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const navigation = useNavigation(); // Use the useNavigation hook to get access to navigation
 
-  const pages = ['UserProfileData', 'HealthMetrics', 'DataManagement'];
+  const pages = ['UserProfileData', 'HealthMetrics', 'SetupAuth', 'DataManagement'];
 
   const nextPage = () => {
     if (currentPageIndex < pages.length - 1) {
@@ -35,7 +36,8 @@ const SettingsScreen = () => {
         return <HealthMetrics />;
       case 'DataManagement':
         return <DataManagement />;
-      // deepcode ignore DuplicateCaseBody: <please specify a reason of ignoring this>
+      case 'SetupAuth':
+        return <SetupAuth />;
       default:
         return <UserProfileData />;
     }
