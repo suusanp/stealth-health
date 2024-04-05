@@ -24,9 +24,17 @@ function App() {
   useEffect(() => {
     // Check if settings have been completed and also ensure encryption key is set up
     const initializeApp = async () => {
+      //For Debugging (To test settings page)
+      //AsyncStorage.clear(); 
       const settingsCompleted = await AsyncStorage.getItem("settingsCompleted");
+      const authenticationEnabled = await AsyncStorage.getItem("authenticationEnabled");
       if (settingsCompleted === "true") {
-        setInitialRoute("LandingPage"); // User has completed settings, go to LandingPage
+        if (authenticationEnabled === "true"){
+          setInitialRoute("Authenticate"); // User has turned on authentication, go to Authenticate
+        }
+        else {
+          setInitialRoute("LandingPage"); // User has completed settings, go to LandingPage
+        }
       }
 
       //Ensure an encryption key exists, or generate one
