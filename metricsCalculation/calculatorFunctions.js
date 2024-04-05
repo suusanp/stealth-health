@@ -70,6 +70,79 @@ const movingAverage = (data, N) => {
     return distanceKilometers;
   };
   
+// Fatigue Level Estimation based on steps and sleep
+const estimateFatigueLevel = (dailySteps, hoursSlept) => {
+    const activityLevel = dailySteps / 10000; // Assuming 10,000 steps as an active day
+    const sleepLevel = hoursSlept / 8; // Assuming 8 hours as optimal sleep
+  
+    if (activityLevel >= 1 && sleepLevel >= 1) {
+      return "Low";
+    } else if (activityLevel < 1 && sleepLevel < 1) {
+      return "High";
+    } else {
+      return "Moderate";
+    }
+  };
+  
+  // Hydration Level Estimation
+  const estimateHydrationLevel = (waterIntakeLiters, weightKg, exerciseDurationHours) => {
+    const recommendedIntake = calculateDailyWaterIntake(weightKg, exerciseDurationHours);
+    return waterIntakeLiters >= recommendedIntake ? "Adequate" : "Inadequate";
+  };
+  
+  // Stress Level Indication based on resting heart rate and sleep patterns
+  const indicateStressLevel = (averageHeartRate, hoursSlept) => {
+    if (averageHeartRate > 80 || hoursSlept < 6) {
+      return "High";
+    } else if (averageHeartRate < 60 && hoursSlept > 7) {
+      return "Low";
+    } else {
+      return "Moderate";
+    }
+  };
+  
+  // Risk Indicator for Health Conditions
+  const healthConditionRiskIndicator = (BMI, bloodPressure) => {
+    // Simplified conditions; real applications should use more comprehensive criteria
+    if (BMI > 30 || bloodPressure.split('/')[0] > 140) {
+      return "High risk of hypertension or type 2 diabetes";
+    } else {
+      return "Low risk";
+    }
+  };
+
+  // Assuming MET values for common activities are defined elsewhere
+const activityMETs = {
+    'walking': 3.8, // Example MET value for walking
+    // Add more activities as needed
+};
+
+// Function to calculate calories burned through activities
+const calculateCaloriesBurnedFromActivities = (activities, weightKg) => {
+    let totalCalories = 0;
+    for (const [activity, hours] of Object.entries(activities)) {
+        const MET = activityMETs[activity] || 1; // Default MET value to 1 if activity is not known
+        totalCalories += MET * weightKg * hours;
+    }
+    return totalCalories;
+};
+
+// Function to estimate calories burned from steps (simple estimation)
+const calculateCaloriesBurnedFromSteps = (steps, weightKg) => {
+    const stepsPerCalorie = 20; // Rough estimation: around 20 steps to burn a calorie for an average person
+    const caloriesFromSteps = steps / stepsPerCalorie;
+    return caloriesFromSteps;
+};
+
+// Main function to calculate total daily calorie expense
+const calculateTotalDailyCalorieExpense = (BMR, activities, steps, weightKg) => {
+    const caloriesFromActivities = calculateCaloriesBurnedFromActivities(activities, weightKg);
+    const caloriesFromSteps = calculateCaloriesBurnedFromSteps(steps, weightKg);
+    const totalCalories = BMR + caloriesFromActivities + caloriesFromSteps;
+    return totalCalories;
+};
+
+  
   // Exporting functions for use in other modules
   export {
     movingAverage,
@@ -80,5 +153,11 @@ const movingAverage = (data, N) => {
     calculateTargetHeartRateZone,
     calculateDailyWaterIntake,
     estimateDistanceWalked,
+    estimateFatigueLevel,
+    estimateHydrationLevel,
+    indicateStressLevel,
+    healthConditionRiskIndicator,
+    calculateCaloriesBurnedFromActivities,
+    calculateTotalDailyCalorieExpense,
   };
   

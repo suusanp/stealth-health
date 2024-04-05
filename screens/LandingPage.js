@@ -83,16 +83,28 @@ const LandingPage = ({ navigation }) => {
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <View style={{ height: 20 }} />
         <View style={styles.ringRow}>
-          <ActivityRing size={200} progress={0.1} color="#4B9CD3">
-            <Text style={styles.ringText}>0</Text>
-            <Text style={styles.ringLabel}>Steps</Text>
-          </ActivityRing>
+          {dailyData && (
+            <ActivityRing
+              size={200}
+              progress={dailyData.dailySteps ? dailyData.dailySteps / 10000 : 0} // Assuming 10,000 steps as 100% progress
+              color="#4B9CD3"
+            >
+              <Text style={styles.ringText}>{dailyData.dailySteps || 0}</Text>
+              <Text style={styles.ringLabel}>Steps</Text>
+            </ActivityRing>
+          )}
         </View>
         <View style={styles.ringRow}>
-          <ActivityRing size={100} progress={0.3} color="#00897B">
-            <Text style={styles.ringText}> 18 </Text>
-            <Text style={styles.ringLabel}>km</Text>
-          </ActivityRing>
+          {computedMetrics && (
+            <ActivityRing
+              size={100}
+              progress={computedMetrics.distance / 10} // Assuming 5 km as 100% progress
+              color="#00897B"
+            >
+              <Text style={styles.ringText}>{computedMetrics.distance ? computedMetrics.distance.toFixed(2) : '0.00'}</Text>
+              <Text style={styles.ringLabel}>km</Text>
+            </ActivityRing>
+          )}
           <View style={{ width: 10 }} />
           <ActivityRing size={100} progress={0.9} color="#43A047">
             <Text style={styles.ringText}>857</Text>
