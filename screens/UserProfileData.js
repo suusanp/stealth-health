@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Modal, Button, FlatList, Alert } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const DropdownModal = ({ visible, options, onSelect, closeModal }) => (
   <Modal visible={visible} animationType="slide" transparent={true}>
@@ -26,10 +28,21 @@ const UserProfileData = ({ onNext }) => {
   const [weight, setWeight] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [modalOptions, setModalOptions] = useState([]);
-  const [modalOnSelect, setModalOnSelect] = useState(() => {});
+  const [modalOnSelect, setModalOnSelect] = useState(() => { });
 
   const ageRanges = ["18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
   const genders = ["Male", "Female", "Other"];
+
+  // "Why do we collect this" to be displayed on tap
+  const [showExplanationModal, setShowExplanationModal] = useState(false);
+  const explanationText = `
+    Your height, weight, and sex are used to calculate your Body Mass Index (BMI) and Basal Metabolic Rate (BMR). Your age is used to calculate your target heart rate zones for exercise. 
+
+    We ask for your age range rather than your exact age to further protect your privacy. By doing so, we can still provide you with accurate health statistics while minimizing the risk of re-identification.
+  `;
+  const toggleExplanationModal = () => {
+    setShowExplanationModal(!showExplanationModal);
+  };
 
   useEffect(() => {
     // Load user profile data
@@ -60,29 +73,60 @@ const UserProfileData = ({ onNext }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.appName}>
+        Fit App</Text>
       <Text style={styles.introText}>
         Welcome to our app! At [this app], we aim to provide users with an overview of their health statistics without jeopardizing their privacy. Please choose whatever you are comfortable with, as all options are optional. Let's build your profile!
       </Text>
-      <TouchableOpacity style={styles.dropdown} onPress={() => openModal(ageRanges, (value) => {setAgeRange(value); saveData('ageRange', value);})}>
-        <Text style={styles.dropdownText}>{ageRange || "Select Age Range"}</Text>
+      <View style={styles.inputContainer}>
+        <View style={styles.iconContainer}>
+          <MaterialIcons name="elderly" size={20} color="#333" style={styles.icon} />
+        </View>
+        <TouchableOpacity style={styles.dropdown} onPress={() => openModal(ageRanges, (value) => { setAgeRange(value); saveData('ageRange', value); })}>
+          <Text style={styles.dropdownText}>{ageRange || "Select Age Range"}</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.inputContainer}>
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons name="gender-male-female" size={20} color="#333" style={styles.icon} />
+        </View>
+        <TouchableOpacity style={styles.dropdown} onPress={() => openModal(genders, (value) => { setGender(value); saveData('gender', value); })}>
+          <Text style={styles.dropdownText}>{gender || "Select Gender"}</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.inputContainer}>
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons name="human-male-height" size={20} color="#333" style={styles.icon} />
+        </View>
+        <TextInput
+          style={styles.input}
+          placeholder="Height (cm)"
+          keyboardType="numeric"
+          value={height}
+          onChangeText={(text) => { setHeight(text); saveData('height', text); }}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons name="weight-kilogram" size={20} color="#333" style={styles.icon} />
+        </View>
+        <TextInput
+          style={styles.input}
+          placeholder="Weight (kg)"
+          keyboardType="numeric"
+          value={weight}
+          onChangeText={(text) => { setWeight(text); saveData('weight', text); }}
+        />
+      </View>
+      <TouchableOpacity onPress={toggleExplanationModal} style={styles.explanationButton}>
+        <Text style={styles.explanationButtonText}>Why do we need this?</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.dropdown} onPress={() => openModal(genders, (value) => {setGender(value); saveData('gender', value);})}>
-        <Text style={styles.dropdownText}>{gender || "Select Gender"}</Text>
-      </TouchableOpacity>
-      <TextInput
-        style={styles.input}
-        placeholder="Height (cm)"
-        keyboardType="numeric"
-        value={height}
-        onChangeText={(text) => {setHeight(text); saveData('height', text);}}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Weight (kg)"
-        keyboardType="numeric"
-        value={weight}
-        onChangeText={(text) => {setWeight(text); saveData('weight', text);}}
-      />
+      <Modal visible={showExplanationModal} animationType="slide" transparent={true}>
+        <View style={styles.modalView}>
+          <Text style={styles.modalItemText}>{explanationText}</Text>
+          <Button title="Close" onPress={toggleExplanationModal} />
+        </View>
+      </Modal>
       <DropdownModal
         visible={modalVisible}
         options={modalOptions}
@@ -93,6 +137,7 @@ const UserProfileData = ({ onNext }) => {
         closeModal={() => setModalVisible(false)}
       />
     </View>
+
   );
 };
 
@@ -128,10 +173,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
   },
+  appName: {
+    fontStyle: 'italic',
+    fontSize: 34,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 30,
+    color: '#6E87C4',
+    textShadowColor: 'rgba(100, 0, 200, 0.35)', // Blue color with opacity
+    textShadowOffset: { width: 0, height: 0 }, // No offset
+    textShadowRadius: 20, // Adjust the radius to control the intensity of the glow
+    padding: 20
+  },
   introText: {
     marginBottom: 20,
     textAlign: 'center',
     fontSize: 16,
+    color: '#483971'
   },
   dropdown: {
     width: '90%',
@@ -143,18 +201,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 10,
   },
+  dropdownContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+  },
   dropdownText: {
     fontSize: 16,
   },
-  dropdownDropdown: {
-    width: '90%',
-    height: 150,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 3,
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  iconContainer: {
+    marginRight: 10,
   },
   input: {
-    width: '100%',
+    flex: 1,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
@@ -171,6 +235,22 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 18,
+    textAlign: 'center',
+  },
+  icon: {
+    color: '#8571B8',
+    fontSize: 30,
+  },
+  explanationButton: {
+    marginTop: 20,
+    backgroundColor: '#6E87C4',
+    padding: 8,
+    borderRadius: 10,
+    alignSelf: 'center',
+  },
+  explanationButtonText: {
+    color: '#fff',
+    fontSize: 13,
     textAlign: 'center',
   },
 });

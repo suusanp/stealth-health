@@ -19,6 +19,8 @@ This repository is structured to facilitate collaborative research, documentatio
 - **`/m1`**: Contains all files related to Milestone 1, including research documentation, analysis, and the initial report draft.
 - **`/m2`**: Contains all files related to Milestone 2, including the project presentation structure.
 - **`/m3`**: Contains all files related to Milestone 3, including the architecture design and related resources.
+- **`/m4`**: Contains all files related to Milestone 4, including the final project presentation structure.
+- **`/m5`**: Contains all files related to Milestone 5, including the final report, and related resources.
 - **`/docs`**: Documentation, including project proposals, meeting notes, and feedback from TA sessions.
 - **`/data`**: Original data sets, including survey responses, API data pulls, and anonymized user data for analysis.
 - **`/scripts`**: Code used for data analysis, including Python notebooks and scripts for processing and visualizing data.
@@ -42,7 +44,7 @@ This repository is structured to facilitate collaborative research, documentatio
 - **Milestone 1 - Case Study**: 20% | Deadline: Friday, 16 February EoD
 - **Milestone 2 - Project Case Presentation**: 5% | Dates: Monday, 12 / Wednesday, 14 February during class
 - **Milestone 3 - Requirements and Design**: 25% | Deadline: Friday, 1 March EoD
-- **Milestone 4 - Project Product Presentation**: 10% | Dates: 24 March - 11 April during class
+- **Milestone 4 - Project Product Presentation**: 10% | Date: Monday, 8 during class
 - **Milestone 5 - Privacy-Centered System**: 40% | Deadline: Thursday, 11 April EoD
 
 ## Tools and Resources
@@ -62,4 +64,4 @@ This project is created for educational purposes as part of the COMP 555 course 
 
 ## Project Status
 
-Active development. We are currently focusing on completing Milestone 3, with following milestones planned according to the course schedule.
+Active development. We are currently focusing on completing Milestone 4, with following milestones planned according to the course schedule.
