@@ -35,6 +35,7 @@ const SettingsScreen = () => {
         return <HealthMetrics />;
       case 'DataManagement':
         return <DataManagement />;
+      // deepcode ignore DuplicateCaseBody: <please specify a reason of ignoring this>
       default:
         return <UserProfileData />;
     }

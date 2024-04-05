@@ -55,26 +55,26 @@ const getRetentionDays = (dataRetentionOption) => {
 export const checkAndDeleteOldFiles = async () => {
   try {
     const preferences = await getPreferences();
-    console.log("Current preferences:", preferences);
+  //  console.log("Current preferences:", preferences);
 
     const retentionDays = getRetentionDays(preferences.dataRetention);
-    console.log(`Data retention period in days: ${retentionDays}`);
+   // console.log(`Data retention period in days: ${retentionDays}`);
 
     const today = new Date();
     const cutoffDate = subDays(today, retentionDays);
-    console.log(`Cutoff date for data retention: ${cutoffDate.toISOString()}`);
+  //  console.log(`Cutoff date for data retention: ${cutoffDate.toISOString()}`);
 
     const files = await FileSystem.readDirectoryAsync(dailyDataDirectory);
-    console.log(`Found ${files.length} files in the directory.`);
+  //  console.log(`Found ${files.length} files in the directory.`);
 
     files.forEach(async (fileName) => {
       const fileDateStr = fileName.split('.')[0]; // Assuming fileName format is 'YYYY-MM-DD.json'
       const fileDate = new Date(fileDateStr);
-      console.log(`Checking file: ${fileName} with date: ${fileDate.toISOString()}`);
+ //     console.log(`Checking file: ${fileName} with date: ${fileDate.toISOString()}`);
 
       if (fileDate < cutoffDate) {
         await FileSystem.deleteAsync(`${dailyDataDirectory}${fileName}`);
-        console.log(`Deleted old file: ${fileName}`);
+     //   console.log(`Deleted old file: ${fileName}`);
       }
     });
   } catch (error) {
