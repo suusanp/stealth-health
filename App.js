@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   const [initialRoute, setInitialRoute] = useState('SettingsScreen'); // Default to SettingsScreen
-
+  const [isAppInitialized, setAppInitialized] = useState(false);
 
 
   useEffect(() => {
@@ -37,10 +37,15 @@ function App() {
       console.log("Encryption Key:", key);
       const ciphertext = await encryptData(key, "LandingPageblabla");
       console.log("ciphertext:", ciphertext);
+      setAppInitialized(true);
     };
 
     initializeApp();
   }, []);
+
+  if (!isAppInitialized) {
+    return null; // or a loading spinner
+  }
 
   return (
     <NavigationContainer>
