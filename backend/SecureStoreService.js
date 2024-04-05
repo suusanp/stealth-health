@@ -8,7 +8,7 @@ export const savePersonalInfo = async (info) => {
 };
 
 export const getPersonalInfo = async () => {
-  const keys = ['AgeRange', 'Gender', 'Height', 'Weight', 'FitnessGoals'];
+  const keys = ['ageRange', 'gender', 'height', 'weight', 'fitnessGoals'];
   const info = {};
   for (const key of keys) {
     const value = await SecureStore.getItemAsync(key);
