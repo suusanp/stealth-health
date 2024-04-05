@@ -17,7 +17,7 @@ const DataManagementScreen = ({ navigation }) => {
     sleepPatterns: false,
     waterIntake: false,
   });
-  const [availableFunctionalities, setAvailableFunctionalities] = useState([]);
+
 
   const DataRetentionOptions = [
     '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',

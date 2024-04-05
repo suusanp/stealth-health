@@ -62,6 +62,8 @@ function App() {
     };
 
     initializeApp();
+    setAppInitialized(true);
+
     
   }, []);
 
