@@ -75,14 +75,12 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'flex-start',
     padding: 20,
-    backgroundColor: '#f9f9f9',
   },
   header: {
     fontSize: 35,
     fontWeight: 'bold',
-    marginBottom: 60,
+    marginBottom: 80,
     marginTop: 160,
-    color: '#483971',
   },
   switchContainer: {
     flexDirection: 'row',

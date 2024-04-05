@@ -59,10 +59,11 @@ function App() {
 
       await generatePastData(); 
       checkAndDeleteOldFiles(); 
+      setAppInitialized(true);
     };
 
     initializeApp();
-    setAppInitialized(true);
+    
 
     
   }, []);

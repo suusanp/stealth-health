@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 35,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 80,
     marginTop: 160
   },
   description: {
