@@ -71,7 +71,6 @@ const DataManagementScreen = ({ navigation }) => {
               scheduleDeletionNotification();
               // Send a notification after data retention change
               if (notificationsEnabled) {
-                console.log('Sending notification');
                 await PushNotificationManager('Data Retention Period Changed', `Your data retention period has been changed to ${newOption}.`);
               }
             }
