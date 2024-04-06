@@ -14,7 +14,7 @@ Notifications.setNotificationHandler({
 
 export async function PushNotificationManager(title, body) {
     try {
-        const expoPushToken = await registerForPushNotificationsAsync();
+        registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
         await schedulePushNotification(title, body);
         return 'Success';
     } catch (error) {
