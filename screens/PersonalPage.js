@@ -5,8 +5,8 @@ import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure t
 import * as LocalAuthentication from "expo-local-authentication";
 import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
-import { PushNotificationManager } from '../components/PushNotificationManager';
-import { testNoti } from '../components/testNoti';
+import { PushNotificationManager } from '../services/PushNotificationManager';
+import scheduleDeletionNotification from '../services/ScheduleNotifications';
 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -68,6 +68,7 @@ const DataManagementScreen = ({ navigation }) => {
               setDataRetention(newOption);
               savePreferences({ dataRetention: newOption, notificationsEnabled });
               checkAndDeleteOldFiles();
+              scheduleDeletionNotification();
               // Send a notification after data retention change
               if (notificationsEnabled) {
                 console.log('Sending notification');
@@ -80,6 +81,7 @@ const DataManagementScreen = ({ navigation }) => {
     } else {
       setDataRetention(newOption);
       savePreferences({ dataRetention: newOption, notificationsEnabled });
+      scheduleDeletionNotification();
       // Send a notification after data retention change
       if (notificationsEnabled) {
         console.log('Sending notification');
