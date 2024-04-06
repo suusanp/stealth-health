@@ -5,6 +5,7 @@ import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure t
 import * as LocalAuthentication from "expo-local-authentication";
 import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
+import { PushNotificationManager } from '../components/PushNotificationManager';
 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -34,7 +35,7 @@ const DataManagementScreen = ({ navigation }) => {
       // Compute available functionalities based on initial metrics
       const functionalities = computeAvailableFunctionalities(flags);
       setAvailableFunctionalities(functionalities);
-     
+
     };
     loadSettings();
   }, []);
@@ -48,7 +49,7 @@ const DataManagementScreen = ({ navigation }) => {
 
   };
 
-  const handleDataRetentionChange = (newOption) => {
+  const handleDataRetentionChange = async (newOption) => {
     const indexNew = DataRetentionOptions.indexOf(newOption);
     const indexCurrent = DataRetentionOptions.indexOf(dataRetention);
     if (indexNew < indexCurrent) {
@@ -62,10 +63,15 @@ const DataManagementScreen = ({ navigation }) => {
           },
           {
             text: "Confirm",
-            onPress: () => {
+            onPress: async () => {
               setDataRetention(newOption);
               savePreferences({ dataRetention: newOption, notificationsEnabled });
               checkAndDeleteOldFiles();
+              // Send a notification after data retention change
+              if (notificationsEnabled) {
+                console.log('Sending notification');
+                await PushNotificationManager('Data Retention Period Changed', `Your data retention period has been changed to ${newOption}.`);
+              }
             }
           }
         ]
@@ -73,9 +79,14 @@ const DataManagementScreen = ({ navigation }) => {
     } else {
       setDataRetention(newOption);
       savePreferences({ dataRetention: newOption, notificationsEnabled });
+      // Send a notification after data retention change
+      if (notificationsEnabled) {
+        console.log('Sending notification');
+        await PushNotificationManager('Data Retention Period Changed', `Your data retention period has been changed to ${newOption}.`);
+      }
     }
   };
-  
+
   const renderDataRetentionOptions = () => (
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.carousel}>
       {DataRetentionOptions.map((option, index) => (
@@ -91,16 +102,16 @@ const DataManagementScreen = ({ navigation }) => {
   );
 
 
-  async function onAuthenticate () {
+  async function onAuthenticate() {
     const auth = await LocalAuthentication.authenticateAsync({
-    promptMessage: 'Authenticate',
-    fallbackLabel: 'Enter Password',
+      promptMessage: 'Authenticate',
+      fallbackLabel: 'Enter Password',
     });
     setIsAuthenticated(auth.success);
     console.log(auth);
 
     return auth.success;
-}
+  }
 
 
   return (
@@ -140,13 +151,13 @@ const DataManagementScreen = ({ navigation }) => {
         ))}
         <TouchableOpacity
           activeOpacity={0.8}
-          
+
           style={styles.modifyAuthButton}
           onPress={async () => {
             const isAuthenticated = await onAuthenticate();
             if (isAuthenticated) {
               navigation.navigate('AuthSettings');
-            } 
+            }
           }}>
           <Text style={styles.modifyAuthButtonText}>Authentication Settings</Text>
         </TouchableOpacity>
@@ -179,7 +190,7 @@ const styles = StyleSheet.create({
   modifyProfileButtonText: {
     fontWeight: 'bold',
     fontSize: 20,
-    
+
   },
   header: {
     fontSize: 22,
@@ -193,7 +204,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   carousel: {
-    paddingTop:10,
+    paddingTop: 10,
     flexDirection: 'row',
     marginBottom: 20,
   },
