@@ -49,13 +49,6 @@ const DataManagementScreen = ({ navigation }) => {
     setAvailableFunctionalities(functionalities);
   };
 
-  // send user a notification when they toggle the Notifications switch
-  useEffect(() => {
-    if (notificationsEnabled) {
-      PushNotificationManager('Notifications Enabled ⛷', 'You will now receive notifications on data retention period deadlines.');
-    }
-  }, [notificationsEnabled]);
-
 
   const handleDataRetentionChange = async (newOption) => {
     const indexNew = DataRetentionOptions.indexOf(newOption);
