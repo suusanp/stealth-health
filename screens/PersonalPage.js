@@ -5,6 +5,8 @@ import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure t
 import * as LocalAuthentication from "expo-local-authentication";
 import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
+import * as Print from 'expo-print';
+import { shareAsync } from 'expo-sharing';
 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -17,6 +19,36 @@ const DataManagementScreen = ({ navigation }) => {
     sleepPatterns: false,
     waterIntake: false,
   });
+
+
+  const createHtmlForPDF = (dataFlags) => {
+    // Convert your data flags into HTML format.
+    // Here's a very basic example:
+    let html = "<html><head><title>Data Collection Flags</title></head><body>";
+    html += "<h1>Data Collection Flags</h1>";
+    Object.keys(dataFlags).forEach(key => {
+      html += `<p><strong>${key}</strong>: ${dataFlags[key]}</p>`;
+    });
+    html += "</body></html>";
+    return html;
+  };
+
+  const createPDF = async () => {
+    // Gather data for the PDF
+    const dataFlags = await getDataCollectionFlags();
+    const htmlContent = createHtmlForPDF(dataFlags); // Implement this function to create HTML from your data
+    
+    try {
+      const { uri } = await Print.printToFileAsync({ html: htmlContent });
+      console.log('PDF generated at:', uri);
+      await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
+      // For showing the PDF within the app, you can navigate to a screen with a WebView and load the PDF uri
+    } catch (error) {
+      console.error("Could not create PDF:", error);
+      Alert.alert("Error", "Could not create the PDF. Please try again.");
+    }
+  };
+
 
 
   const DataRetentionOptions = [
@@ -122,6 +154,14 @@ const DataManagementScreen = ({ navigation }) => {
           trackColor={{ false: "#767577", true: "#4B9CD3" }}
           thumbColor={notificationsEnabled ? "#f5dd4b" : "#f4f3f4"}
         />
+
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={styles.createPdfButton}
+          onPress={createPDF}>
+          <Text style={styles.createPdfButtonText}>Create PDF of Data</Text>
+        </TouchableOpacity>
+
         <Text style={styles.header}>Health Data Collection Preferences</Text>
         {Object.keys(metrics).map((metric, index) => (
           <View key={index} style={styles.switchContainer}>
@@ -206,6 +246,19 @@ const styles = StyleSheet.create({
   },
   carouselItemSelected: {
     backgroundColor: '#4B9CD3',
+  },
+  createPdfButton: {
+    backgroundColor: '#4B9CD3', // Use your preferred color
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 15,
+  },
+  createPdfButtonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   carouselItemText: {
     color: 'black',
