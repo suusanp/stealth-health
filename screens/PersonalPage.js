@@ -5,8 +5,8 @@ import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure t
 import * as LocalAuthentication from "expo-local-authentication";
 import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
-import { PushNotificationManager } from '../components/PushNotificationManager';
-import { testNoti } from '../components/testNoti';
+import { PushNotificationManager } from '../services/PushNotificationManager';
+import getUserDataRetentionPeriod from '../services/ScheduleNotifications';
 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -49,14 +49,6 @@ const DataManagementScreen = ({ navigation }) => {
     setAvailableFunctionalities(functionalities);
   };
 
-  // send user a notification when they toggle the Notifications switch
-  useEffect(() => {
-    if (notificationsEnabled) {
-      PushNotificationManager('Notifications Enabled ⛷', 'You will now receive notifications on data retention period deadlines.');
-    }
-  }, [notificationsEnabled]);
-
-
   const handleDataRetentionChange = async (newOption) => {
     const indexNew = DataRetentionOptions.indexOf(newOption);
     const indexCurrent = DataRetentionOptions.indexOf(dataRetention);
@@ -75,6 +67,7 @@ const DataManagementScreen = ({ navigation }) => {
               setDataRetention(newOption);
               savePreferences({ dataRetention: newOption, notificationsEnabled });
               checkAndDeleteOldFiles();
+              getUserDataRetentionPeriod();
               // Send a notification after data retention change
               if (notificationsEnabled) {
                 console.log('Sending notification');
@@ -87,6 +80,7 @@ const DataManagementScreen = ({ navigation }) => {
     } else {
       setDataRetention(newOption);
       savePreferences({ dataRetention: newOption, notificationsEnabled });
+      getUserDataRetentionPeriod();
       // Send a notification after data retention change
       if (notificationsEnabled) {
         console.log('Sending notification');
