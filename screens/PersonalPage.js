@@ -6,7 +6,7 @@ import * as LocalAuthentication from "expo-local-authentication";
 import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
 import { PushNotificationManager } from '../services/PushNotificationManager';
-import getUserDataRetentionPeriod from '../services/ScheduleNotifications';
+import scheduleDeletionNotification from '../services/ScheduleNotifications';
 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -22,7 +22,7 @@ const DataManagementScreen = ({ navigation }) => {
 
 
   const DataRetentionOptions = [
-    '5 Seconds', '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
+    '1 Day', '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
   ];
   const [availableFunctionalities, setAvailableFunctionalities] = useState([]);
 
@@ -67,7 +67,7 @@ const DataManagementScreen = ({ navigation }) => {
               setDataRetention(newOption);
               savePreferences({ dataRetention: newOption, notificationsEnabled });
               checkAndDeleteOldFiles();
-              getUserDataRetentionPeriod();
+              scheduleDeletionNotification();
               // Send a notification after data retention change
               if (notificationsEnabled) {
                 console.log('Sending notification');
@@ -80,7 +80,7 @@ const DataManagementScreen = ({ navigation }) => {
     } else {
       setDataRetention(newOption);
       savePreferences({ dataRetention: newOption, notificationsEnabled });
-      getUserDataRetentionPeriod();
+      scheduleDeletionNotification();
       // Send a notification after data retention change
       if (notificationsEnabled) {
         console.log('Sending notification');
