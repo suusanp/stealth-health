@@ -10,6 +10,7 @@ import ProfileManage from './screens/ProfileManage';
 import Authenticate from "./screens/Authenticate";
 import AuthSettings from "./screens/AuthSettings";
 import SyncPage from './screens/SyncPage';
+import UserGoalsPage from './screens/UserGoalsPage';
 import WatchInputPage from './screens/WatchInputPage';
 import ManualInputPage from './screens/ManualInputPage';
 import { generateAndStoreKey, getEncryptionKey } from './backend/SecureStoreService';
@@ -118,6 +119,11 @@ function App() {
         <Stack.Screen
           name="ManualInputPage"
           component={ManualInputPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="UserGoalsPage"
+          component={UserGoalsPage}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
