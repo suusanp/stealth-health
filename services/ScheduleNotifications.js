@@ -21,6 +21,8 @@ async function scheduleDeletionNotification() {
                     seconds = 7 * 24 * 60 * 60;
                 } else if (dataRetentionPeriod === '1 Month') {
                     seconds = 30 * 24 * 60 * 60;
+                } else if (dataRetentionPeriod === '2 Weeks') {
+                    seconds = 14 * 24 * 60 * 60;
                 } else if (dataRetentionPeriod === '3 Months') {
                     seconds = 3 * 30 * 24 * 60 * 60;
                 } else if (dataRetentionPeriod === '6 Months') {
@@ -46,7 +48,7 @@ async function scheduleDeletionNotification() {
             PushNotificationManager(title, body);
         }, seconds);
 
-        console.log('Seconds until warning:',warning_seconds / 1000, 'Seconds until deletion:', seconds / 1000);
+        console.log('Time until WARNING:', convertMillisecondsToTime(warning_seconds), '\nTime until DELETION:', convertMillisecondsToTime(seconds));
 
     } catch (error) {
         console.error('Error fetching Data Retention Period:', error);
@@ -55,6 +57,19 @@ async function scheduleDeletionNotification() {
 
 export default scheduleDeletionNotification;
 
+
+function convertMillisecondsToTime(ms) {
+    // Convert milliseconds to seconds
+    const totalSeconds = Math.floor(ms / 1000);
+
+    // Calculate days, hours, minutes, and remaining seconds
+    const days = Math.floor(totalSeconds / (3600 * 24));
+    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return { days, hours, minutes, seconds };
+}
 
 
 
