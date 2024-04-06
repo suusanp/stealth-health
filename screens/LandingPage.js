@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, ScrollView, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ActivityRing from '../components/ActivityRing'; // Adjust the import path as necessary
@@ -9,10 +9,13 @@ import { getDailyData } from '../backend/DailyDataManagement';
 import TermsOfServicePopup from './TermsOfServicePopup';  // Adjust the import path as necessary
 import { format, addDays, subDays } from 'date-fns';
 import {computeAndStoreMetrics, getComputedMetrics } from  '../metricsCalculation/metricsUtils';
-import { useIsFocused } from '@react-navigation/native';
+import { useIsFocused, useFocusEffect } from '@react-navigation/native';
 
 
 const LandingPage = ({ navigation }) => {
+  const [stepsGoal, setDailyStepsGoal] = useState(10000);
+  const [distanceGoal, setDailyDistanceGoal] = useState(5);
+  const [caloriesGoal, setDailyCaloriesGoal] = useState(1200);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [dailyData, setDailyData] = useState(null);
   const [canGoBack, setCanGoBack] = useState(true);
@@ -53,6 +56,29 @@ const LandingPage = ({ navigation }) => {
     fetchData();
   }, [currentDate,isFocused]);
 
+  const loadGoals = async () => {
+    try {
+      const stepsGoalStr = await AsyncStorage.getItem('dailySteps');
+      const distanceGoalStr = await AsyncStorage.getItem('dailyDistance');
+      const caloriesGoalStr = await AsyncStorage.getItem('dailyCalories');
+  
+      console.log("Retrieved goals:", { stepsGoalStr, distanceGoalStr, caloriesGoalStr });
+  
+      setDailyStepsGoal(stepsGoalStr !== null ? parseInt(stepsGoalStr, 10) : 10000);
+      setDailyDistanceGoal(distanceGoalStr !== null ? parseFloat(distanceGoalStr) : 5.0);
+      setDailyCaloriesGoal(caloriesGoalStr !== null ? parseInt(caloriesGoalStr, 10) : 2000);
+    } catch (e) {
+      console.log(e); // Error handling
+    }
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      loadGoals();
+      return () => {};
+    }, [])
+  );
+
   const handleAgree = async () => {
     await AsyncStorage.setItem('agreementStatus', 'agreed');
     setShowPopup(false);
@@ -86,7 +112,7 @@ const LandingPage = ({ navigation }) => {
           {dailyData && (
             <ActivityRing
               size={200}
-              progress={dailyData.dailySteps ? dailyData.dailySteps / 10000 : 0} // Assuming 10,000 steps as 100% progress
+              progress={dailyData.dailySteps ? Math.min((dailyData.dailySteps / stepsGoal), 1).toFixed(2) : 0} 
               color="#4B9CD3"
             >
               <Text style={styles.ringText}>{dailyData.dailySteps || 0}</Text>
@@ -98,7 +124,7 @@ const LandingPage = ({ navigation }) => {
           {computedMetrics && (
             <ActivityRing
               size={100}
-              progress={computedMetrics.distance / 10} // Assuming 5 km as 100% progress
+              progress={parseFloat(Math.min(computedMetrics.distance / distanceGoal, 1).toFixed(2))} 
               color="#00897B"
             >
               <Text style={styles.ringText}>{computedMetrics.distance ? computedMetrics.distance.toFixed(2) : '0.00'}</Text>
@@ -106,7 +132,10 @@ const LandingPage = ({ navigation }) => {
             </ActivityRing>
           )}
           <View style={{ width: 10 }} />
-          <ActivityRing size={100} progress={0.9} color="#43A047">
+          <ActivityRing 
+            size={100} 
+            progress={857 ? parseFloat(Math.min(857 / caloriesGoal, 1).toFixed(2)) : 0}
+            color="#43A047">
             <Text style={styles.ringText}>857</Text>
             <Text style={styles.ringLabel}>kcal</Text>
           </ActivityRing>
