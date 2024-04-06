@@ -6,6 +6,7 @@ import * as LocalAuthentication from "expo-local-authentication";
 import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
 import { PushNotificationManager } from '../components/PushNotificationManager';
+import { testNoti } from '../components/testNoti';
 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
