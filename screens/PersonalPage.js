@@ -22,7 +22,7 @@ const DataManagementScreen = ({ navigation }) => {
 
 
   const DataRetentionOptions = [
-    '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
+    '5 Seconds', '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
   ];
   const [availableFunctionalities, setAvailableFunctionalities] = useState([]);
 
@@ -47,8 +47,15 @@ const DataManagementScreen = ({ navigation }) => {
     await saveDataCollectionFlags(updatedMetrics);
     const functionalities = computeAvailableFunctionalities(updatedMetrics);
     setAvailableFunctionalities(functionalities);
-
   };
+
+  // send user a notification when they toggle the Notifications switch
+  useEffect(() => {
+    if (notificationsEnabled) {
+      PushNotificationManager('Notifications Enabled ⛷', 'You will now receive notifications on data retention period deadlines.');
+    }
+  }, [notificationsEnabled]);
+
 
   const handleDataRetentionChange = async (newOption) => {
     const indexNew = DataRetentionOptions.indexOf(newOption);
