@@ -13,7 +13,7 @@ import SyncPage from './screens/SyncPage';
 import WatchInputPage from './screens/WatchInputPage';
 import ManualInputPage from './screens/ManualInputPage';
 import { generateAndStoreKey, getEncryptionKey } from './backend/SecureStoreService';
-import { saveDailyData } from './backend/DailyDataManagement'; 
+import { saveDailyData } from './backend/DailyDataManagement';
 import { checkAndDeleteOldFiles } from './backend/FileSystemService';// Ensure correct path
 
 const Stack = createNativeStackNavigator();
@@ -44,7 +44,7 @@ function App() {
       const settingsCompleted = await AsyncStorage.getItem("settingsCompleted");
       const authenticationEnabled = await AsyncStorage.getItem("authenticationEnabled");
       if (settingsCompleted === "true") {
-        if (authenticationEnabled === "true"){
+        if (authenticationEnabled === "true") {
           setInitialRoute("Authenticate"); // User has turned on authentication, go to Authenticate
         }
         else {
@@ -57,14 +57,15 @@ function App() {
         await generateAndStoreKey();
       }
 
-      await generatePastData(); 
-      checkAndDeleteOldFiles(); 
+      await generatePastData();
+      checkAndDeleteOldFiles();
+      setAppInitialized(true);
     };
 
     initializeApp();
-    setAppInitialized(true);
 
-    
+
+
   }, []);
 
   if (!isAppInitialized) {
