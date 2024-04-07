@@ -5,8 +5,8 @@ import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure t
 import * as LocalAuthentication from "expo-local-authentication";
 import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
-import { PushNotificationManager } from '../components/PushNotificationManager';
-import { testNoti } from '../components/testNoti';
+import { PushNotificationManager } from '../services/PushNotificationManager';
+import scheduleDeletionNotification from '../services/ScheduleNotifications';
 import * as Print from 'expo-print';
 import { shareAsync } from 'expo-sharing';
 
@@ -82,13 +82,6 @@ const DataManagementScreen = ({ navigation }) => {
     setAvailableFunctionalities(functionalities);
   };
 
-  // send user a notification when they toggle the Notifications switch
-  useEffect(() => {
-    if (notificationsEnabled) {
-      PushNotificationManager('Notifications Enabled ⛷', 'You will now receive notifications on data retention period deadlines.');
-    }
-  }, [notificationsEnabled]);
-
 
   const handleDataRetentionChange = async (newOption) => {
     const indexNew = DataRetentionOptions.indexOf(newOption);
@@ -108,9 +101,9 @@ const DataManagementScreen = ({ navigation }) => {
               setDataRetention(newOption);
               savePreferences({ dataRetention: newOption, notificationsEnabled });
               checkAndDeleteOldFiles();
+              scheduleDeletionNotification();
               // Send a notification after data retention change
               if (notificationsEnabled) {
-                console.log('Sending notification');
                 await PushNotificationManager('Data Retention Period Changed', `Your data retention period has been changed to ${newOption}.`);
               }
             }
@@ -120,9 +113,9 @@ const DataManagementScreen = ({ navigation }) => {
     } else {
       setDataRetention(newOption);
       savePreferences({ dataRetention: newOption, notificationsEnabled });
+      scheduleDeletionNotification();
       // Send a notification after data retention change
       if (notificationsEnabled) {
-        console.log('Sending notification');
         await PushNotificationManager('Data Retention Period Changed', `Your data retention period has been changed to ${newOption}.`);
       }
     }
