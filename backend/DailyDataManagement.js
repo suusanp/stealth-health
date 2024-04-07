@@ -13,6 +13,7 @@ export const saveDailyData = async (data, date) => {
     const ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), encryptionKey).toString();
     // Define the file path
     const fileName = `${date}.json`;
+    console.log("Date :", date);
     const filePath = dailyDataDirectory + fileName;
 
     // Save the encrypted data
