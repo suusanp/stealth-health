@@ -252,7 +252,8 @@ const styles = StyleSheet.create({
   fullScreen: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingVertical: 35
+    paddingVertical: 35,
+    paddingBottom: 70,
   },
   container: {
     padding: 20,
