@@ -7,10 +7,10 @@ const BottomNavigationBar = ({ navigation }) => {
   return (
     <View style={styles.bottomNav}>
       <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('LandingPage')}>
-        <Icon name="home" size={30} color="#537a74" />
+        <Icon name="home" size={30} color="#000" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('PersonalPage')}>
-        <Icon name="user" size={30} color="#537a74" />
+        <Icon name="user" size={30} color="#000" />
       </TouchableOpacity>
     </View>
   );
@@ -22,9 +22,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     paddingVertical: 10,
-    backgroundColor: '#fff',
-    borderTopWidth: 2,
-    borderColor: '#537a74'
+    backgroundColor: '#9fd7ce',
+    borderTopWidth: 5,
+    borderColor: '#d8f8f3',
   },
   navItem: {
     padding: 10,
