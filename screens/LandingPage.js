@@ -134,7 +134,7 @@ const LandingPage = ({ navigation }) => {
           <View style={{ width: 10 }} />
           <ActivityRing 
             size={100} 
-            progress={857 ? parseFloat(Math.min(857 / caloriesGoal, 1).toFixed(2)) : 0}
+            progress={857 ? parseFloat(Math.min(9 / caloriesGoal, 1).toFixed(2)) : 0}
             color="#43A047">
             <Text style={styles.ringText}>857</Text>
             <Text style={styles.ringLabel}>kcal</Text>
