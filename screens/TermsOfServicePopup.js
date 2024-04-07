@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, Button, Modal, ScrollView, StyleSheet, Switch } from 'react-native';
+import { deleteAll } from '../backend/DeleteData';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
 const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
+  const navigation = useNavigation();
   const [preferences, setPreferences] = useState({
     calorieTracking: false,
     sleepTracking: false,
@@ -29,6 +32,17 @@ const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
 
     // Trigger the original onAgree function
     onAgree();
+  };
+
+  const onDisagreeWithPreferences = async () => {
+    await deleteAll();
+    onClose();
+    navigation.dispatch(
+      CommonActions.reset({
+         index: 0,
+         routes: [{ name: 'SettingsScreen' }],
+       }),
+    );
   };
 
   return (
@@ -62,6 +76,7 @@ const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
             </View>
           </ScrollView>
           <View style={styles.buttonContainer}>
+            <Button title="Cancel" onPress={onDisagreeWithPreferences} />
             <Button title="Agree" onPress={onAgreeWithPreferences} />
           </View>
         </View>
