@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingTop: 10,
     paddingHorizontal: 10,
-    paddingBottom: 10,
+    paddingBottom: 70,
   },
   ringRow: {
     flexDirection: "row",

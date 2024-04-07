@@ -6,10 +6,10 @@ import Icon from 'react-native-vector-icons/AntDesign';
 const BottomNavigationBar = ({ navigation }) => {
   return (
     <View style={styles.bottomNav}>
-      <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('LandingPage')}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('LandingPage')} hitSlop={{ top: 40, bottom: 40, left: 40, right: 40 }}>
         <Icon name="home" size={30} color="#000" />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('PersonalPage')}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('PersonalPage')} hitSlop={{ top: 40, bottom: 40, left: 40, right: 40 }}>
         <Icon name="user" size={30} color="#000" />
       </TouchableOpacity>
     </View>
@@ -18,6 +18,10 @@ const BottomNavigationBar = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   bottomNav: {
+    position: 'absolute',
+    bottom: 0, 
+    left: 0, 
+    right: 0, 
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -27,7 +31,9 @@ const styles = StyleSheet.create({
     borderColor: '#d8f8f3',
   },
   navItem: {
-    padding: 10,
+    padding: 20,
+    paddingBottom: 30,
+    marginTop: -15,
   },
 });
 
