@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 
 const UserGoalsPage = () => {
   const navigation = useNavigation();
@@ -13,9 +13,9 @@ const UserGoalsPage = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const steps = await AsyncStorage.getItem('dailySteps');
-        const distance = await AsyncStorage.getItem('dailyDistance');
-        const calories = await AsyncStorage.getItem('dailyCalories');
+        const steps = await SecureStore.getItemAsync('dailySteps');
+        const distance = await SecureStore.getItemAsync('dailyDistance');
+        const calories = await SecureStore.getItemAsync('dailyCalories');
         if (steps !== null) setDailySteps(steps);
         if (distance !== null) setDailyDistance(distance);
         if (calories !== null) setDailyCalories(calories);
@@ -29,19 +29,19 @@ const UserGoalsPage = () => {
 
   useEffect(() => {
     if (dailySteps) {
-      AsyncStorage.setItem('dailySteps', dailySteps).catch(e => console.log(e));
+      SecureStore.setItemAsync('dailySteps', dailySteps).catch(e => console.log(e));
     }
   }, [dailySteps]);
 
   useEffect(() => {
     if (dailyDistance) {
-      AsyncStorage.setItem('dailyDistance', dailyDistance).catch(e => console.log(e));
+      SecureStore.setItemAsync('dailyDistance', dailyDistance).catch(e => console.log(e));
     }
   }, [dailyDistance]);
 
   useEffect(() => {
     if (dailyCalories) {
-      AsyncStorage.setItem('dailyCalories', dailyCalories).catch(e => console.log(e));
+      SecureStore.setItemAsync('dailyCalories', dailyCalories).catch(e => console.log(e));
     }
   }, [dailyCalories]);
 
