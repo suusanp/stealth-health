@@ -195,21 +195,21 @@ const styles = StyleSheet.create({
     fontSize: 34,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 30,
+    marginBottom: 20,
     color: '#6E87C4',
     textShadowColor: 'rgba(100, 0, 200, 0.35)', // Blue color with opacity
     textShadowOffset: { width: 0, height: 0 }, // No offset
     textShadowRadius: 20, // Adjust the radius to control the intensity of the glow
-    padding: 20
+    padding: 10
   },
   introText: {
-    marginBottom: 20,
+    marginBottom: 10,
     textAlign: 'center',
     fontSize: 16,
     color: '#483971'
   },
   dropdown: {
-    width: '90%',
+    width: '87.5%',
     height: 40,
     borderWidth: 1,
     borderColor: '#ccc',
