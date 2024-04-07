@@ -5,6 +5,9 @@ import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure t
 import * as LocalAuthentication from "expo-local-authentication";
 import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
+import * as FileSystem from 'expo-file-system';
 import { PushNotificationManager } from '../services/PushNotificationManager';
 import scheduleDeletionNotification from '../services/ScheduleNotifications';
 
@@ -109,11 +112,65 @@ const DataManagementScreen = ({ navigation }) => {
       fallbackLabel: 'Enter Password',
     });
     setIsAuthenticated(auth.success);
-    console.log(auth);
 
     return auth.success;
   }
 
+  // Function to delete all data and reset
+  async function deleteAll() {
+    const dailyDataDirectory = `${FileSystem.documentDirectory}dailyData/`;
+  
+    try {
+      await SecureStore.deleteItemAsync('ageRange');
+      await SecureStore.deleteItemAsync('gender');
+      await SecureStore.deleteItemAsync('height');
+      await SecureStore.deleteItemAsync('weight');
+      await SecureStore.deleteItemAsync('fitnessGoals');
+      await FileSystem.deleteAsync(dailyDataDirectory, { idempotent: true });
+      await AsyncStorage.clear(); 
+  
+      return true;
+    } catch (error) {
+      console.error("An error occurred during deletion:", error);
+      Alert.alert("Deletion Failed. Please try again.");
+      return false;
+    }
+  }
+
+  async function onDeleteEverything() {
+    return new Promise((resolve, reject) => {
+      Alert.alert(
+        "Delete Everything Now?",
+        "All data will be immediately deleted. This action cannot be undone. Do you want to proceed?",
+        [
+          {
+            text: "Cancel",
+            style: "cancel",
+            onPress: () => resolve(false), // Resolve the promise with `false` when "Cancel" is pressed
+          },
+          {
+            text: "Confirm",
+            onPress: async () => {
+              const authenticationEnabled = await AsyncStorage.getItem("authenticationEnabled"); 
+              if (authenticationEnabled === "true"){
+                const isAuthenticated = await onAuthenticate();
+                if (isAuthenticated) {
+                  const deletionSuccessful = await deleteAll();
+                  resolve(deletionSuccessful); // Resolve the promise with the return value of deleteAll
+                } else {
+                  Alert.alert("Deletion Failed. Please try again.");
+                  resolve(false); // Resolve the promise with `false` when deletion fails
+                }
+              } else {
+                const deletionSuccessful = await deleteAll();
+                resolve(deletionSuccessful); // Resolve the promise with the return value of deleteAll
+              }
+            }
+          }
+        ]
+      );
+    });
+  }
 
   return (
     <View style={styles.fullScreen}>
@@ -161,6 +218,28 @@ const DataManagementScreen = ({ navigation }) => {
             }
           }}>
           <Text style={styles.modifyAuthButtonText}>Authentication Settings</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.6}
+          style={styles.privacyPolicyButton}
+          onPress={async () => {
+            //TODO
+          }}>
+          <Text style={styles.privacyPolicyButtonText}>Privacy Policy</Text>
+        </TouchableOpacity>
+        <View style={{ borderBottomWidth: 1, borderBottomColor: '#000' }} />
+        <Text style={{ marginTop: 40, fontSize: 22, color: 'red', fontWeight: 'bold'}}>Delete Now</Text>
+        <Text style={{ marginTop: 20, fontSize: 16}}>Once you delete everything, there is no going back. Please be certain.</Text>
+        <TouchableOpacity
+          activeOpacity={0.6}
+          style={styles.deleteButton}
+          onPress={async () => {
+            const deleted = await onDeleteEverything();
+            if (deleted) {
+              navigation.navigate('SettingsScreen');
+            } 
+          }}>
+          <Text style={styles.deleteButtonText}>Delete Everything</Text>
         </TouchableOpacity>
       </ScrollView>
       <BottomNavigationBar navigation={navigation} />
@@ -246,6 +325,36 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: '#d4d4d4'
+  },
+  privacyPolicyButton: {
+    backgroundColor: 'white',
+    padding: 15,
+    borderRadius: 10,
+    borderColor: '#2b2b2b',
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 50,
+    borderWidth: 1,
+  },
+  privacyPolicyButtonText: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#2b2b2b'
+  },
+  deleteButton: {
+    backgroundColor: 'red',
+    padding: 15,
+    borderRadius: 10,
+    borderColor: 'red',
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 15,
+    borderWidth: 1,
+  },
+  deleteButtonText: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'white'
   },
 });
 
