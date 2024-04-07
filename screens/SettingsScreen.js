@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native'; // Make sure to import useNavigation hook
+import { useNavigation, CommonActions } from '@react-navigation/native'; // Make sure to import useNavigation hook
 
 // Import your page components here
 import UserProfileData from './UserProfileData';
@@ -46,7 +46,12 @@ const SettingsScreen = () => {
   const saveSettings = async () => {
     await AsyncStorage.setItem('settingsCompleted', 'true'); // Mark the settings as completed
     console.log('Save settings');
-    navigation.navigate('LandingPage'); // Navigate to the LandingPage after saving
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: 'LandingPage' }], // Navigate to the LandingPage after saving
+      }),
+    );
   };
 
   return (
