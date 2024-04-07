@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Switch, ScrollView, TouchableOpacity, Modal, Button } from 'react-native';
 import { savePreferences, getPreferences } from './FileSystemService';
+import { PushNotificationManager } from '../services/PushNotificationManager';
+import scheduleDeletionNotification from '../services/ScheduleNotifications';
 
 const DataRetentionOptions = [
   '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
@@ -19,7 +21,7 @@ const DataManagement = () => {
     };
 
     loadPreferences();
-    
+
   }, []);
 
   useEffect(() => {
@@ -29,14 +31,21 @@ const DataManagement = () => {
     });
   }, [dataRetention, notificationsEnabled]);
 
+  // if notificationsEnabled is true, schedule a notification. if preferences change, update the notification
+  useEffect(() => {
+    if (notificationsEnabled) {
+      scheduleDeletionNotification();
+    }
+  }, [notificationsEnabled, dataRetention]);
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Data Management</Text>
       <Text style={styles.description}>
-        Finally, you have the option to determine how long your data 
+        Finally, you have the option to determine how long your data
         will be kept in storage.
       </Text>
-      
+
       <Text style={styles.description}>Please choose a data retention period below:</Text>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.carousel}>
         {DataRetentionOptions.map((option) => (
@@ -49,11 +58,11 @@ const DataManagement = () => {
           </TouchableOpacity>
         ))}
       </ScrollView>
-      
+
       <Text style={styles.description}>
         Note that you can always download a PDF of your data report in the personal menu of the app. You can activate a notification to remind you to download your data before the retention period ends.
       </Text>
-      
+
       <View style={styles.section}>
         <Text style={styles.label}>Enable Notifications for Reminders:</Text>
         <Switch

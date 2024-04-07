@@ -22,9 +22,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     paddingVertical: 10,
-    backgroundColor: '#fff',
-    borderTopWidth: 1,
-    borderColor: '#eaeaea',
+    backgroundColor: '#9fd7ce',
+    borderTopWidth: 5,
+    borderColor: '#d8f8f3',
   },
   navItem: {
     padding: 10,
