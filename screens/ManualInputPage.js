@@ -14,6 +14,7 @@ const ManualInputPage = () => {
     bloodPressure: false,
     sleepPatterns: false,
     waterIntake: false,
+    activityTracking: false,
   });
   const [dailyData, setDailyData] = useState({
     dailySteps: '',
@@ -21,6 +22,7 @@ const ManualInputPage = () => {
     bloodPressure: '',
     sleepPatterns: '',
     waterIntake: '',
+    activityTracking: '',
   });
   const [dataChanged, setDataChanged] = useState(false);
 
@@ -80,6 +82,7 @@ const ManualInputPage = () => {
       {renderInputField("bloodPressure", "Blood Pressure (mmHg)", "bloodPressure")}
       {renderInputField("sleepPatterns", "Hours Slept Last Night", "hoursSlept")}
       {renderInputField("waterIntake", "Water Intake (ml)", "waterIntake")}
+      {renderInputField("activityTracking", "Add an activity", "activityTracking")}
       <TouchableOpacity 
         style={[styles.saveButton, !dataChanged && styles.saveButtonDisabled]} 
         onPress={saveAndExit} 

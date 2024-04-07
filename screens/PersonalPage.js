@@ -20,6 +20,7 @@ const DataManagementScreen = ({ navigation }) => {
     bloodPressure: false,
     sleepPatterns: false,
     waterIntake: false,
+    activityTracking: false,
   });
 
 
