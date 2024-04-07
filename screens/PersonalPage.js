@@ -10,6 +10,7 @@ import * as SecureStore from 'expo-secure-store';
 import * as FileSystem from 'expo-file-system';
 import { PushNotificationManager } from '../services/PushNotificationManager';
 import scheduleDeletionNotification from '../services/ScheduleNotifications';
+import { CommonActions } from '@react-navigation/native';
 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -236,7 +237,12 @@ const DataManagementScreen = ({ navigation }) => {
           onPress={async () => {
             const deleted = await onDeleteEverything();
             if (deleted) {
-              navigation.navigate('SettingsScreen');
+              navigation.dispatch(
+                CommonActions.reset({
+                  index: 0,
+                  routes: [{ name: 'SettingsScreen' }],
+                }),
+              );
             } 
           }}>
           <Text style={styles.deleteButtonText}>Delete Everything</Text>
