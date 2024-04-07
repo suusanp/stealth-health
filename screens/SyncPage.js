@@ -10,7 +10,7 @@ const SyncPage = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()} hitSlop={{ top: 10, bottom: 10, left: 10, right: 40 }}>
         <Icon name="arrow-left" size={24} color="#000" />
       </TouchableOpacity>
       <Text style={styles.title}>Sync Your Data</Text>
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
   backButton: {
     marginBottom: 30,
     alignSelf: 'flex-start',
+    marginTop: 20,
   },
   title: {
     fontSize: 22,
