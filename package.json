@@ -36,7 +36,8 @@
     "tweetnacl": "^1.0.3",
     "tweetnacl-util": "^0.15.1",
     "expo-print": "~12.8.1",
-    "expo-sharing": "~11.10.0"
+    "expo-sharing": "~11.10.0",
+    "expo-notifications": "~0.27.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

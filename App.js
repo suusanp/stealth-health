@@ -40,7 +40,7 @@ function App() {
   useEffect(() => {
     const initializeApp = async () => {
       //For Debugging (To test settings page)
-      //AsyncStorage.clear(); 
+      AsyncStorage.clear(); 
       const settingsCompleted = await AsyncStorage.getItem("settingsCompleted");
       const authenticationEnabled = await AsyncStorage.getItem("authenticationEnabled");
       if (settingsCompleted === "true") {
