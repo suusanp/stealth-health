@@ -7,11 +7,11 @@ const TopNavigationBar = ({ title, onPressBack, onPressForward, canGoBack, canGo
   return (
     <View style={styles.navBar}>
       <TouchableOpacity disabled={!canGoBack} onPress={onPressBack}>
-        <Icon name="chevron-left" size={30} color={canGoBack ? "#000" : "#ccc"} />
+        <Icon name="chevron-left" size={30} color={canGoBack ? "#141616" : "#fff"} />
       </TouchableOpacity>
       <Text style={styles.title}>{title}</Text>
       <TouchableOpacity disabled={!canGoForward} onPress={onPressForward}>
-        <Icon name="chevron-right" size={30} color={canGoForward ? "#000" : "#ccc"} />
+        <Icon name="chevron-right" size={30} color={canGoForward ? "#141616" : "#fff"} />
       </TouchableOpacity>
     </View>
   );
@@ -22,10 +22,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 13,
-    borderBottomWidth: 1,
-    borderColor: '#eaeaea',
+    paddingVertical: 10,
+    paddingHorizontal: 8,
+    borderTopWidth: 3,
+    borderBottomWidth:3,
+    borderColor: '#d8f8f3',
+    backgroundColor: '#9fd7ce',
   },
   title: {
     fontSize: 16,
