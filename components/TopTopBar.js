@@ -29,10 +29,11 @@ const TopTopBar = ({ projectName }) => {
         <TouchableOpacity
           onPressIn={() => setIconOpacity(0.5)}
           onPressOut={() => setIconOpacity(1)}
-          // Assuming you have a function to handle the chart bar icon press
+          onPress={() => navigation.navigate('UserGoalsPage')} // Navigate to UserGoalsPage
         >
           <Icon name="chart-bar" size={24} color="#000" style={{ opacity: iconOpacity, marginLeft: 10 }} />
         </TouchableOpacity>
+
       </View>
     </View>
   );
