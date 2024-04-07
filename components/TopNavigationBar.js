@@ -24,14 +24,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
     paddingHorizontal: 8,
-    borderTopWidth: 3,
-    borderBottomWidth:3,
-    borderColor: '#d8f8f3',
-    backgroundColor: '#9fd7ce',
+    borderTopWidth: 2,
+    borderBottomWidth:2,
+    borderColor: '#E3F1FF',
+    backgroundColor: '#cbdbcb',
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#141616',
   },
 });
 
