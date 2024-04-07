@@ -8,6 +8,8 @@ import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as SecureStore from 'expo-secure-store';
 import * as FileSystem from 'expo-file-system';
+import { PushNotificationManager } from '../services/PushNotificationManager';
+import scheduleDeletionNotification from '../services/ScheduleNotifications';
 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -37,7 +39,7 @@ const DataManagementScreen = ({ navigation }) => {
       // Compute available functionalities based on initial metrics
       const functionalities = computeAvailableFunctionalities(flags);
       setAvailableFunctionalities(functionalities);
-     
+
     };
     loadSettings();
   }, []);
@@ -48,10 +50,10 @@ const DataManagementScreen = ({ navigation }) => {
     await saveDataCollectionFlags(updatedMetrics);
     const functionalities = computeAvailableFunctionalities(updatedMetrics);
     setAvailableFunctionalities(functionalities);
-
   };
 
-  const handleDataRetentionChange = (newOption) => {
+
+  const handleDataRetentionChange = async (newOption) => {
     const indexNew = DataRetentionOptions.indexOf(newOption);
     const indexCurrent = DataRetentionOptions.indexOf(dataRetention);
     if (indexNew < indexCurrent) {
@@ -65,10 +67,15 @@ const DataManagementScreen = ({ navigation }) => {
           },
           {
             text: "Confirm",
-            onPress: () => {
+            onPress: async () => {
               setDataRetention(newOption);
               savePreferences({ dataRetention: newOption, notificationsEnabled });
               checkAndDeleteOldFiles();
+              scheduleDeletionNotification();
+              // Send a notification after data retention change
+              if (notificationsEnabled) {
+                await PushNotificationManager('Data Retention Period Changed', `Your data retention period has been changed to ${newOption}.`);
+              }
             }
           }
         ]
@@ -76,9 +83,14 @@ const DataManagementScreen = ({ navigation }) => {
     } else {
       setDataRetention(newOption);
       savePreferences({ dataRetention: newOption, notificationsEnabled });
+      scheduleDeletionNotification();
+      // Send a notification after data retention change
+      if (notificationsEnabled) {
+        await PushNotificationManager('Data Retention Period Changed', `Your data retention period has been changed to ${newOption}.`);
+      }
     }
   };
-  
+
   const renderDataRetentionOptions = () => (
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.carousel}>
       {DataRetentionOptions.map((option, index) => (
@@ -94,10 +106,10 @@ const DataManagementScreen = ({ navigation }) => {
   );
 
 
-  async function onAuthenticate () {
+  async function onAuthenticate() {
     const auth = await LocalAuthentication.authenticateAsync({
-    promptMessage: 'Authenticate',
-    fallbackLabel: 'Enter Password',
+      promptMessage: 'Authenticate',
+      fallbackLabel: 'Enter Password',
     });
     setIsAuthenticated(auth.success);
 
@@ -160,7 +172,6 @@ const DataManagementScreen = ({ navigation }) => {
     });
   }
 
-
   return (
     <View style={styles.fullScreen}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -198,13 +209,13 @@ const DataManagementScreen = ({ navigation }) => {
         ))}
         <TouchableOpacity
           activeOpacity={0.8}
-          
+
           style={styles.modifyAuthButton}
           onPress={async () => {
             const isAuthenticated = await onAuthenticate();
             if (isAuthenticated) {
               navigation.navigate('AuthSettings');
-            } 
+            }
           }}>
           <Text style={styles.modifyAuthButtonText}>Authentication Settings</Text>
         </TouchableOpacity>
@@ -259,7 +270,7 @@ const styles = StyleSheet.create({
   modifyProfileButtonText: {
     fontWeight: 'bold',
     fontSize: 20,
-    
+
   },
   header: {
     fontSize: 22,
@@ -273,7 +284,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   carousel: {
-    paddingTop:10,
+    paddingTop: 10,
     flexDirection: 'row',
     marginBottom: 20,
   },
