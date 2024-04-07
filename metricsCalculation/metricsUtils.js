@@ -80,7 +80,7 @@ export const getComputedMetrics = async (date) => {
 };
 
 const computeAvailableFunctionalities = (metrics) => {
-    const availableFunctionalities = ['Body Mass Index (BMI)', 'Basal Metabolic Rate (BMR)']; // Always available from User Profile
+    const availableFunctionalities = []; 
   
     // Check each metric and add corresponding functionalities
     // This is not accurate yet and should be replaced with actual logic. 
