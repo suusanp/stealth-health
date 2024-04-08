@@ -56,7 +56,6 @@ const ManualInputPage = () => {
       const dataFlags = await getDataCollectionFlags();
       setFlags(dataFlags);
       const today = new Date().toISOString().split('T')[0];
-      console.log("Today" , today) ;
       const todayData = await getDailyData(today);
       if (todayData) {
         setDailyData({
@@ -66,9 +65,8 @@ const ManualInputPage = () => {
           bloodPressure: todayData.bloodPressure || '',
           sleepPatterns: todayData.sleepPatterns || '',
           waterIntake: todayData.waterIntake || '',
-          activityTracking: todayData?.activityTracking | [],
-        });
-      }
+        }); }
+      setDailyData(prevData => ({...prevData, activityTracking: todayData?.activityTracking || []}));
     };
     loadFlagsAndData();
   }, []);
