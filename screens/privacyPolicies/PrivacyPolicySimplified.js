@@ -6,7 +6,7 @@ const PrivacyPolicySimplified = () => {
         <View style={styles.container}>
             <Text style={styles.appName}>Privacy Policy, Simply</Text>
             <Text style={styles.policyText}>
-                <Text style={styles.heading}>Information Collection:</Text> We only keep the information you type into our app on your own device. We don't collect anything else or share your data. Our app doesn’t send your data over the internet. 
+                <Text style={styles.heading}>Information Collection:</Text> We only keep the information you type into our app on your own device. We don't collect anything else or share your data. Our app doesn’t send your data over the internet. Note that if you lose your device, you will not be able to recover your data.
             </Text>
             <Text style={styles.policyText}>
                 <Text style={styles.heading}>Data Usage:</Text> Your input is used for health calculations within the app, all processed locally. Your sensitive health info is encrypted for security. 
