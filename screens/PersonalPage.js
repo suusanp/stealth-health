@@ -17,7 +17,7 @@ import Icon from 'react-native-vector-icons/Entypo';
 import { getDailyData } from '../backend/DailyDataManagement';
 import PrivacyPolicyText from './privacyPolicies/PrivacyPolicyText';
 import TermsOfServiceText from './privacyPolicies/TermsOfServiceText';
-import { getComputedMetrics } from '../metricsCalculation/metricsUtils';
+
 
 
 const DataManagementScreen = ({ navigation }) => {
