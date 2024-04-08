@@ -10,7 +10,7 @@ import TermsOfServicePopup from './TermsOfServicePopup';  // Adjust the import p
 import { format, addDays, subDays } from 'date-fns';
 import {computeAndStoreMetrics, getComputedMetrics } from  '../metricsCalculation/metricsUtils';
 import { useIsFocused, useFocusEffect } from '@react-navigation/native';
-
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const LandingPage = ({ navigation }) => {
   const [stepsGoal, setDailyStepsGoal] = useState(10000);
@@ -95,12 +95,30 @@ const LandingPage = ({ navigation }) => {
   const goForwardADay = () => {
     setCurrentDate(addDays(currentDate, 1));
   };
-
+  const renderComputedMetrics = (metrics) => {
+    const metricsComponents = [];
+    Object.keys(metrics).forEach(key => {
+      if (metrics[key] !== null && metrics[key] !== undefined) {
+        metricsComponents.push(
+          <View key={key} style={styles.metricContainer}>
+            <Text style={styles.metricName}>{key.replace(/([A-Z])/g, ' $1').trim()}:</Text>
+            <Text style={styles.metricValue}>{typeof metrics[key] === 'number' ? metrics[key].toFixed(2) : metrics[key]}</Text>
+          </View>
+        );
+      }
+    });
+    return metricsComponents.length > 0 ? (
+      <View style={styles.metricsContainer}>
+        {metricsComponents}
+      </View>
+    ) : null;
+  };
+  
   return (
     <SafeAreaView style={styles.safeArea}>
       <TopTopBar projectName="Your Health Dashboard" navigation={navigation} />
       <TopNavigationBar
-        title={currentDate.toISOString().split('T')[0]}
+        title={subDays(currentDate, 1).toISOString().split('T')[0]}
         onPressBack={goBackADay}
         onPressForward={goForwardADay}
         canGoBack={canGoBack}
@@ -124,29 +142,25 @@ const LandingPage = ({ navigation }) => {
           {computedMetrics && (
             <ActivityRing
               size={100}
-              progress={parseFloat(Math.min(computedMetrics.distance / distanceGoal, 1).toFixed(2))} 
+              progress={parseFloat(Math.min(computedMetrics.distanceWalked / distanceGoal, 1).toFixed(2))} 
               color="#00897B"
             >
-              <Text style={styles.ringText}>{computedMetrics.distance ? computedMetrics.distance.toFixed(2) : '0.00'}</Text>
+              <Text style={styles.ringText}>{computedMetrics.distanceWalked ? computedMetrics.distanceWalked.toFixed(2) : '0.00'}</Text>
               <Text style={styles.ringLabel}>km</Text>
             </ActivityRing>
           )}
           <View style={{ width: 10 }} />
+          {computedMetrics && (
           <ActivityRing 
             size={100} 
-            progress={857 ? parseFloat(Math.min(9 / caloriesGoal, 1).toFixed(2)) : 0}
+            progress={ parseFloat(Math.min(computedMetrics.totalDailyCalorieExpense / caloriesGoal, 1).toFixed(1))}
             color="#43A047">
-            <Text style={styles.ringText}>857</Text>
+             <Text style={styles.ringText}>{computedMetrics.totalDailyCalorieExpense ? computedMetrics.totalDailyCalorieExpense.toFixed(0) : '0.00'}</Text>
             <Text style={styles.ringLabel}>kcal</Text>
           </ActivityRing>
+          )}
         </View>
-        {computedMetrics && (
-          <View style={styles.metricsContainer}>
-            <Text style={styles.metricsText}>Distance Walked: {computedMetrics.distance} km</Text>
-            <Text style={styles.metricsText}>BMI: {computedMetrics.bmi.toFixed(2)}</Text>
-            <Text style={styles.metricsText}>BMR: {computedMetrics.bmr.toFixed(2)} kcal/day</Text>
-          </View>
-        )}
+       {computedMetrics &&  renderComputedMetrics(computedMetrics)} 
       </ScrollView>
       <BottomNavigationBar navigation={navigation} />
       <TermsOfServicePopup
@@ -186,16 +200,22 @@ const styles = StyleSheet.create({
     color: "#424242",
     marginTop: 4,
   },
-  metricsContainer: {
-    marginTop: 20,
+  metricContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     padding: 10,
     backgroundColor: '#f0f0f0',
     borderRadius: 5,
+    marginVertical: 4,
   },
-  metricsText: {
+  metricName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  metricValue: {
     fontSize: 16,
     color: '#333',
-    marginBottom: 5,
   },
 });
 

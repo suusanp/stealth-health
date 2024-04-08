@@ -12,6 +12,8 @@ import * as Print from 'expo-print';
 import { shareAsync } from 'expo-sharing';
 import { CommonActions } from '@react-navigation/native';
 import { deleteAll } from '../backend/DeleteData';
+import Icon from 'react-native-vector-icons/Entypo';
+
 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -224,10 +226,16 @@ const DataManagementScreen = ({ navigation }) => {
             />
           </View>
         ))}
-        <Text style={styles.header}>Available Functionalities:</Text>
-        {availableFunctionalities.map((func, index) => (
-          <Text key={index} style={styles.metricText}>{func}</Text>
-        ))}
+        <View style={styles.functionalitiesContainer}>
+  <Text style={styles.header}>Available Functionalities:</Text>
+  {availableFunctionalities.map((func, index) => (
+    <View key={index} style={styles.functionalityItem}>
+      <Icon name="controller-stop" size={18} color="#4A90E2" style={styles.bulletIcon} />
+      <Text style={styles.metricText}>{func}</Text>
+    </View>
+  ))}
+</View>
+
         <TouchableOpacity
           activeOpacity={0.8}
 
@@ -314,6 +322,35 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     flexDirection: 'row',
     marginBottom: 20,
+  },
+  functionalitiesContainer: {
+    marginTop: 20,
+    backgroundColor: '#f9f9f9',
+    borderRadius: 10,
+    padding: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  header: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 10,
+  },
+  functionalityItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  bulletIcon: {
+    marginRight: 10,
+  },
+  metricText: {
+    fontSize: 16,
+    color: '#555',
   },
   carouselItem: {
     paddingVertical: 9,

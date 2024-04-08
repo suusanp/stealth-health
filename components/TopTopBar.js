@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon2 from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native'; // Make sure you have @react-navigation/native installed
 
 
@@ -26,7 +27,7 @@ const TopTopBar = ({ projectName }) => {
           onPressOut={() => setPencilIconOpacity(1)}
           // Assuming you have a function to handle the pencil icon press
         >
-          <Icon name="pencil" size={26} color="#38b59f" style={{ opacity: pencilIconOpacity }} />
+          <Icon2 name="lock" size={26} color="#38b59f" style={{ opacity: pencilIconOpacity }} />
         </TouchableOpacity>
         <Text style={styles.projectName}> </Text>
         <TouchableOpacity
@@ -35,7 +36,7 @@ const TopTopBar = ({ projectName }) => {
           hitSlop={{right: 40 }}
           onPress={() => navigation.navigate('UserGoalsPage')} // Navigate to UserGoalsPage
         >
-          <Icon name="chart-bar" size={26} color="#38b59f" style={{ opacity: chartIconOpacity, marginLeft: 10 }} />
+          <Icon2 name="Trophy" size={26} color="#38b59f" style={{ opacity: chartIconOpacity, marginLeft: 10 }} />
         </TouchableOpacity>
 
       </View>
