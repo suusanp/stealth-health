@@ -1,10 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
-import {  getDailyData, saveDailyData } from '../backend/DailyDataManagement';
-import { getDataCollectionFlags } from '../backend/FileSystemService';
-import { computeAndStoreMetrics } from '../metricsCalculation/metricsUtils'; 
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Modal, Alert, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { getDailyData, saveDailyData } from '../backend/DailyDataManagement';
+import { getDataCollectionFlags } from '../backend/FileSystemService';
+import { computeAndStoreMetrics } from '../metricsCalculation/metricsUtils';
 import { useNavigation } from '@react-navigation/native';
+
+const activities = [
+  { label: 'Running', value: 'running' },
+  { label: 'Cycling', value: 'cycling' },
+  { label: 'Swimming', value: 'swimming' },
+  { label: 'Hiking', value: 'hiking' },
+  { label: 'Yoga', value: 'yoga' },
+  { label: 'Pilates', value: 'pilates' },
+  { label: 'CrossFit', value: 'crossfit' },
+  { label: 'Dancing', value: 'dancing' },
+  { label: 'Boxing', value: 'boxing' },
+  { label: 'Rock Climbing', value: 'rock_climbing' },
+  { label: 'Weight Training', value: 'weight_training' },
+  { label: 'Skiing', value: 'skiing' },
+  { label: 'Snowboarding', value: 'snowboarding' },
+  { label: 'Surfing', value: 'surfing' },
+  { label: 'Skateboarding', value: 'skateboarding' },
+  { label: 'Kayaking', value: 'kayaking' },
+  { label: 'Rowing', value: 'rowing' },
+  { label: 'Jump Rope', value: 'jump_rope' },
+];
+
 
 const ManualInputPage = () => {
   const navigation = useNavigation();
@@ -14,6 +36,7 @@ const ManualInputPage = () => {
     bloodPressure: false,
     sleepPatterns: false,
     waterIntake: false,
+    activityTracking: true,
   });
   const [dailyData, setDailyData] = useState({
     dailySteps: '',
@@ -21,79 +44,218 @@ const ManualInputPage = () => {
     bloodPressure: '',
     sleepPatterns: '',
     waterIntake: '',
+    activityTracking: [],
   });
   const [dataChanged, setDataChanged] = useState(false);
+  const [activityModalVisible, setActivityModalVisible] = useState(false);
+  const [selectedActivity, setSelectedActivity] = useState('');
+  const [activityDuration, setActivityDuration] = useState('');
 
   useEffect(() => {
     const loadFlagsAndData = async () => {
       const dataFlags = await getDataCollectionFlags();
       setFlags(dataFlags);
-
       const today = new Date().toISOString().split('T')[0];
       const todayData = await getDailyData(today);
       if (todayData) {
-        setDailyData(todayData);
-      }
+        setDailyData({
+          ...dailyData,
+          dailySteps: todayData.dailySteps || '',
+          heartRate: todayData.heartRate || '',
+          bloodPressure: todayData.bloodPressure || '',
+          sleepPatterns: todayData.sleepPatterns || '',
+          waterIntake: todayData.waterIntake || '',
+        }); }
+      setDailyData(prevData => ({...prevData, activityTracking: todayData?.activityTracking || []}));
     };
-
     loadFlagsAndData();
   }, []);
 
   const handleInputChange = (name, value) => {
     setDataChanged(true);
-    setDailyData(prevData => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setDailyData(prevData => ({...prevData, [name]: value}));
   };
+
+  const handleAddActivity = () => {
+    if (!selectedActivity || !activityDuration) {
+      Alert.alert('Error', 'Please select an activity and specify the duration.');
+      return;
+    }
+    const newActivity = { id: String(new Date().getTime()), name: selectedActivity, duration: activityDuration };
+    setDailyData(prevData => ({...prevData, activityTracking: [...prevData.activityTracking, newActivity]}));
+    setDataChanged(true);
+    setSelectedActivity('');
+    setActivityDuration('');
+    setActivityModalVisible(false);
+  };
+
+  const deleteActivity = id => {
+    setDailyData(prevData => ({...prevData, activityTracking: prevData.activityTracking.filter(activity => activity.id !== id)}));
+    setDataChanged(true);
+  };
+
+  const renderActivities = () => dailyData.activityTracking && dailyData.activityTracking.length > 0 ? (
+    <View style={styles.activitiesList}>
+      {dailyData.activityTracking.map((activity, index) => (
+        <View key={activity.id || index} style={styles.activityChip}>
+          <Text style={styles.activityChipText}>{`${activity.name}: ${activity.duration} min`}</Text>
+          <TouchableOpacity onPress={() => deleteActivity(activity.id)}>
+            <Icon name="close" size={20} color="#f00" />
+          </TouchableOpacity>
+        </View>
+      ))}
+    </View>
+  ) : null;
 
   const saveAndExit = async () => {
     if (dataChanged) {
       const today = new Date().toISOString().split('T')[0];
       await saveDailyData(dailyData, today);
-      await computeAndStoreMetrics(today); 
+      await computeAndStoreMetrics(today);
       Alert.alert("Data Saved", "Your daily data and computed metrics have been saved.");
-      navigation.navigate('SyncPage');
+      navigation.goBack();
     }
   };
 
+  const renderActivitySelectionModal = () => (
+    <Modal
+      visible={activityModalVisible}
+      animationType="slide"
+      onRequestClose={() => setActivityModalVisible(false)}
+      transparent={true}
+    >
+      <View style={styles.modalOverlay}>
+        <View style={styles.modalView}>
+          <FlatList
+            data={activities}
+            keyExtractor={(item) => item.value}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={[styles.activityListItem, item.label === selectedActivity && styles.selectedActivity]}
+                onPress={() => setSelectedActivity(item.label)}
+              >
+                <Text style={styles.activityListItemText}>{item.label}</Text>
+              </TouchableOpacity>
+            )}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Duration in minutes"
+            value={activityDuration}
+            onChangeText={setActivityDuration}
+            keyboardType="numeric"
+          />
+          <TouchableOpacity style={styles.addButton} onPress={handleAddActivity}>
+            <Text style={styles.addButtonText}>Add Activity</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </Modal>
+  );
+
   const renderInputField = (flag, placeholder, name) => (
     flags[flag] && (
-      <TextInput
-        placeholder={placeholder}
-        value={dailyData[name]}
-        onChangeText={(value) => handleInputChange(name, value)}
-        keyboardType="numeric"
-        style={styles.input}
-      />
+      <View style={styles.inputGroup}>
+        <TextInput
+          placeholder={placeholder}
+          value={dailyData[name]}
+          onChangeText={(value) => handleInputChange(name, value)}
+          keyboardType="numeric"
+          style={styles.input}
+        />
+      </View>
     )
   );
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('SyncPage')}>
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
         <Icon name="arrow-left" size={24} color="#000" />
       </TouchableOpacity>
       <Text style={styles.header}>Enter Today's Data</Text>
       {renderInputField("dailySteps", "Daily Steps", "dailySteps")}
       {renderInputField("heartRate", "Average Heart Rate (bpm)", "heartRate")}
       {renderInputField("bloodPressure", "Blood Pressure (mmHg)", "bloodPressure")}
-      {renderInputField("sleepPatterns", "Hours Slept Last Night", "hoursSlept")}
+      {renderInputField("sleepPatterns", "Hours Slept Last Night", "sleepPatterns")}
       {renderInputField("waterIntake", "Water Intake (ml)", "waterIntake")}
-      <TouchableOpacity 
-        style={[styles.saveButton, !dataChanged && styles.saveButtonDisabled]} 
-        onPress={saveAndExit} 
-        disabled={!dataChanged}>
+      <View style={{ marginVertical: 10 }}>
+        {flags.activityTracking && (
+          <>
+            <TouchableOpacity onPress={() => setActivityModalVisible(true)} style={styles.activityInputButton}>
+              <Text style={styles.activityInputButtonText}> + Add Activity</Text>
+            </TouchableOpacity>
+            {renderActivities()}
+          </>
+        )}
+      </View>
+      {renderActivitySelectionModal()}
+      <TouchableOpacity
+        style={[styles.saveButton, !dataChanged && styles.saveButtonDisabled]}
+        onPress={saveAndExit}
+        disabled={!dataChanged}
+      >
         <Text style={styles.saveButtonText}>Save & Exit</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-
 const styles = StyleSheet.create({
   saveButtonDisabled: {
     backgroundColor: '#ccc',
+  },
+  activityInputButton: {
+    backgroundColor: '#007bff',
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 10,
+    alignItems: 'center',
+  },
+  activityInputButtonText: {
+    color: '#fff',
+    fontSize: 16,
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 20,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    width: '90%',
+  },
+  activityListItem: {
+    padding: 10,
+    width: '100%',
+  },
+  activityListItemText: {
+    fontSize: 16,
+  },
+  selectedActivity: {
+    backgroundColor: '#cce5ff',
+  },
+  addButton: {
+    backgroundColor: '#007bff',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  addButtonText: {
+    color: '#fff',
+    fontSize: 18,
   },
   container: {
     flex: 1,
@@ -132,9 +294,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
-  saveButtonText: {
-    color: 'white',
-    fontSize: 18,
+  activitiesList: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  activityChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: '#e1e1e1',
+    borderRadius: 20,
+    margin: 5,
+  },
+  activityChipText: {
+    marginRight: 10,
   },
 });
 

@@ -25,6 +25,7 @@ const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
     console.log('User Preferences:', preferences);
 
     // Trigger the original onAgree function
+    
     onAgree();
   };
 
