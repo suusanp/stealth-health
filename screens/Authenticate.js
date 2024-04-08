@@ -33,7 +33,7 @@ function Authenticate () {
         <View>
             <Image source={myImage} style={styles.image}/>
             <Text style={styles.title}>Stealth Health</Text>
-            <Text style={styles.description}>Take back control.</Text>
+            <Text style={styles.description}>Regain control.</Text>
             <TouchableOpacity 
                 onPress={onAuthenticate} 
                 style={styles.btn}>
