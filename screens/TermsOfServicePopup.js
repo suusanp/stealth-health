@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button, Modal, ScrollView, StyleSheet, Switch } from 'react-native';
 import { deleteAll } from '../backend/DeleteData';
 import { CommonActions, useNavigation } from '@react-navigation/native';
+import PrivacyPolicyText from './privacyPolicies/PrivacyPolicyText';
 
 const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
   const navigation = useNavigation();
@@ -17,13 +18,6 @@ const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
       [preference]: !prevPreferences[preference],
     }));
   };
-
-  const termsOfServiceText = `
-    Our Terms of Service (ToS) and Privacy Policy govern your use of this application. By using this application, you agree to comply with our ToS and Privacy Policy outlined below:
-    ...
-    ...
-    ...
-  `;
 
   const onAgreeWithPreferences = () => {
     // Save the preferences here (e.g., using AsyncStorage)
@@ -51,7 +45,7 @@ const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
         <View style={styles.modalContent}>
           <Text style={styles.title}>Our ToS and Privacy Policy</Text>
           <ScrollView>
-            <Text style={styles.termsText}>{termsOfServiceText}</Text>
+            <Text style={styles.termsText}>{PrivacyPolicyText}</Text>
             <Text style={styles.questionText}>Which functions are you interested in?</Text>
             <View style={styles.switchContainer}>
               <Text>Calorie Tracking</Text>
