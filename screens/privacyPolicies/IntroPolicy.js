@@ -6,7 +6,7 @@ const IntroPolicy = () => {
         <View style={styles.container}>
             <Text style={styles.appName}>Before We Begin</Text>
             <Text style={styles.policyText}>
-                Before we ask you to enter any data, let's start by reviewing a simplified version of our Privacy Policy and Terms of Service.
+                Before we ask you to enter any data, let's start by reviewing a simplified version of our Privacy Policy.
             </Text>
             <Text style={styles.policyText}>
                 We will provide you with a detailed version of our policies at the end of the setup process, where you will have another chance to 'Agree' or 'Disagree'.
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginBottom: 10,
         textAlign: 'center',
+        color: '#52427A',
     },
     appName: {
         fontStyle: 'italic',
