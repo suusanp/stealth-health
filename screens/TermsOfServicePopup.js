@@ -45,31 +45,7 @@ const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
           <Text style={styles.title}>Our ToS and Privacy Policy</Text>
-          <ScrollView>
-            <Text style={styles.termsText}>{PrivacyPolicyText}</Text>
-            <Text style={styles.questionText}>Which functions are you interested in?</Text>
-            <View style={styles.switchContainer}>
-              <Text>Calorie Tracking</Text>
-              <Switch
-                value={preferences.calorieTracking}
-                onValueChange={() => handlePreferenceChange('calorieTracking')}
-              />
-            </View>
-            <View style={styles.switchContainer}>
-              <Text>Sleep Tracking</Text>
-              <Switch
-                value={preferences.sleepTracking}
-                onValueChange={() => handlePreferenceChange('sleepTracking')}
-              />
-            </View>
-            <View style={styles.switchContainer}>
-              <Text>Pedometer</Text>
-              <Switch
-                value={preferences.pedometer}
-                onValueChange={() => handlePreferenceChange('pedometer')}
-              />
-            </View>
-          </ScrollView>
+       
           <View style={styles.buttonContainer}>
             <Button title="Cancel" onPress={onDisagreeWithPreferences} />
             <Button title="Agree" onPress={onAgreeWithPreferences} />

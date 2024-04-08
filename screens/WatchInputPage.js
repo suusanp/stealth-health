@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, ActivityIndicator, ScrollView,Alert } from 'react-native';
-import { saveDailyData } from '../backend/DailyDataManagement';
+import { View, Text, Button, StyleSheet, ActivityIndicator, ScrollView,Alert,TouchableOpacity } from 'react-native';
+import { getDailyData, saveDailyData } from '../backend/DailyDataManagement';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // Mock activity data
 const mockFitbitData = [
   {
@@ -23,20 +24,7 @@ const WatchInputPage = () => {
   const [fitbitData, setFitbitData] = useState([]);
 
 
-  const convertToAppDataStructure = (fitbitData) => {
-    return {
-      dailySteps: fitbitData.reduce((acc, cur) => acc + (cur.steps || 0), 0).toString(),
-      heartRate: "90", // Assuming a static value for simplicity
-      bloodPressure: "110/70", // Assuming a static value for simplicity
-      sleepPatterns: "8", // Assuming a static value for simplicity
-      waterIntake: "2", // Assuming a static value for simplicity (liters)
-      activityTracking: fitbitData.map(activity => ({
-        id: Date.now().toString(),
-        name: activity.activityName,
-        duration: activity.duration.replace(' mins', ''), // Converting " mins" to minutes
-      })),
-    };
-  };
+ 
   // Simulate fetching data from Fitbit
   const simulateDataFetch = () => {
     setIsLoading(true);
@@ -61,12 +49,56 @@ const WatchInputPage = () => {
     }, 2000);
   };
 
+
+  const mergeActivitiesWithExistingData = async (fitbitData = []) => {
+    // Ensure fitbitData is always treated as an array
+    fitbitData = Array.isArray(fitbitData) ? fitbitData : [];
+  
+    const today = new Date().toISOString().split('T')[0];
+    const existingData = await getDailyData(today) || {}; // Fetch existing data, fallback to an empty object if none
+  
+    // Convert Fitbit data to your app's data structure for activity tracking
+    const newActivities = fitbitData.map(activity => ({
+      id: Date.now().toString(), // Consider a more unique ID generation strategy
+      name: activity.activityName,
+      duration: activity.duration ? activity.duration.replace(' mins', '') : '0', // Ensure consistency in data format, fallback to '0' if undefined
+    }));
+  
+    // Merge new activities with existing ones, avoiding duplicates
+    const updatedActivities = [...(existingData.activityTracking || []), ...newActivities];
+  
+    // Return the updated data structure, including any existing data and the newly added activities
+    return {
+      ...existingData,
+      activityTracking: updatedActivities,
+    };
+  };
+  
+
+
   const handleSaveData = async () => {
-    const appData = convertToAppDataStructure(fitbitData);
-    await saveDailyData(appData, new Date().toISOString().split('T')[0]); // Saving data with today's date
-    Alert.alert("Data Saved", "Your Fitbit data has been successfully saved.");
+    const today = new Date().toISOString().split('T')[0];
+    const existingData = await getDailyData(today) || { activityTracking: [] };
+    
+    // Merge new activities with existing ones, avoiding duplicates based on a simplistic check here
+    const updatedActivities = [...existingData.activityTracking, ...fitbitData.map(activity => ({
+      id: Date.now().toString(),
+      name: activity.activityName,
+      duration: activity.duration.replace(' mins', ''),
+    }))];
+
+    const updatedData = {
+      ...existingData,
+      activityTracking: updatedActivities,
+    };
+
+    await saveDailyData(updatedData, today);
+    Alert.alert("Success", "Activity data has been saved.");
   };
 
+  const dismissDataPoint = (index) => {
+    setFitbitData(currentData => currentData.filter((_, i) => i !== index));
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -84,6 +116,9 @@ const WatchInputPage = () => {
           {fitbitData.length > 0 ? (
             fitbitData.map((activity, index) => (
               <View key={index} style={styles.activityCard}>
+                <TouchableOpacity style={styles.dismissButton} onPress={() => dismissDataPoint(index)}>
+              <Icon name="close-circle" size={24} color="#f00" />
+            </TouchableOpacity>
                 <Text style={styles.activityName}>{activity.activityName}</Text>
                 <Text>Duration: {activity.duration}</Text>
                 <Text>Calories Burned: {activity.calories}</Text>
