@@ -92,7 +92,7 @@ const UserProfileData = ({ onNext }) => {
       <Text style={styles.appName}>
         Fit App</Text>
       <Text style={styles.introText}>
-        Welcome to our app! At [this app], we aim to provide users with an overview of their health statistics without jeopardizing their privacy. Please choose whatever you are comfortable with, as all options are optional. Let's build your profile!
+        Please choose whatever you are comfortable with, as all options are optional. Let's build your profile!
       </Text>
       <View style={styles.inputContainer}>
         <View style={styles.iconContainer}>
