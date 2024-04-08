@@ -5,6 +5,7 @@ import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure t
 import * as LocalAuthentication from "expo-local-authentication";
 import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
+import { getComputedMetrics } from '../metricsCalculation/metricsUtils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PushNotificationManager } from '../services/PushNotificationManager';
 import scheduleDeletionNotification from '../services/ScheduleNotifications';
@@ -16,7 +17,7 @@ import Icon from 'react-native-vector-icons/Entypo';
 import { getDailyData } from '../backend/DailyDataManagement';
 import PrivacyPolicyText from './privacyPolicies/PrivacyPolicyText';
 import TermsOfServiceText from './privacyPolicies/TermsOfServiceText';
-import { getComputedMetrics } from '../metricsCalculation/metricsUtils';
+
 
 
 const DataManagementScreen = ({ navigation }) => {
