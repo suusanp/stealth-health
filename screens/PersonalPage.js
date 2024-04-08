@@ -47,7 +47,7 @@ const DataManagementScreen = ({ navigation }) => {
     
     const retentionDays = dataRetentionPeriods[dataRetention] || 30; // Default to 1 Month if not found
     const startDate = new Date();
-    startDate.setDate(startDate.getDate() - retentionDays);
+    startDate.setDate(startDate.getDate() - (retentionDays - 1));
   
     let html = "<html><head><title>Daily Data and Computations</title></head><body>";
     html += "<h1>Daily Data and Computations</h1>";
