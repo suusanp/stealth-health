@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const PrivacyPolicySimplified = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.appName}>Privacy Policy</Text>
+            <Text style={styles.appName}>Privacy Policy, Simply</Text>
             <Text style={styles.policyText}>
                 <Text style={styles.heading}>Information Collection:</Text> We only keep the information you type into our app on your own device. We don't collect anything else or share your data. Our app doesn’t send your data over the internet. 
             </Text>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     },
     appName: {
         fontStyle: 'italic',
-        fontSize: 34,
+        fontSize: 32,
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20,
@@ -53,12 +53,14 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(100, 0, 200, 0.35)', // Blue color with opacity
         textShadowOffset: { width: 0, height: 0 }, // No offset
         textShadowRadius: 20, // Adjust the radius to control the intensity of the glow
-        padding: 10
+        padding: 10,
+        paddingTop: 20,
     },
     policyText: {
         fontSize: 16,
         marginBottom: 10,
         textAlign: 'center',
+        color: '#483971'
     },
     heading: {
         fontWeight: 'bold',

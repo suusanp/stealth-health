@@ -90,7 +90,7 @@ const UserProfileData = ({ onNext }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.appName}>
-        Fit App</Text>
+        Stealth Health</Text>
       <Text style={styles.introText}>
         Please choose whatever you are comfortable with, as all options are optional. Let's build your profile!
       </Text>
