@@ -13,6 +13,7 @@ import { shareAsync } from 'expo-sharing';
 import { CommonActions } from '@react-navigation/native';
 import { deleteAll } from '../backend/DeleteData';
 import Icon from 'react-native-vector-icons/Entypo';
+import { getDailyData } from '../backend/DailyDataManagement';
 
 
 const DataManagementScreen = ({ navigation }) => {
@@ -29,35 +30,71 @@ const DataManagementScreen = ({ navigation }) => {
   });
 
 
-  const createHtmlForPDF = (dataFlags) => {
-    // Convert your data flags into HTML format.
-    // Here's a very basic example:
-    let html = "<html><head><title>Data Collection Flags</title></head><body>";
-    html += "<h1>Data Collection Flags</h1>";
-    Object.keys(dataFlags).forEach(key => {
-      html += `<p><strong>${key}</strong>: ${dataFlags[key]}</p>`;
-    });
+  const createHtmlForPDF = async () => {
+    // Determine the dates to include based on the data retention setting
+    const dataRetentionPeriods = {
+      '3 Days': 3,
+      '1 Week': 7,
+      '2 Weeks': 14,
+      '1 Month': 30,
+      '3 Months': 90,
+      '6 Months': 180,
+      '1 Year': 365,
+    };
+    
+    const retentionDays = dataRetentionPeriods[dataRetention] || 30; // Default to 1 Month if not found
+    const startDate = new Date();
+    startDate.setDate(startDate.getDate() - retentionDays);
+  
+    let html = "<html><head><title>Daily Data and Computations</title></head><body>";
+    html += "<h1>Daily Data and Computations</h1>";
+  
+    for (let day = 0; day < retentionDays; day++) {
+      const currentDate = new Date(startDate);
+      currentDate.setDate(currentDate.getDate() + day);
+      const dateStr = currentDate.toISOString().split('T')[0];
+      
+      const dailyData = await getDailyData(dateStr);
+      const computedMetrics = await getComputedMetrics(dateStr); 
+  
+      html += `<h2>Data for ${dateStr}</h2>`;
+  
+      if (dailyData) {
+        html += "<h3>Daily Data</h3>";
+        Object.keys(dailyData).forEach(key => {
+          html += `<p><strong>${key}</strong>: ${dailyData[key]}</p>`;
+        });
+      } else {
+        html += "<p>No daily data available.</p>";
+      }
+  
+      if (computedMetrics) {
+        html += "<h3>Computed Metrics</h3>";
+        Object.keys(computedMetrics).forEach(key => {
+          html += `<p><strong>${key}</strong>: ${computedMetrics[key]}</p>`;
+        });
+      } else {
+        html += "<p>No computed metrics available.</p>";
+      }
+    }
+  
     html += "</body></html>";
     return html;
   };
-
+  
   const createPDF = async () => {
-    // Gather data for the PDF
-    const dataFlags = await getDataCollectionFlags();
-    const htmlContent = createHtmlForPDF(dataFlags); // Implement this function to create HTML from your data
-    
+    const htmlContent = await createHtmlForPDF(); // Fetch and format the data
+  
     try {
       const { uri } = await Print.printToFileAsync({ html: htmlContent });
       console.log('PDF generated at:', uri);
       await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
-      // For showing the PDF within the app, you can navigate to a screen with a WebView and load the PDF uri
     } catch (error) {
       console.error("Could not create PDF:", error);
       Alert.alert("Error", "Could not create the PDF. Please try again.");
     }
   };
-
-
+  
 
   const DataRetentionOptions = [
     '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',

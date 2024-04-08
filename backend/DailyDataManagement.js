@@ -43,7 +43,7 @@ export const getDailyData = async (date) => {
         // Decrypt the data
         const bytes = CryptoJS.AES.decrypt(encryptedData, encryptionKey);
         const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
-        console.log("Decrypted Data:", decryptedData); // Log decrypted data
+        console.log("Decrypted Data:",fileName, decryptedData); // Log decrypted data
 
         // Attempt to parse the decrypted data
         try {
