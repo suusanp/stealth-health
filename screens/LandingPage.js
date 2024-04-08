@@ -5,7 +5,7 @@ import ActivityRing from '../components/ActivityRing'; // Adjust the import path
 import TopNavigationBar from '../components/TopNavigationBar'; // Adjust the import path as necessary
 import BottomNavigationBar from '../components/BottomNavigationBar'; // Adjust the import path as necessary
 import TopTopBar from '../components/TopTopBar'; // Adjust the import path as necessary
-import { getDailyData } from '../backend/DailyDataManagement';
+import { getDailyData, saveDailyData } from '../backend/DailyDataManagement';
 import TermsOfServicePopup from './TermsOfServicePopup';  // Adjust the import path as necessary
 import { format, addDays, subDays } from 'date-fns';
 import {computeAndStoreMetrics, getComputedMetrics } from  '../metricsCalculation/metricsUtils';
@@ -14,10 +14,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';import * as SecureSto
 
 
 const LandingPage = ({ navigation }) => {
+  const originalDate = new Date();
   const [stepsGoal, setDailyStepsGoal] = useState(10000);
   const [distanceGoal, setDailyDistanceGoal] = useState(5);
   const [caloriesGoal, setDailyCaloriesGoal] = useState(1200);
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(originalDate);
   const [dailyData, setDailyData] = useState(null);
   const [canGoBack, setCanGoBack] = useState(true);
   const [computedMetrics, setComputedMetrics] = useState(null);
@@ -38,6 +39,12 @@ const LandingPage = ({ navigation }) => {
         setShowPopup(true);
       }
 
+      const originalDateDataSaved = await AsyncStorage.getItem('OGdataSaved');
+      if (!originalDateDataSaved) {
+        console.log(format(currentDate, 'yyyy-MM-dd'));
+        await saveDailyData(null, format(currentDate, 'yyyy-MM-dd'));
+        await AsyncStorage.setItem('OGdataSaved', 'true');
+      }
     }
 
     checkAgreement();
@@ -119,7 +126,7 @@ const LandingPage = ({ navigation }) => {
     <SafeAreaView style={styles.safeArea}>
       <TopTopBar projectName="Your Health Dashboard" navigation={navigation} />
       <TopNavigationBar
-        title={subDays(currentDate, 1).toISOString().split('T')[0]}
+        title={currentDate.toISOString().split('T')[0]}
         onPressBack={goBackADay}
         onPressForward={goForwardADay}
         canGoBack={canGoBack}
