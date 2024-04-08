@@ -10,7 +10,8 @@ import TermsOfServicePopup from './TermsOfServicePopup';  // Adjust the import p
 import { format, addDays, subDays } from 'date-fns';
 import {computeAndStoreMetrics, getComputedMetrics } from  '../metricsCalculation/metricsUtils';
 import { useIsFocused, useFocusEffect } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';import * as SecureStore from 'expo-secure-store';
+
 
 const LandingPage = ({ navigation }) => {
   const [stepsGoal, setDailyStepsGoal] = useState(10000);
@@ -58,9 +59,9 @@ const LandingPage = ({ navigation }) => {
 
   const loadGoals = async () => {
     try {
-      const stepsGoalStr = await AsyncStorage.getItem('dailySteps');
-      const distanceGoalStr = await AsyncStorage.getItem('dailyDistance');
-      const caloriesGoalStr = await AsyncStorage.getItem('dailyCalories');
+      const stepsGoalStr = await SecureStore.getItem('dailySteps');
+      const distanceGoalStr = await SecureStore.getItem('dailyDistance');
+      const caloriesGoalStr = await SecureStore.getItem('dailyCalories');
   
       console.log("Retrieved goals:", { stepsGoalStr, distanceGoalStr, caloriesGoalStr });
   
