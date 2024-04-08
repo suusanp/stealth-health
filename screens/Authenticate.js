@@ -32,8 +32,8 @@ function Authenticate () {
     return(
         <View>
             <Image source={myImage} style={styles.image}/>
-            <Text style={styles.title}>The Private Fitness App</Text>
-            <Text style={styles.description}>Take back control</Text>
+            <Text style={styles.title}>Stealth Health</Text>
+            <Text style={styles.description}>Regain control.</Text>
             <TouchableOpacity 
                 onPress={onAuthenticate} 
                 style={styles.btn}>
@@ -60,7 +60,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width: 200,
         height: 200,
-        marginTop: 150
+        marginTop: 150,
+        shadowColor: 'rgba(100, 0, 200, 0.35)',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 1,
+        shadowRadius: 20,
     },
     text: {
         color: '#fff',
@@ -72,10 +76,16 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         marginVertical: 30,
         textAlign: 'center',
+        fontStyle: 'italic',
+        fontWeight: 'bold',
+        color: '#6E87C4',
+        textShadowColor: 'rgba(100, 0, 200, 0.35)', // Blue color with opacity
+        textShadowOffset: { width: 0, height: 0 }, // No offset
+        textShadowRadius: 20, // Adjust the radius to control the intensity of the glow
     },
     description: {
         fontSize: 18,
-        color: 'gray',
+        color: 'black',
         textAlign: 'center',
         marginHorizontal: 20,
         marginBottom: 100,

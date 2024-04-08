@@ -8,6 +8,8 @@ const dailyDataDirectory = `${FileSystem.documentDirectory}dailyData/`;
 FileSystem.makeDirectoryAsync(dailyDataDirectory, { intermediates: true });
 
 export const saveDailyData = async (data, date) => {
+    // Ensure the directory exists
+    FileSystem.makeDirectoryAsync(dailyDataDirectory, { intermediates: true });
     const encryptionKey = await getEncryptionKey();
     // Encrypt the data
     const ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), encryptionKey).toString();
