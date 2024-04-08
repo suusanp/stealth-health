@@ -45,6 +45,8 @@ function App() {
       const settingsCompleted = await AsyncStorage.getItem("settingsCompleted");
       const authenticationEnabled = await AsyncStorage.getItem("authenticationEnabled");
       if (settingsCompleted === "true") {
+        await generatePastData();
+      checkAndDeleteOldFiles();
         if (authenticationEnabled === "true") {
           setInitialRoute("Authenticate"); // User has turned on authentication, go to Authenticate
         }
@@ -57,9 +59,6 @@ function App() {
       if (!key) {
         await generateAndStoreKey();
       }
-
-      await generatePastData();
-      checkAndDeleteOldFiles();
       setAppInitialized(true);
     };
 
