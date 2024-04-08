@@ -22,8 +22,16 @@ export async function deleteAll() {
       console.log('weight after deletion:', await SecureStore.getItemAsync('weight'));
       await SecureStore.deleteItemAsync('fitnessGoals');
       console.log('fitnessGoals after deletion:', await SecureStore.getItemAsync('fitnessGoals'));
+      await SecureStore.deleteItemAsync('dailySteps');
+      console.log('dailyStepsGoal after deletion:', await SecureStore.getItemAsync('dailySteps'));
+      await SecureStore.deleteItemAsync('dailyDistance');
+      console.log('dailyDistanceGoal after deletion:', await SecureStore.getItemAsync('dailyDistance'));
+      await SecureStore.deleteItemAsync('dailyCalories');
+      console.log('dailyCaloriesGoal after deletion:', await SecureStore.getItemAsync('dailyCalories'));
+
       await FileSystem.deleteAsync(dailyDataDirectory, { idempotent: true });
       console.log('dailyDataDirectory after deletion:', await FileSystem.getInfoAsync(dailyDataDirectory));
+
       await AsyncStorage.clear(); 
       console.log('AsyncStorage keys after deletion:', await AsyncStorage.getAllKeys());
 
