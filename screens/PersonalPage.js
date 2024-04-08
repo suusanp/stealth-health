@@ -11,6 +11,7 @@ import scheduleDeletionNotification from '../services/ScheduleNotifications';
 import { CommonActions } from '@react-navigation/native';
 import { deleteAll } from '../backend/DeleteData';
 import PrivacyPolicyText from './privacyPolicies/PrivacyPolicyText';
+import TermsOfServiceText from './privacyPolicies/TermsOfServiceText';
 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -225,7 +226,10 @@ const DataManagementScreen = ({ navigation }) => {
           <View style={styles.modalContainer}>
             <ScrollView style={styles.scrollContainer}>
               <View style={styles.modalContent}>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', paddingTop: 30, paddingBottom:20 }}>Privacy Policy</Text>
                 <Text>{PrivacyPolicyText}</Text>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', paddingTop: 30 }}>Terms of Service</Text>
+                <Text>{TermsOfServiceText}</Text>
                 <TouchableOpacity onPress={closeModal}>
                   <Text style={styles.closeButton}>Close</Text>
                 </TouchableOpacity>
@@ -233,6 +237,7 @@ const DataManagementScreen = ({ navigation }) => {
             </ScrollView>
           </View>
         </Modal>
+        
         <View style={{ borderBottomWidth: 1, borderBottomColor: '#000' }} />
         <Text style={{ marginTop: 40, fontSize: 22, color: 'red', fontWeight: 'bold' }}>Delete Now</Text>
         <Text style={{ marginTop: 20, fontSize: 16 }}>Once you delete everything, there is no going back. Please be certain.</Text>
@@ -372,17 +377,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'lightblue',
   },
   modalContent: {
     backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
+    padding: 40,
+    borderRadius: 80,
     alignItems: 'center',
   },
   closeButton: {
     color: '#007bff',
     marginTop: 10,
+    fontSize: 16,
   },
 });
 
