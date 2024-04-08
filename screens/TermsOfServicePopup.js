@@ -3,6 +3,7 @@ import { View, Text, Button, Modal, ScrollView, StyleSheet, Switch } from 'react
 import { deleteAll } from '../backend/DeleteData';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import PrivacyPolicyText from './privacyPolicies/PrivacyPolicyText';
+import TermsOfServiceText from './privacyPolicies/TermsOfServiceText';
 
 const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
   const navigation = useNavigation();
@@ -45,7 +46,34 @@ const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
           <Text style={styles.title}>Our ToS and Privacy Policy</Text>
-       
+          <ScrollView>
+            <Text style={{ fontSize: 18, fontWeight: 'bold', paddingTop: 50, paddingBottom: 20 }}>Privacy Policy</Text>
+            <Text style={styles.termsText}>{PrivacyPolicyText}</Text>
+            <Text style={{ fontSize: 18, fontWeight: 'bold', paddingTop: 20, paddingBottom: 20 }}>Terms of Service</Text>
+            <Text style={styles.termsText}>{TermsOfServiceText}</Text>
+            <Text style={styles.questionText}>Which functions are you interested in?</Text>
+            <View style={styles.switchContainer}>
+              <Text>Calorie Tracking</Text>
+              <Switch
+                value={preferences.calorieTracking}
+                onValueChange={() => handlePreferenceChange('calorieTracking')}
+              />
+            </View>
+            <View style={styles.switchContainer}>
+              <Text>Sleep Tracking</Text>
+              <Switch
+                value={preferences.sleepTracking}
+                onValueChange={() => handlePreferenceChange('sleepTracking')}
+              />
+            </View>
+            <View style={styles.switchContainer}>
+              <Text>Pedometer</Text>
+              <Switch
+                value={preferences.pedometer}
+                onValueChange={() => handlePreferenceChange('pedometer')}
+              />
+            </View>
+          </ScrollView>
           <View style={styles.buttonContainer}>
             <Button title="Cancel" onPress={onDisagreeWithPreferences} />
             <Button title="Agree" onPress={onAgreeWithPreferences} />
@@ -66,6 +94,8 @@ const styles = StyleSheet.create({
   modalContent: {
     backgroundColor: '#fff',
     padding: 20,
+    borderRadius: 80,
+    alignItems: 'center',
     borderRadius: 10,
     elevation: 5,
     maxHeight: '80%',
