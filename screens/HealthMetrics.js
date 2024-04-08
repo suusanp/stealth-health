@@ -10,6 +10,7 @@ const HealthMetrics = () => {
     bloodPressure: false,
     sleepPatterns: false,
     waterIntake: false,
+    activityTracking: false,
   });
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const HealthMetrics = () => {
     bloodPressure: "Tracks blood pressure to prevent health complications.",
     sleepPatterns: "Helps understand and improve sleep quality.",
     waterIntake: "Ensures hydration throughout the day.",
+    activityTracking: "Gives us a better way to assess the users daily needs",
   };
 
   const toggleSwitch = async (metric) => {

@@ -8,8 +8,13 @@ import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PushNotificationManager } from '../services/PushNotificationManager';
 import scheduleDeletionNotification from '../services/ScheduleNotifications';
+import * as Print from 'expo-print';
+import { shareAsync } from 'expo-sharing';
 import { CommonActions } from '@react-navigation/native';
 import { deleteAll } from '../backend/DeleteData';
+import Icon from 'react-native-vector-icons/Entypo';
+import { getDailyData } from '../backend/DailyDataManagement';
+
 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,8 +26,75 @@ const DataManagementScreen = ({ navigation }) => {
     bloodPressure: false,
     sleepPatterns: false,
     waterIntake: false,
+    activityTracking: false,
   });
 
+
+  const createHtmlForPDF = async () => {
+    // Determine the dates to include based on the data retention setting
+    const dataRetentionPeriods = {
+      '3 Days': 3,
+      '1 Week': 7,
+      '2 Weeks': 14,
+      '1 Month': 30,
+      '3 Months': 90,
+      '6 Months': 180,
+      '1 Year': 365,
+    };
+    
+    const retentionDays = dataRetentionPeriods[dataRetention] || 30; // Default to 1 Month if not found
+    const startDate = new Date();
+    startDate.setDate(startDate.getDate() - retentionDays);
+  
+    let html = "<html><head><title>Daily Data and Computations</title></head><body>";
+    html += "<h1>Daily Data and Computations</h1>";
+  
+    for (let day = 0; day < retentionDays; day++) {
+      const currentDate = new Date(startDate);
+      currentDate.setDate(currentDate.getDate() + day);
+      const dateStr = currentDate.toISOString().split('T')[0];
+      
+      const dailyData = await getDailyData(dateStr);
+      const computedMetrics = await getComputedMetrics(dateStr); 
+  
+      html += `<h2>Data for ${dateStr}</h2>`;
+  
+      if (dailyData) {
+        html += "<h3>Daily Data</h3>";
+        Object.keys(dailyData).forEach(key => {
+          html += `<p><strong>${key}</strong>: ${dailyData[key]}</p>`;
+        });
+      } else {
+        html += "<p>No daily data available.</p>";
+      }
+  
+      if (computedMetrics) {
+        html += "<h3>Computed Metrics</h3>";
+        Object.keys(computedMetrics).forEach(key => {
+          html += `<p><strong>${key}</strong>: ${computedMetrics[key]}</p>`;
+        });
+      } else {
+        html += "<p>No computed metrics available.</p>";
+      }
+    }
+  
+    html += "</body></html>";
+    return html;
+  };
+  
+  const createPDF = async () => {
+    const htmlContent = await createHtmlForPDF(); // Fetch and format the data
+  
+    try {
+      const { uri } = await Print.printToFileAsync({ html: htmlContent });
+      console.log('PDF generated at:', uri);
+      await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
+    } catch (error) {
+      console.error("Could not create PDF:", error);
+      Alert.alert("Error", "Could not create the PDF. Please try again.");
+    }
+  };
+  
 
   const DataRetentionOptions = [
     '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
@@ -171,6 +243,14 @@ const DataManagementScreen = ({ navigation }) => {
           trackColor={{ false: "#767577", true: "#4B9CD3" }}
           thumbColor={notificationsEnabled ? "#f5dd4b" : "#f4f3f4"}
         />
+
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={styles.createPdfButton}
+          onPress={createPDF}>
+          <Text style={styles.createPdfButtonText}>Create PDF of Data</Text>
+        </TouchableOpacity>
+
         <Text style={styles.header}>Health Data Collection Preferences</Text>
         {Object.keys(metrics).map((metric, index) => (
           <View key={index} style={styles.switchContainer}>
@@ -183,10 +263,16 @@ const DataManagementScreen = ({ navigation }) => {
             />
           </View>
         ))}
-        <Text style={styles.header}>Available Functionalities:</Text>
-        {availableFunctionalities.map((func, index) => (
-          <Text key={index} style={styles.metricText}>{func}</Text>
-        ))}
+        <View style={styles.functionalitiesContainer}>
+  <Text style={styles.header}>Available Functionalities:</Text>
+  {availableFunctionalities.map((func, index) => (
+    <View key={index} style={styles.functionalityItem}>
+      <Icon name="controller-stop" size={18} color="#4A90E2" style={styles.bulletIcon} />
+      <Text style={styles.metricText}>{func}</Text>
+    </View>
+  ))}
+</View>
+
         <TouchableOpacity
           activeOpacity={0.8}
 
@@ -274,6 +360,35 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 20,
   },
+  functionalitiesContainer: {
+    marginTop: 20,
+    backgroundColor: '#f9f9f9',
+    borderRadius: 10,
+    padding: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  header: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 10,
+  },
+  functionalityItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  bulletIcon: {
+    marginRight: 10,
+  },
+  metricText: {
+    fontSize: 16,
+    color: '#555',
+  },
   carouselItem: {
     paddingVertical: 9,
     paddingHorizontal: 18,
@@ -283,6 +398,19 @@ const styles = StyleSheet.create({
   },
   carouselItemSelected: {
     backgroundColor: '#4B9CD3',
+  },
+  createPdfButton: {
+    backgroundColor: '#4B9CD3', // Use your preferred color
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 15,
+  },
+  createPdfButtonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   carouselItemText: {
     color: 'black',

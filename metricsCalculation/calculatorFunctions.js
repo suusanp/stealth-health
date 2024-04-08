@@ -14,7 +14,30 @@ const movingAverage = (data, N) => {
     }
     return movingAvg;
   };
-  
+
+
+  // Activity to MET values mapping
+const activityMETs = {
+  'running': 7.5, // Approx MET value for running
+  'cycling': 6.0, // Approx MET value for cycling
+  'swimming': 8.3,
+  'hiking': 6.0,
+  'yoga': 2.5,
+  'pilates': 3.0,
+  'crossfit': 8.0,
+  'dancing': 7.2,
+  'boxing': 12.0,
+  'rock_climbing': 8.0,
+  'weight_training': 3.0,
+  'skiing': 6.8,
+  'snowboarding': 5.3,
+  'surfing': 3.0,
+  'skateboarding': 5.0,
+  'kayaking': 5.0,
+  'rowing': 6.0,
+  'jump_rope': 12.0,
+};
+
   // Calorie Burn Estimation
   const calculateCaloriesBurned = (MET, weightKg, durationHours) => {
     return MET * weightKg * durationHours;
@@ -45,10 +68,7 @@ const movingAverage = (data, N) => {
     return (MHR - restingHeartRate) * desiredIntensity + restingHeartRate;
   };
   
-  // Daily Water Intake Recommendation
-  const calculateDailyWaterIntake = (weightKg, exerciseDurationHours) => {
-    return weightKg * 0.033 + (exerciseDurationHours * 0.5);
-  };
+
   
   // Estimation of Distance Walked
   const estimateDistanceWalked = (steps, heightCm, gender = 'male') => {
@@ -84,11 +104,28 @@ const estimateFatigueLevel = (dailySteps, hoursSlept) => {
     }
   };
   
-  // Hydration Level Estimation
-  const estimateHydrationLevel = (waterIntakeLiters, weightKg, exerciseDurationHours) => {
-    const recommendedIntake = calculateDailyWaterIntake(weightKg, exerciseDurationHours);
-    return waterIntakeLiters >= recommendedIntake ? "Adequate" : "Inadequate";
-  };
+  // Improved Daily Water Intake Calculation
+const calculateDailyWaterIntake = (weightKg, activities, environmentFactor = 1) => {
+  let baseIntake = weightKg * 0.033; // Base daily intake in liters (33ml per kg of bodyweight)
+  let activityIntake = 0;
+
+  activities.forEach(activity => {
+      // Assume each activity object has 'type' and 'duration' in hours
+      const MET = activityMETs[activity.type] || 1; // Default MET value to 1 if activity is not known
+      // Assuming 0.5 liters additional for every hour of activity by default
+      // This can be adjusted based on MET value for more accuracy
+      activityIntake += 0.5 * activity.duration * MET;
+  });
+
+  // Adjust for environmental factors (e.g., 1.2 for hot and humid environments)
+  return (baseIntake + activityIntake) * environmentFactor;
+};
+
+// Hydration Level Estimation considering activity type and environmental factors
+const estimateHydrationLevel = (waterIntakeLiters, weightKg, activities, environmentFactor = 1) => {
+  const recommendedIntake = calculateDailyWaterIntake(weightKg, activities, environmentFactor);
+  return waterIntakeLiters >= recommendedIntake ? "Adequate" : "Inadequate";
+};
   
   // Stress Level Indication based on resting heart rate and sleep patterns
   const indicateStressLevel = (averageHeartRate, hoursSlept) => {
@@ -111,11 +148,6 @@ const estimateFatigueLevel = (dailySteps, hoursSlept) => {
     }
   };
 
-  // Assuming MET values for common activities are defined elsewhere
-const activityMETs = {
-    'walking': 3.8, // Example MET value for walking
-    // Add more activities as needed
-};
 
 // Function to calculate calories burned through activities
 const calculateCaloriesBurnedFromActivities = (activities, weightKg) => {
@@ -127,12 +159,16 @@ const calculateCaloriesBurnedFromActivities = (activities, weightKg) => {
     return totalCalories;
 };
 
-// Function to estimate calories burned from steps (simple estimation)
+
 const calculateCaloriesBurnedFromSteps = (steps, weightKg) => {
-    const stepsPerCalorie = 20; // Rough estimation: around 20 steps to burn a calorie for an average person
-    const caloriesFromSteps = steps / stepsPerCalorie;
-    return caloriesFromSteps;
+  const milesWalked = steps / 2000; // Assuming an average of 2,000 steps per mile
+  const weightLbs = weightKg * 2.20462; // Convert weight from kg to lbs for this formula
+  const caloriesPerMile = 0.57; // Calories burned per mile per pound of body weight
+
+  const caloriesFromSteps = milesWalked * weightLbs * caloriesPerMile;
+  return caloriesFromSteps;
 };
+
 
 // Main function to calculate total daily calorie expense
 const calculateTotalDailyCalorieExpense = (BMR, activities, steps, weightKg) => {
@@ -159,5 +195,6 @@ const calculateTotalDailyCalorieExpense = (BMR, activities, steps, weightKg) => 
     healthConditionRiskIndicator,
     calculateCaloriesBurnedFromActivities,
     calculateTotalDailyCalorieExpense,
+    calculateCaloriesBurnedFromSteps,
   };
   
