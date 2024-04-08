@@ -39,6 +39,10 @@ const UserProfileData = ({ onNext }) => {
     Your height, weight, and sex are used to calculate your Body Mass Index (BMI) and Basal Metabolic Rate (BMR). Your age is used to calculate your target heart rate zones for exercise. 
 
     We ask for your age range rather than your exact age to further protect your privacy. By doing so, we can still provide you with accurate health statistics while minimizing the risk of re-identification.
+
+    Of course, you can leave out any of this information if you are not comfortable sharing it. We will still provide you with the best health statistics we can.
+
+    If you are interested in learning more about how we use your data, please read our Privacy Policy, which will be presented to you during our setup. 
   `;
   const toggleExplanationModal = () => {
     setShowExplanationModal(!showExplanationModal);
@@ -88,7 +92,7 @@ const UserProfileData = ({ onNext }) => {
       <Text style={styles.appName}>
         Fit App</Text>
       <Text style={styles.introText}>
-        Welcome to our app! At [this app], we aim to provide users with an overview of their health statistics without jeopardizing their privacy. Please choose whatever you are comfortable with, as all options are optional. Let's build your profile!
+        Please choose whatever you are comfortable with, as all options are optional. Let's build your profile!
       </Text>
       <View style={styles.inputContainer}>
         <View style={styles.iconContainer}>

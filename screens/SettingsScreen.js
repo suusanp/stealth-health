@@ -8,13 +8,16 @@ import UserProfileData from './UserProfileData';
 import HealthMetrics from './HealthMetrics';
 import SetupAuth from './SetupAuth';
 import DataManagement from '../backend/DataManagement';
+import IntroPage from './privacyPolicies/IntroPage';
+import IntroPolicy from './privacyPolicies/IntroPolicy';
+import PrivacyPolicySimplified from './privacyPolicies/PrivacyPolicySimplified';
 // Ensure these components are correctly imported from their files
 
 const SettingsScreen = () => {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const navigation = useNavigation(); // Use the useNavigation hook to get access to navigation
 
-  const pages = ['UserProfileData', 'HealthMetrics', 'SetupAuth', 'DataManagement'];
+  const pages = ['IntroPage', 'IntroPolicy', 'PrivacyPolicySimplified', 'UserProfileData', 'HealthMetrics', 'SetupAuth', 'DataManagement'];
 
   const nextPage = () => {
     if (currentPageIndex < pages.length - 1) {
@@ -30,6 +33,12 @@ const SettingsScreen = () => {
 
   const renderPage = () => {
     switch (pages[currentPageIndex]) {
+      case 'IntroPage':
+        return <IntroPage />;
+      case 'IntroPolicy':
+        return <IntroPolicy />;
+      case 'PrivacyPolicySimplified':
+        return <PrivacyPolicySimplified />;
       case 'UserProfileData':
         return <UserProfileData />;
       case 'HealthMetrics':
