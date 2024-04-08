@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { View, Modal, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { getPreferences, savePreferences, getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService';
 import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure this path is correct for your project structure
 import * as LocalAuthentication from "expo-local-authentication";
@@ -14,6 +14,8 @@ import { CommonActions } from '@react-navigation/native';
 import { deleteAll } from '../backend/DeleteData';
 import Icon from 'react-native-vector-icons/Entypo';
 import { getDailyData } from '../backend/DailyDataManagement';
+import PrivacyPolicyText from './privacyPolicies/PrivacyPolicyText';
+import TermsOfServiceText from './privacyPolicies/TermsOfServiceText';
 
 
 const DataManagementScreen = ({ navigation }) => {
@@ -124,6 +126,16 @@ const DataManagementScreen = ({ navigation }) => {
     setAvailableFunctionalities(functionalities);
   };
 
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
 
   const handleDataRetentionChange = async (newOption) => {
     const indexNew = DataRetentionOptions.indexOf(newOption);
@@ -203,8 +215,8 @@ const DataManagementScreen = ({ navigation }) => {
           {
             text: "Confirm",
             onPress: async () => {
-              const authenticationEnabled = await AsyncStorage.getItem("authenticationEnabled"); 
-              if (authenticationEnabled === "true"){
+              const authenticationEnabled = await AsyncStorage.getItem("authenticationEnabled");
+              if (authenticationEnabled === "true") {
                 const isAuthenticated = await onAuthenticate();
                 if (isAuthenticated) {
                   const deletionSuccessful = await deleteAll();
@@ -288,14 +300,33 @@ const DataManagementScreen = ({ navigation }) => {
         <TouchableOpacity
           activeOpacity={0.6}
           style={styles.privacyPolicyButton}
-          onPress={async () => {
-            //TODO
-          }}>
+          onPress={openModal}>
           <Text style={styles.privacyPolicyButtonText}>Privacy Policy</Text>
         </TouchableOpacity>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={closeModal}
+        >
+          <View style={styles.modalContainer}>
+            <ScrollView style={styles.scrollContainer}>
+              <View style={styles.modalContent}>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', paddingTop: 30, paddingBottom:20 }}>Privacy Policy</Text>
+                <Text>{PrivacyPolicyText}</Text>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', paddingTop: 30 }}>Terms of Service</Text>
+                <Text>{TermsOfServiceText}</Text>
+                <TouchableOpacity onPress={closeModal}>
+                  <Text style={styles.closeButton}>Close</Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
+          </View>
+        </Modal>
+        
         <View style={{ borderBottomWidth: 1, borderBottomColor: '#000' }} />
-        <Text style={{ marginTop: 40, fontSize: 22, color: 'red', fontWeight: 'bold'}}>Delete Now</Text>
-        <Text style={{ marginTop: 20, fontSize: 16}}>Once you delete everything, there is no going back. Please be certain.</Text>
+        <Text style={{ marginTop: 40, fontSize: 22, color: 'red', fontWeight: 'bold' }}>Delete Now</Text>
+        <Text style={{ marginTop: 20, fontSize: 16 }}>Once you delete everything, there is no going back. Please be certain.</Text>
         <TouchableOpacity
           activeOpacity={0.6}
           style={styles.deleteButton}
@@ -308,7 +339,7 @@ const DataManagementScreen = ({ navigation }) => {
                   routes: [{ name: 'SettingsScreen' }],
                 }),
               );
-            } 
+            }
           }}>
           <Text style={styles.deleteButtonText}>Delete Everything</Text>
         </TouchableOpacity>
@@ -469,6 +500,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: 'white'
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'lightblue',
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    padding: 40,
+    borderRadius: 80,
+    alignItems: 'center',
+  },
+  closeButton: {
+    color: '#007bff',
+    marginTop: 10,
+    fontSize: 16,
   },
 });
 
