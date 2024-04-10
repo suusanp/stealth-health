@@ -2,6 +2,7 @@
 
 ## Introduction
 - **Overview of the Fitbit App Prototype**: 
+
 - **Purpose and Scope**: The aim behind developing the Fitbit app prototype and the scope covered in this prototype phase.
 
 ## Research Method
@@ -16,7 +17,7 @@
 
 ### Rationale for Selecting React Native
 
-We chose React Native for our Fitbit app prototype due to its cross-platform capabilities, to develop a single codebase that can be deployed on both iOS and Android devices. Our group members use both Android and Apple devices, and we wanted to ensure that the app would be accessible to all team members during the development process. Additionally, React Native has extensive documentation and a large community, which would we can use for troubleshooting and support, since none of our team members had prior experience with mobile app development. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
+We chose React Native for our Fitbit app prototype due to its cross-platform capabilities, to develop a single codebase that can be deployed on both iOS and Android devices. Our group members use both Android and Apple devices, and we wanted to ensure that the app would be accessible to all team members during the development process. Additionally, React Native has extensive documentation and a large community, which we can use for troubleshooting and support since none of our team members had prior experience with mobile app development. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
 
 ### Expo as a Development Platform
 
@@ -24,7 +25,7 @@ Expo is a comprehensive framework for developing React Native applications acros
 
 ### Rationale for Selecting Expo
 
-Expo is renowned for facilitating the development of cross-platform applications with React Native, putting efficiency and the developer experience in the forefornt. It is open-source and has a large community of developers, so as beginners to mobile app development, we can easily get started with Expo. We also chose Expo because it is test-friendly; We each downloaded the Expo Go app, which allows us to preview the app on real devices during development. 
+Expo is renowned for facilitating the development of cross-platform applications with React Native, putting efficiency and developer experience at the forefront. It is open-source and has a large community of developers, so as beginners to mobile app development, we can easily get started with Expo. We also chose Expo because it is test-friendly; We each downloaded the Expo Go app, which allows us to preview the app on real devices during development. 
 
 #### Evaluation of Expo's Privacy Policies and Open-Source Nature
 
@@ -45,7 +46,7 @@ Expo's open-source ecosystem is important, offering transparency and community e
 - **Database Structure and Data Security**
 ### Choosing the Right Storage Solution
 
-When selecting a storage solution for our application, we evaluated various options, including SQLite and server-based solutions. While SQLite is a widely-used database for local storage in mobile applications, it typically stores data directly on the device. This local storage approach aligns with our goal to avoid storing sensitive user data on servers due to the inherent risks of server-side data breaches and unauthorized access.
+When selecting a storage solution for our application, we evaluated various options, including SQLite and server-based solutions. While SQLite is a widely used database for local storage in mobile applications, it typically stores data directly on the device. This local storage approach aligns with our goal to avoid storing sensitive user data on servers due to the inherent risks of server-side data breaches and unauthorized access.
 
 However, our primary concern with SQLite was its limited support for built-in encryption. Ensuring the privacy and security of user data is paramount in our application; thus, we sought a solution that offered robust encryption capabilities out of the box. The need for encryption is not just about protecting data if the device is lost or compromised; it's about ensuring that data remains private and secure from any unauthorized access, intentional or accidental.
 
