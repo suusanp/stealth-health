@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, ActivityIndicator, ScrollView,Alert,TouchableOpacity } from 'react-native';
 import { getDailyData, saveDailyData } from '../backend/DailyDataManagement';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 // Mock activity data
 const mockFitbitData = [
   {
@@ -19,6 +20,7 @@ const mockFitbitData = [
 ];
 
 const WatchInputPage = () => {
+  const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
   const [isBluetoothEnabled, setIsBluetoothEnabled] = useState(false);
   const [fitbitData, setFitbitData] = useState([]);
@@ -101,6 +103,10 @@ const WatchInputPage = () => {
   };
 
   return (
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+        <Icon name="arrow-left" size={24} color="#000" />
+      </TouchableOpacity>
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Fitbit Activity Sync</Text>
       {isBluetoothEnabled && (
@@ -141,6 +147,7 @@ const WatchInputPage = () => {
       </View>
      
     </ScrollView>
+    </View>
   );
 };
 
@@ -183,6 +190,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  backButton: {
+    top: 40,
+    marginBottom: 20,
+    alignSelf: 'flex-start',
+  },
+
 });
 
 export default WatchInputPage;
