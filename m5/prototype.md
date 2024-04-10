@@ -56,36 +56,40 @@ When selecting a storage solution for our application, we evaluated various opti
 
 Furthermore we were concerned By  SQLite was its limited support for built-in encryption. Ensuring the privacy and security of user data is paramount in our application; thus, we sought a solution that offered robust encryption capabilities out of the box. The need for encryption is not just about protecting data if the device is lost or compromised; it's about ensuring that data remains private and secure from any unauthorized access, intentional or accidental.
 
-#### SecureStore for Sensitive Information
+#### SecureStore for Sensitive Permanent and Semi-Permanent Information
 
 Given these considerations, we decided to utilize Expo's SecureStore for storing sensitive personal information. SecureStore offers an encrypted key-value store, which provides several advantages:
 
 - **Encryption by Default**: SecureStore automatically encrypts data before it is saved, providing encryption at rest without the need for additional encryption layers. This feature is crucial for protecting sensitive information like age range, gender, height, and weight.
 
-- **Ease of Use**: With SecureStore, we benefit from a simple and intuitive API for storing and retrieving encrypted data. This ease of use allows us to focus on application development without becoming entangled in complex encryption schemes.
+- **Ease of Use**: With SecureStore, we benefit from an intuitive API for storing and retrieving encrypted data. 
 
-- **Platform Security Features**: SecureStore leverages the underlying security features of the device's platform, offering a level of security that is consistent with the device's overall security posture.
+- **Platform Security Features**: SecureStore leverages the uses the security features of the device's platform, offering a level of security that is consistent with the device's overall security.
 
 
 Significant features of SecureStore include:
 
 - **Data Isolation**: It ensures data is stored within the app's sandbox, preventing access by other apps and safeguarding against unauthorized data breaches.
 
-- **Dynamic Encryption Key Management**: We use Expo's Crypto module for dynamic encryption key generation, enhancing security. This process is encapsulated in the following code snippet:
+- **Dynamic Management**: The following segments of our code demonstrate how we securely handle user data, such as age range, gender, height, weight, and fitness goals.
 
     ```javascript
-    import * as SecureStore from 'expo-secure-store';
-    import * as Crypto from 'expo-crypto';
-
-    export const generateAndStoreKey = async () => {
-      const encryptionKey = await Crypto.digestStringAsync(
-        Crypto.CryptoDigestAlgorithm.SHA256,
-        `${new Date().toISOString()}${Math.random()}`,
-        { encoding: Crypto.CryptoEncoding.HEX }
-      );
-      await SecureStore.setItemAsync('encryptionKey', encryptionKey);
-    };
+    export const getPersonalInfo = async () => {
+  // Define the keys for the personal information we want to retrieve
+  const keys = ['ageRange', 'gender', 'height', 'weight', 'fitnessGoals'];
+  const info = {};
+  
+  // Iterate over the keys, retrieving each piece of information from SecureStore
+  // and adding it to the info object. This demonstrates how SecureStore can be used
+  // to securely retrieve encrypted data.
+  for (const key of keys) {
+    const value = await SecureStore.getItemAsync(key);
+    info[key] = value;
+  }
+  return info;
+};
     ```
+ To update their data, users go through functions that retrieve their current data ( using getPersonalInfo), allow them to make changes, and then save these updates back to the device securely ( usingsavePersonalInfo) new information will overwrite the previous one, no history of the old data is kept within our software. If a user chooses to delete their data, our application uses SecureStore's deleteItemAsync for each data point, ensuring all personal information is removed from the device. This maintains data security and gives users complete control over their information.
 
 #### Encryption and Decryption Methodologies
 
