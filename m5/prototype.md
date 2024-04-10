@@ -1,9 +1,11 @@
-# Prototype Report for Fitbit App Development
+# Prototype Report for the Stealth Health System
 
 ## Introduction
-- **Overview of the Fitbit App Prototype**: 
+### **Overview of the system**: 
+Stealth Health is a health and fitness application that aims to provide privacy-focused health tracking and analytics to users. The system is designed to collect and analyze user health data while prioritizing user privacy and data security. The Stealth Health system includes features such as activity tracking, sleep monitoring, and nutrition logging, while ensuring that users have full control over their data and can make informed decisions about its use. 
 
-- **Purpose and Scope**: The aim behind developing the Fitbit app prototype and the scope covered in this prototype phase.
+### **Purpose and Scope**: 
+The aim behind developing the Fitbit app prototype and the scope covered in this prototype phase.
 
 ## Research Method
 - **Technical Literature Review**
