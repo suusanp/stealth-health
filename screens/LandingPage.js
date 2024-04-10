@@ -158,15 +158,16 @@ const LandingPage = ({ navigation }) => {
             </ActivityRing>
           )}
           <View style={{ width: 10 }} />
-          {computedMetrics && (
-          <ActivityRing 
-            size={100} 
-            progress={ parseFloat(Math.min(computedMetrics.totalDailyCalorieExpense / caloriesGoal, 1).toFixed(1))}
-            color="#43A047">
-             <Text style={styles.ringText}>{computedMetrics.totalDailyCalorieExpense ? computedMetrics.totalDailyCalorieExpense.toFixed(0) : '0.00'}</Text>
-            <Text style={styles.ringLabel}>kcal</Text>
-          </ActivityRing>
-          )}
+          {(computedMetrics?.totalDailyCalorieExpense || computedMetrics?.totalDailyCalorieExpense === 0) && (
+  <ActivityRing 
+    size={100} 
+    progress={parseFloat(Math.min((computedMetrics.totalDailyCalorieExpense || 0) / caloriesGoal, 1).toFixed(1))}
+    color="#43A047">
+    <Text style={styles.ringText}>{Math.min((computedMetrics.totalDailyCalorieExpense || 0)).toFixed(1)}</Text>
+    <Text style={styles.ringLabel}>kcal</Text>
+  </ActivityRing>
+)}
+
         </View>
        {computedMetrics &&  renderComputedMetrics(computedMetrics)} 
       </ScrollView>
