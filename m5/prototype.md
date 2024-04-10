@@ -47,8 +47,33 @@ Expo's open-source ecosystem is important, offering transparency and community e
 
 ### Database Structure and Data Security
 
-#### What type of data we collect and how it is organized.
+#### What Type of Data We Collect and How It Is Organized
 
+In our application, user data is categorized into three distinct types: Sensitive Data, Daily Data, and User Preferences and Goals. Additionally, we incorporate user consent flags for data collection and offer customizable data retention periods, respecting user preferences and enhancing data privacy.
+
+- **Sensitive Data**: Securely stored using Expo's `SecureStore` and encrypted with `Crypto`, this category includes:
+  - Age Range (e.g., "18-29", "30-39", etc.)
+  - Gender (Options: "Male", "Female", "Other")
+  - Height (cm)
+  - Weight (kg)
+  - Fitness Goals
+
+- **Daily Data**: Collects day-to-day metrics for monitoring health and activity, including:
+  - Daily Steps
+  - Heart Rate (BPM)
+  - Blood Pressure (mmHg)
+  - Sleep Patterns (Hours)
+  - Water Intake (ml)
+  - Activity Tracking (Type and duration of physical activities)
+
+- **User Preferences and Goals**: Stores goals and preferences to personalize the user experience. Data includes:
+  - Daily Steps Goal
+  - Daily Distance Goal (Km)
+  - Daily Calories Burn Goal
+  - Data Collection Flags: Boolean flags to indicate the user's consent for collecting specific metrics (`dailySteps`, `heartRate`, `bloodPressure`, `sleepPatterns`, `waterIntake`, `activityTracking`).
+  - Data Retention Period: The duration for which the user wishes to retain their data, ranging from "3 Days" to "1 Year".
+
+Sensitive data is encrypted and stored locally to prevent unauthorized access. Daily data collection is mapped on the users data collection consent, users can control what information will be prompted from them. User preferences, including goals and data retention settings, are customizable at all times, allowing them to define their interaction with the app and how long their data is stored.
 
 #### Choosing the Right Storage Solution
 
@@ -86,7 +111,7 @@ Significant features of SecureStore include:
     const value = await SecureStore.getItemAsync(key);
     info[key] = value;
   }
-  return info;```
+  return info: };
  
  To update their data, users go through functions that retrieve their current data ( using getPersonalInfo), allow them to make changes, and then save these updates back to the device securely ( usingsavePersonalInfo) new information will overwrite the previous one, no history of the old data is kept within our software. If a user chooses to delete their data, our application uses SecureStore's deleteItemAsync for each data point, ensuring all personal information is removed from the device. This maintains data security and gives users complete control over their information.
 
