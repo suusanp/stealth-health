@@ -165,7 +165,7 @@ export const saveDailyData = async (data, date) => {
 ### Data Analytics and Privacy Implications
   - Overview of algorithms used for health data analysis and their implications on user privacy. explain how we are managing what is computed based on the users data management preferences.
 
-  
+
 ### User Interface Design and Data Input
   - Insights into optional data inputs, transparency features, and the manual data input and sync functionalities. So manual sync in details and Watch sync Explain linking to API. 
 ### Data Management and User Consent 
@@ -180,6 +180,6 @@ export const saveDailyData = async (data, date) => {
 - **Lessons Learned**: Key takeaways from incorporating privacy-by-design principles in the Fitbit app development process.
 
 ## Appendix
-- **Technical Specifications and Documentation**: Detailed technical information and app documentation.
-- **Detailed Analysis Reports and Data Sets**: Extensive analysis and data sets supporting the research findings.
-- **User Feedback and Survey Results**: Compilation of user feedback and results from surveys conducted.
+- **Technical Specifications and Documentation**: all functions input and outputs.
+- **Detailed Analysis Reports and Data Sets**: Screenshot and details of every page of the app.
+- **Sourcea**: 
