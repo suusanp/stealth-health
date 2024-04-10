@@ -86,9 +86,8 @@ Significant features of SecureStore include:
     const value = await SecureStore.getItemAsync(key);
     info[key] = value;
   }
-  return info;
-};
-    ```
+  return info;```
+ 
  To update their data, users go through functions that retrieve their current data ( using getPersonalInfo), allow them to make changes, and then save these updates back to the device securely ( usingsavePersonalInfo) new information will overwrite the previous one, no history of the old data is kept within our software. If a user chooses to delete their data, our application uses SecureStore's deleteItemAsync for each data point, ensuring all personal information is removed from the device. This maintains data security and gives users complete control over their information.
 
 #### Encryption and Decryption Methodologies
