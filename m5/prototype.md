@@ -45,7 +45,7 @@ Expo's commitment to privacy is evident through its GDPR, CCPA, and Privacy Shie
 Expo's open-source ecosystem is important, offering transparency and community engagement that aligns with our project's philosophy. 
 
 
-### Database Structure and Data Security
+### Database Structure and Data Encryption
 
 #### What Type of Data We Collect and How It Is Organized
 
@@ -85,7 +85,7 @@ Furthermore we were concerned By  SQLite was its limited support for built-in en
 
 Given these considerations, we decided to utilize Expo's SecureStore for storing sensitive personal information. SecureStore offers an encrypted key-value store, which provides several advantages:
 
-- **Encryption by Default**: SecureStore automatically encrypts data before it is saved, providing encryption at rest without the need for additional encryption layers. This feature is crucial for protecting sensitive information like age range, gender, height, and weight.
+- **Encryption by Default**: SecureStore automatically encrypts data before it is saved, providing encryption at rest without the need for additional encryption layers.
 
 - **Ease of Use**: With SecureStore, we benefit from an intuitive API for storing and retrieving encrypted data. 
 
@@ -115,34 +115,62 @@ Significant features of SecureStore include:
  
  To update their data, users go through functions that retrieve their current data ( using getPersonalInfo), allow them to make changes, and then save these updates back to the device securely ( usingsavePersonalInfo) new information will overwrite the previous one, no history of the old data is kept within our software. If a user chooses to delete their data, our application uses SecureStore's deleteItemAsync for each data point, ensuring all personal information is removed from the device. This maintains data security and gives users complete control over their information.
 
-#### Encryption and Decryption Methodologies
+#### Encryption and Decryption Methodology for daily data
+We employ a dynamic encryption key generation strategy using `expo-crypto`'s SHA256 digest. This choice is driven by SHA256's cryptographic security, providing a strong hash function that is resistant to collision attacks. The code snippet below showcases the process:
 
-Our encryption strategy incorporates the following practices:
+```javascript
+import * as Crypto from 'expo-crypto';
 
-1. **Dynamic Encryption Key Generation**: Utilizing the SHA-256 hashing algorithm through Expo's Crypto module, we generate a unique encryption key for each user session.
-2. **Secure Encryption Key Storage**: The encryption key is securely stored using SecureStore, ensuring that the key itself benefits from SecureStore's encryption.
-3. **Efficient Data Encryption and Decryption**: We serialize user data into a string, encrypt it using the dynamic key, and decrypt it upon retrieval, ensuring end-to-end security of sensitive information.
+export const generateAndStoreKey = async () => {
+  const uniqueSeed = `${new Date().toISOString()}${Math.random()}`;
+  const encryptionKey = await Crypto.digestStringAsync(
+    Crypto.CryptoDigestAlgorithm.SHA256,
+    uniqueSeed,
+    { encoding: Crypto.CryptoEncoding.HEX }
+  );
+  await SecureStore.setItemAsync('encryptionKey', encryptionKey);
+};
+```
 
-#### Commitment to Data Minimization
+- **Usage of SHA256**:  We chose this algorithm for its widespread acceptance as a secure hash algorithm, providing a good balance between speed and security.
+- **Unique Seed Generation**: Combining the current ISO date string with a random number ensures that the seed for our hash is highly unpredictable, this makes the encryption key harder to guess.
+- **Secure Storage of Key**: The resulting encryption key, is stored securely using expo-secure-store for the reasons mentionned in the above section (isolating it within the device's secure storage and ensuring it's not accessible without authentication).
 
-In line with privacy-by-design principles, we collect data in age ranges rather than specific ages, minimizing the risk of personal identification. This approach underscores our commitment to collecting only the data necessary for providing our services, thereby enhancing user privacy.
+We then encrypt the health metrics using the AES encryption funtion provided by CryptoJS. AES is particularly suitable for mobile environments where computational resources are limited as it can encrypt large amounts of data quickly. Below is the implementation detail:
 
-Our choice of SecureStore, coupled with our strategic approach to data collection and encryption, ensures that our application not only meets but exceeds the privacy and security expectations of our users.
+```javascript
+import * as FileSystem from 'expo-file-system';
+import CryptoJS from 'react-native-crypto-js';
+import { getEncryptionKey } from './SecureStoreService';
 
-  - Explanation of sensitive data encryption and storage methodologies, utilizing SecureStore and Crypto.
-  - Details on the daily data encryption process with CryptoJS.
-  - Discussion on the storage of user preferences and data collection flags using Async Storage and FileSystem.
+const dailyDataDirectory = `${FileSystem.documentDirectory}dailyData/`;
+
+export const saveDailyData = async (data, date) => {
+    const encryptionKey = await getEncryptionKey();
+    const ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), encryptionKey).toString();
+    const filePath = dailyDataDirectory + `${date}.json`;
+
+    await FileSystem.writeAsStringAsync(filePath, ciphertext);
+};
+```
+- **JSON Stringification**: Prior to encryption, the data is stringified to ensure compatibility with the encryption library, as CryptoJS operates on string inputs.
+- **File System Storage**: The Encrypted data is stored in the device's file system, under a directory specific to daily data, to ease future data retrieval.
+
+#### Storage of user data amangement preferences and fitness goals
 
 
 
 
-- **Data Analytics and Privacy Implications**
-  - Overview of algorithms used for health data analysis and their implications on user privacy.
-- **User Interface Design and Data Input**
-  - Insights into optional data inputs, transparency features, and the manual data input and sync functionalities.
-- **Data Management and User Consent**
-  - Strategies implemented for data retention period notifications, health data collection preferences, and enhancing user control.
-- **Authentication and Data Protection**
+
+### Data Analytics and Privacy Implications
+  - Overview of algorithms used for health data analysis and their implications on user privacy. explain how we are managing what is computed based on the users data management preferences.
+
+  
+### User Interface Design and Data Input
+  - Insights into optional data inputs, transparency features, and the manual data input and sync functionalities. So manual sync in details and Watch sync Explain linking to API. 
+### Data Management and User Consent 
+  - Strategies implemented for data retention period notifications, health data collection preferences, and enhancing user control. Explain the functioning of the data retention algorithm and how the retrieved pdf is generated. 
+### Authentication and Data Protection
   - Use of biometric authentication (Expo LocalAuthentication) for data protection and the measures taken to secure user data access.
 
 
