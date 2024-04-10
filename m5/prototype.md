@@ -155,6 +155,26 @@ export const saveDailyData = async (data, date) => {
 ```
 - **JSON Stringification**: Prior to encryption, the data is stringified to ensure compatibility with the encryption library, as CryptoJS operates on string inputs.
 - **File System Storage**: The Encrypted data is stored in the device's file system, under a directory specific to daily data, to ease future data retrieval.
+- **Using the Date as Filename**: Storing daily data in files named after the date simplifies retrieval and management. It enables straightforward data purging based on retention policies without the need to decrypt files to assess their contents.
+- **Security Implications of Filename Choice**: The use of dates as filenames does not significantly impact security. The critical security measure lies in the encryption of the file's contents. However, a discussion around encrypting filenames could be warranted in contexts where the mere knowledge of a user's activity on specific dates needs concealment.
+- **FileSystem vs. SecureStore**: Data is encrypted and stored in the file system rather than SecureStore due to size limitations and performance considerations. SecureStore is designed for small pieces of data like keys or tokens, while the FileSystem API is optimized for larger data storage and offers more flexibility for managing files.
+
+
+Retrieving and decrypting daily data process: 
+```javascript
+export const getDailyData = async (date) => {
+    const encryptionKey = await getEncryptionKey();
+    const filePath = dailyDataDirectory + `${date}.json`;
+    const encryptedData = await FileSystem.readAsStringAsync(filePath);
+    const bytes = CryptoJS.AES.decrypt(encryptedData, encryptionKey);
+    const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+    return decryptedData;
+};
+```
+- **Secure Key Retrieval**: The encryption key is fetched securely from expo-secure-store for use in the decryption process.
+- **Decryption Process**: CryptoJS's AES.decrypt method is used to decrypt the data. This step requires the same key used for encryption, ensuring that only authorized users can access the data.
+- **Parsing Decrypted Data**: The decrypted string is parsed back into a JSON object, making it readily usable by the application.
 
 #### Storage of user data amangement preferences and fitness goals
 
@@ -168,8 +188,9 @@ export const saveDailyData = async (data, date) => {
 
 ### User Interface Design and Data Input
   - Insights into optional data inputs, transparency features, and the manual data input and sync functionalities. So manual sync in details and Watch sync Explain linking to API. 
-### Data Management and User Consent 
+### Data Management and User control. 
   - Strategies implemented for data retention period notifications, health data collection preferences, and enhancing user control. Explain the functioning of the data retention algorithm and how the retrieved pdf is generated. 
+  - explain how the delete all data function works.
 ### Authentication and Data Protection
   - Use of biometric authentication (Expo LocalAuthentication) for data protection and the measures taken to secure user data access.
 
