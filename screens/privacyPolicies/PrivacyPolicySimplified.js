@@ -30,7 +30,7 @@ const PrivacyPolicySimplified = () => {
                 <Text style={styles.heading}>Policy Changes:</Text> If the policy changes, you’ll be notified and asked for consent again.
             </Text>
             <Text style={styles.policyText}>
-                <Text style={styles.heading}>Contact Info:</Text> You can reach out to us for any questions or privacy concerns.
+                <Text style={styles.heading}>Contact Info:</Text> You can reach out to us for any questions or privacy concerns. You can reach Susan, our designated Privacy Officer, at @shuran.pan@mail.mcgill.ca
             </Text>
         </View>
     );

@@ -597,6 +597,12 @@ const [isAuthenticated, setIsAuthenticated] = useState(false);
       });
   }
 ```
+### Transparency and User Education
+A major aspect of our privacy-driven approach is ensuring transparency and user education. We have incorporated several features to inform users about data collection, processing, and storage practices, so they can make informed decisions about their data. 
+
+- **Privacy Policy**: The first step of our setup process is to introduce users to our simplified privacy policy. This page explains in clear, non-technical language what data is collected, how it is used, and how it is protected. Users must read the privacy policy before proceeding with the app setup; they will not be prompted to enter any personal data until they have done so. This ensures that users are aware of our data practices from the outset. They will be asked again to read and accept the full privacy policy before the app setup is complete. The privacy policy can be accessed at any time from the user's profile settings.
+
+- **Setup Process**: We have designed the setup process to be educational, with explanations provided for each data point requested. As mentioned, users must read the privacy policy before they are allowed to enter any personal data, and again at the end of the setup process. When users are asked to build their profile, we provide context for why each piece of information is needed and which metrics it will be used to compute. We also allow users to skip any data entry if they are uncomfortable providing it. 
 
 
 ## Conclusions
