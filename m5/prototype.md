@@ -34,7 +34,7 @@ Expo is a comprehensive framework for developing React Native applications. We p
 
 #### Evaluation of Expo's Privacy Policies and Open-Source Nature
 
-Expo seems to be commited to privacy, on its website it showcases its GDPR, CCPA, and Privacy Shield compliance, it says to be responsibly handling both developer and end-user data. We read through their Privacy Policy, updated on June 22nd, 2022, and their further explained privacy exposition dated February 7th, 2020.
+Expo seems to be committed to privacy, on its website it showcases its GDPR, CCPA, and Privacy Shield compliance, it says to be responsibly handling both developer and end-user data. We read through their Privacy Policy, updated on June 22nd, 2022, and their further explained privacy exposition dated February 7th, 2020.
 
 
 - **Data Collection and Use**: "When you create an account on Expo or use our tools and services, we collect data including your name, email, and, if you enable paid services, your billing information... This data helps us make decisions about our products and services, in addition to allowing us to deliver satisfactory user experiences." (Expo, Privacy Policy [^6])
@@ -85,12 +85,12 @@ Sensitive data is encrypted and stored locally to prevent malicious access. Dail
 
 #### Choosing the Right Storage Solution
 
-When selecting a storage solution for our application, we evaluated various options. We first looked at expo SQLite library for its easy use. The issue with it is that the database would be queried thorugh a Webbased-api, going against our principle of having a non server stored database,due to the inherent risks of server-side data breaches and unauthorized access.[^8]
+When selecting a storage solution for our application, we evaluated various options. We first looked at expo SQLite library for its easy use. The issue with it is that the database would be queried through a Web-Based API, going against our principle of having a non server stored database,due to the inherent risks of server-side data breaches and unauthorized access.[^8]
 Furthermore, we were concerned by SQLite due to its limited support for built-in encryption. Ensuring the privacy and security of user data is paramount in our application; thus, we sought a solution that offered robust encryption capabilities out of the box.
 
 #### SecureStore for Sensitive Permanent and Semi-Permanent Information
 
-As mentionned earlier we used Expo's SecureStore for storing sensitive personal information. SecureStore offers an encrypted key-value store, which provides multiple advantages:
+As mentioned earlier we used Expo's SecureStore for storing sensitive personal information. SecureStore offers an encrypted key-value store, which provides multiple advantages:
 
 - **Encryption by Default**: the library automatically encrypts data before it is saved, providing encryption at rest without the need for additional encryption layers.
 
