@@ -442,8 +442,8 @@ export const savePreferences = async (preferences) => {
   await FileSystem.writeAsStringAsync(preferencesFileUri, data);
 };
 ```
-This function serializes the user's preferences to a JSON string and writes it to a file within the device's file system, ensuring preferences are retained even after the app is closed.
-If notifications are enabled, the application schedules reminders for users to manage their data before the chosen retention period ends. This approach ensures users are always informed about their data lifecycle, it listens for changes in notificationsEnabled and dataRetention, scheduling or adjusting notifications accordingly.:
+This function serializes the user's preferences to a JSON string and writes it to a file within the device's file system, ensuring that preferences are retained even after the app is closed.
+If notifications are enabled, the application schedules two reminders: a notification one hour before data deletion and another at the time of deletion. We implemented this feature as a safeguard against accidental data loss, to remind users about the impending data deletion, giving them a chance to export their data or change the data retention period. This approach ensures users are always informed about their data lifecycle, it listens for changes in notificationsEnabled and dataRetention, scheduling or adjusting notifications accordingly:
 ```javascript
 useEffect(() => {
   if (notificationsEnabled) {
