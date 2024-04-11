@@ -527,7 +527,7 @@ Jeffrey
 
   - WatchInputPage.js screen, under the screens directory:
   
-    <img src="ManuaWatchInputPagelInputPage.PNG" title="WatchInputPage.js screen" width="200"/>
+    <img src="WatchInputPage.PNG" title="WatchInputPage.js screen" width="200"/>
 
 - **Technical Specifications and Documentation**: 
   All functions inputs and outputs, as well as more descriptive inline comments can be found in the codebase. 
