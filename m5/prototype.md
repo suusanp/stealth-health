@@ -2,7 +2,7 @@
 
 ## Introduction
 ### **Overview of the system**: 
-Stealth Health is a health and fitness application that aims to provide privacy-focused health tracking and analytics to users. The system is designed to collect and analyze user health data while prioritizing user privacy and data security. The Stealth Health system includes features such as activity tracking, sleep monitoring, and nutrition logging, while ensuring that users have full control over their data and can make informed decisions about its use. 
+Stealth Health is a health and fitness application that aims to provide privacy-focused health tracking and analytics to users. The system is designed to collect and analyze user health data while prioritizing user privacy and data security. The Stealth Health system includes features such as activity tracking, heart rate monitoring, sleep analysis, and water intake monitoring. The system also allows users to set fitness goals and track their progress, while ensuring that users have full control over their data and can make informed decisions about its use. 
 
 ### **Purpose and Scope**: 
 The aim behind developing the Fitbit app prototype and the scope covered in this prototype phase.
@@ -27,7 +27,7 @@ Expo is a comprehensive framework for developing React Native applications acros
 
 ### Rationale for Selecting Expo
 
-Expo is renowned for facilitating the development of cross-platform applications with React Native, putting efficiency and developer experience at the forefront. It is open-source and has a large community of developers, so as beginners to mobile app development, we can easily get started with Expo. We also chose Expo because it is test-friendly; We each downloaded the Expo Go app, which allows us to preview the app on real devices during development. 
+We chose Expo as our development platform for several reasons. Expo provides libraries we found useful for our app, such as `SecureStore` for secure data storage and `LocalAuthentication` for biometric authentication. It is open-source with a large community of developers, which we found helpful as beginners to mobile app development. Additionally, it is a test-friendly platform; We each downloaded the Expo Go app, which allows us to preview the app on real devices during development.
 
 #### Evaluation of Expo's Privacy Policies and Open-Source Nature
 
@@ -233,6 +233,16 @@ We decided not to encrypt user preferences and fitness goals for a simple reason
 
 ### Data Analytics and Privacy Implications
   - Overview of algorithms used for health data analysis and their implications on user privacy. explain how we are managing what is computed based on the users data management preferences.
+
+
+
+We deploy several key mechanisms to handle user data analytics while adhering to their privacy preferences:
+
+- **Data Collection Flags**: Users can enable or disable the collection of specific health metrics, such as daily steps, heart rate, blood pressure, sleep patterns, water intake, etc. in their Preferences. We will  analyze data for metrics that the user has enabled. Although all data is collected locally and users can opt-out of sharing specific metrics, this feature allows users to have granular control over the data that is processed. 
+- **Data Retention Period**: Users can set the duration for which their data is retained, ranging from "3 Days" to "1 Year". After the specified period, the data is automatically deleted from the device. This feature ensures that user data is not stored indefinitely. In compliace with the GDPR and PIPEDA, we give users full control over their data use and data retention. 
+- **Data Analysis Based on User Preferences**: Our algorithms analyze only the data that users have consented to share. For example, if a user has disabled heart rate monitoring, the system will not analyze heart rate data. This approach respects user privacy preferences and ensures that data analysis is aligned with user consent.
+- **Data Security Measures**: We implement robust encryption techniques to secure user data during analysis. By encrypting sensitive data and using secure storage mechanisms, we protect user information from unauthorized access and maintain data confidentiality. Data is only decrypted when necessary for analysis, ensuring that sensitive information remains secure throughout the process.
+
 
 
 ### User Interface Design and Data Input
