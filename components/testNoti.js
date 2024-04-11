@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { Text, View, Button, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import * as Notifications from 'expo-notifications';
+
+// Define how notifications will be handled, functions to send a test notification
+// not actually used in the app currently, left here for possible future steps
 
 Notifications.setNotificationHandler({
     handleNotification: async () => ({

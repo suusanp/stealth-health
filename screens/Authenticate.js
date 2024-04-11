@@ -5,18 +5,24 @@ import { useNavigation } from '@react-navigation/native';
 
 const myImage = require("../assets/fitness_icon.png");
 
+/**
+ * Component to authenticate the user
+ * 
+ */
 function Authenticate () {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const navigation = useNavigation();
     
-
+    // Navigate to the Landing Page once the authentication is done
     useEffect(() => {
         if (isAuthenticated) {
           navigation.navigate('LandingPage');
         }
       }, [isAuthenticated]);
 
-
+      /**
+       * FaceID Authentication, fallbacks to phone password
+       */
     function onAuthenticate () {
         const auth = LocalAuthentication.authenticateAsync({
         promptMessage: 'Authenticate',

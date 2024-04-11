@@ -5,6 +5,13 @@ import { CommonActions, useNavigation } from '@react-navigation/native';
 import PrivacyPolicyText from './privacyPolicies/PrivacyPolicyText';
 import TermsOfServiceText from './privacyPolicies/TermsOfServiceText';
 
+/**
+ * Popup component to display ToS and Privacy Policy
+ * @param {boolean} visible 
+ * @param {Function} onAgree Function to call when user agrees with the terms
+ * @param {Function} onClose Function to call when the user closes the terms 
+ * @returns 
+ */
 const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
   const navigation = useNavigation();
   const [preferences, setPreferences] = useState({
@@ -13,6 +20,10 @@ const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
     pedometer: false,
   });
 
+  /**
+   * switch for the specified preference
+   * @param {string} preference 
+   */
   const handlePreferenceChange = (preference) => {
     setPreferences((prevPreferences) => ({
       ...prevPreferences,
@@ -20,16 +31,13 @@ const TermsOfServicePopup = ({ visible, onAgree, onClose }) => {
     }));
   };
 
+  //Function to call when user agrees with the ToS and Privacy Policy
   const onAgreeWithPreferences = () => {
-    // Save the preferences here (e.g., using AsyncStorage)
-    // For simplicity, we'll just log them for now
     console.log('User Preferences:', preferences);
-
-    // Trigger the original onAgree function
-    
     onAgree();
   };
 
+  //Function to call when user disagrees with the ToS and Privacy Policy
   const onDisagreeWithPreferences = async () => {
     await deleteAll();
     onClose();

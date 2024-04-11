@@ -3,6 +3,10 @@ import { View, Text, StyleSheet, Switch, Alert } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService';
 
+/**
+ * Component to manage user preferences of the health metrics and data collection
+ * 
+ */
 const HealthMetrics = () => {
   const [metrics, setMetrics] = useState({
     dailySteps: false,
@@ -13,6 +17,7 @@ const HealthMetrics = () => {
     activityTracking: false,
   });
 
+  // Get the data collection permission flags
   useEffect(() => {
     const loadFlags = async () => {
       try {
@@ -26,6 +31,7 @@ const HealthMetrics = () => {
     loadFlags();
   }, []);
 
+  // Data collection descriptions to user 
   const metricExplanations = {
     dailySteps: "Tracks steps to encourage an active lifestyle.",
     heartRate: "Monitors heart rate for cardiovascular health insights.",
@@ -35,12 +41,20 @@ const HealthMetrics = () => {
     activityTracking: "Gives us a better way to assess the users daily needs",
   };
 
+/**
+ * Switch to allow user to change their preferences about data collections
+ * @param {string} metric The metric parameter for the toggle switch
+ */
   const toggleSwitch = async (metric) => {
     const updatedMetrics = { ...metrics, [metric]: !metrics[metric] };
     await saveDataCollectionFlags(updatedMetrics);
     setMetrics(updatedMetrics);
   };
 
+/**
+ * Explanation for the parameter health metric upon user click
+ * @param {string} metric The metric parameter for the toggle switch
+ */
   const showExplanation = (metric) => {
     Alert.alert(metric.split(/(?=[A-Z])/).join(" "), metricExplanations[metric]);
   };

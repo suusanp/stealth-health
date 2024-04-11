@@ -10,10 +10,13 @@ import TermsOfServicePopup from './TermsOfServicePopup';  // Adjust the import p
 import { format, addDays, subDays } from 'date-fns';
 import {computeAndStoreMetrics, getComputedMetrics } from  '../metricsCalculation/metricsUtils';
 import { useIsFocused, useFocusEffect } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from 'expo-secure-store';
 
-
+/**
+ * Landing Page component
+ */
 const LandingPage = ({ navigation }) => {
+  // Initialize the goals and daily user data to default values
   const originalDate = new Date();
   const [stepsGoal, setDailyStepsGoal] = useState(10000);
   const [distanceGoal, setDailyDistanceGoal] = useState(5);
@@ -24,8 +27,13 @@ const LandingPage = ({ navigation }) => {
   const [computedMetrics, setComputedMetrics] = useState(null);
   const [canGoForward, setCanGoForward] = useState(false); 
   const isFocused = useIsFocused(); 
+
+  /**
+   * Check Data Availability for a given date
+   * @param {Date} date 
+   * @returns {boolean} Return true if the data for the specified date is available, false if not
+   */
   const checkDataAvailability = async (date) => {
-    // Simplified check. You might need more logic to determine actual data availability.
     const data = await getDailyData(format(date, 'yyyy-MM-dd'));
     return data !== null;
   };
@@ -33,6 +41,9 @@ const LandingPage = ({ navigation }) => {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
+    /**
+     * Check the user's permissions and initialize the daily date depending on the permissions
+     */
     async function checkAgreement() {
       const agreementStatus = await AsyncStorage.getItem('agreementStatus');
       if (!agreementStatus) {
@@ -48,6 +59,10 @@ const LandingPage = ({ navigation }) => {
     }
 
     checkAgreement();
+
+    /**
+     * Get and set daily data and the computed health metrics
+     */
     const fetchData = async () => {
       const dateStr = format(currentDate, 'yyyy-MM-dd');
       const data = await getDailyData(dateStr);
@@ -64,6 +79,9 @@ const LandingPage = ({ navigation }) => {
     fetchData();
   }, [currentDate,isFocused]);
 
+  /**
+   * Get the user goals from the secure store
+   */
   const loadGoals = async () => {
     try {
       const stepsGoalStr = await SecureStore.getItem('dailySteps');
@@ -158,15 +176,16 @@ const LandingPage = ({ navigation }) => {
             </ActivityRing>
           )}
           <View style={{ width: 10 }} />
-          {computedMetrics && (
-          <ActivityRing 
-            size={100} 
-            progress={ parseFloat(Math.min(computedMetrics.totalDailyCalorieExpense / caloriesGoal, 1).toFixed(1))}
-            color="#43A047">
-             <Text style={styles.ringText}>{computedMetrics.totalDailyCalorieExpense ? computedMetrics.totalDailyCalorieExpense.toFixed(0) : '0.00'}</Text>
-            <Text style={styles.ringLabel}>kcal</Text>
-          </ActivityRing>
-          )}
+          {(computedMetrics?.totalDailyCalorieExpense || computedMetrics?.totalDailyCalorieExpense === 0) && (
+  <ActivityRing 
+    size={100} 
+    progress={parseFloat(Math.min((computedMetrics.totalDailyCalorieExpense || 0) / caloriesGoal, 1).toFixed(1))}
+    color="#43A047">
+    <Text style={styles.ringText}>{Math.min((computedMetrics.totalDailyCalorieExpense || 0)).toFixed(1)}</Text>
+    <Text style={styles.ringLabel}>kcal</Text>
+  </ActivityRing>
+)}
+
         </View>
        {computedMetrics &&  renderComputedMetrics(computedMetrics)} 
       </ScrollView>
