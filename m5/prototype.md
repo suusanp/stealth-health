@@ -451,8 +451,8 @@ Jeffrey
   - EXPO installed, (https://expo.dev/) by running `npm install -g expo-cli`
 
   After these requirements are met, you can clone the codebase, get to your local cloned project directory, and run:
-  npm install
-  expo start
+  - npm install
+  - expo start
 
   If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
 
