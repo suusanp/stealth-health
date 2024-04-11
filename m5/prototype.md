@@ -488,7 +488,7 @@ const updateRetentionPreference = async (newOption) => {
 };
 ```
 #### PDF retrieval
- Providing users with the ability to retrieve their health data in PDF format is a crucial feature that aligns with our commitment to data transparency, user control, and data minimization principles. This functionality allows users to generate a comprehensive report of their health metrics and computed analytics over a specified data retention period, ensuring they have tangible access to their information and further empowering them with their data management.
+ Providing users with the ability to retrieve their health data in PDF format is a crucial feature that aligns with our commitment to user control and data minimization principles. This functionality allows users to generate a comprehensive report of their health metrics and computed analytics over a specified data retention period, ensuring they have tangible access to their information, and giving them more control over their data management.
 
  The initial step involves aggregating the user's health metrics and computed data into a structured HTML format. This process accounts for the user-defined data retention period, ensuring the report only encompasses data within this timeframe, aligning with our data minimization policy.
 
@@ -614,36 +614,36 @@ The Privacy Policy can be accessed at any time from the user's profile settings.
 ## Conclusions
 - **Summary of Key Findings**: 
  
- - Our research on FitBit and similar health and fitness wearables and applications demonstrated significant privacy concerns, and a lack of transparency. Our app Stealth Health was meant to address those privacy shortcomings while also keeping the core functionalities of the fitness applications. 
+ - Our research on FitBit and similar health and fitness wearables and applications demonstrated significant privacy concerns and a lack of transparency. Our app Stealth Health was meant to address those privacy shortcomings while also keeping the core functionalities of the fitness applications. 
 
- - Our successful development of this prototype demonstrated that it is possible to have a privacy focused fitness app, if one considers privacy to be one of the core requirements of the application from the start. By using React Native and Expo, our team was able to develop a working prototype of Stealth Health under a few months, which proves privacy by design is possible, and does not need to be technically complicated. 
+ - Our successful development of this prototype demonstrated that it is possible to have a privacy-focused fitness app if one considers privacy to be one of the core requirements of the application from the start. By using React Native and Expo, our team was able to develop a working prototype of Stealth Health in under a few months, which proves privacy by design is possible, and does not need to be technically complicated. 
 
  - By combining local data storage, encryption by Expo's SecureStore and Crypto libraries, and authentication by Face ID and Phone Password, we were able to ensure that user's sensitive health information remains secure all the time, at rest, and during data processing. 
 
- - Our focus on user's informed consent allowed us to write and demonstrate our transparent Privacy Policy and Terms of Services. Giving back the control to the user by allowing them to transparently choose which health metrics they want to be tracked, and their data retention period proved that privacy and funcationality does not have to be a zero-sum game. 
+ - Our focus on our user's informed consent allowed us to write and demonstrate our transparent Privacy Policy and Terms of Service. Giving back control to the user by allowing them to transparently choose which health metrics they want to be tracked, and their data retention period proved that privacy and functionality do not have to be a zero-sum game. 
 
 
 - **Insights on Privacy Design Strategies Implemented**: 
 
-  - We ensured data minimization at every step of Stealth Health, and only the absolute necessary user data is collected. There is no need for the user to create an account, and Stealth Health does not even collect the user's name or email. Every user data the app asks for is optional, and app is fully functional if the user chooses to not provide any data. Stealth Health uses an "opt-in" approach, the default settings for everything is to not be collected, and the user has to explicitly give permission.
+  - We ensure data minimization at every step of Stealth Health, and only the absolutely necessary user data is collected. We do not require our users to create an account; Stealth Health does not even collect the user's name or email. Every user data the app asks for is optional, and the app is fully functional if the user chooses not to provide any data. Stealth Health uses an "opt-in" approach, with “opt-out” as the default setting. This way, the user has to give explicit permission for every single data point the app collects to ensure that every choice is deliberate.
 
-  - We ensured data seperation by storing different data types (personal info, daily data, preferences) in dedicated, logically separated locations, therefore preventing any possible data aggregation.
+  - We ensured data separation by storing different data types (personal info, daily data, preferences) in dedicated, logically separated locations, thereby preventing any possible data aggregation.
 
-  - We used Abstract strategy as much as possible, for example asking the user's Age Range instead of their exact Age, and not tracking their location to calculate their daily distance, and instead relying on their step count and height to deduce the distance. 
+  - We used the Abstract strategy as much as possible, for example asking the user's Age Range instead of their exact Age, and not tracking their location to calculate their daily distance, and instead relying on their step count and height to deduce the distance. 
 
   - Hide strategy was used to store the user data securely, by storing the encrypted data in secure local storage. All the sensitive data was encrypted by default. Further privacy was ensured by user authentication. 
 
-  - User was informed about every single data we are tracking and every single metric we are calculating, compplying with the Inform strategy.
+  - User was informed about every single data we are tracking and every single metric we are calculating, complying with the Inform strategy.
 
   - User was given the choice to control all of their preferences, from for how long they want to keep their data, to what data they allow the application to collect. User was also given the clear choice of deleting all of their data at any given time. 
 
-- **Lessons Learned and perspectives**: 
+- **Lessons Learned and Perspectives**: 
   
-  - Stealth Health of course has some limitations, as we were not able to implement some of the features of FitBit and similar health devices, which rely on constant user data stream and advanced sensors. However, we were still able to keep the most important features of any such application, and also were able to provide a simulation of how syncying a FitBit device would work on Stealth Health, if we had access to the FitBit API. 
+  - Stealth Health of course has some limitations, as we were not able to implement some of the features of FitBit and similar health devices, which rely on constant user data stream and advanced sensors. However, we were still able to keep the most important features of any such application and were also able to provide a simulation of how syncing a FitBit device would work on Stealth Health if we had access to the FitBit API. 
 
-  - As we progressed through the implementation of our project, we further realized the importance of commiting to privacy-by-design principles from the very start of a project, as that choice we commited to set the whole implementation route. We also realized it is much harder to try to add a privacy-enhancing function to an existing application, than it is to develop a brand-new application focused on privacy by default. 
+  - As we progressed through the implementation of our project, we further realized the importance of committing to privacy-by-design principles from the very start of a project, as that choice we committed to set the whole implementation route. We also realized it is much harder to try to add a privacy-enhancing function to an existing application than it is to develop a brand-new application focused on privacy by default. 
 
-  - We realized the importance of informing the user, especially while we were writing our Privacy Policy and Terms of Services, as writing them forced us to critically think of every data collection choice we made. Our implementation of a privacy focused user set up pages enhanced transparency and trust.
+  - We realized the importance of informing the user, especially while writing our Privacy Policy and Terms of Services, as writing them forced us to think critically about every data collection choice we made. Our implementation of a privacy-focused user setup process enhanced transparency and trust.
 
 
 ## Appendix
