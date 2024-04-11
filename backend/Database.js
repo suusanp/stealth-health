@@ -7,7 +7,11 @@ const database_version = "1.0";
 const database_displayname = "SQLite App Data Database";
 const database_size = 200000;
 
-// Function to initialize the database
+/**
+ * Initialize a SQLite database
+ * @returns {Database}
+ * 
+ */
 export const getDBConnection = async () => {
   return SQLite.openDatabase(
     database_name,
@@ -17,8 +21,12 @@ export const getDBConnection = async () => {
   );
 };
 
-// Function to create tables if they don't exist
+/**
+ * Creates the tables in the database
+ * @param {Database} db 
+ */
 export const createTables = async (db) => {
+  // Personal Info Table
   const queryPersonalInfo = `CREATE TABLE IF NOT EXISTS PersonalInfo (
                               InfoID INTEGER PRIMARY KEY AUTOINCREMENT,
                               AgeRange TEXT,
@@ -27,12 +35,14 @@ export const createTables = async (db) => {
                               Weight INTEGER,
                               FitnessGoals TEXT)`;
 
+  // Preferences Table
   const queryPreferences = `CREATE TABLE IF NOT EXISTS Preferences (
                               PrefID INTEGER PRIMARY KEY AUTOINCREMENT,
                               DataRetentionTime TEXT,
                               NotificationDataRetentionEnabled BOOLEAN,
                               NotificationGoalReached BOOLEAN)`;
 
+  // User Permissions Flags for Data Collections Table
   const queryDataCollectionFlags = `CREATE TABLE IF NOT EXISTS DataCollectionFlags (
                                       FlagID INTEGER PRIMARY KEY AUTOINCREMENT,
                                       CollectDailySteps BOOLEAN,
@@ -40,7 +50,7 @@ export const createTables = async (db) => {
                                       CollectBloodPressure BOOLEAN,
                                       CollectSleepPatterns BOOLEAN,
                                       CollectWaterIntake BOOLEAN)`;
-
+  // Daily Data Table
   const queryDailyData = `CREATE TABLE IF NOT EXISTS DailyData (
                             DataID INTEGER PRIMARY KEY AUTOINCREMENT,
                             Date TEXT,
@@ -58,16 +68,21 @@ export const createTables = async (db) => {
   });
 };
 
+/**
+ * Update the Personal Info Table
+ * @param {Database} db: database to be updated 
+ * @param {Object} info: fields to be updated and their values
+ */
 export const updatePersonalInfo = async (db, info) => {
-    // Destructure with default values to prevent undefined
+    // Initialize everything to default values to prevent undefined causing errors
     const { AgeRange = null, Gender = null, Height = null, Weight = null, FitnessGoals = null } = info;
   
-    // Initialize parts of the query
+    // Initialize the query
     let query = `UPDATE PersonalInfo SET `;
-    let args = [];
+    let args = []; 
     let setters = [];
   
-    
+    // for every field in the info argument, update its value
     if (AgeRange !== null) {
       setters.push(`AgeRange = ?`);
       args.push(AgeRange);
@@ -89,11 +104,11 @@ export const updatePersonalInfo = async (db, info) => {
       args.push(FitnessGoals);
     }
   
-    // Join the parts of the query
+    // make up the SQL statement
     query += setters.join(', ');
-    query += ` WHERE InfoID = 1`; // Assuming there's only one record to update.
+    query += ` WHERE InfoID = 1`; //only one personal info record because only one user because local database
   
-    // Execute if there's something to update
+    // Execute the SQL statement
     if (args.length > 0) {
       await db.transaction((tx) => {
         tx.executeSql(query, args);

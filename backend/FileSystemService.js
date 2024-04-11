@@ -1,14 +1,24 @@
 import * as FileSystem from 'expo-file-system';
-import { format, subDays } from 'date-fns';
+import { subDays } from 'date-fns';
 
+// file URIs to store user preferences
 const preferencesFileUri = `${FileSystem.documentDirectory}preferences.json`;
 const dataCollectionFlagsUri = `${FileSystem.documentDirectory}dataCollectionFlags.json`;
 
+/**
+ * Save user preferences to a file
+ * @param {Object} preferences 
+ */
 export const savePreferences = async (preferences) => {
   const data = JSON.stringify(preferences);
   await FileSystem.writeAsStringAsync(preferencesFileUri, data);
 };
 
+/**
+ * Get the user preferences from a file
+ * If no preference file exists, initialize with default values
+ * @returns {Object}
+ */
 export const getPreferences = async () => {
   const fileInfo = await FileSystem.getInfoAsync(preferencesFileUri);
   if (!fileInfo.exists) {
@@ -21,11 +31,22 @@ export const getPreferences = async () => {
   return JSON.parse(data);
 };
 
+/**
+ * Save data collection preferences to a file
+ * 
+ * @param {Object} flags 
+ */
 export const saveDataCollectionFlags = async (flags) => {
   const data = JSON.stringify(flags);
   await FileSystem.writeAsStringAsync(dataCollectionFlagsUri, data);
 };
 
+/**
+ * Get the data collection preferences from the file 
+ * If no preference file exists, initialize with default values
+ * 
+ * @returns {Object}
+ */
 export const getDataCollectionFlags = async () => {
   const fileInfo = await FileSystem.getInfoAsync(dataCollectionFlagsUri);
   if (!fileInfo.exists) {
@@ -39,7 +60,13 @@ export const getDataCollectionFlags = async () => {
 };
 const dailyDataDirectory = `${FileSystem.documentDirectory}dailyData/`;
 
+/**
+ * Returns the data retention period integer based on user data retention preference
+ * @param {string} dataRetentionOption 
+ * @returns {int}
+ */
 const getRetentionDays = (dataRetentionOption) => {
+  // define data retention period strings to integers 
   const options = {
     '3 Days': 3,
     '1 Week': 7,
@@ -52,29 +79,26 @@ const getRetentionDays = (dataRetentionOption) => {
   return options[dataRetentionOption] || 30; // Default to 1 Month
 };
 
+/**
+ * Delete the files older than the data retention period specified by the user
+ */
 export const checkAndDeleteOldFiles = async () => {
   try {
     const preferences = await getPreferences();
-  //  console.log("Current preferences:", preferences);
 
     const retentionDays = getRetentionDays(preferences.dataRetention);
-   // console.log(`Data retention period in days: ${retentionDays}`);
 
     const today = new Date();
     const cutoffDate = subDays(today, retentionDays);
-  //  console.log(`Cutoff date for data retention: ${cutoffDate.toISOString()}`);
 
     const files = await FileSystem.readDirectoryAsync(dailyDataDirectory);
-  //  console.log(`Found ${files.length} files in the directory.`);
-
+  
     files.forEach(async (fileName) => {
-      const fileDateStr = fileName.split('.')[0]; // Assuming fileName format is 'YYYY-MM-DD.json'
+      const fileDateStr = fileName.split('.')[0]; 
       const fileDate = new Date(fileDateStr);
- //     console.log(`Checking file: ${fileName} with date: ${fileDate.toISOString()}`);
 
       if (fileDate < cutoffDate) {
         await FileSystem.deleteAsync(`${dailyDataDirectory}${fileName}`);
-     //   console.log(`Deleted old file: ${fileName}`);
       }
     });
   } catch (error) {

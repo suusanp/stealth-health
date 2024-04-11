@@ -27,7 +27,10 @@ const activities = [
   { label: 'Jump Rope', value: 'jump_rope' },
 ];
 
-
+/**
+ * Manual Input Page to input daily health data
+ * 
+ */
 const ManualInputPage = () => {
   const navigation = useNavigation();
   const [flags, setFlags] = useState({
@@ -52,6 +55,9 @@ const ManualInputPage = () => {
   const [activityDuration, setActivityDuration] = useState('');
 
   useEffect(() => {
+    /**
+     * Load the flags and data related to the health data from backend 
+     */
     const loadFlagsAndData = async () => {
       const dataFlags = await getDataCollectionFlags();
       setFlags(dataFlags);
@@ -71,11 +77,17 @@ const ManualInputPage = () => {
     loadFlagsAndData();
   }, []);
 
+  /**
+   * Updates the value of the specified name-value pair
+   * @param {string} name Field to be updated
+   * @param {string} value New value to be updated to
+   */
   const handleInputChange = (name, value) => {
     setDataChanged(true);
     setDailyData(prevData => ({...prevData, [name]: value}));
   };
 
+  // Add new activity
   const handleAddActivity = () => {
     if (!selectedActivity || !activityDuration) {
       Alert.alert('Error', 'Please select an activity and specify the duration.');
@@ -89,11 +101,16 @@ const ManualInputPage = () => {
     setActivityModalVisible(false);
   };
 
+  /**
+   * Delete the activity specified by the id
+   * @param {string} id 
+   */
   const deleteActivity = id => {
     setDailyData(prevData => ({...prevData, activityTracking: prevData.activityTracking.filter(activity => activity.id !== id)}));
     setDataChanged(true);
   };
 
+  // Renders all the added activities
   const renderActivities = () => dailyData.activityTracking && dailyData.activityTracking.length > 0 ? (
     <View style={styles.activitiesList}>
       {dailyData.activityTracking.map((activity, index) => (
@@ -107,6 +124,7 @@ const ManualInputPage = () => {
     </View>
   ) : null;
 
+  // Saves evrything and exits
   const saveAndExit = async () => {
     if (dataChanged) {
       const today = new Date().toISOString().split('T')[0];
@@ -117,6 +135,7 @@ const ManualInputPage = () => {
     }
   };
 
+  // Renders the added activities
   const renderActivitySelectionModal = () => (
     <Modal
       visible={activityModalVisible}
@@ -153,6 +172,13 @@ const ManualInputPage = () => {
     </Modal>
   );
 
+  /**
+   * Render the individual specified input field
+   * @param {string} flag 
+   * @param {string} placeholder 
+   * @param {string} name 
+   * @returns 
+   */
   const renderInputField = (flag, placeholder, name) => (
     flags[flag] && (
       <View style={styles.inputGroup}>
