@@ -19,15 +19,16 @@ The development of the Fitbit app prototype serves as a proof of concept for a m
 
 ### Rationale for Selecting React Native
 
-We chose React Native for our Fitbit app prototype due to its cross-platform capabilities, as the  code that can be deployed on both iOS and Android devices. Our group members use both kind of devices, and we wanted to ensure that the app would be accessible to all team members during the development process and showcase applicability for both OS's. Additionally, React Native also has an extensive documentation and a large online community, which will be useful for troubleshooting and support since none of our team members had prior experience with mobile app development. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
+We chose React Native for our Fitbit app prototype due to its cross-platform capabilities [^1], as the  code that can be deployed on both iOS and Android devices. Our group members use both kind of devices, and we wanted to ensure that the app would be accessible to all team members during the development process and showcase applicability for both OS's. Additionally, React Native also has an extensive documentation and a large online community, which will be useful for troubleshooting and support since none of our team members had prior experience with mobile app development. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
 
-### Expo as a Development Platform
 
-Expo is a comprehensive framework for developing React Native applications. IT makes the development process easier by abstracting complex platform-specific details, making the developpement of our solution more manageable for our team.
 
 ### Rationale for Selecting Expo
 
-We chose Expo as our development platform for several reasons. Expo provides libraries we found useful for our app, such as `SecureStore` for secure data storage and `LocalAuthentication` for biometric authentication. It is open-source with a large community of developers, which we found helpful as beginners to mobile app development. Additionally, it is a test-friendly platform; We each downloaded the Expo Go app, which allows us to preview the app on real devices during development.
+Expo is a comprehensive framework for developing React Native applications. We picked it for the following reasons:
+- Expo provides libraries we found useful for our app, such as `SecureStore` for secure data storage and `LocalAuthentication` for biometric authentication. 
+- It is open-source with a large community of developers, which we found helpful as beginners to mobile app development.
+- It is a test-friendly platform; We each downloaded the Expo Go app, which allows us to preview the app on real devices during development.
 
 #### Evaluation of Expo's Privacy Policies and Open-Source Nature
 
@@ -460,5 +461,20 @@ Jeffrey
   - Authenticate.js Screen:
     <img src="Authenticate.PNG" title="Authenticate.js Screen" width="100"/>
 - **Technical Specifications and Documentation**: all functions input and outputs.
-- **Sources**: 
-
+## Footnotes
+[^1]: React native documentation: [React native elements](https://reactnativeelements.com/docs)
+[^1]: Fitbit Privacy statement: [Privacy Statement](https://www.fitbit.com/global/us/legal/privacy-policy)
+[^2]: Fitbit Privacy Concerns: [Privacy Analysis of Fitbit](https://privacy.commonsense.org/privacy-report/Fitbit)
+[^3]: PIPEDA Overview: [Personal Information Protection and Electronic Documents Act](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/)
+[^4]: SQLCipher for Local Data Encryption: [SQLCipher Design](https://www.zetetic.net/sqlcipher/design/)
+[^5]: MET: [Concept and formula](https://en.wikipedia.org/wiki/Metabolic_equivalent_of_task)
+[^6]: BMI: World Health Organization (WHO). "Body mass index - BMI." [Link to WHO BMI](https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight)
+[^7]: Roza, A.M., & Shizgal, H.M. (1984). "The Harris Benedict equation reevaluated: resting energy requirements and the body cell mass." The American Journal of Clinical Nutrition, 40(1), 168-182. [AJCN](https://academic.oup.com/ajcn/article-abstract/40/1/168/4690419)
+[^8]: American Heart Association. "Target Heart Rates Chart." [Link to AHA Heart Rates](https://www.heart.org/en/healthy-living/fitness/fitness-basics/target-heart-rates)
+[^9]: Centers for Disease Control and Prevention (CDC). "About Adult BMI." [Link to CDC BMI](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)
+[^10]: Mifflin, M.D., St Jeor, S.T., Hill, L.A., Scott, B.J., Daugherty, S.A., & Koh, Y.O. (1990). "A new predictive equation for resting energy expenditure in healthy individuals." The American Journal of Clinical Nutrition, 51(2), 241-247. [AJCN](https://academic.oup.com/ajcn/article-abstract/51/2/241/4695347)
+[^11]: Sally Edwards. "The Heart Rate Monitor Book." Offers an in-depth guide to understanding and using heart rate monitors for training.[link](https://archive.org/details/heartratemonitor00edwa)
+[^12]: Water Intake Formula: Based on general hydration guidelines from health organizations, such as the National Academies of Sciences, Engineering, and Medicine's recommendation on [Daily Water Intake](https://www.nap.edu/read/10925/chapter/1)
+[^13]: Gadgetbridge: (https://gadgetbridge.org/)
+[^14]: FitoTrack: (https://play.google.com/store/apps/details?id=de.tadris.fitness&hl=en_CA&gl=US&pli=1)
+[^15]: After analysis of the [Fitbit API](https://dev.fitbit.com/build/reference/), we found that there were [several red flags](https://dev.fitbit.com/getting-started/) when trying to access their API. Developers need to create a Google account to access the API and link the Fitbit service to their account. Developers also need to download the Fitbit app on their phone and own a Fitbit device. To access the full developer suite, we also had to accept the [Fitbit Platform Terms of Service](https://dev.fitbit.com/legal/platform-terms-of-service/) and the [Fitbit App Distribution Agreement](https://dev.fitbit.com/legal/app-distribution-agreement/). We found in the first that "Fitbit may monitor your usage of the Fitbit APIs in order to improve the Fitbit Platform and to ensure compliance with our policies and applicable laws and regulations". In the App Distribution Agreement, we found that "Fitbit may collect and use certain logs, analytics, usage statistics, and other data from the Fitbit Products regarding usage of your App as described in the Fitbit Privacy Policy". All in all, we found this counterintuitive to our goal of maintaining our privacy and that of our stakeholders. 
