@@ -73,12 +73,11 @@ In our application, user data is categorized into three distinct types: Sensitiv
   - Data Collection Flags: Boolean flags to indicate the user's consent for collecting specific metrics (`dailySteps`, `heartRate`, `bloodPressure`, `sleepPatterns`, `waterIntake`, `activityTracking`).
   - Data Retention Period: The duration for which the user wishes to retain their data, ranging from "3 Days" to "1 Year".
 
-Sensitive data is encrypted and stored locally to prevent unauthorized access. Daily data collection is mapped on the users' data collection consent, users can control what information will be prompted from them. User preferences, including goals and data retention settings, are customizable at all times, allowing them to define their interaction with the app and how long their data is stored.
+Sensitive data is encrypted and stored locally to prevent malicious access. Daily data collection is mapped on the users' data collection consent, users can control what information will be prompted from them. User preferences, including goals and data retention settings, are customizable at all times, allowing them to define their interaction with the app and how long their data is stored.
 
 #### Choosing the Right Storage Solution
 
-When selecting a storage solution for our application, we evaluated various options, including SQLite and server-based solutions. While SQLite is a widely used database for storage in mobile applications, it typically does not store data directly on the device. A local storage approach aligns with our goal to avoid storing sensitive user data on servers due to the inherent risks of server-side data breaches and unauthorized access.
-
+When selecting a storage solution for our application, we evaluated various options. We first looked at expo SQLite library for its easy use. The issue with it is that the database would be queried thorugh a Webbased-api, going against our principle of having a non server stored database,due to the inherent risks of server-side data breaches and unauthorized access.
 Furthermore, we were concerned by SQLite due to its limited support for built-in encryption. Ensuring the privacy and security of user data is paramount in our application; thus, we sought a solution that offered robust encryption capabilities out of the box. The need for encryption is not just about protecting data if the device is lost or compromised; it's about ensuring that data remains private and secure from any unauthorized access, intentional or accidental.
 
 #### SecureStore for Sensitive Permanent and Semi-Permanent Information
