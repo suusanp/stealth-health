@@ -234,17 +234,6 @@ We decided not to encrypt user preferences and fitness goals for a simple reason
 ### Data Analytics and Privacy Implications
   - Overview of algorithms used for health data analysis and their implications on user privacy. explain how we are managing what is computed based on the users data management preferences.
 
-
-
-We deploy several key mechanisms to handle user data analytics while adhering to their privacy preferences:
-
-- **Data Collection Flags**: Users can enable or disable the collection of specific health metrics, such as daily steps, heart rate, blood pressure, sleep patterns, water intake, etc. in their Preferences. We will  analyze data for metrics that the user has enabled. Although all data is collected locally and users can opt-out of sharing specific metrics, this feature allows users to have granular control over the data that is processed. 
-- **Data Retention Period**: Users can set the duration for which their data is retained, ranging from "3 Days" to "1 Year". After the specified period, the data is automatically deleted from the device. This feature ensures that user data is not stored indefinitely. In compliace with the GDPR and PIPEDA, we give users full control over their data use and data retention. 
-- **Data Analysis Based on User Preferences**: Our algorithms analyze only the data that users have consented to share. For example, if a user has disabled heart rate monitoring, the system will not analyze heart rate data. This approach respects user privacy preferences and ensures that data analysis is aligned with user consent.
-- **Data Security Measures**: We implement robust encryption techniques to secure user data during analysis. By encrypting sensitive data and using secure storage mechanisms, we protect user information from unauthorized access and maintain data confidentiality. Data is only decrypted when necessary for analysis, ensuring that sensitive information remains secure throughout the process.
-
-
-
 ### User Interface Design and Data Input
   - Insights into optional data inputs, transparency features, and the manual data input and sync functionalities. So manual sync in details and Watch sync Explain linking to API. 
 ### Data Management and User control. 
