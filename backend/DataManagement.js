@@ -92,12 +92,23 @@ const DataManagement = () => {
           setModalVisible(!modalVisible);
         }}
       >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Allowing the notifications will let you receive a notification when it is time for your data to be deleted, based on your data retention preferences. It will allow you to save your data as a PDF if you would like, or change your preferences.</Text>
-            <Button title="Close" onPress={() => setModalVisible(!modalVisible)} />
+        <ScrollView contentContainerStyle={styles.modalScrollView}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>
+                <Text style={styles.bigHeading}>Why is it important that I have control over the data retention period?</Text>{'\n'}{'\n'}
+                Imagine your local device as your personal journal where you keep your thoughts. Control over data retention on this device means you get to decide how long you keep certain things there.{'\n'}{'\n'}
+
+                <Text style={styles.heading}>Keeping Ownership:</Text> You decide what goes in there and when to tear out pages. Similarly, you control what data stays on your device and when it gets deleted.{'\n'}
+                <Text style={styles.heading}>Privacy Protection:</Text>You wouldn't want to keep entries there longer than necessary, especially sensitive information, to reduce the risk of someone unauthorized gaining access. Similarly, by controlling data retention on your device, you can ensure that sensitive information is not stored longer than needed. It's like having a timer on your journal that automatically erases it when it's no longer needed.{'\n'}
+                <Text style={styles.heading}>Following Rules:</Text> The Canadian Personal Information Protection and Electronic Documents Act says you should have control over how long data stays on your device. We want to make sure you have that control.{'\n'}
+                <Text style={styles.heading}>Personal Preferences:</Text> Just like some people like to keep old letters for memories and others prefer a clean space, you can decide how long you keep data on your device based on what you're comfortable with.{'\n'}
+                <Text style={styles.heading}>Main Idea:</Text> In simple terms, controlling data retention on your device is like having a say in your own journal where you decide what stays and what goes. It's about keeping your personal space tidy, safe, and private.{'\n'}
+              </Text>
+              <Button title="Close" onPress={() => setModalVisible(!modalVisible)} />
+            </View>
           </View>
-        </View>
+        </ScrollView>
       </Modal>
     </View>
   );
@@ -168,9 +179,26 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  modalScrollView: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
   modalText: {
     marginBottom: 15,
-    textAlign: 'center',
+    textAlign: 'left',
+  },
+  heading: {
+    fontWeight: 'bold',
+    color: '#765FAF',
+    fontStyle: 'italic',
+    backgroundColor: '#c7e3ff',
+  },
+  bigHeading: {
+    fontWeight: 'bold',
+    color: '#765FAF',
+    fontStyle: 'italic',
+    backgroundColor: '#fff',
+    fontSize: 18,
   },
 });
 
