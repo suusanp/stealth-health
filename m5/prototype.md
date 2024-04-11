@@ -237,8 +237,67 @@ We decided not to encrypt user preferences and fitness goals for a simple reason
 ### User Interface Design and Data Input
   - Insights into optional data inputs, transparency features, and the manual data input and sync functionalities. So manual sync in details and Watch sync Explain linking to API. 
 ### Data Management and User control. 
-  - Strategies implemented for data retention period notifications, health data collection preferences, and enhancing user control. Explain the functioning of the data retention algorithm and how the retrieved pdf is generated. 
-  - explain how the delete all data function works.
+
+#### User-Defined Data Retention Periods
+As explained before, users can specify how long their data should be stored through a selection of predefined periods, ranging from "3 Days" to "1 Year". This preference impacts when data is automatically deleted to respect user privacy and manage device storage effectively.
+After selecting a data retention period, the choice is stored using the expo-file-system module, enabling persistent preferences across app sessions. Here's how preferences are saved:
+```javascript
+export const savePreferences = async (preferences) => {
+  const data = JSON.stringify(preferences);
+  await FileSystem.writeAsStringAsync(preferencesFileUri, data);
+};
+```
+This function serializes the user's preferences to a JSON string and writes it to a file within the device's file system, ensuring preferences are retained even after the app is closed.
+If notifications are enabled, the application schedules reminders for users to manage their data before the chosen retention period ends. This approach ensures users are always informed about their data lifecycle,it listens for changes in notificationsEnabled and dataRetention, scheduling or adjusting notifications accordingly.:
+```javascript
+useEffect(() => {
+  if (notificationsEnabled) {
+    scheduleDeletionNotification(dataRetention);
+  }
+}, [notificationsEnabled, dataRetention]);
+
+```
+We perform automatic data deletions based on the user-defined retention period. Each time the app is launched, it evaluates stored data against the current retention policy,retrieving the user's retention preference, calculating the cutoff date, and iterating through stored files, deleting those older than the active cutoff date :
+```javascript
+export const checkAndDeleteOldFiles = async () => {
+  const preferences = await getPreferences();
+  const retentionDays = getRetentionDays(preferences.dataRetention);
+  const cutoffDate = subDays(new Date(), retentionDays);
+
+  const files = await FileSystem.readDirectoryAsync(dailyDataDirectory);
+  files.forEach(async (fileName) => {
+    const fileDate = new Date(fileName.split('.')[0]);
+    if (fileDate < cutoffDate) {
+      await FileSystem.deleteAsync(`${dailyDataDirectory}${fileName}`);
+    }
+  });
+};
+```
+If a user chooses to change their data retention period, the application dynamically adjusts to delete old data if necessary and updates notifications as such. It also ensures that users are alerted about potential data loss when decreasing the retention period, providing an additional layer of user control and transparency.
+
+```javascript
+const handleDataRetentionChange = async (newOption) => {
+  const newRetentionDays = getRetentionDays(newOption);
+  if (newRetentionDays < getRetentionDays(dataRetention)) {
+    // Confirm with user before deleting old data
+    confirmDeletion().then(() => updateRetentionPreference(newOption));
+  } else {
+    updateRetentionPreference(newOption);
+  }
+};
+
+const updateRetentionPreference = async (newOption) => {
+  setDataRetention(newOption);
+  await savePreferences({ dataRetention: newOption, notificationsEnabled });
+  checkAndDeleteOldFiles();
+};
+```
+#### PDF retrieval
+
+#### Delete all function
+
+
+
 ### Authentication and Data Protection
   - Use of biometric authentication (Expo LocalAuthentication) for data protection and the measures taken to secure user data access.
 
