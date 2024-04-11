@@ -624,79 +624,104 @@ A major aspect of our privacy-driven approach is ensuring transparency and user 
   If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
 
 - **Screenshot and details of every page of the app**: 
+  
   - Authenticate.js screen, under the screens directory:
+    This is the page the user sees when they open the app after they gave the app the authentication permission. By clicking the "Unlock" button, user is prompted to use their Face ID or enter their phone password to authenticate, which is shown in the second screen below. Once the user successfully authenticates, they are redirected to the Landing Page. 
 
     <img src="Authenticate.PNG" title="Authenticate.js screen" width="200"/>
     <img src="Authenticate1.PNG" title="Authenticate.js screen" width="200"/>
 
-  - IntroPage.js screen, under the screens/privacyPolicies directory:
+  
+  - SettingsScreen.js file bundles the following screens, and consecutively shows them all to the user when they are setting up their account.  These following are the first pages the user sees when they open the app for the first time, or for the first time after they deleted all of their data. 
+      - IntroPage.js screen, under the screens/privacyPolicies directory:
+        By clicking the "Next" button, user is navigated to IntroPolicy screen below. 
 
-    <img src="IntroPage.PNG" title="IntroPage.js screen" width="200"/>
+        <img src="IntroPage.PNG" title="IntroPage.js screen" width="200"/>
 
-  - IntroPolicy.js screen, under the screens/privacyPolicies directory:
+      
+      - IntroPolicy.js screen, under the screens/privacyPolicies directory:
+        By clicking "Next" button, user is navigated to PrivacyPolicySimplified below. 
 
-    <img src="IntroPage.PNG" title="IntroPolicy.js screen" width="200"/>
+        <img src="IntroPage.PNG" title="IntroPolicy.js screen" width="200"/>
 
-  - PrivacyPolicySimplified.js screen, under the screens/privacyPolicies directory:
+      
+      - PrivacyPolicySimplified.js screen, under the screens/privacyPolicies directory:
+        By clicking "Next" button, user is navigated to UserProfileData below. 
+        <img src="PrivacyPolicySimplified.PNG" title="PrivacyPolicySimplified.js screen" width="200"/>
 
-     <img src="PrivacyPolicySimplified.PNG" title="PrivacyPolicySimplified.js screen" width="200"/>
+      
+      - UserProfileData.js screen, under the screens directory:
+        By clicking "Next" button, user is navigated to HealthMetrics below. 
+        <img src="UserProfileData.PNG" title="UserProfileData.js screen" width="200"/>
 
-  - UserProfileData.js screen, under the screens directory:
+      
+      - HealthMetrics.js screen, under the screens directory:
+        By clicking "Next" button, user is navigated to SetupAuth below. 
+        <img src="HealthMetrics.PNG" title="HealthMetrics.js screen" width="200"/>
+
+      
+      - SetupAuth.js screen, under the screens directory:
+        By clicking "Next" button, user is navigated to DataManagement below. 
+        <img src="SetupAuth.PNG" title="SetupAuth.js screen" width="200"/>
+
+      
+      - DataManagement.js screen, under the backend directory:
+        By clicking "Save and Exit" button, user is navigated to LandingPage below. 
+        <img src="DataManagement.PNG" title="DataManagement.js screen" width="200"/>
     
-    <img src="UserProfileData.PNG" title="UserProfileData.js screen" width="200"/>
-
-  - HealthMetrics.js screen, under the screens directory:
-
-    <img src="HealthMetrics.PNG" title="HealthMetrics.js screen" width="200"/>
-
-  - SetupAuth.js screen, under the screens directory:
-
-    <img src="SetupAuth.PNG" title="SetupAuth.js screen" width="200"/>
-
-  - DataManagement.js screen, under the backend directory:
-   
-    <img src="DataManagement.PNG" title="DataManagement.js screen" width="200"/>
-    
+  
   - TermsOfServicePopup.js screen, under the screens directory:
-
+    When the user is navigated to the Landing Page for the first time, TermsOfServicePopup is visible. By clicking "Agree", the popup closes and the user is on the Landing Page. If they click "Cancel", they are navigated to the beginning of the SettingsScreen, so they have to start from the beginning of the IntroPage.
     <img src="TermsOfServicePopup.PNG" title="TermsOfServicePopup.js screen" width="200"/>
 
-  - LandingPage.js screen, under the screens directory:
   
+  - LandingPage.js screen, under the screens directory:
+    The Landing Page of the app, user can navigate to most of the screens from this page.
+    User can navigate on the Landing Page itself, using the backward and forward arrows.
+    User can navigate to the PersonalPage, clicking on the Profile Button at bottom right.
+    User can navigate to the SyncPage, clicking on the Sync Button at the top left.
+    User can navigate to the UserGoalsPage, clicking on the Trophy Button at the top right.
     <img src="LandingPage.PNG" title="LandingPage.js screen" width="200"/>
 
-  - PersonalPage.js screen, under the screens directory:
   
+  - PersonalPage.js screen, under the screens directory:
+    Personal Page of the user, user can modify their profile by clicking the "Modify Profile" Button and navigating to ProfileManage page, create and extract a pdf of their data by clicking "Create PDF of Data" button, change their preferences for the health data collection by clicking on the toggle switches, navigate to SetupAuth page by clicking "Authentication Settings", navigate to PrivacyPolicyText page by clicking "Privacy Policy" Button, or delete all their data by clicking "Delete Everything" Button. The pop up when the user clicks "Delete Everything" is shown on the second screenshot.
     <img src="PersonalPage.PNG" title="PersonalPage.js screen" width="200"/>
-
-  - PersonalPage.js screen, under the screens directory:
-  
     <img src="PersonalPage1.PNG" title="PersonalPage1.js screen" width="200"/>
 
+
   - PrivacyPolicyText.js screen, under the screens/privacyPolicies directory:
-  
+    The full text of the Privacy Policy. User can navigate back to Personal Page by clicking "Close".
     <img src="PrivacyPolicyText.PNG" title="PrivacyPolicyText.js screen" width="200"/>
 
-  - ProfileManage.js screen, under the screens directory:
   
+  - ProfileManage.js screen, under the screens directory:
+    User can modify their age range, gender, height and weight on this screen. User can navigate back to Personal Page by clicking "Save & CLose", which becomes clickable when user makes any change on their profile values, or by clicking "Back" arrow. 
     <img src="ProfileManage.PNG" title="ProfileManage.js screen" width="200"/>
 
-  - UserGoalsPage.js screen, under the screens directory:
   
+  - UserGoalsPage.js screen, under the screens directory:
+    User can set their fitness goals, any change the user makes on the data fields are automatically saved and updated. User can navigate back to the Landing Page by clicking the Back arrow.
     <img src="UserGoalsPage.PNG" title="UserGoalsPage.js screen" width="200"/>
 
-  - SyncPage.js screen, under the screens directory:
   
+  - SyncPage.js screen, under the screens directory:
+    User can click on the "Watch Sync" Button and navigate to the WatchInputPage screen, user can click on the "Manual Input" Button and navigate to the ManualInputPage screen, or the user can click on the Back arrow and navigate back to the Landing Page.
     <img src="SyncPage.PNG" title="SyncPage.js screen" width="200"/>
   
-  - ManualInputPage.js screen, under the screens directory:
   
+  - ManualInputPage.js screen, under the screens directory:
+    User can input daily health metrics such as steps, bpm, blood pressure, sleep hours, or water intake by the text input. User can also add an activity and choose an activity from the drop down menu and select the time of the activity. User can navigate back to the SyncPage by clicking "Save & Exit", which becomes clickable when user inputs anything in the text fields, or user can navigate back to the SyncPage by clicking the "Back" arrow. 
     <img src="ManualInputPage.PNG" title="ManualInputPage.js screen" width="200"/>
 
-  - WatchInputPage.js screen, under the screens directory:
   
+  - WatchInputPage.js screen, under the screens directory:
+    User can click "Sync Fitbit Data" to sync their Fitbit to the app. User can select the activities they want to upload, and select "Save Data" to save. User can navigate back to SyncPage by clicking the "Back" arrow. 
     <img src="WatchInputPage.PNG" title="WatchInputPage.js screen" width="200"/>
 
+
+- **Technical Specifications and Documentation**: 
+  All functions inputs and outputs, as well as more descriptive inline comments can be found in the codebase. 
 
   
 ## Footnotes
