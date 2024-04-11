@@ -3,6 +3,12 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
+/**
+ * Bottom navigation bar component: buttons for home and user screens on the bar
+ * 
+ * @param {Object} navigation 
+ * 
+ */
 const BottomNavigationBar = ({ navigation }) => {
   return (
     <View style={styles.bottomNav}>

@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'reac
 import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from '@react-navigation/native';
 
+// User Profile Management Page
+// Allows the user to update their age, gender, height, weight
 const ProfileManage = () => {
   const navigation = useNavigation();
   const [ageRange, setAgeRange] = useState('');
@@ -15,12 +17,14 @@ const ProfileManage = () => {
   const genders = [" ","Male", "Female", "Other"];
 
   useEffect(() => {
+    // load the profile data from the secure storage
     const loadProfileData = async () => {
       const savedAgeRange = await SecureStore.getItemAsync('ageRange');
       const savedGender = await SecureStore.getItemAsync('gender');
       const savedHeight = await SecureStore.getItemAsync('height');
       const savedWeight = await SecureStore.getItemAsync('weight');
 
+      //set profile data to default options
       setAgeRange(savedAgeRange || ageRanges[0]);
       setGender(savedGender || genders[0]);
       setHeight(savedHeight || '');
@@ -30,6 +34,11 @@ const ProfileManage = () => {
     loadProfileData();
   }, []);
 
+  /**
+   * Allow the user to change their personal data among the options parameter to the selected option, setSelected
+   * @param {Array} options 
+   * @param {Function} setSelected 
+   */
   const selectOption = (options, setSelected) => {
     Alert.alert(
       "Select an option",
@@ -41,6 +50,7 @@ const ProfileManage = () => {
     );
   };
 
+  // Save the updated profile data to secure storage
   const saveProfileData = async () => {
     await SecureStore.setItemAsync('ageRange', ageRange);
     await SecureStore.setItemAsync('gender', gender);
