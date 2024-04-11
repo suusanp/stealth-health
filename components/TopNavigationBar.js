@@ -3,6 +3,15 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+/**
+ * Top navigation bar component: backward and forward arrows to navigate through different days on the dashboard
+ * 
+ * @param {string} title The title displayed in the center of the bar: the date
+ * @param {Function} onPressBack Function to call when the back button is pressed
+ * @param {Function} onPressForward Function to call when the forward button is pressed
+ * @param {boolean} canGoBack true if it is possible to actually navigate backwards, false if not
+ * @param {boolean} canGoForward true if it is possible to actually navigate forward, false if not
+ */
 const TopNavigationBar = ({ title, onPressBack, onPressForward, canGoBack, canGoForward }) => {
   return (
     <View style={styles.navBar}>

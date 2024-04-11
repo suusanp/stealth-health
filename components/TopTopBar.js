@@ -4,7 +4,12 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native'; // Make sure you have @react-navigation/native installed
 
-
+/**
+ * Top top navigation bar component: buttons for data input and user goals 
+ * 
+ * @param {Object} projectName 
+ * 
+ */
 const TopTopBar = ({ projectName }) => {
   const [syncIconOpacity, setSyncIconOpacity] = useState(1);
   const [pencilIconOpacity, setPencilIconOpacity] = useState(1);
@@ -25,7 +30,6 @@ const TopTopBar = ({ projectName }) => {
         <TouchableOpacity
           onPressIn={() => setPencilIconOpacity(0.5)}
           onPressOut={() => setPencilIconOpacity(1)}
-          // Assuming you have a function to handle the pencil icon press
         >
           <Icon2 name="lock" size={26} color="#38b59f" style={{ opacity: pencilIconOpacity }} />
         </TouchableOpacity>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Modal, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { getPreferences, savePreferences, getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService';
-import BottomNavigationBar from '../components/BottomNavigationBar'; // Ensure this path is correct for your project structure
+import BottomNavigationBar from '../components/BottomNavigationBar';
 import * as LocalAuthentication from "expo-local-authentication";
 import { checkAndDeleteOldFiles } from '../backend/FileSystemService';
 import computeAvailableFunctionalities from '../metricsCalculation/metricsUtils';
@@ -18,8 +18,7 @@ import { getDailyData } from '../backend/DailyDataManagement';
 import PrivacyPolicyText from './privacyPolicies/PrivacyPolicyText';
 import TermsOfServiceText from './privacyPolicies/TermsOfServiceText';
 
-
-
+// User Page 
 const DataManagementScreen = ({ navigation }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [dataRetention, setDataRetention] = useState('');
@@ -33,7 +32,7 @@ const DataManagementScreen = ({ navigation }) => {
     activityTracking: false,
   });
 
-
+  // generate the HTML to generate the PDF
   const createHtmlForPDF = async () => {
     // Determine the dates to include based on the data retention setting
     const dataRetentionPeriods = {
@@ -86,6 +85,7 @@ const DataManagementScreen = ({ navigation }) => {
     return html;
   };
   
+  // create the PDF to extract the user data 
   const createPDF = async () => {
     const htmlContent = await createHtmlForPDF(); // Fetch and format the data
   
@@ -120,6 +120,10 @@ const DataManagementScreen = ({ navigation }) => {
     loadSettings();
   }, []);
 
+  /**
+   * Toggle switch to update user preferences about the specified parameter metric
+   * @param {string} metric 
+   */
   const toggleSwitch = async (metric) => {
     const updatedMetrics = { ...metrics, [metric]: !metrics[metric] };
     setMetrics(updatedMetrics);
@@ -138,7 +142,10 @@ const DataManagementScreen = ({ navigation }) => {
     setModalVisible(false);
   };
 
-
+/**
+ * Change the data retention period to the newOption parameter
+ * @param {string} newOption 
+ */
   const handleDataRetentionChange = async (newOption) => {
     const indexNew = DataRetentionOptions.indexOf(newOption);
     const indexCurrent = DataRetentionOptions.indexOf(dataRetention);
@@ -202,7 +209,10 @@ const DataManagementScreen = ({ navigation }) => {
     return auth.success;
   }
 
-
+/**
+ * Delete all the user data 
+ * @returns {Promise} true if all data successfully deleted
+ */
   async function onDeleteEverything() {
     return new Promise((resolve, reject) => {
       Alert.alert(
