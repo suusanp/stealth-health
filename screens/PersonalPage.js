@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Modal, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { View, Modal, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Alert, Button } from 'react-native';
 import { getPreferences, savePreferences, getDataCollectionFlags, saveDataCollectionFlags } from '../backend/FileSystemService';
 import BottomNavigationBar from '../components/BottomNavigationBar';
 import * as LocalAuthentication from "expo-local-authentication";
@@ -44,24 +44,24 @@ const DataManagementScreen = ({ navigation }) => {
       '6 Months': 180,
       '1 Year': 365,
     };
-    
+
     const retentionDays = dataRetentionPeriods[dataRetention] || 30; // Default to 1 Month if not found
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - (retentionDays - 1));
-  
+
     let html = "<html><head><title>Daily Data and Computations</title></head><body>";
     html += "<h1>Daily Data and Computations</h1>";
-  
+
     for (let day = 0; day < retentionDays; day++) {
       const currentDate = new Date(startDate);
       currentDate.setDate(currentDate.getDate() + day);
       const dateStr = currentDate.toISOString().split('T')[0];
-      
+
       const dailyData = await getDailyData(dateStr);
-      const computedMetrics = await getComputedMetrics(dateStr); 
-  
+      const computedMetrics = await getComputedMetrics(dateStr);
+
       html += `<h2>Data for ${dateStr}</h2>`;
-  
+
       if (dailyData) {
         html += "<h3>Daily Data</h3>";
         Object.keys(dailyData).forEach(key => {
@@ -70,7 +70,7 @@ const DataManagementScreen = ({ navigation }) => {
       } else {
         html += "<p>No daily data available.</p>";
       }
-  
+
       if (computedMetrics) {
         html += "<h3>Computed Metrics</h3>";
         Object.keys(computedMetrics).forEach(key => {
@@ -80,15 +80,15 @@ const DataManagementScreen = ({ navigation }) => {
         html += "<p>No computed metrics available.</p>";
       }
     }
-  
+
     html += "</body></html>";
     return html;
   };
-  
+
   // create the PDF to extract the user data 
   const createPDF = async () => {
     const htmlContent = await createHtmlForPDF(); // Fetch and format the data
-  
+
     try {
       const { uri } = await Print.printToFileAsync({ html: htmlContent });
       console.log('PDF generated at:', uri);
@@ -98,7 +98,7 @@ const DataManagementScreen = ({ navigation }) => {
       Alert.alert("Error", "Could not create the PDF. Please try again.");
     }
   };
-  
+
 
   const DataRetentionOptions = [
     '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
@@ -132,7 +132,10 @@ const DataManagementScreen = ({ navigation }) => {
     setAvailableFunctionalities(functionalities);
   };
 
+
+  // Modal for the privacy policy
   const [modalVisible, setModalVisible] = useState(false);
+
 
   const openModal = () => {
     setModalVisible(true);
@@ -142,10 +145,22 @@ const DataManagementScreen = ({ navigation }) => {
     setModalVisible(false);
   };
 
-/**
- * Change the data retention period to the newOption parameter
- * @param {string} newOption 
- */
+  // Modal for the importance of the data retention period
+  const [importantModalVisible, setImportantModalVisible] = useState(false);
+
+  const openImportantModal = () => {
+    setImportantModalVisible(true);
+  };
+
+  const closeImportantModal = () => {
+    setImportantModalVisible(false);
+  };
+
+
+  /**
+   * Change the data retention period to the newOption parameter
+   * @param {string} newOption 
+   */
   const handleDataRetentionChange = async (newOption) => {
     const indexNew = DataRetentionOptions.indexOf(newOption);
     const indexCurrent = DataRetentionOptions.indexOf(dataRetention);
@@ -209,10 +224,10 @@ const DataManagementScreen = ({ navigation }) => {
     return auth.success;
   }
 
-/**
- * Delete all the user data 
- * @returns {Promise} true if all data successfully deleted
- */
+  /**
+   * Delete all the user data 
+   * @returns {Promise} true if all data successfully deleted
+   */
   async function onDeleteEverything() {
     return new Promise((resolve, reject) => {
       Alert.alert(
@@ -267,6 +282,33 @@ const DataManagementScreen = ({ navigation }) => {
           trackColor={{ false: "#767577", true: "#4B9CD3" }}
           thumbColor={notificationsEnabled ? "#f5dd4b" : "#f4f3f4"}
         />
+        <TouchableOpacity onPress={() => setImportantModalVisible(true)}>
+          <Text style={styles.important}>Why this is important for privacy</Text>
+        </TouchableOpacity>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={importantModalVisible}
+          onRequestClose={closeImportantModal}
+        >
+          <ScrollView contentContainerStyle={styles.modalScrollView}>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <Text style={styles.modalText}>
+                  <Text style={styles.bigHeading}>Why is it important that I have control over the data retention period?</Text>{'\n'}{'\n'}
+                  Imagine your local device as your personal journal where you keep your thoughts. Control over data retention on this device means you get to decide how long you keep certain things there.{'\n'}{'\n'}
+
+                  <Text style={styles.heading}>Keeping Ownership:</Text> You decide what goes in there and when to tear out pages. Similarly, you control what data stays on your device and when it gets deleted.{'\n'}
+                  <Text style={styles.heading}>Privacy Protection:</Text>You wouldn't want to keep entries there longer than necessary, especially sensitive information, to reduce the risk of someone unauthorized gaining access. Similarly, by controlling data retention on your device, you can ensure that sensitive information is not stored longer than needed. It's like having a timer on your journal that automatically erases it when it's no longer needed.{'\n'}
+                  <Text style={styles.heading}>Following Rules:</Text> The Canadian Personal Information Protection and Electronic Documents Act says you should have control over how long data stays on your device. We want to make sure you have that control.{'\n'}
+                  <Text style={styles.heading}>Personal Preferences:</Text> Just like some people like to keep old letters for memories and others prefer a clean space, you can decide how long you keep data on your device based on what you're comfortable with.{'\n'}
+                  <Text style={styles.heading}>Main Idea:</Text> In simple terms, controlling data retention on your device is like having a say in your own journal where you decide what stays and what goes. It's about keeping your personal space tidy, safe, and private.{'\n'}
+                </Text>
+                <Button title="Close" onPress={() => setImportantModalVisible(!importantModalVisible)} />
+              </View>
+            </View>
+          </ScrollView>
+        </Modal>
 
         <TouchableOpacity
           activeOpacity={0.8}
@@ -288,14 +330,14 @@ const DataManagementScreen = ({ navigation }) => {
           </View>
         ))}
         <View style={styles.functionalitiesContainer}>
-  <Text style={styles.header}>Available Functionalities:</Text>
-  {availableFunctionalities.map((func, index) => (
-    <View key={index} style={styles.functionalityItem}>
-      <Icon name="controller-stop" size={18} color="#4A90E2" style={styles.bulletIcon} />
-      <Text style={styles.metricText}>{func}</Text>
-    </View>
-  ))}
-</View>
+          <Text style={styles.header}>Available Functionalities:</Text>
+          {availableFunctionalities.map((func, index) => (
+            <View key={index} style={styles.functionalityItem}>
+              <Icon name="controller-stop" size={18} color="#4A90E2" style={styles.bulletIcon} />
+              <Text style={styles.metricText}>{func}</Text>
+            </View>
+          ))}
+        </View>
 
         <TouchableOpacity
           activeOpacity={0.8}
@@ -324,7 +366,7 @@ const DataManagementScreen = ({ navigation }) => {
           <View style={styles.modalContainer}>
             <ScrollView style={styles.scrollContainer}>
               <View style={styles.modalContent}>
-                <Text style={{ fontSize: 22, fontWeight: 'bold', paddingTop: 30, paddingBottom:20 }}>Privacy Policy</Text>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', paddingTop: 30, paddingBottom: 20 }}>Privacy Policy</Text>
                 <Text>{PrivacyPolicyText}</Text>
                 <Text style={{ fontSize: 22, fontWeight: 'bold', paddingTop: 30 }}>Terms of Service</Text>
                 <Text>{TermsOfServiceText}</Text>
@@ -335,7 +377,7 @@ const DataManagementScreen = ({ navigation }) => {
             </ScrollView>
           </View>
         </Modal>
-        
+
         <View style={{ borderBottomWidth: 1, borderBottomColor: '#000' }} />
         <Text style={{ marginTop: 40, fontSize: 22, color: 'red', fontWeight: 'bold' }}>Delete Now</Text>
         <Text style={{ marginTop: 20, fontSize: 16 }}>Once you delete everything, there is no going back. Please be certain.</Text>
@@ -529,6 +571,47 @@ const styles = StyleSheet.create({
     color: '#007bff',
     marginTop: 10,
     fontSize: 16,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'left',
+  },
+  heading: {
+    fontWeight: 'bold',
+    color: '#765FAF',
+    fontStyle: 'italic',
+    backgroundColor: '#c7e3ff',
+  },
+  bigHeading: {
+    fontWeight: 'bold',
+    color: '#765FAF',
+    fontStyle: 'italic',
+    backgroundColor: '#fff',
+    fontSize: 18,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalScrollView: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
+  important: {
+    fontWeight: 'bold',
+    color: '#007bff',
+    padding: 10,
   },
 });
 
