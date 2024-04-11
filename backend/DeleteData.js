@@ -18,20 +18,21 @@ export async function deleteAll() {
       console.log("---------------------------------------------------------------------------------------");
       console.log("Deleting Data...\n")
       await SecureStore.deleteItemAsync('ageRange');
-      console.log('ageRange after deletion:', await SecureStore.getItemAsync('ageRange'));
       await SecureStore.deleteItemAsync('gender');
-      console.log('gender after deletion:', await SecureStore.getItemAsync('gender'));
       await SecureStore.deleteItemAsync('height');
-      console.log('height after deletion:', await SecureStore.getItemAsync('height'));
       await SecureStore.deleteItemAsync('weight');
-      console.log('weight after deletion:', await SecureStore.getItemAsync('weight'));
       await SecureStore.deleteItemAsync('fitnessGoals');
-      console.log('fitnessGoals after deletion:', await SecureStore.getItemAsync('fitnessGoals'));
       await SecureStore.deleteItemAsync('dailySteps');
-      console.log('dailyStepsGoal after deletion:', await SecureStore.getItemAsync('dailySteps'));
       await SecureStore.deleteItemAsync('dailyDistance');
-      console.log('dailyDistanceGoal after deletion:', await SecureStore.getItemAsync('dailyDistance'));
       await SecureStore.deleteItemAsync('dailyCalories');
+
+      console.log('ageRange after deletion:', await SecureStore.getItemAsync('ageRange'));
+      console.log('gender after deletion:', await SecureStore.getItemAsync('gender'));
+      console.log('height after deletion:', await SecureStore.getItemAsync('height'));
+      console.log('weight after deletion:', await SecureStore.getItemAsync('weight'));
+      console.log('fitnessGoals after deletion:', await SecureStore.getItemAsync('fitnessGoals'));
+      console.log('dailyStepsGoal after deletion:', await SecureStore.getItemAsync('dailySteps'));
+      console.log('dailyDistanceGoal after deletion:', await SecureStore.getItemAsync('dailyDistance'));
       console.log('dailyCaloriesGoal after deletion:', await SecureStore.getItemAsync('dailyCalories'));
 
       await FileSystem.deleteAsync(dailyDataDirectory, { idempotent: true });

@@ -2,24 +2,21 @@
 
 ## Introduction
 ### **Overview of the system**: 
-Stealth Health is a health and fitness application that aims to provide privacy-focused health tracking and analytics to users. The system is designed to collect and analyze user health data while prioritizing user privacy and data security. The Stealth Health system includes features such as activity tracking, heart rate monitoring, sleep analysis, and water intake monitoring. The system also allows users to set fitness goals and track their progress while ensuring that users have full control over their data and can make informed decisions about its use. 
+Stealth Health is a health and fitness application that aims to provide privacy-focused health tracking and analytics to users. The system is designed to collect and analyze user health data while prioritizing user privacy and data security. The Stealth Health system includes features such as activity tracking, heart rate monitoring, sleep analysis, and water intake monitoring. The system also allows users to set fitness goals and track their progress while ensuring that users have full control over their data and can make informed decisions about its use.
+
 
 ### **Purpose and Scope**: 
 The development of the Fitbit app prototype serves as a proof of concept for a more privacy-centric approach to personal health and fitness monitoring. Our scope is to demonstrate the feasibility of securely managing health data whilst providing users with insightful analytics on their physical activities and health metrics. 
+The development of the Fitbit app prototype serves as a proof of concept for a more privacy-centric approach to personal health and fitness monitoring. Our scope is to demonstrate the feasibility of securely managing health data whilst providing users with insightful analytics on their physical activities and health metrics. 
 
-## Research Method
-- **Technical Literature Review**
-  - Review of existing Fitbit app
-- **Literature Search**
-  - Investigation into reported privacy concerns within fitness tracking applications.
-- **Privacy Notices Review**
-  - Detailed analysis of Fitbit’s privacy policy and data handling practices from a privacy standpoint.
+## Issues with the Current Fitbit App
+Our analysis reveals significant privacy concerns with the Fitbit app, especially about its data collection practices and adherence to privacy laws like PIPEDA. Post Google's acquisition, the scrutiny of Fitbit's data handling has intensified. We discovered that the breadth of data collected by Fitbit extends far beyond basic health metrics, encompassing sensitive information such as location and online activities, often without clear user consent. Additionally, our examination of Fitbit's compliance with PIPEDA highlighted areas where the company falls short, particularly in terms of transparency and user control over their data. These findings underscore the need for stronger privacy and more user-centric policies in digital health technologies. For a more detailed insight, see [milestone 1](https://gitlab.cs.mcgill.ca/gaby.lebideau/c555w24-t10/-/blob/main/m1/case_study.md?ref_type=heads).
 
 ## Implementation Details
 
 ### Rationale for Selecting React Native
 
-We chose React Native for our Fitbit app prototype due to its cross-platform capabilities [^1], as the  code that can be deployed on both iOS and Android devices. Our group members use both kind of devices, and we wanted to ensure that the app would be accessible to all team members during the development process and showcase applicability for both OS's. Additionally, React Native also has an extensive documentation and a large online community, which will be useful for troubleshooting and support since none of our team members had prior experience with mobile app development [^2]. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
+We chose React Native for our Fitbit app prototype due to its cross-platform capabilities [^1], as the code that can be deployed on both iOS and Android devices. Our group members use both kinds of devices, and we wanted to ensure that the app would be accessible to all team members during the development process and showcase applicability for both OS's. Additionally, React Native also has extensive documentation and a large online community, which will be useful for troubleshooting and support since none of our team members had prior experience with mobile app development [^2]. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
 
 
 
@@ -32,24 +29,30 @@ Expo is a comprehensive framework for developing React Native applications. We p
 
 #### Evaluation of Expo's Privacy Policies and Open-Source Nature
 
-Expo seems to be commited to privacy, on its website it showcases its GDPR, CCPA, and Privacy Shield compliance, it says to be responsibly handling both developer and end-user data. We read through their Privacy Policy, updated on June 22nd, 2022, and their further explained privacy exposition dated February 7th, 2020.
+Expo seems to be committed to privacy, on its website it showcases its GDPR, CCPA, and Privacy Shield compliance, it says to be responsibly handling both developer and end-user data. We examined their Privacy Policy (updated on June 22nd, 2022) and their privacy exposition (dated February 7th, 2020).
+
 
 - **Data Collection and Use**: "When you create an account on Expo or use our tools and services, we collect data including your name, email, and, if you enable paid services, your billing information... This data helps us make decisions about our products and services, in addition to allowing us to deliver satisfactory user experiences." (Expo, Privacy Policy [^6])
 
+
 - **Data Processor and Controller Roles**: "When a developer uses Expo's services to create an app and distributes it to their users (end-users), we become a data processor because we process end-user data on behalf of the developer." (Expo, Privacy Explained [^7])
+
 
 - **End-User Data Minimalism**: "When end-users use apps built by Expo, we collect very little end-user data. The data we may collect includes the end-user's push token... These requests do not contain identifying information such as unique device identifiers." (Expo, Privacy Explained [^7])
 
+
 - **Security and Compliance**: The explicit statement is that Expo is "GDPR-, CCPA-, and Privacy Shield-compliant" in all scenarios which is a good indicator for a robust framework for privacy and data protection.
 
+
 #### Open-Source Contribution
-Expo's open-source ecosystem is important, it offers transparency and community engagement that is important for our project baseline. 
+Expo's open-source ecosystem is important, it offers transparency and community engagement which is important for our project baseline. 
 
 ### Database Structure and Data Encryption
 
 #### What Type of Data We Collect and How It Is Organized
 
 In our application, user data is categorized into three distinct types: Sensitive Data, Daily Data, and User Preferences and Goals. We also incorporate user consent flags for data collection and offer customizable data retention periods.
+
 
 - **Sensitive Data**: Securely stored using Expo's `SecureStore` and encrypted with `Crypto`, this category includes:
   - Age Range (e.g., "18-29", "30-39", etc.)
@@ -77,25 +80,25 @@ Sensitive data is encrypted and stored locally to prevent malicious access. Dail
 
 #### Choosing the Right Storage Solution
 
-When selecting a storage solution for our application, we evaluated various options. We first looked at expo SQLite library for its easy use. The issue with it is that the database would be queried thorugh a Webbased-api, going against our principle of having a non server stored database,due to the inherent risks of server-side data breaches and unauthorized access.
+When selecting a storage solution for our application, we evaluated various options. We first considered Expo’s SQLite library for its easy use. The issue with it is that the database would be queried through a Web-Based API, going against our principle of having a non-server-stored database, due to the inherent risks of server-side data breaches and unauthorized access.[^8]
 Furthermore, we were concerned by SQLite due to its limited support for built-in encryption. Ensuring the privacy and security of user data is paramount in our application; thus, we sought a solution that offered robust encryption capabilities out of the box.
 
 #### SecureStore for Sensitive Permanent and Semi-Permanent Information
 
-Given these considerations, we decided to utilize Expo's SecureStore for storing sensitive personal information. SecureStore offers an encrypted key-value store, which provides several advantages:
+As mentioned earlier we used Expo's SecureStore for storing sensitive personal information. SecureStore offers an encrypted key-value store, which provides multiple advantages:
 
-- **Encryption by Default**: SecureStore automatically encrypts data before it is saved, providing encryption at rest without the need for additional encryption layers.
+- **Encryption by Default**: the library automatically encrypts data before it is saved, providing encryption at rest without the need for additional encryption layers.
 
-- **Ease of Use**: With SecureStore, we benefit from an intuitive API for storing and retrieving encrypted data. 
+- **Ease of Use**: intuitive API for storing and retrieving encrypted data. 
 
-- **Platform Security Features**: SecureStore leverages the uses the security features of the device's platform, offering a level of security that is consistent with the device's overall security.
+- **Platform Security Features**: Uses the security features of the device's platform, offering a level of security that is consistent with the device's overall security.
 
 
-Significant features of SecureStore include:
+Other notable functionalities of SecureStore are:
 
 - **Data Isolation**: It ensures data is stored within the app's sandbox, preventing access by other apps and safeguarding against unauthorized data breaches.
 
-- **Dynamic Management**: The following segments of our code demonstrate how we securely handle user data, such as age range, gender, height, weight, and fitness goals.
+- **Easy Dynamic Management**: The following segments of our code demonstrate how we securely handle user data, such as age range, gender, height, weight, and fitness goals.
 
     ```javascript
     export const getPersonalInfo = async () => {
@@ -112,10 +115,10 @@ Significant features of SecureStore include:
   }
   return info: };
  
- To update their data, users go through functions that retrieve their current data ( using getPersonalInfo), allow them to make changes, and then save these updates back to the device securely ( usingsavePersonalInfo) new information will overwrite the previous one, no history of the old data is kept within our software. If a user chooses to delete their data, our application uses SecureStore's deleteItemAsync for each data point, ensuring all personal information is removed from the device. This maintains data security and gives users complete control over their information.
+ To update their data, users go through functions that retrieve their current data ( using getPersonalInfo), allow them to make changes, and then save these updates back to the device securely ( using savePersonalInfo) new information will overwrite the previous one, no history of the old data is kept within our software. If a user chooses to delete their data, our application uses SecureStore's deleteItemAsync for each data point, ensuring all personal information is removed from the device. This maintains data security and gives users complete control over their information.
 
 #### Encryption and Decryption Methodology for daily data
-We employ a dynamic encryption key generation strategy using `expo-crypto`'s SHA256 digest. This choice is driven by SHA256's cryptographic security, providing a strong hash function that is resistant to collision attacks. The code snippet below showcases the process:
+We employ a dynamic encryption key generation strategy using `expo-crypto`'s SHA256 function[^9]. This choice is driven by SHA256's cryptographic security, it is a strong hash function that is resistant to collision attacks [^10]. The code snippet below showcases the process:
 
 ```javascript
 import * as Crypto from 'expo-crypto';
@@ -131,11 +134,11 @@ export const generateAndStoreKey = async () => {
 };
 ```
 
-- **Usage of SHA256**:  We chose this algorithm for its widespread acceptance as a secure hash algorithm, providing a good balance between speed and security.
-- **Unique Seed Generation**: Combining the current ISO date string with a random number ensures that the seed for our hash is highly unpredictable, this makes the encryption key harder to guess.
+- **Usage of SHA256**:  We chose this algorithm for its widespread acceptance as a secure algorithm, it provides a good balance between speed and security.
+- **Unique Seed Generation**: Combining the current ISO date string with a random number ensures that the seed for our hash is highly unpredictable, making the encryption key harder to guess.
 - **Secure Storage of Key**: The resulting encryption key, is stored securely using expo-secure-store for the reasons mentioned in the above section (isolating it within the device's secure storage and ensuring it's not accessible without authentication).
 
-We then encrypt the health metrics using the AES encryption function provided by CryptoJS. AES is particularly suitable for mobile environments where computational resources are limited as it can encrypt large amounts of data quickly. Below is the implementation detail:
+We then encrypt the health metrics using the AES encryption function provided by CryptoJS [^11]. AES is particularly suitable for mobile environments where computational resources are limited as it can encrypt large amounts of data quickly. Below is the implementation detail:
 
 ```javascript
 import * as FileSystem from 'expo-file-system';
@@ -152,6 +155,7 @@ export const saveDailyData = async (data, date) => {
     await FileSystem.writeAsStringAsync(filePath, ciphertext);
 };
 ```
+- **JSON Stringification**: Before encryption, the data is stringified to ensure compatibility with the encryption library, as CryptoJS operates on string inputs.
 - **JSON Stringification**: Before encryption, the data is stringified to ensure compatibility with the encryption library, as CryptoJS operates on string inputs.
 - **File System Storage**: The Encrypted data is stored in the device's file system, under a directory specific to daily data, to ease future data retrieval.
 - **Using the Date as Filename**: Storing daily data in files named after the date simplifies retrieval and management. It enables straightforward data purging based on retention policies without the need to decrypt files to assess their contents.
@@ -174,7 +178,81 @@ export const getDailyData = async (date) => {
 - **Secure Key Retrieval**: The encryption key is fetched securely from expo-secure-store for use in the decryption process.
 - **Decryption Process**: CryptoJS's AES.decrypt method is used to decrypt the data. This step requires the same key used for encryption, ensuring that only authorized users can access the data.
 - **Parsing Decrypted Data**: The decrypted string is parsed back into a JSON object, making it readily usable by the application.
+- **Using the Date as Filename**: Storing daily data in files named after the date simplifies retrieval and management. It enables straightforward data purging based on retention policies without the need to decrypt files to assess their contents.
+- **Security Implications of Filename Choice**: The use of dates as filenames does not significantly impact security. The critical security measure lies in the encryption of the file's contents. However, a discussion around encrypting filenames could be justified in contexts where the mere knowledge of a user's activity on specific dates needs to be hidden.
+- **FileSystem vs. SecureStore**: Data is encrypted and stored in the file system rather than SecureStore due to size limitations and performance considerations. SecureStore is designed for small pieces of data like keys or tokens, while the FileSystem API is optimized for larger data storage and offers more flexibility for managing files.
 
+
+Retrieving and decrypting daily data process: 
+```javascript
+export const getDailyData = async (date) => {
+    const encryptionKey = await getEncryptionKey();
+    const filePath = dailyDataDirectory + `${date}.json`;
+    const encryptedData = await FileSystem.readAsStringAsync(filePath);
+    const bytes = CryptoJS.AES.decrypt(encryptedData, encryptionKey);
+    const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+    return decryptedData;
+};
+```
+- **Secure Key Retrieval**: The encryption key is fetched securely from expo-secure-store for use in the decryption process.
+- **Decryption Process**: CryptoJS's AES.decrypt method is used to decrypt the data. This step requires the same key used for encryption, ensuring that only authorized users can access the data.
+- **Parsing Decrypted Data**: The decrypted string is parsed back into a JSON object, making it readily usable by the application.
+
+#### Storage of user data management preferences and fitness goals
+For storing user preferences regarding data management and fitness goals, our application adopts an approach that emphasizes user experience and operational efficiency. Unlike the highly sensitive user data which is encrypted and stored, this category of data, while important, does not include personally identifiable information that could compromise user privacy if accessed. Therefore, we have decided not to encrypt this data for several reasons:
+
+- **Rapid Access**: These preferences are frequently accessed and modified within the application's UI. Non-encrypted storage facilitates faster retrieval and updating of these preferences, enhancing the app's performance and user experience.
+- **Simplicity**: By avoiding encryption for this category of data, we reduce the complexity of our data handling processes. This simplification helps in maintaining a cleaner codebase and minimizes potential errors in encryption and decryption operations.
+- **Data Nature**: The nature of this data is such that it does not pose a significant privacy risk. Preferences and goals are generic and do not necessarily reveal sensitive personal information.
+
+### Storage Implementation
+
+User preferences and fitness goals are stored in the device's file system. This decision is based on the need for persistent storage that can easily accommodate the structure and size of the data. The following code snippets show how we manage these preferences:
+
+```javascript
+export const savePreferences = async (preferences) => {
+  const data = JSON.stringify(preferences);
+  await FileSystem.writeAsStringAsync(preferencesFileUri, data);
+};
+
+export const getPreferences = async () => {
+  const fileInfo = await FileSystem.getInfoAsync(preferencesFileUri);
+  if (!fileInfo.exists) {
+    // If no preferences file exists, initialize with default values
+    const defaultPreferences = {};
+    await savePreferences(defaultPreferences);
+    return defaultPreferences;
+  }
+  const data = await FileSystem.readAsStringAsync(preferencesFileUri);
+  return JSON.parse(data);
+};
+
+```
+
+Similarly, user consent flags for data collection are managed through straightforward read/write operations in the file system:
+
+```javascript
+export const saveDataCollectionFlags = async (flags) => {
+  const data = JSON.stringify(flags);
+  await FileSystem.writeAsStringAsync(dataCollectionFlagsUri, data);
+};
+
+export const getDataCollectionFlags = async () => {
+  const fileInfo = await FileSystem.getInfoAsync(dataCollectionFlagsUri);
+  if (!fileInfo.exists) {
+    // Initialize with default flags if the file doesn't exist
+    const defaultFlags = {};
+    await saveDataCollectionFlags(defaultFlags);
+    return defaultFlags;
+  }
+  const data = await FileSystem.readAsStringAsync(dataCollectionFlagsUri);
+  return JSON.parse(data);
+};
+
+
+```
+We decided not to encrypt user preferences and fitness goals for a simple reason: it keeps the app fast and easy to use. This data isn't as sensitive as health metrics, so we chose a more straightforward approach. However, we're ready to ramp up security if needed. This decision was all about finding the right balance—keeping the app smooth and user-friendly, without painting ourselves into a corner security-wise. We've set things up so we can switch on encryption for this data down the line, should the need arise.
 #### Storage of user data management preferences and fitness goals
 For storing user preferences regarding data management and fitness goals, our application adopts a pragmatic approach that emphasizes user experience and operational efficiency. Unlike the highly sensitive user data which is encrypted and stored securely, this category of data, while important, does not include personally identifiable information that could compromise user privacy if accessed. Therefore, we have opted not to encrypt this data for several reasons:
 
@@ -276,10 +354,6 @@ The logic for computing metrics in the provided code involves several key steps 
 
 
 
-
-### User Interface Design and Data Input
-Our application is designed to offer users flexibility in how they synchronize their health data. Currently, we provide manual data input functionality, with future plans to integrate automatic sync options like Fitbit. This approach is due to the current limitation of accessing developer-specific features from external APIs.
-
 ### User Interface Design and Data Input
 
 Our application is designed to offer users flexibility in how they synchronize their health data. Currently, we provide manual data input functionality, with future plans to integrate automatic sync options like Fitbit. This approach is due to the current limitation of accessing developer-specific features from external APIs.
@@ -354,7 +428,7 @@ const mergeActivitiesWithExistingData = async (fitbitData) => {
 ```
 - With this we ensure that the integrated data adheres to the application's data structure, facilitating seamless user experiences across different data sources. We also implement checks to prevent overlapping data entries, maintaining the integrity and utility of the health metrics recorded.
 
--  A critical aspect of integrating third-party data is ensuring that users retain control over their information. This involves allowing users to review, edit, or remove imported data before it is permanently stored. All data, once approved for syncing, is encrypted and stored securely to protect user privacy and ensure compliance with relevant data protection laws.
+-  A critical aspect of integrating third-party data is ensuring that users retain control over their information, which remains an issue with the Fitbit API [^12]. This involves allowing users to review, edit, or remove imported data before it is permanently stored. All data, once approved for syncing, is encrypted and stored securely to protect user privacy and ensure compliance with relevant data protection laws.
 
 The process outlined not only demonstrates the technical feasibility of integrating Fitbit data into a mobile application but also underscores the importance of user privacy and control. The simulated API calls and data processing logic serve as a foundation for developing a fully functional integration, ready to adapt to real API responses and handle user data with the utmost care.
 ### Data Management and User Control. 
@@ -414,7 +488,7 @@ const updateRetentionPreference = async (newOption) => {
 };
 ```
 #### PDF retrieval
- providing users with the ability to retrieve their health data in PDF format is a crucial feature that aligns with our commitment to data transparency, user control, and data minimization principles. This functionality allows users to generate a comprehensive report of their health metrics and computed analytics over a specified data retention period, ensuring they have tangible access to their information and further empowering them with their data management.
+ Providing users with the ability to retrieve their health data in PDF format is a crucial feature that aligns with our commitment to data transparency, user control, and data minimization principles. This functionality allows users to generate a comprehensive report of their health metrics and computed analytics over a specified data retention period, ensuring they have tangible access to their information and further empowering them with their data management.
 
  The initial step involves aggregating the user's health metrics and computed data into a structured HTML format. This process accounts for the user-defined data retention period, ensuring the report only encompasses data within this timeframe, aligning with our data minimization policy.
 
@@ -430,11 +504,99 @@ const createHtmlForPDF = async () => {
 ```
 Here we dynamically adjust the report's content based on the user's set data retention period. The use of HTML to format the report makes it easy to convert into PDF.
 #### Delete all function
-Jeffrey
+Another crucial feature we provide users, is the ability to delete all their data any time they want. The feature is enabled by a clear, simple, and highly accessible "Delete Everything" button in the user's profile settings page. When this button is pressed, all of the user's data (which is stored locally) is deleted and the application redirects to the new user setup page. If the user has authentication enabled, authentication is required before their data can be deleted. 
+
+To delete all of the user's data, the three types of storage we used for our application must be cleared. 
+
+```javascript
+export async function deleteAll() {
+    const dailyDataDirectory = `${FileSystem.documentDirectory}dailyData/`;
+  
+    try {
+      await SecureStore.deleteItemAsync('ageRange');
+      await SecureStore.deleteItemAsync('gender');
+      await SecureStore.deleteItemAsync('height');
+      await SecureStore.deleteItemAsync('weight');
+      await SecureStore.deleteItemAsync('dailySteps');
+      await SecureStore.deleteItemAsync('dailyDistance');
+      await SecureStore.deleteItemAsync('dailyCalories');
+
+      await FileSystem.deleteAsync(dailyDataDirectory, { idempotent: true });
+
+      await AsyncStorage.clear(); 
+      
+      return true;
+    } catch (error) {
+      console.error("An error occurred during deletion:", error);
+      Alert.alert("Deletion Failed. Please try again.");
+      return false;
+    }
+  }
+```
+In this function, we first delete all data stored in SecuredStore using SecureStore.deleteItemAsync(key) which deletes the value associated with the provided key. 
+
+Next, we delete the data stored in the device's filesystem using FileSystem.deleteAsync(fileUri, options). Here, we delete the directory which contains all the files about a user's fitness data. 
+
+Finally, we clear the AsyncStorage using AsyncStorage.clear(). AsyncStorage is an unencrypted, asynchronous, persistent, key-value storage system that is global to the application. We used AsyncStorage to store data that we deem does not require encryption, such as whether authentication is enabled/disabled, or whether the user setup is complete/incomplete. 
 
 
 ### Authentication and Data Protection
-  - Use of biometric authentication (Expo LocalAuthentication) for data protection and the measures taken to secure user data access. Jeffrey
+We also implemented a feature to allow users to protect their data using biometric authentication. Authentication is optional and can be enabled/disabled during the app setup or later on in the user's profile settings page. If enabled, authentication is used to authenticate a user upon opening the application or before deleting all user data. 
+
+This feature is enabled by Expo LocalAuthentication, an open-source library for implementing FaceID, TouchID (iOS), or Fingerprint (Android) to authenticate users. 
+
+Our authentication setup page consists of checking if biometrics is supported on the device and if so, a user can toggle between authentication on/off which saves the preferences in the AsyncStorage. 
+
+```javascript
+const [isBiometricSupported, setIsBiometricSupported] = useState(false);
+const [authenticationEnabled, setAuthenticationEnabled] = useState(false);
+// check if device supports biometrics
+useEffect( () => {
+    (async () => {
+    const compatible = await LocalAuthentication.hasHardwareAsync();
+    setIsBiometricSupported(compatible);
+    }) ();
+});
+
+const toggleSwitch = async () => {
+    if (!isBiometricSupported) {
+      Alert.alert(
+        "Unsupported Feature",
+        "Your device does not support Face ID.",
+        [
+          { text: "OK" }
+        ]
+      );
+    } else {
+        const previousState = !authenticationEnabled;
+        setAuthenticationEnabled(previousState);
+        await AsyncStorage.setItem('authenticationEnabled', JSON.stringify(previousState));
+    }
+  };
+```
+When users have authentication enabled, they need to be authenticated before accessing the Landing Page.
+```javascript
+const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigation = useNavigation();
+  
+
+  useEffect(() => {
+      if (isAuthenticated) {
+        navigation.navigate('LandingPage');
+      }
+    }, [isAuthenticated]);
+
+
+  function onAuthenticate () {
+      const auth = LocalAuthentication.authenticateAsync({
+      promptMessage: 'Authenticate',
+      fallbackLabel: 'Enter Password',
+      });
+      auth.then(result => {
+      setIsAuthenticated(result.success);
+      });
+  }
+```
 
 
 ## Conclusions
@@ -451,7 +613,7 @@ Jeffrey
 
   After these requirements are met, you can clone the codebase, get to your local cloned project directory, and run:
   - npm install
-  - expo start
+  - npx expo start
 
   If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
 
@@ -556,7 +718,6 @@ Jeffrey
   All functions inputs and outputs, as well as more descriptive inline comments can be found in the codebase. 
 
   
-- **Sources**: 
 ## Footnotes
 [^1]: React native documentation: [React native elements](https://reactnativeelements.com/docs)
 [^2]: Stack exchange questions pertaining to React-Native ( over 9000 results): [questions tagged react native](https://stackoverflow.com/questions/tagged/react-native)
@@ -565,11 +726,8 @@ Jeffrey
 [^5]: Expo FAQ: [expo is open source](https://docs.expo.dev/faq/)
 [^6]: Expo Documentation: [Privacy policy](https://expo.dev/privacy)
 [^7]: Expo Documentation: [Privacy explained](https://expo.dev/privacy-explained)
-[^8]: American Heart Association. "Target Heart Rates Chart." [Link to AHA Heart Rates](https://www.heart.org/en/healthy-living/fitness/fitness-basics/target-heart-rates)
-[^9]: Centers for Disease Control and Prevention (CDC). "About Adult BMI." [Link to CDC BMI](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)
+[^8]: SQLlite expo [Genius article explaining the use nicelly](https://blog.stackademic.com/expo-sqlite-in-detail-0518e9deeaad)
+[^9]: Crypto JS Documentation [AES encryption](https://docs.expo.dev/versions/latest/sdk/crypto/)
 [^10]: Mifflin, M.D., St Jeor, S.T., Hill, L.A., Scott, B.J., Daugherty, S.A., & Koh, Y.O. (1990). "A new predictive equation for resting energy expenditure in healthy individuals." The American Journal of Clinical Nutrition, 51(2), 241-247. [AJCN](https://academic.oup.com/ajcn/article-abstract/51/2/241/4695347)
-[^11]: Sally Edwards. "The Heart Rate Monitor Book." Offers an in-depth guide to understanding and using heart rate monitors for training.[link](https://archive.org/details/heartratemonitor00edwa)
-[^12]: Water Intake Formula: Based on general hydration guidelines from health organizations, such as the National Academies of Sciences, Engineering, and Medicine's recommendation on [Daily Water Intake](https://www.nap.edu/read/10925/chapter/1)
-[^13]: Gadgetbridge: (https://gadgetbridge.org/)
-[^14]: FitoTrack: (https://play.google.com/store/apps/details?id=de.tadris.fitness&hl=en_CA&gl=US&pli=1)
-[^15]: After analysis of the [Fitbit API](https://dev.fitbit.com/build/reference/), we found that there were [several red flags](https://dev.fitbit.com/getting-started/) when trying to access their API. Developers need to create a Google account to access the API and link the Fitbit service to their account. Developers also need to download the Fitbit app on their phone and own a Fitbit device. To access the full developer suite, we also had to accept the [Fitbit Platform Terms of Service](https://dev.fitbit.com/legal/platform-terms-of-service/) and the [Fitbit App Distribution Agreement](https://dev.fitbit.com/legal/app-distribution-agreement/). We found in the first that "Fitbit may monitor your usage of the Fitbit APIs in order to improve the Fitbit Platform and to ensure compliance with our policies and applicable laws and regulations". In the App Distribution Agreement, we found that "Fitbit may collect and use certain logs, analytics, usage statistics, and other data from the Fitbit Products regarding usage of your App as described in the Fitbit Privacy Policy". All in all, we found this counterintuitive to our goal of maintaining our privacy and that of our stakeholders. 
+[^11]: CryptoJS: [Documentation](https://cryptojs.gitbook.io/docs)
+[^12]: After analysis of the [Fitbit API](https://dev.fitbit.com/build/reference/), we found that there were [several red flags](https://dev.fitbit.com/getting-started/) when trying to access their API. Developers need to create a Google account to access the API and link the Fitbit service to their account. Developers also need to download the Fitbit app on their phone and own a Fitbit device. To access the full developer suite, we also had to accept the [Fitbit Platform Terms of Service](https://dev.fitbit.com/legal/platform-terms-of-service/) and the [Fitbit App Distribution Agreement](https://dev.fitbit.com/legal/app-distribution-agreement/). We found in the first that "Fitbit may monitor your usage of the Fitbit APIs in order to improve the Fitbit Platform and to ensure compliance with our policies and applicable laws and regulations". In the App Distribution Agreement, we found that "Fitbit may collect and use certain logs, analytics, usage statistics, and other data from the Fitbit Products regarding usage of your App as described in the Fitbit Privacy Policy". All in all, we found this counterintuitive to our goal of maintaining our privacy and that of our stakeholders. 
