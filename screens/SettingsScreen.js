@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
+import { View, Button, StyleSheet, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation, CommonActions } from '@react-navigation/native'; // Make sure to import useNavigation hook
-
-// Import your page components here
+import { useNavigation, CommonActions } from '@react-navigation/native'; 
 import UserProfileData from './UserProfileData';
 import HealthMetrics from './HealthMetrics';
 import SetupAuth from './SetupAuth';
@@ -11,26 +9,29 @@ import DataManagement from '../backend/DataManagement';
 import IntroPage from './privacyPolicies/IntroPage';
 import IntroPolicy from './privacyPolicies/IntroPolicy';
 import PrivacyPolicySimplified from './privacyPolicies/PrivacyPolicySimplified';
-// Ensure these components are correctly imported from their files
 
+// Settings screen to handle all the settings page
 const SettingsScreen = () => {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const navigation = useNavigation(); // Use the useNavigation hook to get access to navigation
 
   const pages = ['IntroPage', 'IntroPolicy', 'PrivacyPolicySimplified', 'UserProfileData', 'HealthMetrics', 'SetupAuth', 'DataManagement'];
 
+  // navigate to the next page, if possible to
   const nextPage = () => {
     if (currentPageIndex < pages.length - 1) {
       setCurrentPageIndex(currentPageIndex + 1);
     }
   };
 
+  // navigate to the previous page, if possible to
   const prevPage = () => {
     if (currentPageIndex > 0) {
       setCurrentPageIndex(currentPageIndex - 1);
     }
   };
 
+  // Render the current page 
   const renderPage = () => {
     switch (pages[currentPageIndex]) {
       case 'IntroPage':
@@ -52,6 +53,7 @@ const SettingsScreen = () => {
     }
   };
 
+  // Saves the settings, navigates to landing page
   const saveSettings = async () => {
     await AsyncStorage.setItem('settingsCompleted', 'true'); // Mark the settings as completed
     console.log('Save settings');

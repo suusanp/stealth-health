@@ -4,6 +4,13 @@ import * as SecureStore from 'expo-secure-store';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+/**
+ * Component to select user preferences 
+ * @param {boolean} visible 
+ * @param {Array} options Options list to display
+ * @param {Function} onSelect Function to call when option is selected
+ * @param {Function} closeModal Function to call when user clicks to close the modal
+ */
 const DropdownModal = ({ visible, options, onSelect, closeModal }) => (
   <Modal visible={visible} animationType="slide" transparent={true}>
     <View style={styles.modalView}>
@@ -21,6 +28,7 @@ const DropdownModal = ({ visible, options, onSelect, closeModal }) => (
   </Modal>
 );
 
+// Allow user to update their data
 const UserProfileData = ({ onNext }) => {
   const [ageRange, setAgeRange] = useState('');
   const [gender, setGender] = useState('');

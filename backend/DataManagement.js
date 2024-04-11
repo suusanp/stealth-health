@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Switch, ScrollView, TouchableOpacity, Modal, Button } from 'react-native';
 import { savePreferences, getPreferences } from './FileSystemService';
-import { PushNotificationManager } from '../services/PushNotificationManager';
 import scheduleDeletionNotification from '../services/ScheduleNotifications';
 
+// options for the data retention period
 const DataRetentionOptions = [
   '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
 ];
 
 const DataManagement = () => {
+  // default data retention period is set to be 1 month 
   const [dataRetention, setDataRetention] = useState('1 Month');
+  // default for the notifications is they are disabled
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  // modal for the explanation of the notifications permission
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     const loadPreferences = async () => {
+      // load the already existing preferences if previously any preferences was made
       const preferences = await getPreferences();
+      // update the preferences if the user recently changed
       setDataRetention(preferences.dataRetention || '1 Month');
       setNotificationsEnabled(preferences.notificationsEnabled || false);
     };
@@ -24,6 +29,7 @@ const DataManagement = () => {
 
   }, []);
 
+  // save the user preferences if they change
   useEffect(() => {
     savePreferences({
       dataRetention,
@@ -31,7 +37,7 @@ const DataManagement = () => {
     });
   }, [dataRetention, notificationsEnabled]);
 
-  // if notificationsEnabled is true, schedule a notification. if preferences change, update the notification
+  // if notificationsEnabled is true, schedule a notification. 
   useEffect(() => {
     if (notificationsEnabled) {
       scheduleDeletionNotification();
@@ -88,7 +94,7 @@ const DataManagement = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Justification for data retention policy...</Text>
+            <Text style={styles.modalText}>Allowing the notifications will let you receive a notification when it is time for your data to be deleted, based on your data retention preferences. It will allow you to save your data as a PDF if you would like, or change your preferences.</Text>
             <Button title="Close" onPress={() => setModalVisible(!modalVisible)} />
           </View>
         </View>

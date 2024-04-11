@@ -4,7 +4,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Alert} from 'react-native';
 
 
-// Function to delete all data and reset
+/**
+ * Delete all user data, clear SecureStore, FileSystem, and AsyncStorage
+ * 
+ * @returns {boolean} 
+ * Returns true if all the deletions were successful, returns false if any error occured
+ */
 export async function deleteAll() {
     const dailyDataDirectory = `${FileSystem.documentDirectory}dailyData/`;
   

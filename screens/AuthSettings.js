@@ -4,6 +4,11 @@ import * as LocalAuthentication from "expo-local-authentication";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
+/**
+ * 
+ * Component to set up the authentication
+ */
+
 const SetupAuth = () => {
     const [authenticationEnabled, setAuthenticationEnabled] = useState(false);
     const [isBiometricSupported, setIsBiometricSupported] = useState(false);
@@ -17,7 +22,7 @@ const SetupAuth = () => {
         }) ();
     });
     
-
+    // Get the user preference for biometric authentication (if they allowed FaceID)
     useEffect(() => {
         const getAuthenticationPreference = async () => {
           const storedPreference = await AsyncStorage.getItem('authenticationEnabled');
@@ -29,7 +34,7 @@ const SetupAuth = () => {
         getAuthenticationPreference();
       }, []);
 
-
+    // Switch for FaceID permission 
     const toggleSwitch = async () => {
         if (!isBiometricSupported) {
           Alert.alert(
