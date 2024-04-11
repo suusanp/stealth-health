@@ -33,7 +33,7 @@ In case of any changes to this privacy policy, if you have accepted our App to s
 
 Who We Are and How To Contact Us:
 
-If you have questions about this policy, or need help exercising your privacy rights, please contact our Data Protection Officer at
+If you have questions about this policy, or need help exercising your privacy rights, please contact our Data Protection Officer at @shuran.pan@mail.mcgill.ca
 `;
 
 export default PrivacyPolicyText;
