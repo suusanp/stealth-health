@@ -22,16 +22,11 @@ The development of the Fitbit app prototype serves as a proof of concept for a m
 ### Rationale for Selecting React Native
 
 We chose React Native for our Fitbit app prototype due to its cross-platform capabilities [^1], as the  code that can be deployed on both iOS and Android devices. Our group members use both kind of devices, and we wanted to ensure that the app would be accessible to all team members during the development process and showcase applicability for both OS's. Additionally, React Native also has an extensive documentation and a large online community, which will be useful for troubleshooting and support since none of our team members had prior experience with mobile app development [^2]. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
-We chose React Native for our Fitbit app prototype due to its cross-platform capabilities [^1], as the  code that can be deployed on both iOS and Android devices. Our group members use both kind of devices, and we wanted to ensure that the app would be accessible to all team members during the development process and showcase applicability for both OS's. Additionally, React Native also has an extensive documentation and a large online community, which will be useful for troubleshooting and support since none of our team members had prior experience with mobile app development [^2]. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
 
 
 
 ### Rationale for Selecting Expo
 
-Expo is a comprehensive framework for developing React Native applications. We picked it for the following reasons:
-- Expo provides libraries we found useful for our app, such as `SecureStore`[^3] for secure data storage and `LocalAuthentication`[^4] for biometric authentication. 
-- It is open-source with a large community of developers, which we found helpful as beginners to mobile app development.[^5]
-- It is a test-friendly platform; We each downloaded the Expo Go app, which allows us to preview the app on real devices during development.
 Expo is a comprehensive framework for developing React Native applications. We picked it for the following reasons:
 - Expo provides libraries we found useful for our app, such as `SecureStore`[^3] for secure data storage and `LocalAuthentication`[^4] for biometric authentication. 
 - It is open-source with a large community of developers, which we found helpful as beginners to mobile app development.[^5]
