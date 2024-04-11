@@ -6,7 +6,6 @@ import {
   calculateBMI,
   calculateBMR,
   estimateDistanceWalked,
-  calculateCaloriesBurnedFromActivities,
   calculateTotalDailyCalorieExpense,
   estimateHydrationLevel,
   indicateStressLevel,
