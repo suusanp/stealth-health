@@ -614,13 +614,13 @@ The Privacy Policy can be accessed at any time from the user's profile settings.
 ## Conclusions
 - **Summary of Key Findings**: 
  
- - Our research on FitBit and similar health and fitness wearables and applications demonstrated significant privacy concerns and a lack of transparency. Our app Stealth Health was meant to address those privacy shortcomings while also keeping the core functionalities of the fitness applications. 
+  - Our research on FitBit and similar health and fitness wearables and applications demonstrated significant privacy concerns and a lack of transparency. Our app Stealth Health was meant to address those privacy shortcomings while also keeping the core functionalities of the fitness applications. 
 
- - Our successful development of this prototype demonstrated that it is possible to have a privacy-focused fitness app if one considers privacy to be one of the core requirements of the application from the start. By using React Native and Expo, our team was able to develop a working prototype of Stealth Health in under a few months, which proves privacy by design is possible, and does not need to be technically complicated. 
+  - Our successful development of this prototype demonstrated that it is possible to have a privacy-focused fitness app if one considers privacy to be one of the core requirements of the application from the start. By using React Native and Expo, our team was able to develop a working prototype of Stealth Health in under a few months, which proves privacy by design is possible, and does not need to be technically complicated. 
 
- - By combining local data storage, encryption by Expo's SecureStore and Crypto libraries, and authentication by Face ID and Phone Password, we were able to ensure that user's sensitive health information remains secure all the time, at rest, and during data processing. 
+  - By combining local data storage, encryption by Expo's SecureStore and Crypto libraries, and authentication by Face ID and Phone Password, we were able to ensure that user's sensitive health information remains secure all the time, at rest, and during data processing. 
 
- - Our focus on our user's informed consent allowed us to write and demonstrate our transparent Privacy Policy and Terms of Service. Giving back control to the user by allowing them to transparently choose which health metrics they want to be tracked, and their data retention period proved that privacy and functionality do not have to be a zero-sum game. 
+  - Our focus on our user's informed consent allowed us to write and demonstrate our transparent Privacy Policy and Terms of Service. Giving back control to the user by allowing them to transparently choose which health metrics they want to be tracked, and their data retention period proved that privacy and functionality do not have to be a zero-sum game. 
 
 
 - **Insights on Privacy Design Strategies Implemented**: 
