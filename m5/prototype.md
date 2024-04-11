@@ -711,7 +711,7 @@ The Privacy Policy can be accessed at any time from the user's profile settings.
         By clicking "Save and Exit" button, user is navigated to LandingPage below. 
         
         <img src="DataManagement.PNG" title="DataManagement.js screen" width="200"/>
-        <img src="RetentionPolicy.PNG" title="DataManagement1.js screen" width="200"/>
+        <img src="RetentionDisclaimer.PNG" title="RetentionDisclaimer modal" width="200"/>
     
   
   - TermsOfServicePopup.js screen, under the screens directory:
