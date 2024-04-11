@@ -9,13 +9,8 @@ Stealth Health is a health and fitness application that aims to provide privacy-
 The development of the Fitbit app prototype serves as a proof of concept for a more privacy-centric approach to personal health and fitness monitoring. Our scope is to demonstrate the feasibility of securely managing health data whilst providing users with insightful analytics on their physical activities and health metrics. 
 The development of the Fitbit app prototype serves as a proof of concept for a more privacy-centric approach to personal health and fitness monitoring. Our scope is to demonstrate the feasibility of securely managing health data whilst providing users with insightful analytics on their physical activities and health metrics. 
 
-## Research Method
-- **Technical Literature Review**
-  - Review of existing Fitbit app
-- **Literature Search**
-  - Investigation into reported privacy concerns within fitness tracking applications.
-- **Privacy Notices Review**
-  - Detailed analysis of Fitbit’s privacy policy and data handling practices from a privacy standpoint.
+## Issues with the current fitbit app
+Our analysis reveals significant privacy concerns with the Fitbit app, especially about its data collection practices and adherence to privacy laws like PIPEDA. Post Google's acquisition, the scrutiny on Fitbit's data handling has intensified. We discovered that the breadth of data collected by Fitbit extends far beyond basic health metrics, encompassing sensitive information such as location and online activities, often without clear user consent. Additionally, our examination of Fitbit's compliance with PIPEDA highlighted areas where the company falls short, particularly in terms of transparency and user control over their data. These findings underscore the need for stronger privacy and more user-centric policies in digital health technologies. For a more detailed insight, see [milestone 1](\c555w24-t10\m1\case_study.md).
 
 ## Implementation Details
 
