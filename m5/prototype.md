@@ -237,14 +237,83 @@ We decided not to encrypt user preferences and fitness goals for a simple reason
 ### User Interface Design and Data Input
 Our application is designed to offer users flexibility in how they synchronize their health data. Currently, we provide manual data input functionality, with future plans to integrate automatic sync options like Fitbit. This approach is due to the current limitation of accessing developer-specific features from external APIs.
 
+### User Interface Design and Data Input
+
+Our application is designed to offer users flexibility in how they synchronize their health data. Currently, we provide manual data input functionality, with future plans to integrate automatic sync options like Fitbit. This approach is due to the current limitation of accessing developer-specific features from external APIs.
+
 #### Manual Data Input
 
 The manual input feature allows users to log health metrics directly into the app, promoting engagement and personal responsibility in health tracking. This feature is user-friendly and ensures that users without access to wearable health devices can still participate actively in managing their health data.
 
+The app dynamically renders input fields based on the user's data collection preferences, stored in `flags`. This ensures that only relevant data fields are presented to the user, making the UI more personal. For instance, if a user opts to track their water intake but not their sleep patterns, the interface will adjust accordingly to reflect this preference.
+
+```javascript
+const renderInputField = (flag, placeholder, name) => (
+  flags[flag] && (
+    <View style={styles.inputGroup}>
+      <TextInput
+        placeholder={placeholder}
+        value={dailyData[name]}
+        onChangeText={(value) => handleInputChange(name, value)}
+        keyboardType="numeric"
+        style={styles.input}
+      />
+    </View>
+  )
+);
+```
+Upon data entry, the saveAndExit function is triggered, securely storing the day's data and computing metrics based on the inputs. This method utilizes saveDailyData from the backend, which encrypts and saves the data locally, and computeAndStoreMetrics for real-time analytics. This ensures data privacy while enabling immediate feedback on health trends.
+
+```javascript
+const saveAndExit = async () => {
+  if (dataChanged) {
+    const today = new Date().toISOString().split('T')[0];
+    await saveDailyData(dailyData, today);
+    await computeAndStoreMetrics(today);
+    Alert.alert("Data Saved", "Your daily data and computed metrics have been saved.");
+    navigation.goBack();
+  }
+};
+```
+The feature allows for detailed activity tracking, letting users log specific exercises along with their duration. This data enriches the user's health profile and provides deeper insights into their physical activities. A future enhancement could involve storing detailed activity logs in a separate file for historical analysis, potentially fetched and decrypted using methods similar to those employed in daily data management. For extended data sets, the approach would involve serializing the activity logs and storing them in a dedicated file within the app's local storage. Retrieving this data would require decrypting the content and parsing it back into a usable format, akin to the method used for daily metrics.
 #### Simulation for Future Integration
 
 Although direct integration with health devices is part of our future roadmap, we've included a simulated function in the prototype to demonstrate how seamless data integration could look. This simulation mimics the data structure from a real API call, preparing us for eventual real-world application and integration.
 
+The first step involves establishing a connection to the Fitbit API to retrieve user activity data. This process is simulated in the provided code but, in practice, requires OAuth authentication to securely access the user's Fitbit account data.
+
+```javascript
+const simulateDataFetch = async () => {
+  setIsLoading(true);
+  setIsBluetoothEnabled(true); // Enable Bluetooth for real-world device connectivity
+  // Simulated delay to mimic the API call to Fitbit
+  setTimeout(() => {
+    // In a real scenario, this would be replaced with an API call to Fitbit
+    setFitbitData(mockFitbitData);
+    setIsLoading(false);
+    setIsBluetoothEnabled(false); // Disable Bluetooth post-sync
+  }, 2000);
+};
+```
+
+Once the data is fetched, it's crucial to integrate it with the existing user data within the application. This step involves parsing the activity data, conforming it to the application's data model, and ensuring that new data complements rather than duplicates existing records.
+```javascript
+const mergeActivitiesWithExistingData = async (fitbitData) => {
+  const today = new Date().toISOString().split('T')[0];
+  let existingData = await getDailyData(today) || {};
+  // Converting and merging Fitbit data with the application's format
+  const updatedData = {
+    ...existingData,
+    activityTracking: [...(existingData.activityTracking || []), ...convertFitbitData(fitbitData)],
+  };
+  await saveDailyData(updatedData, today);
+};
+```
+- With this we ensures that the integrated data adheres to the application's data structure, facilitating seamless user experiences across different data sources. We also implement checks to prevent overlapping data entries, maintaining the integrity and utility of the health metrics recorded.
+
+-  A critical aspect of integrating third-party data is ensuring that users retain control over their information. This involves allowing users to review, edit, or remove imported data before it is permanently stored. All data, once approved for syncing, is encrypted and stored securely to protect user privacy and ensure compliance with relevant data protection laws.
+
+The process outlined not only demonstrates the technical feasibility of integrating Fitbit data into a mobile application but also underscores the importance of user privacy and control. The simulated API calls and data processing logic serve as a foundation for developing a fully functional integration, ready to adapt to real API responses and handle user data with the utmost care.
 ### Data Management and User control. 
 
 #### User-Defined Data Retention Periods
@@ -302,7 +371,21 @@ const updateRetentionPreference = async (newOption) => {
 };
 ```
 #### PDF retrieval
+ providing users with the ability to retrieve their health data in PDF format is a crucial feature that aligns with our commitment to data transparency, user control, and data minimization principles. This functionality allows users to generate a comprehensive report of their health metrics and computed analytics over a specified data retention period, ensuring they have tangible access to their information and further empowering them with their data management.
 
+ The initial step involves aggregating the user's health metrics and computed data into a structured HTML format. This process accounts for the user-defined data retention period, ensuring the report only encompasses data within this timeframe, aligning with our data minimization policy.
+
+
+```javascript
+const createHtmlForPDF = async () => {
+  // Logic to calculate start date based on retention period
+  let html = "<html><head><title>Daily Data and Computations</title></head><body>";
+  html += "<h1>Daily Data and Computations</h1>";
+  // Iteration over each day within the retention period to compile data
+  return html + "</body></html>";
+};
+```
+Here we dynamically adjusts the report's content based on the user's set data retention period.The use of HTML to format the report makes it easy to convert into PDF.
 #### Delete all function
 Jeffrey
 
