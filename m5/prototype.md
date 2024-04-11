@@ -29,7 +29,7 @@ Expo is a comprehensive framework for developing React Native applications. We p
 
 #### Evaluation of Expo's Privacy Policies and Open-Source Nature
 
-Expo seems to be committed to privacy, on its website it showcases its GDPR, CCPA, and Privacy Shield compliance, it says to be responsibly handling both developer and end-user data. We read through their Privacy Policy, updated on June 22nd, 2022, and their further explained privacy exposition dated February 7th, 2020.
+Expo seems to be committed to privacy, on its website it showcases its GDPR, CCPA, and Privacy Shield compliance, it says to be responsibly handling both developer and end-user data. We examined their Privacy Policy (updated on June 22nd, 2022) and their privacy exposition (dated February 7th, 2020).
 
 
 - **Data Collection and Use**: "When you create an account on Expo or use our tools and services, we collect data including your name, email, and, if you enable paid services, your billing information... This data helps us make decisions about our products and services, in addition to allowing us to deliver satisfactory user experiences." (Expo, Privacy Policy [^6])
@@ -45,7 +45,7 @@ Expo seems to be committed to privacy, on its website it showcases its GDPR, CCP
 
 
 #### Open-Source Contribution
-Expo's open-source ecosystem is important, it offers transparency and community engagement that is important for our project baseline. 
+Expo's open-source ecosystem is important, it offers transparency and community engagement which is important for our project baseline. 
 
 ### Database Structure and Data Encryption
 
@@ -80,7 +80,7 @@ Sensitive data is encrypted and stored locally to prevent malicious access. Dail
 
 #### Choosing the Right Storage Solution
 
-When selecting a storage solution for our application, we evaluated various options. We first looked at expo SQLite library for its easy use. The issue with it is that the database would be queried through a Web-Based API, going against our principle of having a non server stored database,due to the inherent risks of server-side data breaches and unauthorized access.[^8]
+When selecting a storage solution for our application, we evaluated various options. We first considered Expo’s SQLite library for its easy use. The issue with it is that the database would be queried through a Web-Based API, going against our principle of having a non-server-stored database, due to the inherent risks of server-side data breaches and unauthorized access.[^8]
 Furthermore, we were concerned by SQLite due to its limited support for built-in encryption. Ensuring the privacy and security of user data is paramount in our application; thus, we sought a solution that offered robust encryption capabilities out of the box.
 
 #### SecureStore for Sensitive Permanent and Semi-Permanent Information
@@ -98,7 +98,7 @@ Other notable functionalities of SecureStore are:
 
 - **Data Isolation**: It ensures data is stored within the app's sandbox, preventing access by other apps and safeguarding against unauthorized data breaches.
 
-- **easy Dynamic Management**: The following segments of our code demonstrate how we securely handle user data, such as age range, gender, height, weight, and fitness goals.
+- **Easy Dynamic Management**: The following segments of our code demonstrate how we securely handle user data, such as age range, gender, height, weight, and fitness goals.
 
     ```javascript
     export const getPersonalInfo = async () => {
@@ -428,7 +428,7 @@ const mergeActivitiesWithExistingData = async (fitbitData) => {
 ```
 - With this we ensure that the integrated data adheres to the application's data structure, facilitating seamless user experiences across different data sources. We also implement checks to prevent overlapping data entries, maintaining the integrity and utility of the health metrics recorded.
 
--  A critical aspect of integrating third-party data is ensuring that users retain control over their information, which remains an issue with the fitbit API [^12]. This involves allowing users to review, edit, or remove imported data before it is permanently stored. All data, once approved for syncing, is encrypted and stored securely to protect user privacy and ensure compliance with relevant data protection laws.
+-  A critical aspect of integrating third-party data is ensuring that users retain control over their information, which remains an issue with the Fitbit API [^12]. This involves allowing users to review, edit, or remove imported data before it is permanently stored. All data, once approved for syncing, is encrypted and stored securely to protect user privacy and ensure compliance with relevant data protection laws.
 
 The process outlined not only demonstrates the technical feasibility of integrating Fitbit data into a mobile application but also underscores the importance of user privacy and control. The simulated API calls and data processing logic serve as a foundation for developing a fully functional integration, ready to adapt to real API responses and handle user data with the utmost care.
 ### Data Management and User Control. 
@@ -537,13 +537,13 @@ In this function, we first delete all data stored in SecuredStore using SecureSt
 
 Next, we delete the data stored in the device's filesystem using FileSystem.deleteAsync(fileUri, options). Here, we delete the directory which contains all the files about a user's fitness data. 
 
-Finally, we clear the AsyncStorage using AsyncStorage.clear(). AsyncStorage is unencrypted, asynchronous, persistent, key-value storage system that is global to the application. We used AsyncStorage to store data that we deem does not require encryption, such as is authentication enabled/disabled, or is the user setup complete/incomplete. 
+Finally, we clear the AsyncStorage using AsyncStorage.clear(). AsyncStorage is an unencrypted, asynchronous, persistent, key-value storage system that is global to the application. We used AsyncStorage to store data that we deem does not require encryption, such as whether authentication is enabled/disabled, or whether the user setup is complete/incomplete. 
 
 
 ### Authentication and Data Protection
 We also implemented a feature to allow users to protect their data using biometric authentication. Authentication is optional and can be enabled/disabled during the app setup or later on in the user's profile settings page. If enabled, authentication is used to authenticate a user upon opening the application or before deleting all user data. 
 
-This feature is enabled by Expo LocalAuthentication, an open-source library for implementing FaceID, TouchID (iOS) or Fingerprint (Android) to authenticate users. 
+This feature is enabled by Expo LocalAuthentication, an open-source library for implementing FaceID, TouchID (iOS), or Fingerprint (Android) to authenticate users. 
 
 Our authentication setup page consists of checking if biometrics is supported on the device and if so, a user can toggle between authentication on/off which saves the preferences in the AsyncStorage. 
 
@@ -613,7 +613,7 @@ const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   After these requirements are met, you can clone the codebase, get to your local cloned project directory, and run:
   - npm install
-  - expo start
+  - npx expo start
 
   If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
 
