@@ -468,7 +468,62 @@ Finally, we clear the AsyncStorage using AsyncStorage.clear(). AsyncStorage is u
 
 
 ### Authentication and Data Protection
-  - Use of biometric authentication (Expo LocalAuthentication) for data protection and the measures taken to secure user data access. Jeffrey
+We also implemented a feature to allow users to protect their data using biometric authentication. Authentication is optional and can be enabled/disabled during the app setup or later on in the user's profile settings page. If enabled, authentication is used to authenticate a user upon opening the application or before deleting all user data. 
+
+This feature is enabled by Expo LocalAuthentication, an open-source library for implementing FaceID, TouchID (iOS) or Fingerprint (Android) to authenticate users. 
+
+Our authentication setup page consists of checking if biometrics is supported on the device and if so, a user can toggle between authentication on/off which saves the preferences in the AsyncStorage. 
+
+```javascript
+const [isBiometricSupported, setIsBiometricSupported] = useState(false);
+const [authenticationEnabled, setAuthenticationEnabled] = useState(false);
+// check if device supports biometrics
+useEffect( () => {
+    (async () => {
+    const compatible = await LocalAuthentication.hasHardwareAsync();
+    setIsBiometricSupported(compatible);
+    }) ();
+});
+
+const toggleSwitch = async () => {
+    if (!isBiometricSupported) {
+      Alert.alert(
+        "Unsupported Feature",
+        "Your device does not support Face ID.",
+        [
+          { text: "OK" }
+        ]
+      );
+    } else {
+        const previousState = !authenticationEnabled;
+        setAuthenticationEnabled(previousState);
+        await AsyncStorage.setItem('authenticationEnabled', JSON.stringify(previousState));
+    }
+  };
+```
+When users have authentication enabled, they need to be authenticated before accessing the Landing Page.
+```javascript
+const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigation = useNavigation();
+  
+
+  useEffect(() => {
+      if (isAuthenticated) {
+        navigation.navigate('LandingPage');
+      }
+    }, [isAuthenticated]);
+
+
+  function onAuthenticate () {
+      const auth = LocalAuthentication.authenticateAsync({
+      promptMessage: 'Authenticate',
+      fallbackLabel: 'Enter Password',
+      });
+      auth.then(result => {
+      setIsAuthenticated(result.success);
+      });
+  }
+```
 
 
 ## Conclusions
