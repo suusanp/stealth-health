@@ -41,7 +41,9 @@ const UserProfileData = ({ onNext }) => {
   const ageRanges = ["Select Age Range", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"];
   const genders = ["Select Gender", "Male", "Female", "Other"];
 
-  // "Why do we collect this" to be displayed on tap
+  // "Why do we collect this" to be displayed when clicked
+  // This is a privacy feature to explain why we need the user's data
+
   const [showExplanationModal, setShowExplanationModal] = useState(false);
   const explanationText = `
     Your height, weight, and sex are used to calculate your Body Mass Index (BMI) and Basal Metabolic Rate (BMR). Your age is used to calculate your target heart rate zones for exercise. 
