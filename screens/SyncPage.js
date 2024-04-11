@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
+// Page to sync data, has the buttons for watch sync and manual input 
 const SyncPage = () => {
   const navigation = useNavigation();
 
