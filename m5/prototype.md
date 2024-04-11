@@ -5,7 +5,7 @@
 Stealth Health is a health and fitness application that aims to provide privacy-focused health tracking and analytics to users. The system is designed to collect and analyze user health data while prioritizing user privacy and data security. The Stealth Health system includes features such as activity tracking, heart rate monitoring, sleep analysis, and water intake monitoring. The system also allows users to set fitness goals and track their progress, while ensuring that users have full control over their data and can make informed decisions about its use. 
 
 ### **Purpose and Scope**: 
-The aim behind developing the Fitbit app prototype and the scope covered in this prototype phase.
+The development of the Fitbit app prototype serves as a proof of concept for a more privacy-centric approach to personal health and fitness monitoring. Our scope is to demonstrate the feasibility of securely managing health data whilst providing users with insightful analytics on their physical activities and health metrics. 
 
 ## Research Method
 - **Technical Literature Review**
@@ -400,6 +400,6 @@ Jeffrey
 - **Lessons Learned and perspectives**: Key takeaways from incorporating privacy-by-design principles in the Fitbit app development process.
 
 ## Appendix
+- **Screenshot and details of every page of the app.**: 
 - **Technical Specifications and Documentation**: all functions input and outputs.
-- **Detailed Analysis Reports and Data Sets**: Screenshot and details of every page of the app.
 - **Sourcea**: 
