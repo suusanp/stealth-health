@@ -707,9 +707,11 @@ The Privacy Policy can be accessed at any time from the user's profile settings.
 
       
       - DataManagement.js screen, under the backend directory:
+        Contains a disclaimer modal for the importance of Data Retention Period.
         By clicking "Save and Exit" button, user is navigated to LandingPage below. 
         
         <img src="DataManagement.PNG" title="DataManagement.js screen" width="200"/>
+        <img src="RetentionPolicy.PNG" title="DataManagement1.js screen" width="200"/>
     
   
   - TermsOfServicePopup.js screen, under the screens directory:
@@ -729,10 +731,11 @@ The Privacy Policy can be accessed at any time from the user's profile settings.
 
   
   - PersonalPage.js screen, under the screens directory:
-    Personal Page of the user, user can modify their profile by clicking the "Modify Profile" Button and navigating to ProfileManage page, create and extract a pdf of their data by clicking "Create PDF of Data" button, change their preferences for the health data collection by clicking on the toggle switches, navigate to SetupAuth page by clicking "Authentication Settings", navigate to PrivacyPolicyText page by clicking "Privacy Policy" Button, or delete all their data by clicking "Delete Everything" Button. The pop up when the user clicks "Delete Everything" is shown on the second screenshot.
+    Personal Page of the user, user can modify their profile by clicking the "Modify Profile" Button and navigating to ProfileManage page, create and extract a pdf of their data by clicking "Create PDF of Data" button, change their preferences for the health data collection by clicking on the toggle switches, navigate to SetupAuth page by clicking "Authentication Settings", navigate to PrivacyPolicyText page by clicking "Privacy Policy" Button, or delete all their data by clicking "Delete Everything" Button. The pop up when the user clicks "Delete Everything" is shown on the second screenshot. Disclaimer modal for the importance of Data Retention Period appears when the user clicks "Why this is important for privacy?" button.
    
     <img src="PersonalPage.PNG" title="PersonalPage.js screen" width="200"/>
     <img src="PersonalPage1.PNG" title="PersonalPage1.js screen" width="200"/>
+    
 
 
   - PrivacyPolicyText.js screen, under the screens/privacyPolicies directory:
