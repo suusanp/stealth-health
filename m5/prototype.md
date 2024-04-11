@@ -457,6 +457,8 @@ Jeffrey
   If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
 
 - **Screenshot and details of every page of the app.**: 
+  - Authenticate.js Screen:
+    ![Alt text](/../Authenticate.PNG "Authenticate.js Screen")
 - **Technical Specifications and Documentation**: all functions input and outputs.
 - **Sources**: 
 
