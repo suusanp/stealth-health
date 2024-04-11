@@ -19,11 +19,11 @@ The development of the Fitbit app prototype serves as a proof of concept for a m
 
 ### Rationale for Selecting React Native
 
-We chose React Native for our Fitbit app prototype due to its cross-platform capabilities, to develop a single codebase that can be deployed on both iOS and Android devices. Our group members use both Android and Apple devices, and we wanted to ensure that the app would be accessible to all team members during the development process. Additionally, React Native has extensive documentation and a large community, which we can use for troubleshooting and support since none of our team members had prior experience with mobile app development. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
+We chose React Native for our Fitbit app prototype due to its cross-platform capabilities, as the  code that can be deployed on both iOS and Android devices. Our group members use both kind of devices, and we wanted to ensure that the app would be accessible to all team members during the development process and showcase applicability for both OS's. Additionally, React Native also has an extensive documentation and a large online community, which will be useful for troubleshooting and support since none of our team members had prior experience with mobile app development. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
 
 ### Expo as a Development Platform
 
-Expo is a comprehensive framework for developing React Native applications across iOS, Android, and web platforms. It simplifies the development process by abstracting complex platform-specific details, enabling our team to focus on creating a seamless user experience.
+Expo is a comprehensive framework for developing React Native applications. IT makes the development process easier by abstracting complex platform-specific details, making the developpement of our solution more manageable for our team.
 
 ### Rationale for Selecting Expo
 
