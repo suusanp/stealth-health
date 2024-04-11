@@ -156,7 +156,7 @@ export const saveDailyData = async (data, date) => {
 - **JSON Stringification**: Prior to encryption, the data is stringified to ensure compatibility with the encryption library, as CryptoJS operates on string inputs.
 - **File System Storage**: The Encrypted data is stored in the device's file system, under a directory specific to daily data, to ease future data retrieval.
 - **Using the Date as Filename**: Storing daily data in files named after the date simplifies retrieval and management. It enables straightforward data purging based on retention policies without the need to decrypt files to assess their contents.
-- **Security Implications of Filename Choice**: The use of dates as filenames does not significantly impact security. The critical security measure lies in the encryption of the file's contents. However, a discussion around encrypting filenames could be warranted in contexts where the mere knowledge of a user's activity on specific dates needs concealment.
+- **Security Implications of Filename Choice**: The use of dates as filenames does not significantly impact security. The critical security measure lies in the encryption of the file's contents. However, a discussion around encrypting filenames could be justified in contexts where the mere knowledge of a user's activity on specific dates needs to be hidden.
 - **FileSystem vs. SecureStore**: Data is encrypted and stored in the file system rather than SecureStore due to size limitations and performance considerations. SecureStore is designed for small pieces of data like keys or tokens, while the FileSystem API is optimized for larger data storage and offers more flexibility for managing files.
 
 
@@ -177,10 +177,59 @@ export const getDailyData = async (date) => {
 - **Parsing Decrypted Data**: The decrypted string is parsed back into a JSON object, making it readily usable by the application.
 
 #### Storage of user data amangement preferences and fitness goals
+For storing user preferences regarding data management and fitness goals, our application adopts a pragmatic approach that emphasizes user experience and operational efficiency. Unlike the highly sensitive user data which is encrypted and stored securely, this category of data, while important, does not include personally identifiable information that could compromise user privacy if accessed. Therefore, we have opted not to encrypt this data for several reasons:
+
+- **Rapid Access**: These preferences are frequently accessed and modified within the application's UI. Non-encrypted storage facilitates faster retrieval and updating of these preferences, enhancing the app's performance and user experience.
+- **Simplicity**: By avoiding encryption for this category of data, we reduce the complexity of our data handling processes. This simplification helps in maintaining a cleaner codebase and minimizes potential errors in encryption and decryption operations.
+- **Data Nature**: The nature of this data is such that it does not pose a significant privacy risk. Preferences and goals are generic and do not reveal sensitive personal information.
+
+### Storage Implementation
+
+User preferences and fitness goals are stored in the device's file system. This decision is based on the need for persistent storage that can easily accommodate the structure and size of the data. The following code snippets demonstrate how we manage these preferences:
+
+```javascript
+export const savePreferences = async (preferences) => {
+  const data = JSON.stringify(preferences);
+  await FileSystem.writeAsStringAsync(preferencesFileUri, data);
+};
+
+export const getPreferences = async () => {
+  const fileInfo = await FileSystem.getInfoAsync(preferencesFileUri);
+  if (!fileInfo.exists) {
+    // If no preferences file exists, initialize with default values
+    const defaultPreferences = {};
+    await savePreferences(defaultPreferences);
+    return defaultPreferences;
+  }
+  const data = await FileSystem.readAsStringAsync(preferencesFileUri);
+  return JSON.parse(data);
+};
+
+```
+
+Similarly, user consent flags for data collection are managed through straightforward read/write operations in the file system:
+
+```javascript
+export const saveDataCollectionFlags = async (flags) => {
+  const data = JSON.stringify(flags);
+  await FileSystem.writeAsStringAsync(dataCollectionFlagsUri, data);
+};
+
+export const getDataCollectionFlags = async () => {
+  const fileInfo = await FileSystem.getInfoAsync(dataCollectionFlagsUri);
+  if (!fileInfo.exists) {
+    // Initialize with default flags if the file doesn't exist
+    const defaultFlags = {};
+    await saveDataCollectionFlags(defaultFlags);
+    return defaultFlags;
+  }
+  const data = await FileSystem.readAsStringAsync(dataCollectionFlagsUri);
+  return JSON.parse(data);
+};
 
 
-
-
+```
+We decided not to encrypt user preferences and fitness goals for a simple reason: it keeps the app fast and easy to use. This data isn't as sensitive as health metrics, so we chose a more straightforward approach. However, we're ready to ramp up security if needed. This decision was all about finding the right balance—keeping the app smooth and user-friendly, without painting ourselves into a corner security-wise. We've set things up so we can switch on encryption for this data down the line, should the need arise.
 
 ### Data Analytics and Privacy Implications
   - Overview of algorithms used for health data analysis and their implications on user privacy. explain how we are managing what is computed based on the users data management preferences.
@@ -198,7 +247,7 @@ export const getDailyData = async (date) => {
 ## Conclusions
 - **Summary of Key Findings**: Concise overview of the significant outcomes from this prototype development.
 - **Insights on Privacy Design Strategies Implemented**: Discussion on the application of Minimize, Separate, Abstract, and Hide strategies.
-- **Lessons Learned**: Key takeaways from incorporating privacy-by-design principles in the Fitbit app development process.
+- **Lessons Learned and perspectives**: Key takeaways from incorporating privacy-by-design principles in the Fitbit app development process.
 
 ## Appendix
 - **Technical Specifications and Documentation**: all functions input and outputs.
