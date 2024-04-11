@@ -610,10 +610,41 @@ The Privacy Policy can be accessed at any time from the user's profile settings.
 
 - **Informative UI**: We provide explanations for each health metric computed, so users understand the significance of the data they are providing, and how it is being used to generate insights. When users toggle a metric on or off in the Health Metrics screen, they will see an explanation in the `Available Functionalities` section below of what that metric represents and what it indicates about their health, along with the formula used to calculate each metric. `Available Functionalities` updates in real-time as users toggle them on or off, so they can see the immediate impact of their choices. We implemented this feature to provide instant feedback and information to users about their data choices.
 
+
 ## Conclusions
-- **Summary of Key Findings**: Concise overview of the significant outcomes from this prototype development.
-- **Insights on Privacy Design Strategies Implemented**: Discussion on the application of Minimize, Separate, Abstract, and Hide strategies.
-- **Lessons Learned and perspectives**: Key takeaways from incorporating privacy-by-design principles in the Fitbit app development process.
+- **Summary of Key Findings**: 
+ 
+ - Our research on FitBit and similar health and fitness wearables and applications demonstrated significant privacy concerns, and a lack of transparency. Our app Stealth Health was meant to address those privacy shortcomings while also keeping the core functionalities of the fitness applications. 
+
+ - Our successful development of this prototype demonstrated that it is possible to have a privacy focused fitness app, if one considers privacy to be one of the core requirements of the application from the start. By using React Native and Expo, our team was able to develop a working prototype of Stealth Health under a few months, which proves privacy by design is possible, and does not need to be technically complicated. 
+
+ - By combining local data storage, encryption by Expo's SecureStore and Crypto libraries, and authentication by Face ID and Phone Password, we were able to ensure that user's sensitive health information remains secure all the time, at rest, and during data processing. 
+
+ - Our focus on user's informed consent allowed us to write and demonstrate our transparent Privacy Policy and Terms of Services. Giving back the control to the user by allowing them to transparently choose which health metrics they want to be tracked, and their data retention period proved that privacy and funcationality does not have to be a zero-sum game. 
+
+
+- **Insights on Privacy Design Strategies Implemented**: 
+
+  - We ensured data minimization at every step of Stealth Health, and only the absolute necessary user data is collected. There is no need for the user to create an account, and Stealth Health does not even collect the user's name or email. Every user data the app asks for is optional, and app is fully functional if the user chooses to not provide any data. Stealth Health uses an "opt-in" approach, the default settings for everything is to not be collected, and the user has to explicitly give permission.
+
+  - We ensured data seperation by storing different data types (personal info, daily data, preferences) in dedicated, logically separated locations, therefore preventing any possible data aggregation.
+
+  - We used Abstract strategy as much as possible, for example asking the user's Age Range instead of their exact Age, and not tracking their location to calculate their daily distance, and instead relying on their step count and height to deduce the distance. 
+
+  - Hide strategy was used to store the user data securely, by storing the encrypted data in secure local storage. All the sensitive data was encrypted by default. Further privacy was ensured by user authentication. 
+
+  - User was informed about every single data we are tracking and every single metric we are calculating, compplying with the Inform strategy.
+
+  - User was given the choice to control all of their preferences, from for how long they want to keep their data, to what data they allow the application to collect. User was also given the clear choice of deleting all of their data at any given time. 
+
+- **Lessons Learned and perspectives**: 
+  
+  - Stealth Health of course has some limitations, as we were not able to implement some of the features of FitBit and similar health devices, which rely on constant user data stream and advanced sensors. However, we were still able to keep the most important features of any such application, and also were able to provide a simulation of how syncying a FitBit device would work on Stealth Health, if we had access to the FitBit API. 
+
+  - As we progressed through the implementation of our project, we further realized the importance of commiting to privacy-by-design principles from the very start of a project, as that choice we commited to set the whole implementation route. We also realized it is much harder to try to add a privacy-enhancing function to an existing application, than it is to develop a brand-new application focused on privacy by default. 
+
+  - We realized the importance of informing the user, especially while we were writing our Privacy Policy and Terms of Services, as writing them forced us to critically think of every data collection choice we made. Our implementation of a privacy focused user set up pages enhanced transparency and trust.
+
 
 ## Appendix
 - **How to Run the App**:
@@ -627,6 +658,8 @@ The Privacy Policy can be accessed at any time from the user's profile settings.
   - npx expo start
 
   If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
+
+  If the commands ran successfully, you will see a QR code being created. Scan the QR code by your phone that has "Expo Go" installed, and open the link in Expo Go. You will be able to interact with the app through the Expo Go application, as you would interact with any app. 
 
 - **Screenshot and details of every page of the app**: 
   
