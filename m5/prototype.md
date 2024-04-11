@@ -444,18 +444,18 @@ Jeffrey
 - **Lessons Learned and perspectives**: Key takeaways from incorporating privacy-by-design principles in the Fitbit app development process.
 
 ## Appendix
+- ** How to Run the App:
+  You must have these following requirements:
+  Latest version of the Node.js: https://nodejs.org/ installed
+  - Yarn: https://yarnpkg.com/ or npm: https://www.npmjs.com/ installed
+  - EXPO installed, (https://expo.dev/) by running `npm install -g expo-cli`
+
+  After these requirements are met, you can clone the codebase, get to your local cloned project directory, and run:
+  npm install
+  expo start
+
+  If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
 - **Screenshot and details of every page of the app.**: 
 - **Technical Specifications and Documentation**: all functions input and outputs.
-- ** How to Run the App:
-You must have these following requirements:
-- Latest version of the Node.js: https://nodejs.org/ installed
-- Yarn: https://yarnpkg.com/ or npm: https://www.npmjs.com/ installed
-- EXPO installed, (https://expo.dev/) by running `npm install -g expo-cli`
-
-After these requirements are met, you can clone the codebase, get to your local cloned project directory, and run:
-npm install
-expo start
-
-If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
 - **Sources**: 
 
