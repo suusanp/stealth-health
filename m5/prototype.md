@@ -78,7 +78,7 @@ Sensitive data is encrypted and stored locally to prevent malicious access. Dail
 #### Choosing the Right Storage Solution
 
 When selecting a storage solution for our application, we evaluated various options. We first looked at expo SQLite library for its easy use. The issue with it is that the database would be queried thorugh a Webbased-api, going against our principle of having a non server stored database,due to the inherent risks of server-side data breaches and unauthorized access.
-Furthermore, we were concerned by SQLite due to its limited support for built-in encryption. Ensuring the privacy and security of user data is paramount in our application; thus, we sought a solution that offered robust encryption capabilities out of the box. The need for encryption is not just about protecting data if the device is lost or compromised; it's about ensuring that data remains private and secure from any unauthorized access, intentional or accidental.
+Furthermore, we were concerned by SQLite due to its limited support for built-in encryption. Ensuring the privacy and security of user data is paramount in our application; thus, we sought a solution that offered robust encryption capabilities out of the box.
 
 #### SecureStore for Sensitive Permanent and Semi-Permanent Information
 
