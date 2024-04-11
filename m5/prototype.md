@@ -3,8 +3,10 @@
 ## Introduction
 ### **Overview of the system**: 
 Stealth Health is a health and fitness application that aims to provide privacy-focused health tracking and analytics to users. The system is designed to collect and analyze user health data while prioritizing user privacy and data security. The Stealth Health system includes features such as activity tracking, heart rate monitoring, sleep analysis, and water intake monitoring. The system also allows users to set fitness goals and track their progress while ensuring that users have full control over their data and can make informed decisions about its use. 
+Stealth Health is a health and fitness application that aims to provide privacy-focused health tracking and analytics to users. The system is designed to collect and analyze user health data while prioritizing user privacy and data security. The Stealth Health system includes features such as activity tracking, heart rate monitoring, sleep analysis, and water intake monitoring. The system also allows users to set fitness goals and track their progress while ensuring that users have full control over their data and can make informed decisions about its use. 
 
 ### **Purpose and Scope**: 
+The development of the Fitbit app prototype serves as a proof of concept for a more privacy-centric approach to personal health and fitness monitoring. Our scope is to demonstrate the feasibility of securely managing health data whilst providing users with insightful analytics on their physical activities and health metrics. 
 The development of the Fitbit app prototype serves as a proof of concept for a more privacy-centric approach to personal health and fitness monitoring. Our scope is to demonstrate the feasibility of securely managing health data whilst providing users with insightful analytics on their physical activities and health metrics. 
 
 ## Research Method
@@ -20,6 +22,7 @@ The development of the Fitbit app prototype serves as a proof of concept for a m
 ### Rationale for Selecting React Native
 
 We chose React Native for our Fitbit app prototype due to its cross-platform capabilities [^1], as the  code that can be deployed on both iOS and Android devices. Our group members use both kind of devices, and we wanted to ensure that the app would be accessible to all team members during the development process and showcase applicability for both OS's. Additionally, React Native also has an extensive documentation and a large online community, which will be useful for troubleshooting and support since none of our team members had prior experience with mobile app development [^2]. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
+We chose React Native for our Fitbit app prototype due to its cross-platform capabilities [^1], as the  code that can be deployed on both iOS and Android devices. Our group members use both kind of devices, and we wanted to ensure that the app would be accessible to all team members during the development process and showcase applicability for both OS's. Additionally, React Native also has an extensive documentation and a large online community, which will be useful for troubleshooting and support since none of our team members had prior experience with mobile app development [^2]. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
 
 
 
@@ -29,26 +32,37 @@ Expo is a comprehensive framework for developing React Native applications. We p
 - Expo provides libraries we found useful for our app, such as `SecureStore`[^3] for secure data storage and `LocalAuthentication`[^4] for biometric authentication. 
 - It is open-source with a large community of developers, which we found helpful as beginners to mobile app development.[^5]
 - It is a test-friendly platform; We each downloaded the Expo Go app, which allows us to preview the app on real devices during development.
+Expo is a comprehensive framework for developing React Native applications. We picked it for the following reasons:
+- Expo provides libraries we found useful for our app, such as `SecureStore`[^3] for secure data storage and `LocalAuthentication`[^4] for biometric authentication. 
+- It is open-source with a large community of developers, which we found helpful as beginners to mobile app development.[^5]
+- It is a test-friendly platform; We each downloaded the Expo Go app, which allows us to preview the app on real devices during development.
 
 #### Evaluation of Expo's Privacy Policies and Open-Source Nature
 
 Expo seems to be commited to privacy, on its website it showcases its GDPR, CCPA, and Privacy Shield compliance, it says to be responsibly handling both developer and end-user data. We read through their Privacy Policy, updated on June 22nd, 2022, and their further explained privacy exposition dated February 7th, 2020.
+Expo seems to be commited to privacy, on its website it showcases its GDPR, CCPA, and Privacy Shield compliance, it says to be responsibly handling both developer and end-user data. We read through their Privacy Policy, updated on June 22nd, 2022, and their further explained privacy exposition dated February 7th, 2020.
 
+- **Data Collection and Use**: "When you create an account on Expo or use our tools and services, we collect data including your name, email, and, if you enable paid services, your billing information... This data helps us make decisions about our products and services, in addition to allowing us to deliver satisfactory user experiences." (Expo, Privacy Policy [^6])
 - **Data Collection and Use**: "When you create an account on Expo or use our tools and services, we collect data including your name, email, and, if you enable paid services, your billing information... This data helps us make decisions about our products and services, in addition to allowing us to deliver satisfactory user experiences." (Expo, Privacy Policy [^6])
 
 - **Data Processor and Controller Roles**: "When a developer uses Expo's services to create an app and distributes it to their users (end-users), we become a data processor because we process end-user data on behalf of the developer." (Expo, Privacy Explained [^7])
+- **Data Processor and Controller Roles**: "When a developer uses Expo's services to create an app and distributes it to their users (end-users), we become a data processor because we process end-user data on behalf of the developer." (Expo, Privacy Explained [^7])
 
+- **End-User Data Minimalism**: "When end-users use apps built by Expo, we collect very little end-user data. The data we may collect includes the end-user's push token... These requests do not contain identifying information such as unique device identifiers." (Expo, Privacy Explained [^7])
 - **End-User Data Minimalism**: "When end-users use apps built by Expo, we collect very little end-user data. The data we may collect includes the end-user's push token... These requests do not contain identifying information such as unique device identifiers." (Expo, Privacy Explained [^7])
 
 - **Security and Compliance**: The explicit statement is that Expo is "GDPR-, CCPA-, and Privacy Shield-compliant" in all scenarios which is a good indicator for a robust framework for privacy and data protection.
+- **Security and Compliance**: The explicit statement is that Expo is "GDPR-, CCPA-, and Privacy Shield-compliant" in all scenarios which is a good indicator for a robust framework for privacy and data protection.
 
 #### Open-Source Contribution
+Expo's open-source ecosystem is important, it offers transparency and community engagement that is important for our project baseline. 
 Expo's open-source ecosystem is important, it offers transparency and community engagement that is important for our project baseline. 
 
 ### Database Structure and Data Encryption
 
 #### What Type of Data We Collect and How It Is Organized
 
+In our application, user data is categorized into three distinct types: Sensitive Data, Daily Data, and User Preferences and Goals. We also incorporate user consent flags for data collection and offer customizable data retention periods.
 In our application, user data is categorized into three distinct types: Sensitive Data, Daily Data, and User Preferences and Goals. We also incorporate user consent flags for data collection and offer customizable data retention periods.
 
 - **Sensitive Data**: Securely stored using Expo's `SecureStore` and encrypted with `Crypto`, this category includes:
@@ -73,6 +87,7 @@ In our application, user data is categorized into three distinct types: Sensitiv
   - Data Collection Flags: Boolean flags to indicate the user's consent for collecting specific metrics (`dailySteps`, `heartRate`, `bloodPressure`, `sleepPatterns`, `waterIntake`, `activityTracking`).
   - Data Retention Period: The duration for which the user wishes to retain their data, ranging from "3 Days" to "1 Year".
 
+Sensitive data is encrypted and stored locally to prevent malicious access. Daily data collection is mapped on the users' data collection consent, users can control what information will be prompted from them. User preferences, including goals and data retention settings, are customizable at all times, allowing them to define their interaction with the app and how long their data is stored.
 Sensitive data is encrypted and stored locally to prevent malicious access. Daily data collection is mapped on the users' data collection consent, users can control what information will be prompted from them. User preferences, including goals and data retention settings, are customizable at all times, allowing them to define their interaction with the app and how long their data is stored.
 
 #### Choosing the Right Storage Solution
@@ -153,7 +168,28 @@ export const saveDailyData = async (data, date) => {
 };
 ```
 - **JSON Stringification**: Before encryption, the data is stringified to ensure compatibility with the encryption library, as CryptoJS operates on string inputs.
+- **JSON Stringification**: Before encryption, the data is stringified to ensure compatibility with the encryption library, as CryptoJS operates on string inputs.
 - **File System Storage**: The Encrypted data is stored in the device's file system, under a directory specific to daily data, to ease future data retrieval.
+- **Using the Date as Filename**: Storing daily data in files named after the date simplifies retrieval and management. It enables straightforward data purging based on retention policies without the need to decrypt files to assess their contents.
+- **Security Implications of Filename Choice**: The use of dates as filenames does not significantly impact security. The critical security measure lies in the encryption of the file's contents. However, a discussion around encrypting filenames could be justified in contexts where the mere knowledge of a user's activity on specific dates needs to be hidden.
+- **FileSystem vs. SecureStore**: Data is encrypted and stored in the file system rather than SecureStore due to size limitations and performance considerations. SecureStore is designed for small pieces of data like keys or tokens, while the FileSystem API is optimized for larger data storage and offers more flexibility for managing files.
+
+
+Retrieving and decrypting daily data process: 
+```javascript
+export const getDailyData = async (date) => {
+    const encryptionKey = await getEncryptionKey();
+    const filePath = dailyDataDirectory + `${date}.json`;
+    const encryptedData = await FileSystem.readAsStringAsync(filePath);
+    const bytes = CryptoJS.AES.decrypt(encryptedData, encryptionKey);
+    const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+    return decryptedData;
+};
+```
+- **Secure Key Retrieval**: The encryption key is fetched securely from expo-secure-store for use in the decryption process.
+- **Decryption Process**: CryptoJS's AES.decrypt method is used to decrypt the data. This step requires the same key used for encryption, ensuring that only authorized users can access the data.
+- **Parsing Decrypted Data**: The decrypted string is parsed back into a JSON object, making it readily usable by the application.
 - **Using the Date as Filename**: Storing daily data in files named after the date simplifies retrieval and management. It enables straightforward data purging based on retention policies without the need to decrypt files to assess their contents.
 - **Security Implications of Filename Choice**: The use of dates as filenames does not significantly impact security. The critical security measure lies in the encryption of the file's contents. However, a discussion around encrypting filenames could be justified in contexts where the mere knowledge of a user's activity on specific dates needs to be hidden.
 - **FileSystem vs. SecureStore**: Data is encrypted and stored in the file system rather than SecureStore due to size limitations and performance considerations. SecureStore is designed for small pieces of data like keys or tokens, while the FileSystem API is optimized for larger data storage and offers more flexibility for managing files.
@@ -229,8 +265,110 @@ export const getDataCollectionFlags = async () => {
 
 ```
 We decided not to encrypt user preferences and fitness goals for a simple reason: it keeps the app fast and easy to use. This data isn't as sensitive as health metrics, so we chose a more straightforward approach. However, we're ready to ramp up security if needed. This decision was all about finding the right balance—keeping the app smooth and user-friendly, without painting ourselves into a corner security-wise. We've set things up so we can switch on encryption for this data down the line, should the need arise.
+#### Storage of user data management preferences and fitness goals
+For storing user preferences regarding data management and fitness goals, our application adopts a pragmatic approach that emphasizes user experience and operational efficiency. Unlike the highly sensitive user data which is encrypted and stored securely, this category of data, while important, does not include personally identifiable information that could compromise user privacy if accessed. Therefore, we have opted not to encrypt this data for several reasons:
+
+- **Rapid Access**: These preferences are frequently accessed and modified within the application's UI. Non-encrypted storage facilitates faster retrieval and updating of these preferences, enhancing the app's performance and user experience.
+- **Simplicity**: By avoiding encryption for this category of data, we reduce the complexity of our data handling processes. This simplification helps in maintaining a cleaner codebase and minimizes potential errors in encryption and decryption operations.
+- **Data Nature**: The nature of this data is such that it does not pose a significant privacy risk. Preferences and goals are generic and do not reveal sensitive personal information.
+
+### Storage Implementation
+
+User preferences and fitness goals are stored in the device's file system. This decision is based on the need for persistent storage that can easily accommodate the structure and size of the data. The following code snippets demonstrate how we manage these preferences:
+
+```javascript
+export const savePreferences = async (preferences) => {
+  const data = JSON.stringify(preferences);
+  await FileSystem.writeAsStringAsync(preferencesFileUri, data);
+};
+
+export const getPreferences = async () => {
+  const fileInfo = await FileSystem.getInfoAsync(preferencesFileUri);
+  if (!fileInfo.exists) {
+    // If no preferences file exists, initialize with default values
+    const defaultPreferences = {};
+    await savePreferences(defaultPreferences);
+    return defaultPreferences;
+  }
+  const data = await FileSystem.readAsStringAsync(preferencesFileUri);
+  return JSON.parse(data);
+};
+
+```
+
+Similarly, user consent flags for data collection are managed through straightforward read/write operations in the file system:
+
+```javascript
+export const saveDataCollectionFlags = async (flags) => {
+  const data = JSON.stringify(flags);
+  await FileSystem.writeAsStringAsync(dataCollectionFlagsUri, data);
+};
+
+export const getDataCollectionFlags = async () => {
+  const fileInfo = await FileSystem.getInfoAsync(dataCollectionFlagsUri);
+  if (!fileInfo.exists) {
+    // Initialize with default flags if the file doesn't exist
+    const defaultFlags = {};
+    await saveDataCollectionFlags(defaultFlags);
+    return defaultFlags;
+  }
+  const data = await FileSystem.readAsStringAsync(dataCollectionFlagsUri);
+  return JSON.parse(data);
+};
+
+
+```
+We decided not to encrypt user preferences and fitness goals for a simple reason: it keeps the app fast and easy to use. This data isn't as sensitive as health metrics, so we chose a more straightforward approach. However, we're ready to ramp up security if needed. This decision was all about finding the right balance—keeping the app smooth and user-friendly, without painting ourselves into a corner security-wise. We've set things up so we can switch on encryption for this data down the line, should the need arise.
 
 ### Data Analytics and Privacy Implications
+
+#### **Algorithms for Health Data Analysis**:
+   - **BMI (Body Mass Index) Calculation**: This algorithm calculates BMI based on the user's weight (in kilograms) divided by the square of their height (in meters). It provides an estimate of body fatness.
+   - **BMR (Basal Metabolic Rate) Calculation**: BMR is calculated using formulas such as the Harris-Benedict equation, taking into account factors like weight, height, age, and gender. It estimates the number of calories burned at rest.
+   - **Distance Walked Estimation**: This algorithm estimates the distance walked based on the number of daily steps taken, the user's height, and gender-specific stride lengths. 
+   - **Calories Burned Calculation**: Calories burned are calculated based on activities performed, their durations, MET (Metabolic Equivalent of Task) values, and the user's weight.
+   - **Hydration Level Estimation**: This algorithm estimates hydration levels by comparing actual water intake against recommended levels, considering factors like weight, exercise hours, and activity intensity.
+   - **Stress Level Indication**: Stress levels are assessed based on heart rate variability, sleep patterns, and activity levels. Elevated heart rates and disrupted sleep can indicate increased stress.
+   - **Health Risk Indicator**: This algorithm evaluates health risks like hypertension and type 2 diabetes based on BMI and blood pressure readings, incorporating medical guidelines to identify risk levels.
+
+#### **On Privacy Implications of Data Analytics**:
+   - User data preferences directly impact user privacy by influencing the scope and depth of health data collection and analysis. The more data points collected, the more comprehensive the health insights generated, but this also raises privacy concerns. Thus, we give users granular control over data collection to ensure their privacy preferences are respected.
+   - Respecting user preferences ensures that the application only processes and computes metrics based on the data explicitly permitted by the user. This is done to reduce privacy risks associated with unauthorized data usage.
+   - Metrics that are not enabled by the user are not computed, and will not be rendered in the app's interface.
+   - For example, if a user opts not to enter their weight, the BMI calculation will not be performed, ensuring that no health insights are generated without the user's explicit consent.
+
+#### **Logic for Computing Metrics based on User Data**:
+The logic for computing metrics in the provided code involves several key steps and considerations, all of which are designed to ensure that only relevant metrics are computed based on user preferences. 
+
+- **Data Availability Check:** Before computing any metrics, the code checks the availability of essential data which are crucial for various health computations. If any of these data points are missing due to user preferences, the algorithm skips the computation of related metrics. 
+
+  - Example: In the computeAndStoreMetrics function, there are checks like if (!dailyData || !personalInfo || !encryptionKey) to ensure that necessary data for computation, such as daily data, personal information, and encryption keys, are available.
+
+- **User Preference Validation:** The code verifies user preferences to determine which metrics should be computed based on what the user has opted to track or monitor.
+
+  - Example: In the HealthMetrics component, each metric (e.g., daily steps, heart rate) is associated with a switch that users can toggle on or off. The toggleSwitch function is called when a user toggles a switch, updating the corresponding metric state. For instance:
+    ```javascript
+      const toggleSwitch = async (metric) => {
+      const updatedMetrics = { ...metrics, [metric]: !metrics[metric] };
+      await saveDataCollectionFlags(updatedMetrics);
+      setMetrics(updatedMetrics);
+    };
+    ```
+    This function toggles the state of a metric based on user input, ensuring that only metrics with toggled switches are considered for computation.
+    
+- **Conditional Metric Computation:** Metrics are computed conditionally based on whether the necessary data is available and the corresponding user preference is enabled.
+
+  - Example: In the computeAndStoreMetrics function, there are conditional computations like calculating BMI, BMR, calories burned from steps, hydration level, stress level, etc., only if the required data and user preferences indicate tracking those metrics.
+
+- **Dynamic Functionalities Based on Preferences:** The code dynamically determines available functionalities based on user preferences and computed metrics, providing explanations for each functionality.
+
+  - Example: The computeAvailableFunctionalities function generates an array of available functionalities and their explanations based on the metrics that users have enabled. This array is used to render functionalities in the app's interface as users toggle switches on or off, to provide them with information on how each metric is computed.
+
+
+
+
+### User Interface Design and Data Input
+Our application is designed to offer users flexibility in how they synchronize their health data. Currently, we provide manual data input functionality, with future plans to integrate automatic sync options like Fitbit. This approach is due to the current limitation of accessing developer-specific features from external APIs.
 
 #### **Algorithms for Health Data Analysis**:
    - **BMI (Body Mass Index) Calculation**: This algorithm calculates BMI based on the user's weight (in kilograms) divided by the square of their height (in meters). It provides an estimate of body fatness.
@@ -435,14 +573,124 @@ Jeffrey
 
 ### Authentication and Data Protection
   - Use of biometric authentication (Expo LocalAuthentication) for data protection and the measures taken to secure user data access. Jeffrey
+  - Use of biometric authentication (Expo LocalAuthentication) for data protection and the measures taken to secure user data access. Jeffrey
 
 
 ## Conclusions
 - **Summary of Key Findings**: Concise overview of the significant outcomes from this prototype development.
 - **Insights on Privacy Design Strategies Implemented**: Discussion on the application of Minimize, Separate, Abstract, and Hide strategies.
 - **Lessons Learned and perspectives**: Key takeaways from incorporating privacy-by-design principles in the Fitbit app development process.
+- **Lessons Learned and perspectives**: Key takeaways from incorporating privacy-by-design principles in the Fitbit app development process.
 
 ## Appendix
+- **How to Run the App**:
+  You must have these following requirements:
+  - Latest version of the Node.js: https://nodejs.org/ installed
+  - Yarn: https://yarnpkg.com/ or npm: https://www.npmjs.com/ installed
+  - EXPO installed, (https://expo.dev/) by running `npm install -g expo-cli`
+
+  After these requirements are met, you can clone the codebase, get to your local cloned project directory, and run:
+  - npm install
+  - expo start
+
+  If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
+
+- **Screenshot and details of every page of the app**: 
+  - Authenticate.js screen, under the screens directory:
+
+    <img src="Authenticate.PNG" title="Authenticate.js screen" width="200"/>
+    <img src="Authenticate1.PNG" title="Authenticate.js screen" width="200"/>
+
+  - IntroPage.js screen, under the screens/privacyPolicies directory:
+
+    <img src="IntroPage.PNG" title="IntroPage.js screen" width="200"/>
+
+  - IntroPolicy.js screen, under the screens/privacyPolicies directory:
+
+    <img src="IntroPage.PNG" title="IntroPolicy.js screen" width="200"/>
+
+  - PrivacyPolicySimplified.js screen, under the screens/privacyPolicies directory:
+
+     <img src="PrivacyPolicySimplified.PNG" title="PrivacyPolicySimplified.js screen" width="200"/>
+
+  - UserProfileData.js screen, under the screens directory:
+    
+    <img src="UserProfileData.PNG" title="UserProfileData.js screen" width="200"/>
+
+  - HealthMetrics.js screen, under the screens directory:
+
+    <img src="HealthMetrics.PNG" title="HealthMetrics.js screen" width="200"/>
+
+  - SetupAuth.js screen, under the screens directory:
+
+    <img src="SetupAuth.PNG" title="SetupAuth.js screen" width="200"/>
+
+  - DataManagement.js screen, under the backend directory:
+   
+    <img src="DataManagement.PNG" title="DataManagement.js screen" width="200"/>
+    
+  - TermsOfServicePopup.js screen, under the screens directory:
+
+    <img src="TermsOfServicePopup.PNG" title="TermsOfServicePopup.js screen" width="200"/>
+
+  - LandingPage.js screen, under the screens directory:
+  
+    <img src="LandingPage.PNG" title="LandingPage.js screen" width="200"/>
+
+  - PersonalPage.js screen, under the screens directory:
+  
+    <img src="PersonalPage.PNG" title="PersonalPage.js screen" width="200"/>
+
+  - PersonalPage.js screen, under the screens directory:
+  
+    <img src="PersonalPage1.PNG" title="PersonalPage1.js screen" width="200"/>
+
+  - PrivacyPolicyText.js screen, under the screens/privacyPolicies directory:
+  
+    <img src="PrivacyPolicyText.PNG" title="PrivacyPolicyText.js screen" width="200"/>
+
+  - ProfileManage.js screen, under the screens directory:
+  
+    <img src="ProfileManage.PNG" title="ProfileManage.js screen" width="200"/>
+
+  - UserGoalsPage.js screen, under the screens directory:
+  
+    <img src="UserGoalsPage.PNG" title="UserGoalsPage.js screen" width="200"/>
+
+  - SyncPage.js screen, under the screens directory:
+  
+    <img src="SyncPage.PNG" title="SyncPage.js screen" width="200"/>
+  
+  - ManualInputPage.js screen, under the screens directory:
+  
+    <img src="ManualInputPage.PNG" title="ManualInputPage.js screen" width="200"/>
+
+  - WatchInputPage.js screen, under the screens directory:
+  
+    <img src="WatchInputPage.PNG" title="WatchInputPage.js screen" width="200"/>
+
+- **Technical Specifications and Documentation**: 
+  All functions inputs and outputs, as well as more descriptive inline comments can be found in the codebase. 
+
+  
+- **Sources**: 
+## Footnotes
+[^1]: React native documentation: [React native elements](https://reactnativeelements.com/docs)
+[^2]: Stack exchange questions pertaining to React-Native ( over 9000 results): [questions tagged react native](https://stackoverflow.com/questions/tagged/react-native)
+[^3]: Expo Documentation: [Secure Store](https://docs.expo.dev/versions/latest/sdk/securestore/)
+[^4]: Expo Documentation: [Local Authentification](https://docs.expo.dev/versions/latest/sdk/local-authentication/)
+[^5]: Expo FAQ: [expo is open source](https://docs.expo.dev/faq/)
+[^6]: Expo Documentation: [Privacy policy](https://expo.dev/privacy)
+[^7]: Expo Documentation: [Privacy explained](https://expo.dev/privacy-explained)
+[^8]: American Heart Association. "Target Heart Rates Chart." [Link to AHA Heart Rates](https://www.heart.org/en/healthy-living/fitness/fitness-basics/target-heart-rates)
+[^9]: Centers for Disease Control and Prevention (CDC). "About Adult BMI." [Link to CDC BMI](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)
+[^10]: Mifflin, M.D., St Jeor, S.T., Hill, L.A., Scott, B.J., Daugherty, S.A., & Koh, Y.O. (1990). "A new predictive equation for resting energy expenditure in healthy individuals." The American Journal of Clinical Nutrition, 51(2), 241-247. [AJCN](https://academic.oup.com/ajcn/article-abstract/51/2/241/4695347)
+[^11]: Sally Edwards. "The Heart Rate Monitor Book." Offers an in-depth guide to understanding and using heart rate monitors for training.[link](https://archive.org/details/heartratemonitor00edwa)
+[^12]: Water Intake Formula: Based on general hydration guidelines from health organizations, such as the National Academies of Sciences, Engineering, and Medicine's recommendation on [Daily Water Intake](https://www.nap.edu/read/10925/chapter/1)
+[^13]: Gadgetbridge: (https://gadgetbridge.org/)
+[^14]: FitoTrack: (https://play.google.com/store/apps/details?id=de.tadris.fitness&hl=en_CA&gl=US&pli=1)
+[^15]: After analysis of the [Fitbit API](https://dev.fitbit.com/build/reference/), we found that there were [several red flags](https://dev.fitbit.com/getting-started/) when trying to access their API. Developers need to create a Google account to access the API and link the Fitbit service to their account. Developers also need to download the Fitbit app on their phone and own a Fitbit device. To access the full developer suite, we also had to accept the [Fitbit Platform Terms of Service](https://dev.fitbit.com/legal/platform-terms-of-service/) and the [Fitbit App Distribution Agreement](https://dev.fitbit.com/legal/app-distribution-agreement/). We found in the first that "Fitbit may monitor your usage of the Fitbit APIs in order to improve the Fitbit Platform and to ensure compliance with our policies and applicable laws and regulations". In the App Distribution Agreement, we found that "Fitbit may collect and use certain logs, analytics, usage statistics, and other data from the Fitbit Products regarding usage of your App as described in the Fitbit Privacy Policy". All in all, we found this counterintuitive to our goal of maintaining our privacy and that of our stakeholders. 
+
 - **How to Run the App**:
   You must have these following requirements:
   - Latest version of the Node.js: https://nodejs.org/ installed

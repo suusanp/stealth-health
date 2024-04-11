@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 import * as SecureStore from 'expo-secure-store';
 
+//Users Goals Page
 const UserGoalsPage = () => {
   const navigation = useNavigation();
   const [dailySteps, setDailySteps] = useState('');
@@ -11,6 +12,7 @@ const UserGoalsPage = () => {
   const [dailyCalories, setDailyCalories] = useState('');
 
   useEffect(() => {
+    // Loads the users data from the secure storage 
     const loadData = async () => {
       try {
         const steps = await SecureStore.getItemAsync('dailySteps');
@@ -28,6 +30,7 @@ const UserGoalsPage = () => {
   }, []);
 
   useEffect(() => {
+    //saves the dailySteps goal if the value changes
     if (dailySteps) {
       SecureStore.setItemAsync('dailySteps', dailySteps).catch(e => console.log(e));
     }
@@ -35,12 +38,14 @@ const UserGoalsPage = () => {
 
   useEffect(() => {
     if (dailyDistance) {
+      //saves the dailyDistance goal if the value changes
       SecureStore.setItemAsync('dailyDistance', dailyDistance).catch(e => console.log(e));
     }
   }, [dailyDistance]);
 
   useEffect(() => {
     if (dailyCalories) {
+      //saves the dailyCalories goal if the value changes
       SecureStore.setItemAsync('dailyCalories', dailyCalories).catch(e => console.log(e));
     }
   }, [dailyCalories]);
