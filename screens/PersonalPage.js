@@ -99,6 +99,7 @@ const DataManagementScreen = ({ navigation }) => {
     }
   };
 
+  // Data retention options
 
   const DataRetentionOptions = [
     '3 Days', '1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year',
@@ -133,7 +134,7 @@ const DataManagementScreen = ({ navigation }) => {
   };
 
 
-  // Modal for the privacy policy
+  // Modal settings for the privacy policy
   const [modalVisible, setModalVisible] = useState(false);
 
 
@@ -145,7 +146,7 @@ const DataManagementScreen = ({ navigation }) => {
     setModalVisible(false);
   };
 
-  // Modal for the importance of the data retention period
+  // Modal settings for the Data Retention disclaimer
   const [importantModalVisible, setImportantModalVisible] = useState(false);
 
   const openImportantModal = () => {
@@ -282,7 +283,10 @@ const DataManagementScreen = ({ navigation }) => {
           trackColor={{ false: "#767577", true: "#4B9CD3" }}
           thumbColor={notificationsEnabled ? "#f5dd4b" : "#f4f3f4"}
         />
-        <TouchableOpacity onPress={() => setImportantModalVisible(true)}>
+
+        {/* Button to toggle data retention disclaimer modal */}
+
+        <TouchableOpacity onPress={() => openImportantModal}>
           <Text style={styles.important}>Why this is important for privacy</Text>
         </TouchableOpacity>
         <Modal
@@ -351,6 +355,9 @@ const DataManagementScreen = ({ navigation }) => {
           }}>
           <Text style={styles.modifyAuthButtonText}>Authentication Settings</Text>
         </TouchableOpacity>
+
+        {/* Button to toggle Privacy Policy and ToS modal */}
+
         <TouchableOpacity
           activeOpacity={0.6}
           style={styles.privacyPolicyButton}
