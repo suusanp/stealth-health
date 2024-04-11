@@ -621,7 +621,6 @@ Jeffrey
   All functions inputs and outputs, as well as more descriptive inline comments can be found in the codebase. 
 
   
-- **Sources**: 
 ## Footnotes
 [^1]: React native documentation: [React native elements](https://reactnativeelements.com/docs)
 [^2]: Stack exchange questions pertaining to React-Native ( over 9000 results): [questions tagged react native](https://stackoverflow.com/questions/tagged/react-native)
@@ -639,35 +638,4 @@ Jeffrey
 [^14]: FitoTrack: (https://play.google.com/store/apps/details?id=de.tadris.fitness&hl=en_CA&gl=US&pli=1)
 [^15]: After analysis of the [Fitbit API](https://dev.fitbit.com/build/reference/), we found that there were [several red flags](https://dev.fitbit.com/getting-started/) when trying to access their API. Developers need to create a Google account to access the API and link the Fitbit service to their account. Developers also need to download the Fitbit app on their phone and own a Fitbit device. To access the full developer suite, we also had to accept the [Fitbit Platform Terms of Service](https://dev.fitbit.com/legal/platform-terms-of-service/) and the [Fitbit App Distribution Agreement](https://dev.fitbit.com/legal/app-distribution-agreement/). We found in the first that "Fitbit may monitor your usage of the Fitbit APIs in order to improve the Fitbit Platform and to ensure compliance with our policies and applicable laws and regulations". In the App Distribution Agreement, we found that "Fitbit may collect and use certain logs, analytics, usage statistics, and other data from the Fitbit Products regarding usage of your App as described in the Fitbit Privacy Policy". All in all, we found this counterintuitive to our goal of maintaining our privacy and that of our stakeholders. 
 
-- **How to Run the App**:
-  You must have these following requirements:
-  - Latest version of the Node.js: https://nodejs.org/ installed
-  - Yarn: https://yarnpkg.com/ or npm: https://www.npmjs.com/ installed
-  - EXPO installed, (https://expo.dev/) by running `npm install -g expo-cli`
-
-  After these requirements are met, you can clone the codebase, get to your local cloned project directory, and run:
-  - npm install
-  - expo start
-
-  If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
-
-- **Screenshot and details of every page of the app.**: 
-  - Authenticate.js Screen:
-    <img src="Authenticate.PNG" title="Authenticate.js Screen" width="100"/>
-- **Technical Specifications and Documentation**: all functions input and outputs.
-## Footnotes
-[^1]: React native documentation: [React native elements](https://reactnativeelements.com/docs)
-[^2]: Stack exchange questions pertaining to React-Native ( over 9000 results): [questions tagged react native](https://stackoverflow.com/questions/tagged/react-native)
-[^3]: Expo Documentation: [Secure Store](https://docs.expo.dev/versions/latest/sdk/securestore/)
-[^4]: Expo Documentation: [Local Authentification](https://docs.expo.dev/versions/latest/sdk/local-authentication/)
-[^5]: Expo FAQ: [expo is open source](https://docs.expo.dev/faq/)
-[^6]: Expo Documentation: [Privacy policy](https://expo.dev/privacy)
-[^7]: Expo Documentation: [Privacy explained](https://expo.dev/privacy-explained)
-[^8]: Expo Documentation: [SQL lite](https://docs.expo.dev/versions/latest/sdk/sqlite/)
-[^9]: Expo Documentation: [Crypto](https://docs.expo.dev/versions/latest/sdk/crypto/)
-[^10]: SHA 256 algorithm: [Visualizing how the algorithm works](https://sha256algorithm.com/)[Description of the algorithm](https://csrc.nist.gov/glossary/term/secure_hash_algorithm_256)
-[^11]:Crypto JS Documentation:[AES algorithm](https://cryptojs.gitbook.io/docs)
-[^12]: Water Intake Formula: Based on general hydration guidelines from health organizations, such as the National Academies of Sciences, Engineering, and Medicine's recommendation on [Daily Water Intake](https://www.nap.edu/read/10925/chapter/1)
-[^13]: Gadgetbridge: (https://gadgetbridge.org/)
-[^14]: FitoTrack: (https://play.google.com/store/apps/details?id=de.tadris.fitness&hl=en_CA&gl=US&pli=1)
-[^15]: After analysis of the [Fitbit API](https://dev.fitbit.com/build/reference/), we found that there were [several red flags](https://dev.fitbit.com/getting-started/) when trying to access their API. Developers need to create a Google account to access the API and link the Fitbit service to their account. Developers also need to download the Fitbit app on their phone and own a Fitbit device. To access the full developer suite, we also had to accept the [Fitbit Platform Terms of Service](https://dev.fitbit.com/legal/platform-terms-of-service/) and the [Fitbit App Distribution Agreement](https://dev.fitbit.com/legal/app-distribution-agreement/). We found in the first that "Fitbit may monitor your usage of the Fitbit APIs in order to improve the Fitbit Platform and to ensure compliance with our policies and applicable laws and regulations". In the App Distribution Agreement, we found that "Fitbit may collect and use certain logs, analytics, usage statistics, and other data from the Fitbit Products regarding usage of your App as described in the Fitbit Privacy Policy". All in all, we found this counterintuitive to our goal of maintaining our privacy and that of our stakeholders. 
+-
