@@ -455,10 +455,85 @@ Jeffrey
 
   If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
 
-- **Screenshot and details of every page of the app.**: 
-  - Authenticate.js Screen:
-    <img src="Authenticate.PNG" title="Authenticate.js Screen" width="100"/>
-- **Technical Specifications and Documentation**: all functions input and outputs.
+- **Screenshot and details of every page of the app**: 
+  - Authenticate.js screen, under the screens directory:
+
+    <img src="Authenticate.PNG" title="Authenticate.js screen" width="200"/>
+    <img src="Authenticate1.PNG" title="Authenticate.js screen" width="200"/>
+
+  - IntroPage.js screen, under the screens/privacyPolicies directory:
+
+    <img src="IntroPage.PNG" title="IntroPage.js screen" width="200"/>
+
+  - IntroPolicy.js screen, under the screens/privacyPolicies directory:
+
+    <img src="IntroPage.PNG" title="IntroPolicy.js screen" width="200"/>
+
+  - PrivacyPolicySimplified.js screen, under the screens/privacyPolicies directory:
+
+     <img src="PrivacyPolicySimplified.PNG" title="PrivacyPolicySimplified.js screen" width="200"/>
+
+  - UserProfileData.js screen, under the screens directory:
+    
+    <img src="UserProfileData.PNG" title="UserProfileData.js screen" width="200"/>
+
+  - HealthMetrics.js screen, under the screens directory:
+
+    <img src="HealthMetrics.PNG" title="HealthMetrics.js screen" width="200"/>
+
+  - SetupAuth.js screen, under the screens directory:
+
+    <img src="SetupAuth.PNG" title="SetupAuth.js screen" width="200"/>
+
+  - DataManagement.js screen, under the backend directory:
+   
+    <img src="DataManagement.PNG" title="DataManagement.js screen" width="200"/>
+    
+  - TermsOfServicePopup.js screen, under the screens directory:
+
+    <img src="TermsOfServicePopup.PNG" title="TermsOfServicePopup.js screen" width="200"/>
+
+  - LandingPage.js screen, under the screens directory:
+  
+    <img src="LandingPage.PNG" title="LandingPage.js screen" width="200"/>
+
+  - PersonalPage.js screen, under the screens directory:
+  
+    <img src="PersonalPage.PNG" title="PersonalPage.js screen" width="200"/>
+
+  - PersonalPage.js screen, under the screens directory:
+  
+    <img src="PersonalPage1.PNG" title="PersonalPage1.js screen" width="200"/>
+
+  - PrivacyPolicyText.js screen, under the screens/privacyPolicies directory:
+  
+    <img src="PrivacyPolicyText.PNG" title="PrivacyPolicyText.js screen" width="200"/>
+
+  - ProfileManage.js screen, under the screens directory:
+  
+    <img src="ProfileManage.PNG" title="ProfileManage.js screen" width="200"/>
+
+  - UserGoalsPage.js screen, under the screens directory:
+  
+    <img src="UserGoalsPage.PNG" title="UserGoalsPage.js screen" width="200"/>
+
+  - SyncPage.js screen, under the screens directory:
+  
+    <img src="SyncPage.PNG" title="SyncPage.js screen" width="200"/>
+  
+  - ManualInputPage.js screen, under the screens directory:
+  
+    <img src="ManualInputPage.PNG" title="ManualInputPage.js screen" width="200"/>
+
+  - WatchInputPage.js screen, under the screens directory:
+  
+    <img src="ManuaWatchInputPagelInputPage.PNG" title="WatchInputPage.js screen" width="200"/>
+
+- **Technical Specifications and Documentation**: 
+  All functions inputs and outputs, as well as more descriptive inline comments can be found in the codebase. 
+
+  
+- **Sources**: 
 ## Footnotes
 [^1]: React native documentation: [React native elements](https://reactnativeelements.com/docs)
 [^2]: Stack exchange questions pertaining to React-Native ( over 9000 results): [questions tagged react native](https://stackoverflow.com/questions/tagged/react-native)
