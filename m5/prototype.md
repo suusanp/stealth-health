@@ -444,7 +444,7 @@ Jeffrey
 - **Lessons Learned and perspectives**: Key takeaways from incorporating privacy-by-design principles in the Fitbit app development process.
 
 ## Appendix
-- **How to Run the App:
+- **How to Run the App**:
   You must have these following requirements:
   - Latest version of the Node.js: https://nodejs.org/ installed
   - Yarn: https://yarnpkg.com/ or npm: https://www.npmjs.com/ installed
