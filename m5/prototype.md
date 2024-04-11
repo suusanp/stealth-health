@@ -232,10 +232,19 @@ export const getDataCollectionFlags = async () => {
 We decided not to encrypt user preferences and fitness goals for a simple reason: it keeps the app fast and easy to use. This data isn't as sensitive as health metrics, so we chose a more straightforward approach. However, we're ready to ramp up security if needed. This decision was all about finding the right balance—keeping the app smooth and user-friendly, without painting ourselves into a corner security-wise. We've set things up so we can switch on encryption for this data down the line, should the need arise.
 
 ### Data Analytics and Privacy Implications
-  - Overview of algorithms used for health data analysis and their implications on user privacy. explain how we are managing what is computed based on the users data management preferences.
+  - Overview of algorithms used for health data analysis and their implications on user privacy. explain how we are managing what is computed based on the users data management preferences. Susan
 
 ### User Interface Design and Data Input
-  - Insights into optional data inputs, transparency features, and the manual data input and sync functionalities. So manual sync in details and Watch sync Explain linking to API. 
+Our application is designed to offer users flexibility in how they synchronize their health data. Currently, we provide manual data input functionality, with future plans to integrate automatic sync options like Fitbit. This approach is due to the current limitation of accessing developer-specific features from external APIs.
+
+#### Manual Data Input
+
+The manual input feature allows users to log health metrics directly into the app, promoting engagement and personal responsibility in health tracking. This feature is user-friendly and ensures that users without access to wearable health devices can still participate actively in managing their health data.
+
+#### Simulation for Future Integration
+
+Although direct integration with health devices is part of our future roadmap, we've included a simulated function in the prototype to demonstrate how seamless data integration could look. This simulation mimics the data structure from a real API call, preparing us for eventual real-world application and integration.
+
 ### Data Management and User control. 
 
 #### User-Defined Data Retention Periods
@@ -295,11 +304,11 @@ const updateRetentionPreference = async (newOption) => {
 #### PDF retrieval
 
 #### Delete all function
-
+Jeffrey
 
 
 ### Authentication and Data Protection
-  - Use of biometric authentication (Expo LocalAuthentication) for data protection and the measures taken to secure user data access.
+  - Use of biometric authentication (Expo LocalAuthentication) for data protection and the measures taken to secure user data access. Jeffrey
 
 
 ## Conclusions
