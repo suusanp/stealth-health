@@ -458,7 +458,7 @@ Jeffrey
 
 - **Screenshot and details of every page of the app.**: 
   - Authenticate.js Screen:
-    ![Alt text](Authenticate.PNG "Authenticate.js Screen")
+    <img src=Authenticate.PNG" title="Authenticate.js Screen" width="100"/>
 - **Technical Specifications and Documentation**: all functions input and outputs.
 - **Sources**: 
 
