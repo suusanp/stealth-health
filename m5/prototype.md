@@ -19,38 +19,37 @@ The development of the Fitbit app prototype serves as a proof of concept for a m
 
 ### Rationale for Selecting React Native
 
-We chose React Native for our Fitbit app prototype due to its cross-platform capabilities [^1], as the  code that can be deployed on both iOS and Android devices. Our group members use both kind of devices, and we wanted to ensure that the app would be accessible to all team members during the development process and showcase applicability for both OS's. Additionally, React Native also has an extensive documentation and a large online community, which will be useful for troubleshooting and support since none of our team members had prior experience with mobile app development. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
+We chose React Native for our Fitbit app prototype due to its cross-platform capabilities [^1], as the  code that can be deployed on both iOS and Android devices. Our group members use both kind of devices, and we wanted to ensure that the app would be accessible to all team members during the development process and showcase applicability for both OS's. Additionally, React Native also has an extensive documentation and a large online community, which will be useful for troubleshooting and support since none of our team members had prior experience with mobile app development [^2]. Our team has also had previous experience developing in React, which made the transition to React Native smoother.
 
 
 
 ### Rationale for Selecting Expo
 
 Expo is a comprehensive framework for developing React Native applications. We picked it for the following reasons:
-- Expo provides libraries we found useful for our app, such as `SecureStore` for secure data storage and `LocalAuthentication` for biometric authentication. 
-- It is open-source with a large community of developers, which we found helpful as beginners to mobile app development.
+- Expo provides libraries we found useful for our app, such as `SecureStore`[^3] for secure data storage and `LocalAuthentication`[^4] for biometric authentication. 
+- It is open-source with a large community of developers, which we found helpful as beginners to mobile app development.[^5]
 - It is a test-friendly platform; We each downloaded the Expo Go app, which allows us to preview the app on real devices during development.
 
 #### Evaluation of Expo's Privacy Policies and Open-Source Nature
 
-Expo's commitment to privacy is evident through its GDPR, CCPA, and Privacy Shield compliance, ensuring the responsible handling of both developer and end-user data. This commitment is articulated in their Privacy Policy, updated on June 22nd, 2022, and further explained in their privacy exposition dated February 7th, 2020.
+Expo seems to be commited to privacy, on its website it showcases its GDPR, CCPA, and Privacy Shield compliance, it says to be responsibly handling both developer and end-user data. We read through their Privacy Policy, updated on June 22nd, 2022, and their further explained privacy exposition dated February 7th, 2020.
 
-- **Data Collection and Use**: "When you create an account on Expo or use our tools and services, we collect data including your name, email, and, if you enable paid services, your billing information... This data helps us make decisions about our products and services, in addition to allowing us to deliver satisfactory user experiences." (Expo, Privacy Policy)
+- **Data Collection and Use**: "When you create an account on Expo or use our tools and services, we collect data including your name, email, and, if you enable paid services, your billing information... This data helps us make decisions about our products and services, in addition to allowing us to deliver satisfactory user experiences." (Expo, Privacy Policy [^6])
 
-- **Data Processor and Controller Roles**: "When a developer uses Expo's services to create an app and distributes it to their users (end-users), we become a data processor because we process end-user data on behalf of the developer." (Expo, Privacy Explained)
+- **Data Processor and Controller Roles**: "When a developer uses Expo's services to create an app and distributes it to their users (end-users), we become a data processor because we process end-user data on behalf of the developer." (Expo, Privacy Explained [^7])
 
-- **End-User Data Minimalism**: "When end-users use apps built by Expo, we collect very little end-user data. The data we may collect includes the end-user's push token... These requests do not contain identifying information such as unique device identifiers." (Expo, Privacy Explained)
+- **End-User Data Minimalism**: "When end-users use apps built by Expo, we collect very little end-user data. The data we may collect includes the end-user's push token... These requests do not contain identifying information such as unique device identifiers." (Expo, Privacy Explained [^7])
 
-- **Security and Compliance**: The explicit statement that Expo is "GDPR-, CCPA-, and Privacy Shield-compliant" in all scenarios underscores a robust framework for privacy and data protection.
+- **Security and Compliance**: The explicit statement is that Expo is "GDPR-, CCPA-, and Privacy Shield-compliant" in all scenarios which is a good indicator for a robust framework for privacy and data protection.
 
 #### Open-Source Contribution
-Expo's open-source ecosystem is important, offering transparency and community engagement that aligns with our project's philosophy. 
-
+Expo's open-source ecosystem is important, it offers transparency and community engagement that is important for our project baseline. 
 
 ### Database Structure and Data Encryption
 
 #### What Type of Data We Collect and How It Is Organized
 
-In our application, user data is categorized into three distinct types: Sensitive Data, Daily Data, and User Preferences and Goals. Additionally, we incorporate user consent flags for data collection and offer customizable data retention periods, respecting user preferences and enhancing data privacy.
+In our application, user data is categorized into three distinct types: Sensitive Data, Daily Data, and User Preferences and Goals. We also incorporate user consent flags for data collection and offer customizable data retention periods.
 
 - **Sensitive Data**: Securely stored using Expo's `SecureStore` and encrypted with `Crypto`, this category includes:
   - Age Range (e.g., "18-29", "30-39", etc.)
@@ -463,13 +462,12 @@ Jeffrey
 - **Technical Specifications and Documentation**: all functions input and outputs.
 ## Footnotes
 [^1]: React native documentation: [React native elements](https://reactnativeelements.com/docs)
-[^1]: Fitbit Privacy statement: [Privacy Statement](https://www.fitbit.com/global/us/legal/privacy-policy)
-[^2]: Fitbit Privacy Concerns: [Privacy Analysis of Fitbit](https://privacy.commonsense.org/privacy-report/Fitbit)
-[^3]: PIPEDA Overview: [Personal Information Protection and Electronic Documents Act](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/)
-[^4]: SQLCipher for Local Data Encryption: [SQLCipher Design](https://www.zetetic.net/sqlcipher/design/)
-[^5]: MET: [Concept and formula](https://en.wikipedia.org/wiki/Metabolic_equivalent_of_task)
-[^6]: BMI: World Health Organization (WHO). "Body mass index - BMI." [Link to WHO BMI](https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight)
-[^7]: Roza, A.M., & Shizgal, H.M. (1984). "The Harris Benedict equation reevaluated: resting energy requirements and the body cell mass." The American Journal of Clinical Nutrition, 40(1), 168-182. [AJCN](https://academic.oup.com/ajcn/article-abstract/40/1/168/4690419)
+[^2]: Stack exchange questions pertaining to React-Native ( over 9000 results): [questions tagged react native](https://stackoverflow.com/questions/tagged/react-native)
+[^3]: Expo Documentation: [Secure Store](https://docs.expo.dev/versions/latest/sdk/securestore/)
+[^4]: Expo Documentation: [Local Authentification](https://docs.expo.dev/versions/latest/sdk/local-authentication/)
+[^5]: Expo FAQ: [expo is open source](https://docs.expo.dev/faq/)
+[^6]: Expo Documentation: [Privacy policy](https://expo.dev/privacy)
+[^7]: Expo Documentation: [Privacy explained](https://expo.dev/privacy-explained)
 [^8]: American Heart Association. "Target Heart Rates Chart." [Link to AHA Heart Rates](https://www.heart.org/en/healthy-living/fitness/fitness-basics/target-heart-rates)
 [^9]: Centers for Disease Control and Prevention (CDC). "About Adult BMI." [Link to CDC BMI](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)
 [^10]: Mifflin, M.D., St Jeor, S.T., Hill, L.A., Scott, B.J., Daugherty, S.A., & Koh, Y.O. (1990). "A new predictive equation for resting energy expenditure in healthy individuals." The American Journal of Clinical Nutrition, 51(2), 241-247. [AJCN](https://academic.oup.com/ajcn/article-abstract/51/2/241/4695347)
