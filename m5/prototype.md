@@ -120,7 +120,7 @@ Other notable functionalities of SecureStore are:
   }
   return info: };
  
- To update their data, users go through functions that retrieve their current data ( using getPersonalInfo), allow them to make changes, and then save these updates back to the device securely ( usingsavePersonalInfo) new information will overwrite the previous one, no history of the old data is kept within our software. If a user chooses to delete their data, our application uses SecureStore's deleteItemAsync for each data point, ensuring all personal information is removed from the device. This maintains data security while giving users complete control over their information.
+ To update their data, users go through functions that retrieve their current data ( using getPersonalInfo), allow them to make changes, and then save these updates back to the device securely ( using savePersonalInfo) new information will overwrite the previous one, no history of the old data is kept within our software. If a user chooses to delete their data, our application uses SecureStore's deleteItemAsync for each data point, ensuring all personal information is removed from the device. This maintains data security and gives users complete control over their information.
 
 #### Encryption and Decryption Methodology for daily data
 We employ a dynamic encryption key generation strategy using `expo-crypto`'s SHA256 function[^9]. This choice is driven by SHA256's cryptographic security, it is a strong hash function that is resistant to collision attacks [^10]. The code snippet below showcases the process:
@@ -493,7 +493,7 @@ const updateRetentionPreference = async (newOption) => {
 };
 ```
 #### PDF retrieval
- providing users with the ability to retrieve their health data in PDF format is a crucial feature that aligns with our commitment to data transparency, user control, and data minimization principles. This functionality allows users to generate a comprehensive report of their health metrics and computed analytics over a specified data retention period, ensuring they have tangible access to their information and further empowering them with their data management.
+ Providing users with the ability to retrieve their health data in PDF format is a crucial feature that aligns with our commitment to data transparency, user control, and data minimization principles. This functionality allows users to generate a comprehensive report of their health metrics and computed analytics over a specified data retention period, ensuring they have tangible access to their information and further empowering them with their data management.
 
  The initial step involves aggregating the user's health metrics and computed data into a structured HTML format. This process accounts for the user-defined data retention period, ensuring the report only encompasses data within this timeframe, aligning with our data minimization policy.
 
@@ -509,12 +509,99 @@ const createHtmlForPDF = async () => {
 ```
 Here we dynamically adjust the report's content based on the user's set data retention period. The use of HTML to format the report makes it easy to convert into PDF.
 #### Delete all function
-Jeffrey
+Another crucial feature we provide users, is the ability to delete all their data any time they want. The feature is enabled by a clear, simple, and highly accessible "Delete Everything" button in the user's profile settings page. When this button is pressed, all of the user's data (which is stored locally) is deleted and the application redirects to the new user setup page. If the user has authentication enabled, authentication is required before their data can be deleted. 
+
+To delete all of the user's data, the three types of storage we used for our application must be cleared. 
+
+```javascript
+export async function deleteAll() {
+    const dailyDataDirectory = `${FileSystem.documentDirectory}dailyData/`;
+  
+    try {
+      await SecureStore.deleteItemAsync('ageRange');
+      await SecureStore.deleteItemAsync('gender');
+      await SecureStore.deleteItemAsync('height');
+      await SecureStore.deleteItemAsync('weight');
+      await SecureStore.deleteItemAsync('dailySteps');
+      await SecureStore.deleteItemAsync('dailyDistance');
+      await SecureStore.deleteItemAsync('dailyCalories');
+
+      await FileSystem.deleteAsync(dailyDataDirectory, { idempotent: true });
+
+      await AsyncStorage.clear(); 
+      
+      return true;
+    } catch (error) {
+      console.error("An error occurred during deletion:", error);
+      Alert.alert("Deletion Failed. Please try again.");
+      return false;
+    }
+  }
+```
+In this function, we first delete all data stored in SecuredStore using SecureStore.deleteItemAsync(key) which deletes the value associated with the provided key. 
+
+Next, we delete the data stored in the device's filesystem using FileSystem.deleteAsync(fileUri, options). Here, we delete the directory which contains all the files about a user's fitness data. 
+
+Finally, we clear the AsyncStorage using AsyncStorage.clear(). AsyncStorage is unencrypted, asynchronous, persistent, key-value storage system that is global to the application. We used AsyncStorage to store data that we deem does not require encryption, such as is authentication enabled/disabled, or is the user setup complete/incomplete. 
 
 
 ### Authentication and Data Protection
-  - Use of biometric authentication (Expo LocalAuthentication) for data protection and the measures taken to secure user data access. Jeffrey
-  - Use of biometric authentication (Expo LocalAuthentication) for data protection and the measures taken to secure user data access. Jeffrey
+We also implemented a feature to allow users to protect their data using biometric authentication. Authentication is optional and can be enabled/disabled during the app setup or later on in the user's profile settings page. If enabled, authentication is used to authenticate a user upon opening the application or before deleting all user data. 
+
+This feature is enabled by Expo LocalAuthentication, an open-source library for implementing FaceID, TouchID (iOS) or Fingerprint (Android) to authenticate users. 
+
+Our authentication setup page consists of checking if biometrics is supported on the device and if so, a user can toggle between authentication on/off which saves the preferences in the AsyncStorage. 
+
+```javascript
+const [isBiometricSupported, setIsBiometricSupported] = useState(false);
+const [authenticationEnabled, setAuthenticationEnabled] = useState(false);
+// check if device supports biometrics
+useEffect( () => {
+    (async () => {
+    const compatible = await LocalAuthentication.hasHardwareAsync();
+    setIsBiometricSupported(compatible);
+    }) ();
+});
+
+const toggleSwitch = async () => {
+    if (!isBiometricSupported) {
+      Alert.alert(
+        "Unsupported Feature",
+        "Your device does not support Face ID.",
+        [
+          { text: "OK" }
+        ]
+      );
+    } else {
+        const previousState = !authenticationEnabled;
+        setAuthenticationEnabled(previousState);
+        await AsyncStorage.setItem('authenticationEnabled', JSON.stringify(previousState));
+    }
+  };
+```
+When users have authentication enabled, they need to be authenticated before accessing the Landing Page.
+```javascript
+const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigation = useNavigation();
+  
+
+  useEffect(() => {
+      if (isAuthenticated) {
+        navigation.navigate('LandingPage');
+      }
+    }, [isAuthenticated]);
+
+
+  function onAuthenticate () {
+      const auth = LocalAuthentication.authenticateAsync({
+      promptMessage: 'Authenticate',
+      fallbackLabel: 'Enter Password',
+      });
+      auth.then(result => {
+      setIsAuthenticated(result.success);
+      });
+  }
+```
 
 
 ## Conclusions
