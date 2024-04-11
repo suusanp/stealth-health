@@ -608,7 +608,6 @@ const [isAuthenticated, setIsAuthenticated] = useState(false);
 - **Summary of Key Findings**: Concise overview of the significant outcomes from this prototype development.
 - **Insights on Privacy Design Strategies Implemented**: Discussion on the application of Minimize, Separate, Abstract, and Hide strategies.
 - **Lessons Learned and perspectives**: Key takeaways from incorporating privacy-by-design principles in the Fitbit app development process.
-- **Lessons Learned and perspectives**: Key takeaways from incorporating privacy-by-design principles in the Fitbit app development process.
 
 ## Appendix
 - **How to Run the App**:
@@ -697,8 +696,6 @@ const [isAuthenticated, setIsAuthenticated] = useState(false);
   
     <img src="WatchInputPage.PNG" title="WatchInputPage.js screen" width="200"/>
 
-- **Technical Specifications and Documentation**: 
-  All functions inputs and outputs, as well as more descriptive inline comments can be found in the codebase. 
 
   
 ## Footnotes
