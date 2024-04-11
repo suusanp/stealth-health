@@ -2,7 +2,7 @@
 
 ## Introduction
 ### **Overview of the system**: 
-Stealth Health is a health and fitness application that aims to provide privacy-focused health tracking and analytics to users. The system is designed to collect and analyze user health data while prioritizing user privacy and data security. The Stealth Health system includes features such as activity tracking, heart rate monitoring, sleep analysis, and water intake monitoring. The system also allows users to set fitness goals and track their progress, while ensuring that users have full control over their data and can make informed decisions about its use. 
+Stealth Health is a health and fitness application that aims to provide privacy-focused health tracking and analytics to users. The system is designed to collect and analyze user health data while prioritizing user privacy and data security. The Stealth Health system includes features such as activity tracking, heart rate monitoring, sleep analysis, and water intake monitoring. The system also allows users to set fitness goals and track their progress while ensuring that users have full control over their data and can make informed decisions about its use. 
 
 ### **Purpose and Scope**: 
 The development of the Fitbit app prototype serves as a proof of concept for a more privacy-centric approach to personal health and fitness monitoring. Our scope is to demonstrate the feasibility of securely managing health data whilst providing users with insightful analytics on their physical activities and health metrics. 
@@ -73,13 +73,13 @@ In our application, user data is categorized into three distinct types: Sensitiv
   - Data Collection Flags: Boolean flags to indicate the user's consent for collecting specific metrics (`dailySteps`, `heartRate`, `bloodPressure`, `sleepPatterns`, `waterIntake`, `activityTracking`).
   - Data Retention Period: The duration for which the user wishes to retain their data, ranging from "3 Days" to "1 Year".
 
-Sensitive data is encrypted and stored locally to prevent unauthorized access. Daily data collection is mapped on the users data collection consent, users can control what information will be prompted from them. User preferences, including goals and data retention settings, are customizable at all times, allowing them to define their interaction with the app and how long their data is stored.
+Sensitive data is encrypted and stored locally to prevent unauthorized access. Daily data collection is mapped on the users' data collection consent, users can control what information will be prompted from them. User preferences, including goals and data retention settings, are customizable at all times, allowing them to define their interaction with the app and how long their data is stored.
 
 #### Choosing the Right Storage Solution
 
 When selecting a storage solution for our application, we evaluated various options, including SQLite and server-based solutions. While SQLite is a widely used database for storage in mobile applications, it typically does not store data directly on the device. A local storage approach aligns with our goal to avoid storing sensitive user data on servers due to the inherent risks of server-side data breaches and unauthorized access.
 
-Furthermore we were concerned By  SQLite was its limited support for built-in encryption. Ensuring the privacy and security of user data is paramount in our application; thus, we sought a solution that offered robust encryption capabilities out of the box. The need for encryption is not just about protecting data if the device is lost or compromised; it's about ensuring that data remains private and secure from any unauthorized access, intentional or accidental.
+Furthermore, we were concerned by SQLite due to its limited support for built-in encryption. Ensuring the privacy and security of user data is paramount in our application; thus, we sought a solution that offered robust encryption capabilities out of the box. The need for encryption is not just about protecting data if the device is lost or compromised; it's about ensuring that data remains private and secure from any unauthorized access, intentional or accidental.
 
 #### SecureStore for Sensitive Permanent and Semi-Permanent Information
 
@@ -134,9 +134,9 @@ export const generateAndStoreKey = async () => {
 
 - **Usage of SHA256**:  We chose this algorithm for its widespread acceptance as a secure hash algorithm, providing a good balance between speed and security.
 - **Unique Seed Generation**: Combining the current ISO date string with a random number ensures that the seed for our hash is highly unpredictable, this makes the encryption key harder to guess.
-- **Secure Storage of Key**: The resulting encryption key, is stored securely using expo-secure-store for the reasons mentionned in the above section (isolating it within the device's secure storage and ensuring it's not accessible without authentication).
+- **Secure Storage of Key**: The resulting encryption key, is stored securely using expo-secure-store for the reasons mentioned in the above section (isolating it within the device's secure storage and ensuring it's not accessible without authentication).
 
-We then encrypt the health metrics using the AES encryption funtion provided by CryptoJS. AES is particularly suitable for mobile environments where computational resources are limited as it can encrypt large amounts of data quickly. Below is the implementation detail:
+We then encrypt the health metrics using the AES encryption function provided by CryptoJS. AES is particularly suitable for mobile environments where computational resources are limited as it can encrypt large amounts of data quickly. Below is the implementation detail:
 
 ```javascript
 import * as FileSystem from 'expo-file-system';
@@ -153,7 +153,7 @@ export const saveDailyData = async (data, date) => {
     await FileSystem.writeAsStringAsync(filePath, ciphertext);
 };
 ```
-- **JSON Stringification**: Prior to encryption, the data is stringified to ensure compatibility with the encryption library, as CryptoJS operates on string inputs.
+- **JSON Stringification**: Before encryption, the data is stringified to ensure compatibility with the encryption library, as CryptoJS operates on string inputs.
 - **File System Storage**: The Encrypted data is stored in the device's file system, under a directory specific to daily data, to ease future data retrieval.
 - **Using the Date as Filename**: Storing daily data in files named after the date simplifies retrieval and management. It enables straightforward data purging based on retention policies without the need to decrypt files to assess their contents.
 - **Security Implications of Filename Choice**: The use of dates as filenames does not significantly impact security. The critical security measure lies in the encryption of the file's contents. However, a discussion around encrypting filenames could be justified in contexts where the mere knowledge of a user's activity on specific dates needs to be hidden.
@@ -176,7 +176,7 @@ export const getDailyData = async (date) => {
 - **Decryption Process**: CryptoJS's AES.decrypt method is used to decrypt the data. This step requires the same key used for encryption, ensuring that only authorized users can access the data.
 - **Parsing Decrypted Data**: The decrypted string is parsed back into a JSON object, making it readily usable by the application.
 
-#### Storage of user data amangement preferences and fitness goals
+#### Storage of user data management preferences and fitness goals
 For storing user preferences regarding data management and fitness goals, our application adopts a pragmatic approach that emphasizes user experience and operational efficiency. Unlike the highly sensitive user data which is encrypted and stored securely, this category of data, while important, does not include personally identifiable information that could compromise user privacy if accessed. Therefore, we have opted not to encrypt this data for several reasons:
 
 - **Rapid Access**: These preferences are frequently accessed and modified within the application's UI. Non-encrypted storage facilitates faster retrieval and updating of these preferences, enhancing the app's performance and user experience.
@@ -232,7 +232,6 @@ export const getDataCollectionFlags = async () => {
 We decided not to encrypt user preferences and fitness goals for a simple reason: it keeps the app fast and easy to use. This data isn't as sensitive as health metrics, so we chose a more straightforward approach. However, we're ready to ramp up security if needed. This decision was all about finding the right balance—keeping the app smooth and user-friendly, without painting ourselves into a corner security-wise. We've set things up so we can switch on encryption for this data down the line, should the need arise.
 
 ### Data Analytics and Privacy Implications
-  - Overview of algorithms used for health data analysis and their implications on user privacy. explain how we are managing what is computed based on the users data management preferences. Susan
 
 #### **Algorithms for Health Data Analysis**:
    - **BMI (Body Mass Index) Calculation**: This algorithm calculates BMI based on the user's weight (in kilograms) divided by the square of their height (in meters). It provides an estimate of body fatness.
@@ -301,7 +300,7 @@ const renderInputField = (flag, placeholder, name) => (
         value={dailyData[name]}
         onChangeText={(value) => handleInputChange(name, value)}
         keyboardType="numeric"
-        style={styles.input}
+        style={styles. input}
       />
     </View>
   )
@@ -354,12 +353,12 @@ const mergeActivitiesWithExistingData = async (fitbitData) => {
   await saveDailyData(updatedData, today);
 };
 ```
-- With this we ensures that the integrated data adheres to the application's data structure, facilitating seamless user experiences across different data sources. We also implement checks to prevent overlapping data entries, maintaining the integrity and utility of the health metrics recorded.
+- With this we ensure that the integrated data adheres to the application's data structure, facilitating seamless user experiences across different data sources. We also implement checks to prevent overlapping data entries, maintaining the integrity and utility of the health metrics recorded.
 
 -  A critical aspect of integrating third-party data is ensuring that users retain control over their information. This involves allowing users to review, edit, or remove imported data before it is permanently stored. All data, once approved for syncing, is encrypted and stored securely to protect user privacy and ensure compliance with relevant data protection laws.
 
 The process outlined not only demonstrates the technical feasibility of integrating Fitbit data into a mobile application but also underscores the importance of user privacy and control. The simulated API calls and data processing logic serve as a foundation for developing a fully functional integration, ready to adapt to real API responses and handle user data with the utmost care.
-### Data Management and User control. 
+### Data Management and User Control. 
 
 #### User-Defined Data Retention Periods
 As explained before, users can specify how long their data should be stored through a selection of predefined periods, ranging from "3 Days" to "1 Year". This preference impacts when data is automatically deleted to respect user privacy and manage device storage effectively.
@@ -371,7 +370,7 @@ export const savePreferences = async (preferences) => {
 };
 ```
 This function serializes the user's preferences to a JSON string and writes it to a file within the device's file system, ensuring preferences are retained even after the app is closed.
-If notifications are enabled, the application schedules reminders for users to manage their data before the chosen retention period ends. This approach ensures users are always informed about their data lifecycle,it listens for changes in notificationsEnabled and dataRetention, scheduling or adjusting notifications accordingly.:
+If notifications are enabled, the application schedules reminders for users to manage their data before the chosen retention period ends. This approach ensures users are always informed about their data lifecycle, it listens for changes in notificationsEnabled and dataRetention, scheduling or adjusting notifications accordingly.:
 ```javascript
 useEffect(() => {
   if (notificationsEnabled) {
@@ -380,7 +379,7 @@ useEffect(() => {
 }, [notificationsEnabled, dataRetention]);
 
 ```
-We perform automatic data deletions based on the user-defined retention period. Each time the app is launched, it evaluates stored data against the current retention policy,retrieving the user's retention preference, calculating the cutoff date, and iterating through stored files, deleting those older than the active cutoff date :
+We perform automatic data deletions based on the user-defined retention period. Each time the app is launched, it evaluates stored data against the current retention policy, retrieving the user's retention preference, calculating the cutoff date, and iterating through stored files, deleting those older than the active cutoff date :
 ```javascript
 export const checkAndDeleteOldFiles = async () => {
   const preferences = await getPreferences();
@@ -430,7 +429,7 @@ const createHtmlForPDF = async () => {
   return html + "</body></html>";
 };
 ```
-Here we dynamically adjusts the report's content based on the user's set data retention period.The use of HTML to format the report makes it easy to convert into PDF.
+Here we dynamically adjust the report's content based on the user's set data retention period. The use of HTML to format the report makes it easy to convert into PDF.
 #### Delete all function
 Jeffrey
 
@@ -447,4 +446,5 @@ Jeffrey
 ## Appendix
 - **Screenshot and details of every page of the app.**: 
 - **Technical Specifications and Documentation**: all functions input and outputs.
-- **Sourcea**: 
+- **Sources**: 
+
