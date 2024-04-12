@@ -6,7 +6,14 @@ Stealth Health is a health and fitness application that aims to provide privacy-
 
 
 ### **Purpose and Scope**: 
-The development of the Fitbit app prototype serves as a proof of concept for a more privacy-centric approach to personal health and fitness monitoring. Our scope is to demonstrate the feasibility of securely managing health data whilst providing users with insightful analytics on their physical activities and health metrics. 
+The development of the Fitbit app prototype serves as a proof of concept for a more privacy-centric approach to personal health and fitness monitoring. 
+
+Simplistically, our scope is to demonstrate the feasibility of securely managing health data while providing users with insightful analytics on their physical activities and health metrics. 
+
+But beyond our initial application, we iterate beyond that initial scope to set the record straight that health data collection is not mutually exclusive with user privacy. We strive to make it known that users can be in control of their health. They can be in control of their privacy. They can be in control of their lives.
+
+Additionally, we aim to dispel the notion that health data collection must come at the expense of user privacy. We're dedicated to more than just our app; we are making a statement about the current state of health data privacy and showcase how simple it is to improve it. 
+
 
 ## Issues with the Current Fitbit App
 Our analysis reveals significant privacy concerns with the Fitbit app, especially about its data collection practices and adherence to privacy laws like PIPEDA. Post Google's acquisition, the scrutiny of Fitbit's data handling has intensified. We discovered that the breadth of data collected by Fitbit extends far beyond basic health metrics, encompassing sensitive information such as location and online activities, often without clear user consent. Additionally, our examination of Fitbit's compliance with PIPEDA highlighted areas where the company falls short, particularly in terms of transparency and user control over their data. These findings underscore the need for stronger privacy and more user-centric policies in digital health technologies. For a more detailed insight, see [milestone 1](https://gitlab.cs.mcgill.ca/gaby.lebideau/c555w24-t10/-/blob/main/m1/case_study.md?ref_type=heads).
@@ -607,7 +614,7 @@ The Privacy Policy can be accessed at any time from the user's profile settings.
 
 - **Setup Process**: We have designed the setup process to be educational, with explanations provided for each data point requested. As mentioned, users must read the Simplified Privacy Policy before proceeding with the app setup; they will not be prompted to enter any personal data until they have done so. When users are asked to build their profile, we provide context for why each piece of information is needed and which metrics it will be used to compute. We also allow users to skip any data entry if they are uncomfortable providing it. On the Data Management page where users can set their data retention period, we provide our data retention disclaimer, which is a non-technical explanation of what data retention means and why it is important. At the end of the setup process, users will be asked again to read and accept the full Privacy Policy and ToS before they can start using the app. If they decline, all data entered during setup will be deleted.
 
-- **Informative UI**: We provide explanations for each health metric computed, so users understand the significance of the data they are providing, and how it is being used to generate insights. When users toggle a metric on or off in the PersonalPage screen, they will see an explanation in the `Available Functionalities` section below of what that metric represents and what it indicates about their health, along with the formula used to calculate each metric. `Available Functionalities` updates in real-time as users toggle them on or off, so they can see the immediate impact of their choices. We implemented this feature to provide instant feedback and information to users about their data choices. Our data retention disclaimer is also displayed under Retention Periods, so users can revisit the explanation at any time.
+- **Information Driven UX**: We provide explanations for each health metric computed, so users understand the significance of the data they are providing, and how it is being used to generate insights. When users toggle a metric on or off in the PersonalPage screen, they will see an explanation in the `Available Functionalities` section below of what that metric represents and what it indicates about their health, along with the formula used to calculate each metric. `Available Functionalities` updates in real-time as users toggle them on or off, so they can see the immediate impact of their choices. We implemented this feature to provide instant feedback and information to users about their data choices. Our data retention disclaimer is also displayed under Retention Periods, so users can revisit the explanation at any time.
 
 #### On the Placement of Information
 Our difficulty with navigating Fitbit's data practices inspired us to make information easily accessible to users. Thus, the placement of information within the app was a critical consideration in our design process. 
@@ -625,7 +632,7 @@ We avoided technical jargon and legalese in our privacy policy and data explanat
 
 To put this into practice, we drafted two versions of our privacy policy: a simplified version and a detailed version. We've also written a non-technical analogy for data retention to help users understand the concept better. We believe that many people, unlike us who have completed COMP555, are unfamiliar with the importance of data retention and the implications of data storage. And because we do not offer a data retention period of "forever", we wanted to ensure that all users can understand why we need to delete their data after a certain period. 
 
-We have discussed and debated the language choices in our app extensively, as it is a crucial aspect of our commitment to privacy to educate users about the implications of their data choices. This commitment extends beyond our app, as we want to contribute to a broader culture of privacy awareness and data literacy among the general public.
+We have discussed and debated the language choices in our app extensively, as it is a crucial aspect of our commitment to privacy to educate users about the implications of their data choices. This commitment extends beyond our app, as we want to contribute to a broader culture of privacy awareness and data literacy.
 
 
 ## Conclusions
