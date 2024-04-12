@@ -8,6 +8,19 @@
 ### Susan Pan
 
 ### Jeffrey Kauv Li
+- Implemented biometric authentication for the app
+- Developed Authentication Setup and Settings page, Authentication opening page
+- Updated UserProfileData.js with ability to select none and clear all inputs
+- Delete Everything button implementation and deleting all user data
+- Delete goals
+- UI fixes
+- Fixed bugs:
+    - Fixed bug where settings/setup page always shows during app opening even though setup already done
+    - Prevent users from swiping back on non-authorized pages
+    - Handle user disagreeing with terms
+    - Fixed bug causing incorrect dates, arrows, broken manual input, and landing page
+    - Fixed PDF formatting
+
 
 ### Gaby Le Bideau
 **Technical Implementations:**
