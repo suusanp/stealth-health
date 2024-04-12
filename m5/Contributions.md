@@ -1,6 +1,6 @@
 # Project Contributions
 
-Aur team has reached a unanimous decision to adopt the "Undisputed Uneven Contributions" grading scheme as outlined in our project guidelines. 
+Our team has reached a unanimous decision to adopt the "Undisputed Uneven Contributions" grading scheme as outlined in our project guidelines. 
 Member 1 ([Gaby]): +7.5% (equivalent to +1.5/20)
 Justification: Took on substantial additional responsibilities including the implementation of critical project features such as encryption and decryption, database structure, and UI components. Additionally, managed and guided the team in task assignments and deadlines.
 Member 2: -2.5% (equivalent to -0.5/20)
@@ -42,6 +42,8 @@ Member 4: -2.5% (equivalent to -0.5/20)
 - Delete Everything button implementation and deleting all user data
 - Delete goals
 - UI fixes
+- Writing Delete All and Authentication and proofreading report
+- Clean up code files
 - Fixed bugs:
     - Fixed bug where settings/setup page always shows during app opening even though setup already done
     - Prevent users from swiping back on non-authorized pages
