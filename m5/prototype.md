@@ -10,9 +10,9 @@ The development of the Fitbit app prototype serves as a proof of concept for a m
 
 Simplistically, our scope is to demonstrate the feasibility of securely managing health data while providing users with insightful analytics on their physical activities and health metrics. 
 
-But beyond our initial application, we iterate beyond that initial scope to set the record straight that health data collection is not mutually exclusive with user privacy. We strive to make it known that users can be in control of their health. They can be in control of their privacy. They can be in control of their lives.
+But extending our initial application, we iterate beyond that initial scope to set the record straight that health data collection is not mutually exclusive with user privacy. We strive to make it known that users can be in control of their health. They can be in control of their privacy. They can be in control of their lives.
 
-Additionally, we aim to dispel the notion that health data collection must come at the expense of user privacy. We're dedicated to more than just our app; we are making a statement about the current state of health data privacy and showcase how simple it is to improve it. 
+We're dedicated to more than just our app; we are making a statement about the current state of health data privacy and showcasing how simple it is to improve it.
 
 
 ## Issues with the Current Fitbit App
