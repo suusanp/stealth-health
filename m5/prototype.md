@@ -821,7 +821,7 @@ Yet, we do hope that Stealth Health will serve as a proof of concept that privac
 [^1]: React native documentation: [React native elements](https://reactnativeelements.com/docs)
 [^2]: Stack exchange questions pertaining to React-Native ( over 9000 results): [questions tagged react native](https://stackoverflow.com/questions/tagged/react-native)
 [^3]: Expo Documentation: [Secure Store](https://docs.expo.dev/versions/latest/sdk/securestore/)
-[^4]: Expo Documentation: [Local Authentification](https://docs.expo.dev/versions/latest/sdk/local-authentication/)
+[^4]: Expo Documentation: [Local Authentication](https://docs.expo.dev/versions/latest/sdk/local-authentication/)
 [^5]: Expo FAQ: [expo is open source](https://docs.expo.dev/faq/)
 [^6]: Expo Documentation: [Privacy policy](https://expo.dev/privacy)
 [^7]: Expo Documentation: [Privacy explained](https://expo.dev/privacy-explained)
