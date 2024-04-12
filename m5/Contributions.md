@@ -13,6 +13,21 @@
 
  
 ### Susan Pan
+- Implemented Data Retention Notifications functionality
+    - Developed the logic for scheduling notifications to remind users of data retention periods
+    - Created the notification manager for IOS and Android
+- Created Simplified Privacy Policy
+- Created Data Retention Disclaimer
+- Styling and interface fixes
+- Formatted and deployed Privacy Policy and ToS (written by Aybuke) to the app
+- Implemented information-driven setup process
+- Drafted analytics algorithm for calculating user health metrics
+- Drafted function to display available functionalities on the frontend
+- UI/UX design choices to enhance transparency and user education
+    - Frontend designs for app setup 
+    - Enforce transparency of data practices through informative modals
+- Writing, editing, and proof-reading for the project report
+    - Focus on Retention Periods, Transparency and User Education, Closing Remarks
 
 ### Jeffrey Kauv Li
 - Implemented biometric authentication for the app

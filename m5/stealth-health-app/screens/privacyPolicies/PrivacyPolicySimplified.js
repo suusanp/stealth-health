@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Linking } from 'react-native';
 
 const PrivacyPolicySimplified = () => {
     return (
@@ -30,7 +30,8 @@ const PrivacyPolicySimplified = () => {
                 <Text style={styles.heading}>Policy Changes:</Text> If the policy changes, you’ll be notified and asked for consent again.
             </Text>
             <Text style={styles.policyText}>
-                <Text style={styles.heading}>Contact Info:</Text> You can reach out to us for any questions or privacy concerns. You can reach Susan, our designated Privacy Officer, at @shuran.pan@mail.mcgill.ca
+                <Text style={styles.heading}>Contact Info:</Text> You can reach out to us for any questions or privacy concerns. You can reach Susan, our designated Privacy Officer, at 
+                <Text style={{ color: '#6E87C4', textDecorationLine: 'underline' }} onPress={() => Linking.openURL('mailto:shuran.pan@mail.mcgill.ca')}> shuran.pan@mail.mcgill.ca</Text>
             </Text>
         </View>
     );
