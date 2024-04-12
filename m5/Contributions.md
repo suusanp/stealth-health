@@ -1,5 +1,11 @@
 # Project Contributions
 
+Aur team has reached a unanimous decision to adopt the "Undisputed Uneven Contributions" grading scheme as outlined in our project guidelines. 
+Member 1 ([Gaby]): +7.5% (equivalent to +1.5/20)
+Justification: Took on substantial additional responsibilities including the implementation of critical project features such as encryption and decryption, database structure, and UI components. Additionally, managed and guided the team in task assignments and deadlines.
+Member 2: -2.5% (equivalent to -0.5/20)
+Member 3: -2.5% (equivalent to -0.5/20)
+Member 4: -2.5% (equivalent to -0.5/20)
 
 ## Contributions M5
 ### Aybuke Ekiz
