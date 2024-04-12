@@ -605,17 +605,37 @@ In writing our privacy policy, we have followed best practices for transparency 
 
 The Privacy Policy can be accessed at any time from the user's profile settings.
 
-- **Setup Process**: We have designed the setup process to be educational, with explanations provided for each data point requested. As mentioned, users must read the Simplified Privacy Policy before proceeding with the app setup; they will not be prompted to enter any personal data until they have done so. When users are asked to build their profile, we provide context for why each piece of information is needed and which metrics it will be used to compute. We also allow users to skip any data entry if they are uncomfortable providing it. At the end of the setup process, users will be asked again to read and accept the full Privacy Policy and ToS before they can start using the app. If they decline, all data entered during setup will be deleted.
+- **Setup Process**: We have designed the setup process to be educational, with explanations provided for each data point requested. As mentioned, users must read the Simplified Privacy Policy before proceeding with the app setup; they will not be prompted to enter any personal data until they have done so. When users are asked to build their profile, we provide context for why each piece of information is needed and which metrics it will be used to compute. We also allow users to skip any data entry if they are uncomfortable providing it. On the Data Management page where users can set their data retention period, we provide our data retention disclaimer, which is a non-technical explanation of what data retention means and why it is important. At the end of the setup process, users will be asked again to read and accept the full Privacy Policy and ToS before they can start using the app. If they decline, all data entered during setup will be deleted.
 
-- **Informative UI**: We provide explanations for each health metric computed, so users understand the significance of the data they are providing, and how it is being used to generate insights. When users toggle a metric on or off in the Health Metrics screen, they will see an explanation in the `Available Functionalities` section below of what that metric represents and what it indicates about their health, along with the formula used to calculate each metric. `Available Functionalities` updates in real-time as users toggle them on or off, so they can see the immediate impact of their choices. We implemented this feature to provide instant feedback and information to users about their data choices.
+- **Informative UI**: We provide explanations for each health metric computed, so users understand the significance of the data they are providing, and how it is being used to generate insights. When users toggle a metric on or off in the PersonalPage screen, they will see an explanation in the `Available Functionalities` section below of what that metric represents and what it indicates about their health, along with the formula used to calculate each metric. `Available Functionalities` updates in real-time as users toggle them on or off, so they can see the immediate impact of their choices. We implemented this feature to provide instant feedback and information to users about their data choices. Our data retention disclaimer is also displayed under Retention Periods, so users can revisit the explanation at any time.
+
+#### On the Placement of Information
+Our difficulty with navigating Fitbit's data practices inspired us to make information easily accessible to users. Thus, the placement of information within the app was a critical consideration in our design process. 
+
+We contemplated the choice of a centralized information hub versus contextual information placement. Ultimately, we opted for a hybrid approach that combines centralized access to detailed information with contextual explanations at relevant points in the user journey. 
+
+Contextual information is provided at the point of data collection or metric computation to inform users about their choices, without overwhelming them with excessive information upfront.
+
+All critical information, such as the Privacy Policy, Terms of Service, metric explanations, and Data Retention Disclaimer is accessible from the PersonalPage screen, which serves as the app's information hub as well as the user's data management center. This central location ensures that users can easily access essential information at any point during their interaction with the app.
+
+#### On Our Choice of Language
+We made deliberate language choices to ensure that our data practices are communicated clearly and transparently to users so that the consent we receive is informed and meaningful. 
+
+We avoided technical jargon and legalese in our privacy policy and data explanations to ensure users can easily understand our data practices. We wanted to balance providing comprehensive information and maintaining readability for users of all backgrounds. We also modeled our language based on our (most strict) interpretation of PIPEDA's requirements for clear and understandable privacy policies.
+
+To put this into practice, we drafted two versions of our privacy policy: a simplified version and a detailed version. We've also written a non-technical analogy for data retention to help users understand the concept better. We believe that many people, unlike us who have completed COMP555, are unfamiliar with the importance of data retention and the implications of data storage. And because we do not offer a data retention period of "forever", we wanted to ensure that all users can understand why we need to delete their data after a certain period. 
+
+We have discussed and debated the language choices in our app extensively, as it is a crucial aspect of our commitment to privacy to educate users about the implications of their data choices. This commitment extends beyond our app, as we want to contribute to a broader culture of privacy awareness and data literacy among the general public.
 
 
 ## Conclusions
 - **Summary of Key Findings**: 
  
-  - Our research on FitBit and similar health and fitness wearables and applications demonstrated significant privacy concerns and a lack of transparency. Our app Stealth Health was meant to address those privacy shortcomings while also keeping the core functionalities of the fitness applications. 
+  - Our research on FitBit and similar health and fitness wearables and applications yielded significant privacy concerns and a lack of transparency. Our app Stealth Health was meant to address those privacy shortcomings while also keeping the core functionalities of the fitness applications. 
 
   - Our successful development of this prototype demonstrated that it is possible to have a privacy-focused fitness app if one considers privacy to be one of the core requirements of the application from the start. By using React Native and Expo, our team was able to develop a working prototype of Stealth Health in under a few months, which proves privacy by design is possible, and does not need to be technically complicated. 
+
+  - Many of the privacy features we implemented in Stealth Health were not technically complicated, but they required a lot of thought and planning. We realized that privacy is not just a technical issue, but also a design and user experience issue.
 
   - By combining local data storage, encryption by Expo's SecureStore and Crypto libraries, and authentication by Face ID and Phone Password, we were able to ensure that user's sensitive health information remains secure all the time, at rest, and during data processing. 
 
@@ -643,6 +663,25 @@ The Privacy Policy can be accessed at any time from the user's profile settings.
   - As we progressed through the implementation of our project, we further realized the importance of committing to privacy-by-design principles from the very start of a project, as that choice we committed to set the whole implementation route. We also realized it is much harder to try to add a privacy-enhancing function to an existing application than it is to develop a brand-new application focused on privacy by default. 
 
   - We realized the importance of informing the user, especially while writing our Privacy Policy and Terms of Services, as writing them forced us to think critically about every data collection choice we made. Our implementation of a privacy-focused user setup process enhanced transparency and trust.
+
+  - We also learned that privacy is not just a technical issue, but also a design and user experience issue. Purposeful obscurity in the design of privacy settings can lead to user confusion, which may often be deliberate on the part of the app developers. This was easily avoidable in our case, by simply keeping the user informed before asking them to make a choice.
+
+
+### Closing Remarks
+
+```
+"Privacy is not currency to be paid for functionality. It is a fundamental right that should be respected and protected."
+
+   --- Group 10
+```
+
+We created Stealth Health with the goal of providing users with a privacy-focused alternative to existing health and fitness applications. However, our vision extends beyond just the app itself. We wanted to send a message that functionality should not come at the cost of privacy.
+
+As we mentioned previously in this report, we considered, extensively, the implications of every design choice on user privacy and data protection. Our design decisions were not just about following data protection laws or industry standards; they were about spreading awareness and respecting the user's fundamental right to privacy. 
+
+We are not as hubristic to think that Stealth Health will revolutionize data privacy in the health and fitness industry, or even that it will be publicly released. We are all well aware of the limitations of our prototype and the challenges of implementing a privacy-first approach in a market dominated by data-hungry applications. 
+
+Yet, we do hope that Stealth Health will serve as a proof of concept that privacy and functionality can coexist, and that it is not difficult to design an application that respects user privacy from the ground up. Our biggest hope is to inspire other developers to consider privacy as a core requirement of their applications, even if those developers are just our fellow classmates in COMP555.
 
 
 ## Appendix
