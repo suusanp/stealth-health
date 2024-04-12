@@ -3,6 +3,13 @@
 
 ## Contributions M5
 ### Aybuke Ekiz
+- Implemented UserGoalsPage to allow the user to add or update their fitness goals
+- Updated the Activity Rings to reflect the progress based on the user implemented goals
+- UI Fixes, adding back/front arrows and style fixes
+- Add descriptive inline comments and documentations to whole codebase
+- Privacy Policy and Terms of Services
+- Explanation of Different Pages of the App at Appendix
+- Report conclusion and proofread
 
  
 ### Susan Pan
