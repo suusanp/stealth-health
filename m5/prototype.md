@@ -637,7 +637,7 @@ We have discussed and debated the language choices in our app extensively, as it
 
   - Many of the privacy features we implemented in Stealth Health were not technically complicated, but they required a lot of thought and planning. We realized that privacy is not just a technical issue, but also a design and user experience issue.
 
-  - By combining local data storage, encryption by Expo's SecureStore and Crypto libraries, and authentication by Face ID and Phone Password, we were able to ensure that user's sensitive health information remains secure all the time, at rest, and during data processing. 
+  - By combining local data storage, encryption by Expo's SecureStore and Crypto libraries, and authentication by Face ID and Phone Password, we were able to ensure that the user's sensitive health information remains secure all the time, at rest, and during data processing. 
 
   - Our focus on our user's informed consent allowed us to write and demonstrate our transparent Privacy Policy and Terms of Service. Giving back control to the user by allowing them to transparently choose which health metrics they want to be tracked, and their data retention period proved that privacy and functionality do not have to be a zero-sum game. 
 
@@ -652,13 +652,13 @@ We have discussed and debated the language choices in our app extensively, as it
 
   - Hide strategy was used to store the user data securely, by storing the encrypted data in secure local storage. All the sensitive data was encrypted by default. Further privacy was ensured by user authentication. 
 
-  - User was informed about every single data we are tracking and every single metric we are calculating, complying with the Inform strategy.
+  - The user was informed about every single data we are tracking and every single metric we are calculating, complying with the Inform strategy.
 
-  - User was given the choice to control all of their preferences, from for how long they want to keep their data, to what data they allow the application to collect. User was also given the clear choice of deleting all of their data at any given time. 
+  - The user was given the choice to control all of their preferences, from how long they want to keep their data, to what data they allow the application to collect. User was also given the clear choice of deleting all of their data at any given time. 
 
 - **Lessons Learned and Perspectives**: 
   
-  - Stealth Health of course has some limitations, as we were not able to implement some of the features of FitBit and similar health devices, which rely on constant user data stream and advanced sensors. However, we were still able to keep the most important features of any such application and were also able to provide a simulation of how syncing a FitBit device would work on Stealth Health if we had access to the FitBit API. 
+  - Stealth Health of course has some limitations, as we were not able to implement some of the features of Fitbit and similar health devices, which rely on constant user data stream and advanced sensors. However, we were still able to keep the most important features of any such application and were also able to provide a simulation of how syncing a FitBit device would work on Stealth Health if we had access to the FitBit API. 
 
   - As we progressed through the implementation of our project, we further realized the importance of committing to privacy-by-design principles from the very start of a project, as that choice we committed to set the whole implementation route. We also realized it is much harder to try to add a privacy-enhancing function to an existing application than it is to develop a brand-new application focused on privacy by default. 
 
@@ -686,8 +686,8 @@ Yet, we do hope that Stealth Health will serve as a proof of concept that privac
 
 ## Appendix
 - **How to Run the App**:
-  You must have these following requirements:
-  - Latest version of the Node.js: https://nodejs.org/ installed
+  You must have the following requirements:
+  - The latest version of Node.js: https://nodejs.org/ installed
   - Yarn: https://yarnpkg.com/ or npm: https://www.npmjs.com/ installed
   - EXPO installed, (https://expo.dev/) by running `npm install -g expo-cli`
 
@@ -697,57 +697,57 @@ Yet, we do hope that Stealth Health will serve as a proof of concept that privac
 
   If you are prompted to update anything when you run these commands, please update, and run the above commands again. 
 
-  If the commands ran successfully, you will see a QR code being created. Scan the QR code by your phone that has "Expo Go" installed, and open the link in Expo Go. You will be able to interact with the app through the Expo Go application, as you would interact with any app. 
+  If the commands ran successfully, you will see a QR code being created. Scan the QR code on your phone that has "Expo Go" installed, and open the link in Expo Go. You will be able to interact with the app through the Expo Go application, as you would interact with any app. 
 
 - **Screenshot and details of every page of the app**: 
   
   - Authenticate.js screen, under the screens directory:
-    This is the page the user sees when they open the app after they gave the app the authentication permission. By clicking the "Unlock" button, user is prompted to use their Face ID or enter their phone password to authenticate, which is shown in the second screen below. Once the user successfully authenticates, they are redirected to the Landing Page. 
+    This is the page the user sees when they open the app after they give the app the authentication permission. By clicking the "Unlock" button, the user is prompted to use their Face ID or enter their phone password to authenticate, which is shown in the second screen below. Once the user successfully authenticates, they are redirected to the Landing Page. 
 
     <img src="Authenticate.PNG" title="Authenticate.js screen" width="200"/>
     <img src="Authenticate1.PNG" title="Authenticate.js screen" width="200"/>
 
   
-  - SettingsScreen.js file bundles the following screens, and consecutively shows them all to the user when they are setting up their account.  These following are the first pages the user sees when they open the app for the first time, or for the first time after they deleted all of their data. 
+  - SettingsScreen.js file bundles the following screens, and consecutively shows them all to the user when they are setting up their account.  The following are the first pages the user sees when they open the app for the first time, or for the first time after they delete all of their data. 
       - IntroPage.js screen, under the screens/privacyPolicies directory:
-        By clicking the "Next" button, user is navigated to IntroPolicy screen below. 
+        By clicking the "Next" button, the user is navigated to IntroPolicy screen below. 
 
         <img src="IntroPage.PNG" title="IntroPage.js screen" width="200"/>
 
       
       - IntroPolicy.js screen, under the screens/privacyPolicies directory:
-        By clicking "Next" button, user is navigated to PrivacyPolicySimplified below. 
+        By clicking the "Next" button, the user is navigated to PrivacyPolicySimplified below. 
 
         <img src="IntroPage.PNG" title="IntroPolicy.js screen" width="200"/>
 
       
       - PrivacyPolicySimplified.js screen, under the screens/privacyPolicies directory:
-        By clicking "Next" button, user is navigated to UserProfileData below. 
+        By clicking the "Next" button, the user is navigated to UserProfileData below. 
         
         <img src="PrivacyPolicySimplified.PNG" title="PrivacyPolicySimplified.js screen" width="200"/>
 
       
       - UserProfileData.js screen, under the screens directory:
-        By clicking "Next" button, user is navigated to HealthMetrics below. 
+        By clicking the "Next" button, the user is navigated to HealthMetrics below. 
         
         <img src="UserProfileData.PNG" title="UserProfileData.js screen" width="200"/>
 
       
       - HealthMetrics.js screen, under the screens directory:
-        By clicking "Next" button, user is navigated to SetupAuth below. 
+        By clicking the "Next" button, the user is navigated to SetupAuth below. 
         
         <img src="HealthMetrics.PNG" title="HealthMetrics.js screen" width="200"/>
 
       
       - SetupAuth.js screen, under the screens directory:
-        By clicking "Next" button, user is navigated to DataManagement below. 
+        By clicking the "Next" button, the user is navigated to DataManagement below. 
         
         <img src="SetupAuth.PNG" title="SetupAuth.js screen" width="200"/>
 
       
       - DataManagement.js screen, under the backend directory:
-        Contains a disclaimer modal for the importance of Data Retention Period.
-        By clicking "Save and Exit" button, user is navigated to LandingPage below. 
+        Contains a disclaimer modal for the importance of the Data Retention Period.
+        By clicking the "Save and Exit" button, the user is navigated to LandingPage below. 
         
         <img src="DataManagement.PNG" title="DataManagement.js screen" width="200"/>
         <img src="RetentionDisclaimer.PNG" title="RetentionDisclaimer modal" width="200"/>
@@ -760,17 +760,17 @@ Yet, we do hope that Stealth Health will serve as a proof of concept that privac
 
   
   - LandingPage.js screen, under the screens directory:
-    The Landing Page of the app, user can navigate to most of the screens from this page.
-    User can navigate on the Landing Page itself, using the backward and forward arrows.
-    User can navigate to the PersonalPage, clicking on the Profile Button at bottom right.
-    User can navigate to the SyncPage, clicking on the Sync Button at the top left.
-    User can navigate to the UserGoalsPage, clicking on the Trophy Button at the top right.
+    The Landing Page of the app, the user can navigate to most of the screens from this page.
+    The user can navigate on the Landing Page itself, using the backward and forward arrows.
+    The user can navigate to the PersonalPage, by clicking on the Profile Button at the bottom right.
+    The user can navigate to the SyncPage, by clicking on the Sync Button at the top left.
+    The user can navigate to the UserGoalsPage, by clicking on the Trophy Button at the top right.
     
     <img src="LandingPage.PNG" title="LandingPage.js screen" width="200"/>
 
   
   - PersonalPage.js screen, under the screens directory:
-    Personal Page of the user, user can modify their profile by clicking the "Modify Profile" Button and navigating to ProfileManage page, create and extract a pdf of their data by clicking "Create PDF of Data" button, change their preferences for the health data collection by clicking on the toggle switches, navigate to SetupAuth page by clicking "Authentication Settings", navigate to PrivacyPolicyText page by clicking "Privacy Policy" Button, or delete all their data by clicking "Delete Everything" Button. The pop up when the user clicks "Delete Everything" is shown on the second screenshot. Disclaimer modal for the importance of Data Retention Period appears when the user clicks "Why this is important for privacy?" button.
+    Personal Page of the user, user can modify their profile by clicking the "Modify Profile" Button and navigating to the ProfileManage page, create and extract a PDF of their data by clicking the "Create PDF of Data" button, change their preferences for the health data collection by clicking on the toggle switches, navigate to SetupAuth page by clicking "Authentication Settings", navigate to PrivacyPolicyText page by clicking "Privacy Policy" Button, or delete all their data by clicking "Delete Everything" Button. The pop-up when the user clicks "Delete Everything" is shown on the second screenshot. The disclaimer modal for the importance of the Data Retention Period appears when the user clicks the "Why this is important for privacy?" button.
    
     <img src="PersonalPage.PNG" title="PersonalPage.js screen" width="200"/>
     <img src="PersonalPage1.PNG" title="PersonalPage1.js screen" width="200"/>
@@ -778,43 +778,43 @@ Yet, we do hope that Stealth Health will serve as a proof of concept that privac
 
 
   - PrivacyPolicyText.js screen, under the screens/privacyPolicies directory:
-    The full text of the Privacy Policy. User can navigate back to Personal Page by clicking "Close".
+    The full text of the Privacy Policy. The user can navigate back to the Personal Page by clicking "Close".
     
     <img src="PrivacyPolicyText.PNG" title="PrivacyPolicyText.js screen" width="200"/>
 
   
   - ProfileManage.js screen, under the screens directory:
-    User can modify their age range, gender, height and weight on this screen. User can navigate back to Personal Page by clicking "Save & CLose", which becomes clickable when user makes any change on their profile values, or by clicking "Back" arrow. 
+    The user can modify their age range, gender, height and weight on this screen. The user can navigate back to their Personal Page by clicking "Save & Close", which becomes clickable when the user makes any change to their profile values, or by clicking the "Back" arrow. 
    
     <img src="ProfileManage.PNG" title="ProfileManage.js screen" width="200"/>
 
   
   - UserGoalsPage.js screen, under the screens directory:
-    User can set their fitness goals, any change the user makes on the data fields are automatically saved and updated. User can navigate back to the Landing Page by clicking the Back arrow.
+    User can set their fitness goals, and any changes the user makes on the data fields are automatically saved and updated. The user can navigate back to the Landing Page by clicking the Back arrow.
     
     <img src="UserGoalsPage.PNG" title="UserGoalsPage.js screen" width="200"/>
 
   
   - SyncPage.js screen, under the screens directory:
-    User can click on the "Watch Sync" Button and navigate to the WatchInputPage screen, user can click on the "Manual Input" Button and navigate to the ManualInputPage screen, or the user can click on the Back arrow and navigate back to the Landing Page.
+    The user can click on the "Watch Sync" Button and navigate to the WatchInputPage screen, the user can click on the "Manual Input" Button and navigate to the ManualInputPage screen, or the user can click on the Back arrow and navigate back to the Landing Page.
     
     <img src="SyncPage.PNG" title="SyncPage.js screen" width="200"/>
   
   
   - ManualInputPage.js screen, under the screens directory:
-    User can input daily health metrics such as steps, bpm, blood pressure, sleep hours, or water intake by the text input. User can also add an activity and choose an activity from the drop down menu and select the time of the activity. User can navigate back to the SyncPage by clicking "Save & Exit", which becomes clickable when user inputs anything in the text fields, or user can navigate back to the SyncPage by clicking the "Back" arrow. 
+    The user can input daily health metrics such as steps, bpm, blood pressure, sleep hours, or water intake by the text input. The user can also add an activity by choosing among the activities from the drop-down menu and selecting the duration of the activity. The user can navigate back to the SyncPage by clicking "Save & Exit", which becomes clickable when the user inputs anything in the text fields, or the user can navigate back to the SyncPage by clicking the "Back" arrow. 
     
     <img src="ManualInputPage.PNG" title="ManualInputPage.js screen" width="200"/>
 
   
   - WatchInputPage.js screen, under the screens directory:
-    User can click "Sync Fitbit Data" to sync their Fitbit to the app. User can select the activities they want to upload, and select "Save Data" to save. User can navigate back to SyncPage by clicking the "Back" arrow. 
+    The user can click "Sync Fitbit Data" to sync their Fitbit to the app. The user can select the activities they want to upload, and select "Save Data" to save. The user can navigate back to SyncPage by clicking the "Back" arrow. 
     
     <img src="WatchInputPage.PNG" title="WatchInputPage.js screen" width="200"/>
 
 
 - **Technical Specifications and Documentation**: 
-  All functions inputs and outputs, as well as more descriptive inline comments can be found in the codebase. 
+  All functions' inputs and outputs, as well as more descriptive inline comments, can be found in the codebase. 
 
   
 ## Footnotes
