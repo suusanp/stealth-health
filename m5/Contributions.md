@@ -35,7 +35,7 @@ Member 4: -2.5% (equivalent to -0.5/20)
 - Writing, editing, and proof-reading for the project report
     - Focus on Retention Periods, Transparency and User Education, Closing Remarks
 
-### Jeffrey Kauv Li
+### JKL
 - Implemented biometric authentication for the app
 - Developed Authentication Setup and Settings page, Authentication opening page
 - Updated UserProfileData.js with ability to select none and clear all inputs

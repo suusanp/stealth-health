@@ -4,7 +4,7 @@ This document outlines the contributions of each team member.
 
 ## Team Members:
 
-- Jeffrey Kauv Li
+- JKL
 - Susan Pan
 - Aybuke Ekiz
 - Gaby Le Bideau
@@ -26,7 +26,7 @@ This document outlines the contributions of each team member.
   - Contributing to the Privacy Requirements and Stakeholders sections in the Architecture.md
   - Spellcheck/grammar check of the Architecture.md
 
-### Jeffrey Kauv Li
+### JKL
 
 - **Responsibilities**:
   - Brain storming and researching on the application idea

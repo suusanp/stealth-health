@@ -4,7 +4,7 @@ This document outlines the contributions of each team member.
 
 ## Team Members:
 
-- Jeffrey Kauv Li
+- JKL
 - Susan Pan
 - Aybuke Ekiz
 - Gaby Le Bideau
@@ -30,7 +30,7 @@ This document outlines the contributions of each team member.
   - Contributed to conclusion and research methods.
   - Unified team citations and references.
 
-### Jeffrey Kauv Li
+### JKL
 
 - **Role**: Data Analyst
 - **Responsibilities**:

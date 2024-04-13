@@ -1,6 +1,6 @@
 # Alternative Fitness App: Privacy-First Architecture Design
 
-Group 10: Gaby Le Bideau, Jeffrey Kauv Li, Susan Pan, Aybuke Ekiz
+Group 10: Gaby Le Bideau, JKL, Susan Pan, Aybuke Ekiz
 
 Due to privacy concerns with the Fitbit API [^15], we will develop an alternative application which tracks fitness and health data while prioritizing user privacy.
 

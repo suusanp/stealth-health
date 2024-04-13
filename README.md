@@ -6,7 +6,7 @@ This project, part of the COMP 555 Information Privacy course, aims to explore t
 
 ### Team Members:
 - Gaby Le Bideau
-- Jeffrey Kauv Li
+- JKL
 - Susan Pan
 - Aybuke Ekiz
 
